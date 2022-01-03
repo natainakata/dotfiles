@@ -5,28 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-HISTSIZE=100000
-SAVEHIST=1000000
-
-setopt incappendhistory
-setopt sharehistory
-
-autoload -Uz compinit && compinit
-
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
-
-zstyle ':completion:*' format '%B%F{blue}%d%f%b'
-zstyle ':completion:*' group-name ''
-
-zstyle ':completion:*:default' menu select=2
-
-setopt autocd
-
-setopt noflowcontrol
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -63,3 +41,15 @@ zinit light romkatv/powerlevel10k
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
 . /home/natai/.asdf/asdf.sh
+
+# load rc
+ZSHHOME="${HOME}/.zsh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -d $ZSHHOME -a -r $ZSHHOME -a -x $ZSHHOME]; then
+  for i in $ZSHHOME/*; do
+    [[ ${i##*/} = *.zsh ]] && 
+      [ \( -f $i -o -h $i \) -a -r $i ] && . $i
+  done
+fi
+

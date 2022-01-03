@@ -32,7 +32,8 @@ set virtualedit=onemore
 
 set mouse=a
 
-  set clipboard^=unnamedplus
+set clipboard&
+set clipboard^=unnamedplus
 
 let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = 'botright'
