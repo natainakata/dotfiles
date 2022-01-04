@@ -36,6 +36,7 @@ zinit ice wait lucid
 zinit light chrissicool/zsh-256color
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
+zinit light asdf-vm/asdf
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
