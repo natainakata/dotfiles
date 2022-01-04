@@ -3,6 +3,8 @@
 /.**
 
 ### not ignore ###
+!/.bin/
+!/.bin/**
 !/.zshrc
 !/.zshenv
 !/.p10k.zsh
