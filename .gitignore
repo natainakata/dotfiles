@@ -1,0 +1,17 @@
+### ALL ignore ###
+/*
+/.**
+
+### not ignore ###
+!/.zshrc
+!/.zshenv
+!/.p10k.zsh
+!/.zsh/
+!/.config/
+!/.config/**
+
+!/README.md
+!/LICENSE
+!/.gitignore
+
+
