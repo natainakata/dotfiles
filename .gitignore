@@ -11,10 +11,12 @@
 !/.zsh/
 !/.config/
 !/.config/**
+!/.pmy/
+!/.pmy/**
 
 !/README.md
 !/LICENSE
 !/.gitignore
 !/.gitconfig_shared
-
+!.keep
 

@@ -14,12 +14,6 @@ set smartcase
 set wrapscan
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-if has('persistent_undo')
-  let undo_path = expand('~/.vim/undo')
-  exe 'set undodir=' .. undo_path
-  set undofile
-endif
-
 set number
 set termguicolors
 set cursorline

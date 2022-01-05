@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+load() {
+  local dot
+  dot=$(fd --full-path -t f -H -E   'functions/' $HOME/.dotfiles/.zsh | sed 's/ /\\ /g' | fzf --multi --preview="fzf-preview-file {}" ) &&
+    source "$dot"
+    
+}
+
+
+while [ $# -gt 0 ];do
+  case ${1} in 
+    --all|-a)
+      exec $SHELL -l
+      exit 0
+      ;;
+    *)
+      ;;
+  esac
+  shift
+done
+
+load
