@@ -1,0 +1,17 @@
+local util = require('utils')
+
+vim.cmd('filetype plugin indent on')
+vim.cmd('syntax on')
+
+require('plugins/packer')
+require('options')
+require('mappings')
+require('plugins/statusline')
+require('plugins/completion')
+require('plugins/exploler')
+require('plugins/lsp')
+require('plugins/bufferline')
+require('plugins/terminal')
+require('plugins/treesitter')
+require('plugins/fuzzyfinder')
+require('plugins/git')

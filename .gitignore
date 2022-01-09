@@ -13,6 +13,7 @@
 !/.config/**
 !/.pmy/
 !/.pmy/**
+/.pmy/log.txt
 
 !/README.md
 !/LICENSE

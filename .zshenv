@@ -12,3 +12,4 @@ path=(
   $path
 )
 
+. "$HOME/.cargo/env"
