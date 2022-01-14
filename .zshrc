@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -51,8 +51,6 @@ zinit ice lucid wait'0' as"program" from"gh-r" \
 zinit light relastle/pmy
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-zinit light asdf-vm/asdf
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
@@ -67,3 +65,12 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 fi
 
 fpath=(~/.zsh/functions/*(N-/) $fpath)
+
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
+
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+eval "$("$BASE16_SHELL/profile_helper.sh")"

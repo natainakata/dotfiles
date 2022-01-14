@@ -28,9 +28,10 @@ util.opt.virtualedit = 'onemore'
 
 util.opt.mouse = 'a'
 
+vim.cmd('colorscheme base16-' .. vim.env.BASE16_THEME)
 util.opt.clipboard:append { 'unnamedplus' }
-vim.cmd('colorscheme tokyonight')
-vim.cmd('autocmd VimEnter * TransparentEnable')
+util.opt.pumblend=10
+util.opt.winblend=30
 util.g.minimap_auto_start = 1
 util.g.minimap_auto_start_win_enter = 1
 

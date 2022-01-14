@@ -26,6 +26,8 @@ return require('packer').startup(function()
   use('lambdalisue/fern.vim')
   use('lambdalisue/fern-renderer-nerdfont.vim')
   use('lambdalisue/fern-git-status.vim')
+  use('yuki-yano/fern-preview.vim')
+  use('lambdalisue/fern-hijack.vim')
   use('kyazdani42/nvim-tree.lua')
   -- git support
   use('lambdalisue/gina.vim')
@@ -71,10 +73,13 @@ return require('packer').startup(function()
   -- use('sainnhe/grovbox-material')
   -- use('project0n/github-nvim-theme')
   -- use('sainnhe/sonokai')
+  use('norcalli/nvim.lua')
+  use('norcalli/nvim-base16.lua')
+  use('RRethy/nvim-base16')
   use('tanvirtin/monokai.nvim')
   use('folke/tokyonight.nvim')
   -- background transparent
-  use('xiyaowong/nvim-transparent')
+  -- use('xiyaowong/nvim-transparent')
 end)
 
 

@@ -15,3 +15,11 @@ require 'telescope'.load_extension('ghq')
 require 'telescope'.setup {
 }
 
+vim.cmd[[
+augroup transparent-windows
+  autocmd!
+  autocmd FileType TelescopePrompt  set winblend=10  
+  autocmd FileType TelescopeResults set winblend=10  
+  autocmd User TelescopePreviewerLoaded set winblend=10
+augroup END
+]]

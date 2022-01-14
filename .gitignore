@@ -13,6 +13,8 @@
 !/.config/**
 !/.pmy/
 !/.pmy/**
+!/nvim/
+!/nvim/**
 /.pmy/log.txt
 
 !/README.md
