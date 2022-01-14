@@ -21,14 +21,11 @@ return require('packer').startup(function()
     -- project management
     use('ahmedkhalf/project.nvim')
   -- file explorer
-  -- use('tamago324/lir.nvim')
-  -- use('tamago324/lir-git-status.nvim')
   use('lambdalisue/fern.vim')
   use('lambdalisue/fern-renderer-nerdfont.vim')
   use('lambdalisue/fern-git-status.vim')
   use('yuki-yano/fern-preview.vim')
   use('lambdalisue/fern-hijack.vim')
-  use('kyazdani42/nvim-tree.lua')
   -- git support
   use('lambdalisue/gina.vim')
   use('airblade/vim-gitgutter')
@@ -63,23 +60,13 @@ return require('packer').startup(function()
   use('voldikss/vim-floaterm')
   -- notify
   use('rcarriga/nvim-notify')
-  -- minimap
-  use{'wfxr/minimap.vim', run = [[cargo install --locked code-minimap]]}
   -- yank highlight
   use('machakann/vim-highlightedyank')
   -- treesitter
   use{'nvim-treesitter/nvim-treesitter', run = [[:TSUpdate]]}
   -- colorscheme
-  -- use('sainnhe/grovbox-material')
-  -- use('project0n/github-nvim-theme')
-  -- use('sainnhe/sonokai')
-  use('norcalli/nvim.lua')
-  use('norcalli/nvim-base16.lua')
   use('RRethy/nvim-base16')
-  use('tanvirtin/monokai.nvim')
   use('folke/tokyonight.nvim')
-  -- background transparent
-  -- use('xiyaowong/nvim-transparent')
 end)
 
 
