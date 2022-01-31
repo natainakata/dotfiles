@@ -8,49 +8,57 @@ return require('packer').startup(function()
   -- runtime
   use('vim-denops/denops.vim')
   -- icons
-  use('kyazdani42/nvim-web-devicons')
-  use('lambdalisue/nerdfont.vim')
+  use{'kyazdani42/nvim-web-devicons'}
+  use{'lambdalisue/nerdfont.vim'}
   -- fuzzy finder
-  use { 
+  use {
     'nvim-telescope/telescope.nvim',
-    requires = {{ 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }}
+    requires = { 
+      'nvim-lua/popup.nvim', 
+      'nvim-lua/plenary.nvim', 
+      'nvim-telescope/telescope-github.nvim', 
+      'nvim-telescope/telescope-ghq.nvim', 
+      'nvim-telescope/telescope-project.nvim',
+      'sudormrfbin/cheatsheet.nvim', 
+      'LinArcx/telescope-command-palette.nvim',
+      'fhill2/telescope-ultisnips.nvim',
+    },
   }
-    use('nvim-telescope/telescope-github.nvim')
-    use('nvim-telescope/telescope-ghq.nvim')
-    use('sudormrfbin/cheatsheet.nvim')
-    -- project management
-    use('ahmedkhalf/project.nvim')
   -- file explorer
-  use('lambdalisue/fern.vim')
-  use('lambdalisue/fern-renderer-nerdfont.vim')
-  use('lambdalisue/fern-git-status.vim')
-  use('yuki-yano/fern-preview.vim')
-  use('lambdalisue/fern-hijack.vim')
+  use{
+    'lambdalisue/fern.vim',
+    requires = {
+      'lambdalisue/fern-renderer-nerdfont.vim',
+      'lambdalisue/fern-git-status.vim',
+      'yuki-yano/fern-preview.vim',
+      'lambdalisue/fern-hijack.vim',
+    },
+  }
   -- git support
   use('lambdalisue/gina.vim')
   use('airblade/vim-gitgutter')
-  -- comment toggle
-  use('tpope/vim-commentary')
-  -- surrounds
-  use('machakann/vim-sandwich')
-  -- auto pairs
-  use('cohama/lexima.vim')
-  -- easymotion
-  use('phaazon/hop.nvim')
-  -- task runner
+    -- task runner
   use('thinca/vim-quickrun')
   -- completion
-  use('hrsh7th/nvim-cmp')
-    use('hrsh7th/cmp-buffer')
-    use('hrsh7th/cmp-path')
-    use('hrsh7th/cmp-nvim-lsp')
-    use('hrsh7th/vim-vsnip')
-    use('hrsh7th/vim-vsnip-integ')
-    use('rafamadriz/friendly-snippets')
-    use('hrsh7th/cmp-vsnip')
+  use{
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
+      'SirVer/ultisnips',
+      'honza/vim-snippets',
+      'quangnguyen30192/cmp-nvim-ultisnips',
+      'neovim/nvim-lspconfig',
+      'williamboman/nvim-lsp-installer',
+    },
+  }
+    -- use{'hrsh7th/cmp-vsnip', after = 'nvim-cmp'}
   -- builtin lsp
-  use('neovim/nvim-lspconfig')
-  use('williamboman/nvim-lsp-installer')
+  -- lsp client
+  --
+  -- use{ 'neoclide/coc.nvim', branch = 'release' }
+  -- use('rafcamlet/coc-nvim-lua')
   -- which key
   use('folke/which-key.nvim')
   -- statusline and bufferline
@@ -60,13 +68,26 @@ return require('packer').startup(function()
   use('voldikss/vim-floaterm')
   -- notify
   use('rcarriga/nvim-notify')
-  -- yank highlight
-  use('machakann/vim-highlightedyank')
+  -- dashboard
+  use('glepnir/dashboard-nvim')
   -- treesitter
   use{'nvim-treesitter/nvim-treesitter', run = [[:TSUpdate]]}
   -- colorscheme
   use('RRethy/nvim-base16')
   use('folke/tokyonight.nvim')
+-- comment toggle
+  use('tpope/vim-commentary')
+  -- surrounds
+  use('machakann/vim-sandwich')
+  -- auto pairs
+  use('cohama/lexima.vim')
+  -- easymotion
+  use('phaazon/hop.nvim')
+  -- root change
+  use('mattn/vim-findroot')
+  -- yank highlight
+  use('machakann/vim-highlightedyank')
+  -- colorizer
+  use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end}
+
 end)
-
-

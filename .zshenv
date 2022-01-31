@@ -5,7 +5,6 @@ export EDITOR=${commands[nvim]:-"vim"}
 
 path=(
   ~/.bin
-  ~/bin
   ~/.local/bin
   ~/.deno/bin
   $path

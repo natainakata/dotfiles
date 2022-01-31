@@ -2,36 +2,36 @@ local util = require('utils')
 
 local indent = 2
 
-util.opt.fenc = 'utf-8'
-util.opt.backup = false
-util.opt.swapfile = false
+vim.opt.fenc = 'utf-8'
+vim.opt.backup = false
+vim.opt.swapfile = false
 
-util.opt.expandtab = true
-util.opt.smartindent = true
-util.opt.tabstop = indent
-util.opt.shiftwidth = indent
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.tabstop = indent
+vim.opt.shiftwidth = indent
 
-util.opt.hlsearch = true
-util.opt.incsearch = true
-util.opt.smartcase = true
-util.opt.wrapscan = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.smartcase = true
+vim.opt.wrapscan = true
 
-util.opt.number = true
-util.opt.termguicolors = true
-util.opt.cursorline = true
-util.opt.cursorcolumn = true
-util.opt.visualbell = true
-util.opt.showmatch = true
-util.opt.wildmode = { 'list', 'longest' }
+vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
+vim.opt.visualbell = true
+vim.opt.showmatch = true
+vim.opt.wildmode = { 'list', 'longest' }
 
-util.opt.virtualedit = 'onemore'
+vim.opt.virtualedit = 'onemore'
 
-util.opt.mouse = 'a'
+vim.opt.mouse = 'a'
 
-vim.cmd('colorscheme base16-' .. vim.env.BASE16_THEME)
-util.opt.clipboard:append { 'unnamedplus' }
-util.opt.pumblend=10
-util.opt.winblend=30
-util.g.minimap_auto_start = 1
-util.g.minimap_auto_start_win_enter = 1
+if (not vim.g.vscode) then
+  vim.cmd('colorscheme base16-' .. vim.env.BASE16_THEME)
+end
+vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.pumblend=10
+vim.opt.winblend=30
 
