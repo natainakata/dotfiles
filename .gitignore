@@ -9,8 +9,7 @@
 !/.zshenv
 !/.p10k.zsh
 !/.zsh/
-!/.config/
-!/.config/**
+!/.zsh/**
 !/.pmy/
 !/.pmy/**
 !/nvim/
