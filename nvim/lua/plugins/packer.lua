@@ -53,13 +53,7 @@ return require('packer').startup(function()
       'williamboman/nvim-lsp-installer',
     },
   }
-    -- use{'hrsh7th/cmp-vsnip', after = 'nvim-cmp'}
-  -- builtin lsp
-  -- lsp client
-  --
-  -- use{ 'neoclide/coc.nvim', branch = 'release' }
-  -- use('rafcamlet/coc-nvim-lua')
-  -- which key
+    -- which key
   use('folke/which-key.nvim')
   -- statusline and bufferline
   use('romgrk/barbar.nvim')
@@ -89,5 +83,9 @@ return require('packer').startup(function()
   use('machakann/vim-highlightedyank')
   -- colorizer
   use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end}
+  -- extend C-a C-x
+  use { 'monaqa/dps-dial.vim' }
+  -- extend n
+  use { 'osyo-manga/vim-anzu' }
 
 end)

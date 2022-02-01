@@ -19,3 +19,4 @@ util.map('n', 'gL', ':bfirst<CR>')
 
 -- fold
 util.map('n', 'Z', ':set foldmethod=indent<CR>')
+
