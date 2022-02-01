@@ -8,6 +8,7 @@
 !/.zshrc
 !/.zshenv
 !/.p10k.zsh
+!/starship.toml
 !/.zsh/
 !/.zsh/**
 !/.pmy/
