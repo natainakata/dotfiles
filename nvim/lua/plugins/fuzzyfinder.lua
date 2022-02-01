@@ -2,7 +2,8 @@ local util = require('utils')
 local opt = { silent = true }
 
 util.map('n', '<C-p>', '<cmd>Telescope command_palette<CR>', opt)
-util.map('n', '<C-f>', '<cmd>Telescope find_files hidden=true<CR>', opt)
+util.map('n', '<C-f>', '<cmd>Telescope find_files<CR>', opt)
+util.map('n', '<Leader>ff', '<cmd>Telescope find_files hidden=true<CR>', opt)
 util.map('n', '<Leader>fo', '<cmd>Telescope oldfiles<CR>', opt)
 util.map('n', '<Leader>fp', '<cmd>Telescope project<CR>', opt)
 util.map('n', '<Leader>fc', '<cmd>Telescope commands<CR>', opt)

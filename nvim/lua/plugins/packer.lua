@@ -87,5 +87,7 @@ return require('packer').startup(function()
   use { 'monaqa/dps-dial.vim' }
   -- extend n
   use { 'osyo-manga/vim-anzu' }
+  -- editorconfig
+  use { 'sgur/vim-editorconfig' }
 
 end)
