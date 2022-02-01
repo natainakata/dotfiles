@@ -12,6 +12,7 @@ alias glg='git log --graph --abbrev-commit --date=format:"%Y-%m-%d %H:%M:%S(%a)"
 alias glo='git log --oneline --pretty=format:"%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen[%cd]%Creset %Cblue<%cn>%Creset" --date=format:"%Y-%m-%d %H:%M:%S"'
 alias gcb='git checkout -b'
 alias ghw='gh repo view -w $(ghq list | fzf)'
+alias gp='git push'
 
 # shell
 alias l='lsd -l'
