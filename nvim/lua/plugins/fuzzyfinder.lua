@@ -4,7 +4,7 @@ local opt = { silent = true }
 util.map('n', '<C-p>', '<cmd>Telescope command_palette<CR>', opt)
 util.map('n', '<C-f>', '<cmd>Telescope find_files<CR>', opt)
 util.map('n', '<Leader>ff', '<cmd>Telescope find_files hidden=true<CR>', opt)
-util.map('n', '<Leader>fo', '<cmd>Telescope oldfiles<CR>', opt)
+util.map('n', '<Leader>fo', '<cmd>Telescope frecency<CR>', opt)
 util.map('n', '<Leader>fp', '<cmd>Telescope project<CR>', opt)
 util.map('n', '<Leader>fc', '<cmd>Telescope commands<CR>', opt)
 util.map('n', '<Leader>fC', ':Cheatsheet<CR>', opt)
@@ -57,6 +57,13 @@ require 'telescope'.setup {
         { "buffers", ":Telescope buffers" },
         { "search history (C-h)", ":lua require('telescope.builtin').search_history()" },
       }
+    },
+    frecency = {
+      show_scores = true,
+      workspaces = {
+        ["conf"]  = "/home/natai/.config",
+        ["dot"]  = "/home/natai/.dotfiles",
+      }
     }
   }
 }
@@ -66,6 +73,7 @@ require 'telescope'.load_extension('ghq')
 require 'telescope'.load_extension('project')
 require 'telescope'.load_extension('ultisnips')
 require 'telescope'.load_extension('command_palette')
+require 'telescope'.load_extension('frecency')
 
 vim.cmd[[
 augroup transparent-windows

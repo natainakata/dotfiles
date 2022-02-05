@@ -1,4 +1,3 @@
-local util = require('utils')
 vim.cmd('packadd packer.nvim')
 vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
@@ -22,6 +21,8 @@ return require('packer').startup(function()
       'sudormrfbin/cheatsheet.nvim', 
       'LinArcx/telescope-command-palette.nvim',
       'fhill2/telescope-ultisnips.nvim',
+      "nvim-telescope/telescope-frecency.nvim",
+      "tami5/sqlite.lua",
     },
   }
   -- file explorer
