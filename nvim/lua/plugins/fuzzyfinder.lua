@@ -14,6 +14,18 @@ util.map('n', '<Leader>fB', '<cmd>Telescope builtin<CR>', opt)
 util.map('n', '<Leader>fh', '<cmd>Telescope help_tags<CR>', opt)
 
 require 'telescope'.setup {
+  pickers = {
+    buffers = {
+      mappings = {
+        n = {
+          ['<C-d>'] = require('telescope.actions').delete_buffer
+        },
+        i = {
+          ['<C-d>'] = require('telescope.actions').delete_buffer
+        }
+      }
+    }
+  },
   extensions = {
     command_palette = {
       {"File", 

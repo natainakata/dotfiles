@@ -36,7 +36,7 @@ return require('packer').startup(function()
   }
   -- git support
   use('lambdalisue/gina.vim')
-  use('airblade/vim-gitgutter')
+  use { 'lewis6991/gitsigns.nvim' }
     -- task runner
   use('thinca/vim-quickrun')
   -- completion

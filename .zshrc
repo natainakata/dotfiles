@@ -33,7 +33,6 @@ source $ZINITHOME/bin/zinit.zsh
 
 zinit ice wait lucid atload'_zsh_autosuggest_start'; zinit light zsh-users/zsh-autosuggestions
 zinit ice wait'0' blockf atpull'zinit creinstall -q .'; zinit light zsh-users/zsh-completions
-autoload -Uz compinit; compinit
 zinit ice wait'0'; zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light chrissicool/zsh-256color
 zinit light b4b4r07/emoji-cli
@@ -62,12 +61,16 @@ zinit ice lucid wait'0' as"program" from"gh-r" \
   pick"pmy*/pmy" \
   atload'eval "$(pmy init)"'
 zinit light relastle/pmy
+zinit ice pick'cli.zsh'
+zinit light sudosubin/zsh-github-cli
 # zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
 # load rc
+
+
 ZSHHOME="${HOME}/.zsh"
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
   -x $ZSHHOME ]; then
@@ -78,10 +81,12 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 fi
 
 fpath=(~/.zsh/functions/*(N-/) $fpath)
-
 . $HOME/.asdf/asdf.sh
+. ~/.asdf/plugins/java/set-java-home.zsh
 fpath=(${ASDF_DIR}/completions $fpath)
 
+# eval "$(gh completion -s zsh)"
+autoload -Uz compinit; compinit
 
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \

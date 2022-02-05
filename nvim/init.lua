@@ -14,3 +14,4 @@ require('plugins/lsp')
 require('plugins/fuzzyfinder')
 require('plugins/git')
 require('plugins/other')
+
