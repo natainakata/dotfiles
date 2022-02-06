@@ -52,6 +52,7 @@ return require('packer').startup(function()
       'quangnguyen30192/cmp-nvim-ultisnips',
       'neovim/nvim-lspconfig',
       'williamboman/nvim-lsp-installer',
+      'onsails/lspkind-nvim'
     },
   }
     -- which key
@@ -77,7 +78,7 @@ return require('packer').startup(function()
   -- auto pairs
   use('cohama/lexima.vim')
   -- easymotion
-  use('phaazon/hop.nvim')
+  use{ 'phaazon/hop.nvim' }
   -- root change
   use('mattn/vim-findroot')
   -- yank highlight

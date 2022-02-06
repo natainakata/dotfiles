@@ -1,6 +1,7 @@
 local cmp = require"cmp"
 local cmp_ultisnips_mappings = require('cmp_nvim_ultisnips')
-cmp.setup({
+local lspkind = require('lspkind')
+cmp.setup{
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
@@ -20,7 +21,17 @@ cmp.setup({
     { name = "buffer" },
     { name = "path" },
   },{
-  })
-})
+  }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',
+      maxwidth = '50',
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    })
+  }
+
+}
 
 

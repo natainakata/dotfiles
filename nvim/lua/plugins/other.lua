@@ -47,3 +47,17 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {'bash', 'c', 'cpp', 'cmake', 'css', 'html', 'java', 'javascript', 'go', 'json', 'kotlin', 'lua', 'make', 'pug', 'php', 'markdown', 'python', 'rust', 'ruby', 'scss', 'toml', 'typescript', 'vim', 'vue', 'yaml'}
   }
 
+  vim.cmd[[
+  let g:quickrun_config = get(g:, 'quickrun_config', {})
+  let g:quickrun_config._ = {
+    \ 'outputter/buffer/opener': 'new',
+    \ 'outputter/buffer/into': 1,
+    \ 'outputter/buffer/close_on_empty': 1,
+    \}
+  ]]
+
+require'hop'.setup()
+util.map('n', '<Leader>h', ':<C-u>HopWord<CR>', { silent = true })
+util.map('n', '<Leader>H', ':<C-u>HopPattern<CR>', { silent = true })
+util.map('n', '<Leader>L', ':<C-u>HopLineStart<CR>', { silent = true })
+
