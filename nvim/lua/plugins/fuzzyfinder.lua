@@ -28,7 +28,7 @@ require 'telescope'.setup {
   },
   extensions = {
     command_palette = {
-      {"File", 
+      {"File",
         { "save current file (C-s)", ':w' },
         { "save all file (C-A-s)", ':wa' },
         { "quit (C-q)", ':qa' },
@@ -78,8 +78,8 @@ require 'telescope'.load_extension('frecency')
 vim.cmd[[
 augroup transparent-windows
   autocmd!
-  autocmd FileType TelescopePrompt  set winblend=10  
-  autocmd FileType TelescopeResults set winblend=10  
+  autocmd FileType TelescopePrompt  set winblend=10
+  autocmd FileType TelescopeResults set winblend=10
   autocmd User TelescopePreviewerLoaded set winblend=10
 augroup END
 ]]

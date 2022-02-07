@@ -6,19 +6,21 @@ return require('packer').startup(function()
   use('vim-jp/vimdoc-ja')
   -- runtime
   use('vim-denops/denops.vim')
+  use { 'nvim-lua/popup.nvim' }
+  use { 'nvim-lua/plenary.nvim' }
   -- icons
   use{'kyazdani42/nvim-web-devicons'}
   use{'lambdalisue/nerdfont.vim'}
   -- fuzzy finder
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 
-      'nvim-lua/popup.nvim', 
-      'nvim-lua/plenary.nvim', 
-      'nvim-telescope/telescope-github.nvim', 
-      'nvim-telescope/telescope-ghq.nvim', 
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-github.nvim',
+      'nvim-telescope/telescope-ghq.nvim',
       'nvim-telescope/telescope-project.nvim',
-      'sudormrfbin/cheatsheet.nvim', 
+      'sudormrfbin/cheatsheet.nvim',
       'LinArcx/telescope-command-palette.nvim',
       'fhill2/telescope-ultisnips.nvim',
       "nvim-telescope/telescope-frecency.nvim",
@@ -40,6 +42,8 @@ return require('packer').startup(function()
   use { 'lewis6991/gitsigns.nvim' }
     -- task runner
   use('thinca/vim-quickrun')
+  use { 'tpope/vim-dispatch' }
+  use { 'janko-m/vim-test' }
   -- completion
   use{
     'hrsh7th/nvim-cmp',
@@ -70,8 +74,7 @@ return require('packer').startup(function()
   use{'nvim-treesitter/nvim-treesitter', run = [[:TSUpdate]]}
   -- colorscheme
   use('RRethy/nvim-base16')
-  use('folke/tokyonight.nvim')
--- comment toggle
+  -- comment toggle
   use('tpope/vim-commentary')
   -- surrounds
   use('machakann/vim-sandwich')
@@ -84,12 +87,14 @@ return require('packer').startup(function()
   -- yank highlight
   use('machakann/vim-highlightedyank')
   -- colorizer
-  use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end}
+  use { 'norcalli/nvim-colorizer.lua' }
   -- extend C-a C-x
   use { 'monaqa/dps-dial.vim' }
-  -- extend n
-  use { 'osyo-manga/vim-anzu' }
   -- editorconfig
   use { 'sgur/vim-editorconfig' }
+  -- whitespace delete
+  use { 'bronson/vim-trailing-whitespace' }
+  -- undotree
+  use { 'mbbill/undotree' }
 
 end)

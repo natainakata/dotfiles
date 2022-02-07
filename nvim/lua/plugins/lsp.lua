@@ -64,11 +64,4 @@ lsp_installer.on_server_ready(function(server)
   opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end)
 
-nvim_lsp['java_language_server'].setup {
-  on_attach = on_attach,
-  -- cmd = {'ASDF_JAVA_VERSION="adoptopenjdk-11.0.14+9" sh ' .. vim.fn.fnamemodify('~', ":p") .. '.local/lsp/java-language-server/dist/lang_server_linux.sh'},
-  cmd = {"sh $HOME/.local/lsp/java-language-server/dist/lang_server_linux.sh"},
-  root_dir = nvim_lsp.util.root_pattern('.git', 'gradlew'),
-}
-
 util.opt.completeopt = 'menu,menuone,noselect'
