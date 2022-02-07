@@ -36,7 +36,7 @@ zinit ice wait'0' blockf atpull'zinit creinstall -q .'; zinit light zsh-users/zs
 zinit ice wait'0'; zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light chrissicool/zsh-256color
 zinit light b4b4r07/emoji-cli
-# zinit light b4b4r07/enhancd
+zinit light b4b4r07/enhancd
 zinit light supercrabtree/k
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
