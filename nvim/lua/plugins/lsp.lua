@@ -1,5 +1,5 @@
 local util = require('utils')
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 local lsp_installer = require("nvim-lsp-installer")
 
 local on_attach = function(client, bufnr)
@@ -25,12 +25,15 @@ local on_attach = function(client, bufnr)
   util.bufmap(bufnr, "n", "<Leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
-local deno_root_dir = nvim_lsp.util.root_pattern("package.json")
+local deno_root_dir = lspconfig.util.root_pattern("package.json")
 local is_deno_repo = deno_root_dir(vim.api.nvim_buf_get_name(0), vim.api.nvim_get_current_buf()) ~= nil
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lsp_installer.on_server_ready(function(server)
   local opts = {}
   opts.on_attach = on_attach
+  opts.capabilities = capabilities
 
   if server.name == "tsserver" or server.name == "eslint" then
     opts.autostart = is_deno_repo
@@ -61,7 +64,6 @@ lsp_installer.on_server_ready(function(server)
 
   server:setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
-  opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end)
 
-util.opt.completeopt = 'menu,menuone,noselect'
+util.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}

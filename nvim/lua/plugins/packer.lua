@@ -22,7 +22,6 @@ return require('packer').startup(function()
       'nvim-telescope/telescope-project.nvim',
       'sudormrfbin/cheatsheet.nvim',
       'LinArcx/telescope-command-palette.nvim',
-      'fhill2/telescope-ultisnips.nvim',
       "nvim-telescope/telescope-frecency.nvim",
       "tami5/sqlite.lua",
     },
@@ -46,17 +45,19 @@ return require('packer').startup(function()
   use { 'janko-m/vim-test' }
   -- completion
   use{
-    'hrsh7th/nvim-cmp',
+    'Shougo/ddc.vim',
     requires = {
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp',
-      'SirVer/ultisnips',
-      'honza/vim-snippets',
-      'quangnguyen30192/cmp-nvim-ultisnips',
+      'Shougo/pum.vim',
+      'Shougo/ddc-around',
+      'Shougo/ddc-nvim-lsp',
+      'matsui54/ddc-buffer',
+      'LumaKernel/ddc-file',
+      'tani/ddc-fuzzy',
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/vim-vsnip-integ',
+      'rafamadriz/friendly-snippets',
       'neovim/nvim-lspconfig',
       'williamboman/nvim-lsp-installer',
-      'onsails/lspkind-nvim'
     },
   }
     -- which key
@@ -96,5 +97,4 @@ return require('packer').startup(function()
   use { 'bronson/vim-trailing-whitespace' }
   -- undotree
   use { 'mbbill/undotree' }
-
 end)

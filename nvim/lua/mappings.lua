@@ -39,3 +39,4 @@ util.map('n', '<Leader>H', ':<C-u>HopPattern<CR>', { silent = true })
 util.map('n', '<Leader>L', ':<C-u>HopLineStart<CR>', { silent = true })
 
 util.map('n', '<Space>u', ':UndotreeToggle<CR>', { silent = true })
+util.map('n', '<Space>r', ':QuickRun<CR>', { silent = true })

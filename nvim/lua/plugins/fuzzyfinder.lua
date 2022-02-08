@@ -71,7 +71,6 @@ require 'telescope'.setup {
 require 'telescope'.load_extension('gh')
 require 'telescope'.load_extension('ghq')
 require 'telescope'.load_extension('project')
-require 'telescope'.load_extension('ultisnips')
 require 'telescope'.load_extension('command_palette')
 require 'telescope'.load_extension('frecency')
 
