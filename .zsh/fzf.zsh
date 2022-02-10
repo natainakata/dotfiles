@@ -81,3 +81,5 @@ fzf-src() {
 }
 zle -N fzf-src
 bindkey '^]' fzf-src
+
+export ENHANCD_FILTER="fzf"

@@ -1,4 +1,4 @@
-local sources = { 'around', 'buffer', 'file', 'vsnip', 'nvim-lsp' }
+local sources = { 'around', 'buffer', 'file', 'vsnip', 'zsh', 'nvim-lsp' }
 vim.fn['ddc#custom#patch_global']('sources', sources)
 vim.fn['ddc#custom#patch_global']('sourceOptions', {
   _ = {
@@ -12,7 +12,8 @@ local source_marks = {
   around = 'A',
   buffer = 'B',
   file = 'F',
-  vsnip = 'VS'
+  vsnip = 'VS',
+  zsh = 'Z'
 }
 source_marks['nvim-lsp'] = 'LSP'
 local source_options = {}
@@ -58,6 +59,11 @@ vim.fn['ddc#custom#patch_global']('completionMenu', 'pum.vim')
 vim.cmd[[autocmd User PumCompleteDone call vsnip_integ#on_complete_done(g:pum#completed_item)]]
 
 vim.cmd[[
+inoremap <silent><expr> <TAB>
+\ ddc#map#pum_visible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
 inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>

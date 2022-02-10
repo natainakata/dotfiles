@@ -44,19 +44,21 @@ lsp_installer.on_server_ready(function(server)
 
   if server.name == "sumneko_lua" then
     local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, "lua/?.lua")
-    table.insert(runtime_path, "lua/?/init.lua")
+    --table.insert(runtime_path, "lua/?.lua")
+    --table.insert(runtime_path, "lua/?/init.lua")
     opts.settings = {
       Lua = {
         runtime = {
           version = 'LuaJIT',
-          path = runtime_path,
+          path = runtime_path
         },
         diagnositcs = {
-          globals = {'vim'},
+          enable = true,
+          globals = {'vim', 'use', 'it', 'before_each', 'after_each'},
         },
         workspace = {
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = {
+          }
         }
       }
     }

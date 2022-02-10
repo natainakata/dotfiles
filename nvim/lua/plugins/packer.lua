@@ -36,7 +36,7 @@ return require('packer').startup(function()
       'lambdalisue/fern-hijack.vim',
     },
   }
-  -- git support
+   -- git support
   use('lambdalisue/gina.vim')
   use { 'lewis6991/gitsigns.nvim' }
     -- task runner
@@ -52,6 +52,7 @@ return require('packer').startup(function()
       'Shougo/ddc-nvim-lsp',
       'matsui54/ddc-buffer',
       'LumaKernel/ddc-file',
+      'Shougo/ddc-zsh',
       'tani/ddc-fuzzy',
       'hrsh7th/vim-vsnip',
       'hrsh7th/vim-vsnip-integ',
@@ -74,7 +75,8 @@ return require('packer').startup(function()
   -- treesitter
   use{'nvim-treesitter/nvim-treesitter', run = [[:TSUpdate]]}
   -- colorscheme
-  use('RRethy/nvim-base16')
+  -- use('RRethy/nvim-base16')
+  use{ 'dracula/vim', as = 'dracula' }
   -- comment toggle
   use('tpope/vim-commentary')
   -- surrounds
@@ -95,6 +97,10 @@ return require('packer').startup(function()
   use { 'sgur/vim-editorconfig' }
   -- whitespace delete
   use { 'bronson/vim-trailing-whitespace' }
+  -- markdown
+  use { 'tani/glance-vim' }
   -- undotree
   use { 'mbbill/undotree' }
+  -- init.lua dev
+  use { 'folke/lua-dev.nvim' }
 end)

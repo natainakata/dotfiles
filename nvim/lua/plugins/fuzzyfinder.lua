@@ -14,6 +14,9 @@ util.map('n', '<Leader>fB', '<cmd>Telescope builtin<CR>', opt)
 util.map('n', '<Leader>fh', '<cmd>Telescope help_tags<CR>', opt)
 
 require 'telescope'.setup {
+  defaults = {
+    theme = "lvy"
+  },
   pickers = {
     buffers = {
       mappings = {
@@ -77,8 +80,6 @@ require 'telescope'.load_extension('frecency')
 vim.cmd[[
 augroup transparent-windows
   autocmd!
-  autocmd FileType TelescopePrompt  set winblend=10
-  autocmd FileType TelescopeResults set winblend=10
   autocmd User TelescopePreviewerLoaded set winblend=10
 augroup END
 ]]

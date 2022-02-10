@@ -15,6 +15,7 @@
 !/.pmy/**
 !/nvim/
 !/nvim/**
+/nvim/plugin/
 !/.tmux.conf
 /.pmy/log.txt
 

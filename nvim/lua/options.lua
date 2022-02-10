@@ -16,7 +16,7 @@ vim.opt.incsearch = true
 vim.opt.smartcase = true
 vim.opt.wrapscan = true
 
-vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
@@ -28,9 +28,9 @@ vim.opt.virtualedit = 'onemore'
 
 vim.opt.mouse = 'a'
 
-if (not vim.g.vscode) then
-  vim.cmd('colorscheme base16-' .. vim.env.BASE16_THEME)
-end
+vim.cmd[[
+colorscheme dracula
+]]
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.pumblend=10
 vim.opt.winblend=30
@@ -85,8 +85,7 @@ let g:quickrun_config._ = {
 
 vim.cmd[[let g:test#strategy = 'dispatch']]
 
-require'hop'.setup()
-
+require('hop').setup()
 require('colorizer').setup()
 
 vim.g.extra_whitespace_ignored_filetypes = { 'dashboard', 'TelescopePrompt', 'TelescopeResult', 'frecency' }
