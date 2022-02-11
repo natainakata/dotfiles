@@ -1,5 +1,3 @@
-local util = require('utils')
-
 vim.cmd[[let g:python3_host_prog = system('echo -n $(which python3)')]]
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
