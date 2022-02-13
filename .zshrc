@@ -40,6 +40,7 @@ zinit light b4b4r07/enhancd
 zinit light supercrabtree/k
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
+zinit ice as"program" from"gh-r" mv"exa* -> exa" pick"exa/exa"; zinit light ogham/exa
 zinit ice as"program" from"gh-r" pick"lsd*/lsd"; zinit light Peltoche/lsd
 zinit ice as"program" from"gh-r" mv"hexyl* -> hexyl" pick"hexyl/hexyl"; zinit light sharkdp/hexyl
 zinit ice as"program" from"gh-r" pick"delta*/delta"; zinit light dandavison/delta
@@ -56,13 +57,15 @@ zinit ice as"program" from"gh-r" \
   atload'eval "$(starship init zsh)"'
 zinit light starship/starship
 # zinit light rupa/z
-zinit ice from"gh-r" as"program"; zinit load junegunn/fzf-bin
-zinit ice lucid wait'0' as"program" from"gh-r" \
-  pick"pmy*/pmy" \
-  atload'eval "$(pmy init)"'
+zinit ice from"gh-r" as"program"; zinit load junegunn/fzf
+zinit light Aloxaf/fzf-tab
+#zinit ice lucid wait'0' as"program" from"gh-r" \
+#  pick"pmy*/pmy" \
+#  atload'eval "$(pmy init)"'
 zinit light relastle/pmy
 zinit ice pick'cli.zsh'
 zinit light sudosubin/zsh-github-cli
+zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -87,11 +90,6 @@ fpath=(${ASDF_DIR}/completions $fpath)
 
 # eval "$(gh completion -s zsh)"
 autoload -Uz compinit; compinit
-
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 service docker status > /dev/null 2>&1
 if [ $? = 1 ]; then

@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-nvim $(wslpath $1)
-

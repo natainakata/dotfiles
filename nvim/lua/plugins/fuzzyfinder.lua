@@ -3,22 +3,21 @@ local opt = { silent = true }
 
 util.map('n', '<C-p>', '<cmd>Telescope command_palette<CR>', opt)
 util.map('n', '<C-f>', '<cmd>Telescope find_files<CR>', opt)
-util.map('n', '<Leader>ff', '<cmd>Telescope find_files hidden=true<CR>', opt)
-util.map('n', '<Leader>fo', '<cmd>Telescope frecency<CR>', opt)
-util.map('n', '<Leader>fp', '<cmd>Telescope project<CR>', opt)
-util.map('n', '<Leader>fc', '<cmd>Telescope commands<CR>', opt)
-util.map('n', '<Leader>fC', ':Cheatsheet<CR>', opt)
-util.map('n', '<Leader>f/', '<cmd>Telescope live_grep<CR>', opt)
-util.map('n', '<Leader>fb', '<cmd>Telescope buffers<CR>', opt)
-util.map('n', '<Leader>fB', '<cmd>Telescope builtin<CR>', opt)
-util.map('n', '<Leader>fh', '<cmd>Telescope help_tags<CR>', opt)
+util.map('n', '<Leader>f', '<cmd>Telescope find_files hidden=true<CR>', opt)
+util.map('n', '<Leader>o', '<cmd>Telescope oldfiles<CR>', opt)
+util.map('n', '<Leader>O', '<cmd>Telescope frecency<CR>', opt)
+util.map('n', '<Leader>p', '<cmd>Telescope project<CR>', opt)
+util.map('n', '<Leader>c', '<cmd>Telescope commands<CR>', opt)
+util.map('n', '<Leader>C', ':Cheatsheet<CR>', opt)
+util.map('n', '<Leader>/', '<cmd>Telescope live_grep<CR>', opt)
+util.map('n', '<Leader>b', '<cmd>Telescope buffers<CR>', opt)
+util.map('n', '<Leader>B', '<cmd>Telescope builtin<CR>', opt)
+util.map('n', '<Leader><C-t>', '<cmd>Telescope help_tags<CR>', opt)
 
 require 'telescope'.setup {
-  defaults = {
-    theme = "lvy"
-  },
   pickers = {
     buffers = {
+      theme = "dropdown",
       mappings = {
         n = {
           ['<C-d>'] = require('telescope.actions').delete_buffer
@@ -80,6 +79,8 @@ require 'telescope'.load_extension('frecency')
 vim.cmd[[
 augroup transparent-windows
   autocmd!
+  autocmd FileType TelescopePrompt  set winblend=10
+  autocmd FileType TelescopeResults set winblend=10
   autocmd User TelescopePreviewerLoaded set winblend=10
 augroup END
 ]]

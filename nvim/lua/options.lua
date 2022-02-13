@@ -28,12 +28,13 @@ vim.opt.virtualedit = 'onemore'
 
 vim.opt.mouse = 'a'
 
-vim.cmd[[
-colorscheme dracula
-]]
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.pumblend=10
 vim.opt.winblend=30
+
+vim.cmd[[
+colorscheme github_dark
+]]
 
 vim.g.dashboard_default_executive = 'telescope'
 

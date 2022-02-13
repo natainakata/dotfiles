@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-source ~/.zshrc
-
-nvim $1
-

@@ -1,7 +1,7 @@
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'github',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -24,5 +24,6 @@ require'lualine'.setup {
     lualine_z = {}
   },
   tabline = {},
-  extensions = {'fern', 'quickfix'}
+  extensions = {'fern', 'nvim-tree', 'quickfix'}
 }
+

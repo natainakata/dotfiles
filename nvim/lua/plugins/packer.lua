@@ -26,6 +26,7 @@ return require('packer').startup(function()
       "tami5/sqlite.lua",
     },
   }
+  
   -- file explorer
   use{
     'lambdalisue/fern.vim',
@@ -36,6 +37,7 @@ return require('packer').startup(function()
       'lambdalisue/fern-hijack.vim',
     },
   }
+  use { 'kyazdani42/nvim-tree.lua' }
    -- git support
   use('lambdalisue/gina.vim')
   use { 'lewis6991/gitsigns.nvim' }
@@ -64,7 +66,8 @@ return require('packer').startup(function()
     -- which key
   use('folke/which-key.nvim')
   -- statusline and bufferline
-  use('romgrk/barbar.nvim')
+  -- use('romgrk/barbar.nvim')
+  -- use { 'akinsho/bufferline.nvim' }
   use('nvim-lualine/lualine.nvim')
   -- terminal
   use('voldikss/vim-floaterm')
@@ -77,6 +80,8 @@ return require('packer').startup(function()
   -- colorscheme
   -- use('RRethy/nvim-base16')
   use{ 'dracula/vim', as = 'dracula' }
+  use{ 'tanvirtin/monokai.nvim' }
+  use { 'projekt0n/github-nvim-theme' }
   -- comment toggle
   use('tpope/vim-commentary')
   -- surrounds

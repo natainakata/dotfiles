@@ -12,25 +12,7 @@ fzf_default_opts=(
   '--filepath-word'
 )
 
-() {
-  local -A color_map=(
-    [fg]='-1'
-    [bg]='-1'
-    [hl]='33'
-    [fg+]='250'
-    [bg+]='235'
-    [hl+]='33'
-    [info]='37'
-    [prompt]='37'
-    [pointer]='230'
-    [marker]='230'
-    [spinner]='37'
-  )
-  for x in "${(k)color_map[@]}"; do
-    fzf_color_opts+=("${x}:${color_map[${x}]}") 
-  done
-  fzf_default_opts+=( '--color="'"${(j.,.)fzf_color_opts}"'"' )
-}
+
 
 # FZF FUNCTIONS
 fbr() {
