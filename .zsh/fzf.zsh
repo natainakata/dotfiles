@@ -64,4 +64,13 @@ fzf-src() {
 zle -N fzf-src
 bindkey '^]' fzf-src
 
+
+
+fsmug() {
+  local templates="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\" | fzf --header=\"Templates\"`"
+  if [ -n "$templates" ]; then
+    smug start $templates
+  fi
+}
+
 export ENHANCD_FILTER="fzf"

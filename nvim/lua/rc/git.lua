@@ -1,5 +1,6 @@
 local util = require('utils')
 local opt = { silent = true }
+require('gitsigns').setup()
 
 util.map('n', '<Leader>gf', '<cmd>Telescope git_files hidden=true<CR>', opt)
 util.map('n', '<Leader>gs', '<cmd>Telescope git_status<CR>', opt)

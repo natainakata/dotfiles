@@ -64,11 +64,19 @@ return require('packer').startup(function()
     },
   }
     -- which key
-  use('folke/which-key.nvim')
+  use{'folke/which-key.nvim', config = function()
+    require('which-key').setup{
+      window = {
+        border = "double",
+      }
+    }
+  end}
   -- statusline and bufferline
   -- use('romgrk/barbar.nvim')
   -- use { 'akinsho/bufferline.nvim' }
   use('nvim-lualine/lualine.nvim')
+  -- register
+  use('tversteeg/registers.nvim')
   -- terminal
   use('voldikss/vim-floaterm')
   -- notify
@@ -89,13 +97,13 @@ return require('packer').startup(function()
   -- auto pairs
   use('cohama/lexima.vim')
   -- easymotion
-  use{ 'phaazon/hop.nvim' }
+  use{ 'phaazon/hop.nvim', config = function() require('hop').setup() end, }
   -- root change
   use('mattn/vim-findroot')
   -- yank highlight
   use('machakann/vim-highlightedyank')
   -- colorizer
-  use { 'norcalli/nvim-colorizer.lua' }
+  use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end }
   -- extend C-a C-x
   use { 'monaqa/dps-dial.vim' }
   -- editorconfig

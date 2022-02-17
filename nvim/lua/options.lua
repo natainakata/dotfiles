@@ -57,12 +57,6 @@ let g:dps_dial#augends = [
   \]
 ]]
 
-require('which-key').setup{
-  window = {
-    border = "double",
-  }
-}
-
 util.g.floaterm_keymap_toggle = '<Leader>t'
 
 require'nvim-treesitter.configs'.setup {
@@ -82,11 +76,17 @@ let g:quickrun_config._ = {
   \ 'outputter/buffer/into': 1,
   \ 'outputter/buffer/close_on_empty': 1,
   \}
+autocmd BufNewFile,BufRead *.crs setf rust
+autocmd BufNewFile,BufRead *.rs  let g:quickrun_config.rust = {'exec' : 'cargo run'}
+autocmd BufNewFile,BufRead *.crs let g:quickrun_config.rust = {'exec' : 'cargo script %s -- %a'}
 ]]
 
 vim.cmd[[let g:test#strategy = 'dispatch']]
 
-require('hop').setup()
-require('colorizer').setup()
 
 vim.g.extra_whitespace_ignored_filetypes = { 'dashboard', 'TelescopePrompt', 'TelescopeResult', 'frecency' }
+
+vim.g.sandwich_no_default_key_mappings = 1
+vim.g.oparator_sandwich_no_default_key_mappings = 1
+
+

@@ -25,6 +25,7 @@ util.map('n', 'Z', ':set foldmethod=indent<CR>')
 util.map('n', '<Leader>ss', ':<C-u>SessionSave<CR>', { silent = true })
 util.map('n', '<Leader>sl', ':<C-u>SessionLoad<CR>', { silent = true })
 
+-- dps-dial
 vim.cmd[[
 nmap  <C-a>  <Plug>(dps-dial-increment)
 nmap  <C-x>  <Plug>(dps-dial-decrement)
@@ -34,9 +35,18 @@ xmap g<C-a> g<Plug>(dps-dial-increment)
 xmap g<C-x> g<Plug>(dps-dial-decrement)
 ]]
 
+-- hop
 util.map('n', '<Leader>h', ':<C-u>HopWord<CR>', { silent = true })
 util.map('n', '<Leader>H', ':<C-u>HopPattern<CR>', { silent = true })
 util.map('n', '<Leader>L', ':<C-u>HopLineStart<CR>', { silent = true })
 
+-- undotree
 util.map('n', '<Space>u', ':UndotreeToggle<CR>', { silent = true })
 util.map('n', '<Space>r', ':QuickRun<CR>', { silent = true })
+
+-- sandwich
+vim.cmd[[
+  nmap <silent>ys <Plug>(operator-sandwich-add)
+  nmap <silent>ds <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+  nmap <silent>cs <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+]]

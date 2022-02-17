@@ -62,7 +62,7 @@ zinit light Aloxaf/fzf-tab
 #zinit ice lucid wait'0' as"program" from"gh-r" \
 #  pick"pmy*/pmy" \
 #  atload'eval "$(pmy init)"'
-zinit light relastle/pmy
+# zinit light relastle/pmy
 zinit ice pick'cli.zsh'
 zinit light sudosubin/zsh-github-cli
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
@@ -99,6 +99,7 @@ fi
 if [[ ! -n $TMUX && $- == *l* ]]; then
   # get the IDs
   ID="`tmux list-sessions`"
+  SESSION_TEMPLATE="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\"`"
   if [[ -z "$ID" ]]; then
     tmux new-session
   fi
@@ -113,3 +114,4 @@ if [[ ! -n $TMUX && $- == *l* ]]; then
     :  # Start terminal normally
   fi
 fi
+
