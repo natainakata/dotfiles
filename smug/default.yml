@@ -1,0 +1,11 @@
+session: default
+
+
+windows:
+  - name: code
+    layout: main-horizontal
+    panes:
+      - type: horizontal
+
+
+

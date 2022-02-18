@@ -1,16 +1,22 @@
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
 vim.cmd('packadd packer.nvim')
 vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')
 
-return require('packer').startup(function()
-  use('wbthomason/packer.nvim')
-  use('vim-jp/vimdoc-ja')
+return require('packer').startup(function(use)
+  use'wbthomason/packer.nvim'
+  use'vim-jp/vimdoc-ja'
   -- runtime
-  use('vim-denops/denops.vim')
-  use { 'nvim-lua/popup.nvim' }
-  use { 'nvim-lua/plenary.nvim' }
+  use'vim-denops/denops.vim'
+  use'nvim-lua/popup.nvim'
+  use'nvim-lua/plenary.nvim'
   -- icons
-  use{'kyazdani42/nvim-web-devicons'}
-  use{'lambdalisue/nerdfont.vim'}
+  use'kyazdani42/nvim-web-devicons'
+  use'lambdalisue/nerdfont.vim'
   -- fuzzy finder
   use {
     'nvim-telescope/telescope.nvim',
@@ -26,7 +32,6 @@ return require('packer').startup(function()
       "tami5/sqlite.lua",
     },
   }
-  
   -- file explorer
   use{
     'lambdalisue/fern.vim',
@@ -37,14 +42,14 @@ return require('packer').startup(function()
       'lambdalisue/fern-hijack.vim',
     },
   }
-  use { 'kyazdani42/nvim-tree.lua' }
+  use'kyazdani42/nvim-tree.lua'
    -- git support
-  use('lambdalisue/gina.vim')
-  use { 'lewis6991/gitsigns.nvim' }
+  use'lambdalisue/gina.vim'
+  use'lewis6991/gitsigns.nvim'
     -- task runner
-  use('thinca/vim-quickrun')
-  use { 'tpope/vim-dispatch' }
-  use { 'janko-m/vim-test' }
+  use'thinca/vim-quickrun'
+  use'tpope/vim-dispatch'
+  use'janko-m/vim-test'
   -- completion
   use{
     'Shougo/ddc.vim',
@@ -72,48 +77,46 @@ return require('packer').startup(function()
     }
   end}
   -- statusline and bufferline
-  -- use('romgrk/barbar.nvim')
-  -- use { 'akinsho/bufferline.nvim' }
-  use('nvim-lualine/lualine.nvim')
+  use { 'akinsho/bufferline.nvim' }
+  use'nvim-lualine/lualine.nvim'
   -- register
-  use('tversteeg/registers.nvim')
+  use'tversteeg/registers.nvim'
   -- terminal
-  use('voldikss/vim-floaterm')
+  use'voldikss/vim-floaterm'
   -- notify
-  use('rcarriga/nvim-notify')
+  use'rcarriga/nvim-notify'
   -- dashboard
-  use('glepnir/dashboard-nvim')
+  use'glepnir/dashboard-nvim'
   -- treesitter
-  use{'nvim-treesitter/nvim-treesitter', run = [[:TSUpdate]]}
+  use {'nvim-treesitter/nvim-treesitter', run = [[:TSUpdate]]}
   -- colorscheme
   -- use('RRethy/nvim-base16')
-  use{ 'dracula/vim', as = 'dracula' }
-  use{ 'tanvirtin/monokai.nvim' }
-  use { 'projekt0n/github-nvim-theme' }
+  use { 'dracula/vim', as = 'dracula' }
+  use'projekt0n/github-nvim-theme'
   -- comment toggle
-  use('tpope/vim-commentary')
+  use'tpope/vim-commentary'
   -- surrounds
-  use('machakann/vim-sandwich')
+  use'machakann/vim-sandwich'
   -- auto pairs
-  use('cohama/lexima.vim')
+  use'cohama/lexima.vim'
   -- easymotion
   use{ 'phaazon/hop.nvim', config = function() require('hop').setup() end, }
   -- root change
-  use('mattn/vim-findroot')
+  use'mattn/vim-findroot'
   -- yank highlight
-  use('machakann/vim-highlightedyank')
+  use'machakann/vim-highlightedyank'
   -- colorizer
   use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end }
   -- extend C-a C-x
-  use { 'monaqa/dps-dial.vim' }
+  use'monaqa/dps-dial.vim'
   -- editorconfig
-  use { 'sgur/vim-editorconfig' }
+  use'sgur/vim-editorconfig'
   -- whitespace delete
-  use { 'bronson/vim-trailing-whitespace' }
+  use'bronson/vim-trailing-whitespace'
   -- markdown
-  use { 'tani/glance-vim' }
+  use'tani/glance-vim'
   -- undotree
-  use { 'mbbill/undotree' }
+  use'mbbill/undotree'
   -- init.lua dev
   use { 'folke/lua-dev.nvim' }
 end)

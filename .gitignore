@@ -18,6 +18,8 @@
 /nvim/plugin/
 !/.tmux.conf
 /.pmy/log.txt
+!/smug/
+!/smug/**
 
 !/README.md
 !/LICENSE
