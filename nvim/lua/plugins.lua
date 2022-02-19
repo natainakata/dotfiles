@@ -32,6 +32,15 @@ return require('packer').startup(function(use)
       "tami5/sqlite.lua",
     },
   }
+  use {
+    'Shougo/ddu.vim',
+    requires = {
+      'Shougo/ddu-ui-ff',
+      'Shougo/ddu-source-file_rec',
+      'Shougo/ddu-filter-matcher_substring',
+      'Shougo/ddu-kind-file'
+    }
+  }
   -- file explorer
   use{
     'lambdalisue/fern.vim',
