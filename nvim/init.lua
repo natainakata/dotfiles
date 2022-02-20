@@ -8,11 +8,11 @@ require('mappings')
 require('rc/exploler')
 require('rc/statusline')
 require('rc/ddc')
-require('rc/ddu')
+-- require('rc/ddu')
 require('rc/lsp')
 require('rc/fuzzyfinder')
 require('rc/git')
 require('rc/lexima')
-vim.cmd([[
-runtime! plugins/ddu.vim
-]])
+-- vim.cmd([[
+-- runtime! plugins/ddu.vim
+-- ]])
