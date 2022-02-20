@@ -85,16 +85,16 @@ fi
 
 fpath=(~/.zsh/functions/*(N-/) $fpath)
 . $HOME/.asdf/asdf.sh
-. ~/.asdf/plugins/java/set-java-home.zsh
+# . ~/.asdf/plugins/java/set-java-home.zsh
 fpath=(${ASDF_DIR}/completions $fpath)
 
 # eval "$(gh completion -s zsh)"
 autoload -Uz compinit; compinit
 
-service docker status > /dev/null 2>&1
-if [ $? = 1 ]; then
-    sudo service docker start
-fi
+# service docker status > /dev/null 2>&1
+# if [ $? = 1 ]; then
+#     sudo service docker start
+# fi
 
 if [[ ! -n $TMUX && $- == *l* ]]; then
   # get the IDs

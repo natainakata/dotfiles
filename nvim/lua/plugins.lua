@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
   use'vim-denops/denops.vim'
   use'nvim-lua/popup.nvim'
   use'nvim-lua/plenary.nvim'
+  -- mru
+  use'lambdalisue/mr.vim'
   -- icons
   use'kyazdani42/nvim-web-devicons'
   use'lambdalisue/nerdfont.vim'
@@ -37,6 +39,12 @@ return require('packer').startup(function(use)
     requires = {
       'Shougo/ddu-ui-ff',
       'Shougo/ddu-source-file_rec',
+      'Shougo/ddu-source-register',
+      'shun/ddu-source-buffer',
+      'shun/ddu-source-rg',
+      'kuuote/ddu-source-mr',
+      'gamoutatsumi/ddu-source-nvim-lsp',
+      'yuki-yano/ddu-filter-fzf',
       'Shougo/ddu-filter-matcher_substring',
       'Shougo/ddu-kind-file'
     }

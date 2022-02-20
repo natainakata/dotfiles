@@ -13,3 +13,6 @@ require('rc/lsp')
 require('rc/fuzzyfinder')
 require('rc/git')
 require('rc/lexima')
+vim.cmd([[
+runtime! plugins/ddu.vim
+]])
