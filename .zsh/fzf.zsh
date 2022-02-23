@@ -12,8 +12,6 @@ fzf_default_opts=(
   '--filepath-word'
 )
 
-
-
 # FZF FUNCTIONS
 fbr() {
   local branches branch
@@ -64,12 +62,17 @@ fzf-src() {
 zle -N fzf-src
 bindkey '^]' fzf-src
 
-
-
 fsmug() {
   local templates="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\" | fzf --header=\"Templates\"`"
   if [ -n "$templates" ]; then
     smug start $templates
+  fi
+}
+
+ftmux() {
+  local sessions=$(tmux list-sessions | fzf)
+  if [ -n "$sessions" ]; then
+    tmux attach-session -t $sessions
   fi
 }
 

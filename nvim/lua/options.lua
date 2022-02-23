@@ -89,4 +89,5 @@ vim.g.extra_whitespace_ignored_filetypes = { 'dashboard', 'TelescopePrompt', 'Te
 vim.g.sandwich_no_default_key_mappings = 1
 vim.g.oparator_sandwich_no_default_key_mappings = 1
 
-
+-- vim.opt.runtimepath:append { "~/src/github.com/natainakata/ddu-ui-preview" }
+-- vim.g['denops#debug'] = 1

@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
       'shun/ddu-source-rg',
       'kuuote/ddu-source-mr',
       'gamoutatsumi/ddu-source-nvim-lsp',
+      'Shougo/ddu-source-action',
       'yuki-yano/ddu-filter-fzf',
       'Shougo/ddu-filter-matcher_substring',
       'Shougo/ddu-kind-file'
@@ -131,7 +132,7 @@ return require('packer').startup(function(use)
   -- whitespace delete
   use'bronson/vim-trailing-whitespace'
   -- markdown
-  use'tani/glance-vim'
+  -- use'tani/glance-vim'
   -- undotree
   use'mbbill/undotree'
   -- init.lua dev
