@@ -20,6 +20,11 @@
 /.pmy/log.txt
 !/smug/
 !/smug/**
+!/zellij/
+!/zellij/**
+!/helix/
+!/helix/**
+/helix/runtime/
 
 !/README.md
 !/LICENSE

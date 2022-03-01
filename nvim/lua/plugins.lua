@@ -111,6 +111,7 @@ return require('packer').startup(function(use)
   -- use('RRethy/nvim-base16')
   use { 'dracula/vim', as = 'dracula' }
   use'projekt0n/github-nvim-theme'
+  use'tanvirtin/monokai.nvim'
   -- comment toggle
   use'tpope/vim-commentary'
   -- surrounds

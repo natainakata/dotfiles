@@ -7,6 +7,12 @@
 # 
 tput cup $LINES
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fpath=(~/.zsh/functions/*(N-/) $fpath)
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
 ZINITHOME="$HOME/.zinit"
 ### Added by Zinit's installer
 if [[ ! -f $ZINITHOME/bin/zinit.zsh ]]; then
@@ -31,13 +37,17 @@ zinit light-mode for \
 
 source $ZINITHOME/bin/zinit.zsh
 
+# shell extention
 zinit ice wait lucid atload'_zsh_autosuggest_start'; zinit light zsh-users/zsh-autosuggestions
 zinit ice wait'0' blockf atpull'zinit creinstall -q .'; zinit light zsh-users/zsh-completions
 zinit ice wait'0'; zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light ryutok/rust-zsh-completions
+zinit ice pick'cli.zsh'; zinit light sudosubin/zsh-github-cli
+zinit light Aloxaf/fzf-tab
 zinit light chrissicool/zsh-256color
-zinit light b4b4r07/emoji-cli
 zinit light b4b4r07/enhancd
-zinit light supercrabtree/k
+zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+# rust cil
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
 zinit ice as"program" from"gh-r" mv"exa* -> exa" pick"exa/exa"; zinit light ogham/exa
@@ -56,24 +66,8 @@ zinit ice as"program" from"gh-r" \
   pick"starship*/starship" \
   atload'eval "$(starship init zsh)"'
 zinit light starship/starship
-# zinit light rupa/z
-zinit ice from"gh-r" as"program"; zinit load junegunn/fzf
-zinit light Aloxaf/fzf-tab
-#zinit ice lucid wait'0' as"program" from"gh-r" \
-#  pick"pmy*/pmy" \
-#  atload'eval "$(pmy init)"'
-# zinit light relastle/pmy
-zinit ice pick'cli.zsh'
-zinit light sudosubin/zsh-github-cli
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
 
 # load rc
-
-
 ZSHHOME="${HOME}/.zsh"
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
   -x $ZSHHOME ]; then
@@ -83,11 +77,6 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
   done
 fi
 
-fpath=(~/.zsh/functions/*(N-/) $fpath)
-. $HOME/.asdf/asdf.sh
-# . ~/.asdf/plugins/java/set-java-home.zsh
-fpath=(${ASDF_DIR}/completions $fpath)
-
 # eval "$(gh completion -s zsh)"
 autoload -Uz compinit; compinit
 
@@ -96,22 +85,41 @@ autoload -Uz compinit; compinit
 #     sudo service docker start
 # fi
 
-if [[ ! -n $TMUX && $- == *l* ]]; then
+# if [[ ! -n $TMUX && $- == *l* ]]; then
+#   # get the IDs
+#   ID="`tmux list-sessions`"
+#   SESSION_TEMPLATE="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\"`"
+#   if [[ -z "$ID" ]]; then
+#     tmux new-session
+#   fi
+#   create_new_session="Create New Session"
+#   ID="$ID\n${create_new_session}:"
+#   ID="`echo $ID | fzf | cut -d: -f1`"
+#   if [[ "$ID" = "${create_new_session}" ]]; then
+#     tmux new-session
+#   elif [[ -n "$ID" ]]; then
+#     tmux attach-session -t "$ID"
+#   else
+#     :  # Start terminal normally
+#   fi
+# fi
+if [[ ! -n $ZELLIJ && $- == *l* ]]; then
   # get the IDs
-  ID="`tmux list-sessions`"
-  SESSION_TEMPLATE="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\"`"
-  if [[ -z "$ID" ]]; then
-    tmux new-session
-  fi
-  create_new_session="Create New Session"
-  ID="$ID\n${create_new_session}:"
-  ID="`echo $ID | fzf | cut -d: -f1`"
-  if [[ "$ID" = "${create_new_session}" ]]; then
-    tmux new-session
-  elif [[ -n "$ID" ]]; then
-    tmux attach-session -t "$ID"
+  ID="`zellij list-sessions`"
+  if [[ "$ID" = "No active zellij sessions found." ]]; then
+    zellij
   else
-    :  # Start terminal normally
+    create_new_session="Create New Session"
+    ID="$ID\n${create_new_session}:"
+    ID="`echo $ID | fzf | cut -d: -f1`"
+    if [[ "$ID" = "${create_new_session}" ]]; then
+      zellij
+    elif [[ -n "$ID" ]]; then
+      zellij attach "$ID"
+    else
+      :  # Start terminal normally
+    fi
   fi
 fi
 
+enable-fzf-tab

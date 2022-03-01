@@ -1,0 +1,12 @@
+theme = "monokai_pro"
+
+[editor]
+line-number = "relative"
+true-color = true
+mouse = false
+
+[editor.file-picker]
+hidden = false
+
+[lsp]
+display-messages = true

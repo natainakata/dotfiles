@@ -8,12 +8,11 @@ export KEYTIMEOUT=1
 
 export GOPATH=~/.go
 
-
-
 path=(
   ~/.bin
   ~/.local/bin
   ~/.deno/bin
+  ~/.helix
   $GOPATH/bin
   $path
 )

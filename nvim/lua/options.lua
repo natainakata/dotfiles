@@ -33,7 +33,7 @@ vim.opt.pumblend=10
 vim.opt.winblend=30
 
 vim.cmd[[
-colorscheme github_dark
+colorscheme monokai_soda
 ]]
 
 vim.g.dashboard_default_executive = 'telescope'
