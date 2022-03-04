@@ -12,7 +12,6 @@ path=(
   ~/.bin
   ~/.local/bin
   ~/.deno/bin
-  ~/.helix
   $GOPATH/bin
   $path
 )
