@@ -1,12 +1,12 @@
 #path
 
-set -x GOPATH $HOME/.go
+set -gx GOPATH $HOME/.go
 
-set -x PATH $HOME/.bin $PATH
-set -x PATH $HOME/.local/bin $PATH
-set -x PATH $HOME/.deno/bin $PATH
-set -x PATH $GOPATH/bin $PATH
-set -x PATH $HOME/.cargo/bin $PATH
+fish_add_path $HOME/.bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.deno/bin
+fish_add_path $GOPATH/bin
+fish_add_path $HOME/.cargo/bin
 
 source /home/natai/.asdf/asdf.fish
 
