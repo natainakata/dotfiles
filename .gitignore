@@ -25,6 +25,12 @@
 !/helix/
 !/helix/**
 /helix/runtime/
+!/fish/
+!/fish/**
+/fish/fish_variables
+/fish/completions/
+/fish/conf.d/
+/fish/functions/
 
 !/README.md
 !/LICENSE
