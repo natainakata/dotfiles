@@ -1,18 +1,18 @@
-local util = require('utils')
-local opt = { silent = true }
+local opt = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
 
-util.map('n', '<C-p>', '<cmd>Telescope command_palette<CR>', opt)
-util.map('n', '<C-f>', '<cmd>Telescope find_files<CR>', opt)
-util.map('n', '<Leader>f', '<cmd>Telescope find_files hidden=true<CR>', opt)
-util.map('n', '<Leader>o', '<cmd>Telescope oldfiles<CR>', opt)
-util.map('n', '<Leader>O', '<cmd>Telescope frecency<CR>', opt)
-util.map('n', '<Leader>p', '<cmd>Telescope project<CR>', opt)
-util.map('n', '<Leader>c', '<cmd>Telescope commands<CR>', opt)
-util.map('n', '<Leader>C', ':Cheatsheet<CR>', opt)
-util.map('n', '<Leader>/', '<cmd>Telescope live_grep<CR>', opt)
-util.map('n', '<Leader>b', '<cmd>Telescope buffers<CR>', opt)
-util.map('n', '<Leader>B', '<cmd>Telescope builtin<CR>', opt)
-util.map('n', '<Leader><C-t>', '<cmd>Telescope help_tags<CR>', opt)
+keymap('n', '<C-p>', '<cmd>Telescope command_palette<CR>', opt)
+keymap('n', '<C-f>', '<cmd>Telescope find_files<CR>', opt)
+keymap('n', '<Leader>f', '<cmd>Telescope find_files hidden=true<CR>', opt)
+keymap('n', '<Leader>o', '<cmd>Telescope oldfiles<CR>', opt)
+keymap('n', '<Leader>O', '<cmd>Telescope frecency<CR>', opt)
+keymap('n', '<Leader>p', '<cmd>Telescope project<CR>', opt)
+keymap('n', '<Leader>c', '<cmd>Telescope commands<CR>', opt)
+keymap('n', '<Leader>C', ':Cheatsheet<CR>', opt)
+keymap('n', '<Leader>/', '<cmd>Telescope live_grep<CR>', opt)
+keymap('n', '<Leader>b', '<cmd>Telescope buffers<CR>', opt)
+keymap('n', '<Leader>B', '<cmd>Telescope builtin<CR>', opt)
+keymap('n', '<Leader><C-t>', '<cmd>Telescope help_tags<CR>', opt)
 
 require 'telescope'.setup {
   pickers = {

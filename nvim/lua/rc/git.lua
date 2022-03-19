@@ -1,12 +1,14 @@
-local util = require('utils')
-local opt = { silent = true }
+local opt = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+
+
 require('gitsigns').setup()
 
-util.map('n', '<Leader>gf', '<cmd>Telescope git_files hidden=true<CR>', opt)
-util.map('n', '<Leader>gs', '<cmd>Telescope git_status<CR>', opt)
-util.map('n', '<Leader>gb', '<cmd>Telescope git_branches<CR>', opt)
-util.map('n', '<Leader>gc', '<cmd>Telescope git_commits<CR>', opt)
-util.map('n', '<Leader>gis', ':Gina status<CR>', opt)
-util.map('n', '<Leader>gic', ':Gina commit', opt)
-util.map('n', '<Leader>gip', ':Gina push<CR>', opt)
+keymap('n', '<Leader>gf', '<cmd>Telescope git_files hidden=true<CR>', opt)
+keymap('n', '<Leader>gs', '<cmd>Telescope git_status<CR>', opt)
+keymap('n', '<Leader>gb', '<cmd>Telescope git_branches<CR>', opt)
+keymap('n', '<Leader>gc', '<cmd>Telescope git_commits<CR>', opt)
+keymap('n', '<Leader>gis', ':Gina status<CR>', opt)
+keymap('n', '<Leader>gic', ':Gina commit', opt)
+keymap('n', '<Leader>gip', ':Gina push<CR>', opt)
 

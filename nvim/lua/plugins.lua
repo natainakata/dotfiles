@@ -95,8 +95,8 @@ return require('packer').startup(function(use)
     }
   end}
   -- statusline and bufferline
-  use { 'akinsho/bufferline.nvim' }
-  use'nvim-lualine/lualine.nvim'
+  use 'akinsho/bufferline.nvim'
+  use 'nvim-lualine/lualine.nvim'
   -- register
   use'tversteeg/registers.nvim'
   -- terminal

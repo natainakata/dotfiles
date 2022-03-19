@@ -1,4 +1,3 @@
-local util = require('utils')
 vim.fn['ddu#custom#patch_global']({
   ui = 'ff',
   uiParams = {

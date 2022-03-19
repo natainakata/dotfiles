@@ -31,6 +31,7 @@ vim.opt.mouse = 'a'
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.pumblend=10
 vim.opt.winblend=30
+vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
 
 vim.cmd[[
 colorscheme monokai_soda
@@ -57,7 +58,7 @@ let g:dps_dial#augends = [
   \]
 ]]
 
-util.g.floaterm_keymap_toggle = '<Leader>t'
+vim.g.floaterm_keymap_toggle = '<Leader>t'
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
