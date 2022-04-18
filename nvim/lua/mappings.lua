@@ -6,6 +6,7 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+
 -- general keymap
 keymap('n', 'j', 'gj', opts)
 keymap('n', 'gj', 'j', opts)

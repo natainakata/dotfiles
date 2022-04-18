@@ -34,22 +34,6 @@ return require('packer').startup(function(use)
       "tami5/sqlite.lua",
     },
   }
-  use {
-    'Shougo/ddu.vim',
-    requires = {
-      'Shougo/ddu-ui-ff',
-      'Shougo/ddu-source-file_rec',
-      'Shougo/ddu-source-register',
-      'shun/ddu-source-buffer',
-      'shun/ddu-source-rg',
-      'kuuote/ddu-source-mr',
-      'gamoutatsumi/ddu-source-nvim-lsp',
-      'Shougo/ddu-source-action',
-      'yuki-yano/ddu-filter-fzf',
-      'Shougo/ddu-filter-matcher_substring',
-      'Shougo/ddu-kind-file'
-    }
-  }
   -- file explorer
   use{
     'lambdalisue/fern.vim',
@@ -69,23 +53,49 @@ return require('packer').startup(function(use)
   use'tpope/vim-dispatch'
   use'janko-m/vim-test'
   -- completion
-  use{
-    'Shougo/ddc.vim',
+  use {
+    'hrsh7th/nvim-cmp',
     requires = {
-      'Shougo/pum.vim',
-      'Shougo/ddc-around',
-      'Shougo/ddc-nvim-lsp',
-      'matsui54/ddc-buffer',
-      'LumaKernel/ddc-file',
-      'Shougo/ddc-zsh',
-      'tani/ddc-fuzzy',
-      'hrsh7th/vim-vsnip',
+      'onsails/lspkind-nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-emoji',
+      'f3fora/cmp-spell',
+      'hrsh7th/cmp-cmdline',
+      'ray-x/cmp-treesitter',
+      'hrsh7th/cmp-vsnip',
       'hrsh7th/vim-vsnip-integ',
-      'rafamadriz/friendly-snippets',
-      'neovim/nvim-lspconfig',
-      'williamboman/nvim-lsp-installer',
-    },
+    }
   }
+  -- lsp
+  use{
+    'neovim/nvim-lspconfig',
+    requires = {
+      'williamboman/nvim-lsp-installer',
+    }
+  }
+  -- use{
+  --   'Shougo/ddc.vim',
+  --   requires = {
+  --     'Shougo/pum.vim',
+  --     'Shougo/ddc-around',
+  --     'Shougo/ddc-nvim-lsp',
+  --     'matsui54/ddc-buffer',
+  --     'LumaKernel/ddc-file',
+  --     'Shougo/ddc-zsh',
+  --     'tani/ddc-fuzzy',
+  --     'hrsh7th/vim-vsnip',
+  --     'hrsh7th/vim-vsnip-integ',
+  --     'rafamadriz/friendly-snippets',
+  --     'neovim/nvim-lspconfig',
+  --     'williamboman/nvim-lsp-installer',
+  --   },
+  -- }
     -- which key
   use{'folke/which-key.nvim', config = function()
     require('which-key').setup{
@@ -112,6 +122,7 @@ return require('packer').startup(function(use)
   use { 'dracula/vim', as = 'dracula' }
   use'projekt0n/github-nvim-theme'
   use'tanvirtin/monokai.nvim'
+  use'EdenEast/nightfox.nvim'
   -- comment toggle
   use'tpope/vim-commentary'
   -- surrounds

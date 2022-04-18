@@ -10,6 +10,7 @@ export GOPATH=~/.go
 
 path=(
   ~/.bin
+  ~/bin
   ~/.local/bin
   ~/.deno/bin
   $GOPATH/bin

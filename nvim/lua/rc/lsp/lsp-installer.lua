@@ -10,6 +10,10 @@ lsp_installer.on_server_ready(function(server)
     local sumneko_opts = require("rc/lsp/sumneko_lua")
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
+  if server.name == "arduino_language_server" then
+    local arduino_opts = require("rc/lsp/arduino")
+    opts = vim.tbl_deep_extend("force", arduino_opts, opts)
+  end
   server:setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
