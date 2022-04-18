@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
   use 'thinca/vim-quickrun'
   use 'tpope/vim-dispatch'
   use 'janko-m/vim-test'
+  use {'yutkat/taskrun.nvim', config = function() require("taskrun").setup() end}
   -- completion
   use {
     'hrsh7th/nvim-cmp',
