@@ -16,6 +16,20 @@ keymap('n', 'U', '<C-r>', opts)
 keymap('n', '<Leader>w', ':w<CR>', opts)
 keymap('i', 'jj', '<Esc>', opts)
 keymap('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
+vim.cmd[[
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+]]
 
 -- window and buffer
 keymap('n', 'gl', ':bnext<CR>', opts)
@@ -54,4 +68,10 @@ vim.cmd[[
   nmap <silent>ys <Plug>(operator-sandwich-add)
   nmap <silent>ds <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
   nmap <silent>cs <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+]]
+
+-- treehopper
+vim.cmd[[
+  omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
+  vnoremap <silent> m :lua require('tsht').nodes()<CR>
 ]]

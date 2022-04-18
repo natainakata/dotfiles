@@ -75,6 +75,7 @@ require 'telescope'.load_extension('ghq')
 require 'telescope'.load_extension('project')
 require 'telescope'.load_extension('command_palette')
 require 'telescope'.load_extension('frecency')
+require 'telescope'.load_extension('packer')
 
 vim.cmd[[
 augroup transparent-windows

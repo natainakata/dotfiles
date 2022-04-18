@@ -15,6 +15,7 @@ require('rc/lsp/init')
 require('rc/fuzzyfinder')
 require('rc/git')
 require('rc/lexima')
+require('rc/treesitter')
 --vim.cmd([[
 --runtime! plugins/ddu.vim
 --]])
