@@ -13,7 +13,6 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
 vim.opt.wrapscan = true
-
 vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
@@ -30,9 +29,10 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.pumblend=10
 vim.opt.winblend=30
 vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
+vim.opt.guifont = 'HackGenNerd Console:h13'
 
 vim.cmd[[
-colorscheme monokai_soda
+  colorscheme monokai_soda
 ]]
 
 vim.g.dashboard_default_executive = 'telescope'
@@ -56,9 +56,7 @@ let g:dps_dial#augends = [
   \]
 ]]
 
-vim.g.floaterm_keymap_toggle = '<Leader>t'
-
-
+-- vim.g.floaterm_keymap_toggle = '<Leader>t'
 
 vim.cmd[[
 let g:quickrun_config = get(g:, 'quickrun_config', {})
@@ -79,4 +77,7 @@ vim.g.extra_whitespace_ignored_filetypes = { 'dashboard', 'TelescopePrompt', 'Te
 
 vim.g.sandwich_no_default_key_mappings = 1
 vim.g.oparator_sandwich_no_default_key_mappings = 1
+
+require('scrollbar').setup()
+require('scrollbar.handlers.search').setup()
 

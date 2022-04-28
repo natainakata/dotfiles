@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
   use 'vim-denops/denops.vim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'MunifTanjim/nui.nvim'
+  use 'tami5/sqlite.lua'
   -- mru
   use 'lambdalisue/mr.vim'
   -- icons
@@ -33,7 +35,6 @@ return require('packer').startup(function(use)
       'nvim-telescope/telescope-frecency.nvim',
       'nvim-telescope/telescope-packer.nvim',
       'nvim-telescope/telescope-symbols.nvim',
-      "tami5/sqlite.lua",
     },
   }
   -- file explorer
@@ -46,7 +47,6 @@ return require('packer').startup(function(use)
       'lambdalisue/fern-hijack.vim',
     },
   }
-  use 'kyazdani42/nvim-tree.lua'
    -- git support
   use 'lambdalisue/gina.vim'
   use 'lewis6991/gitsigns.nvim'
@@ -83,14 +83,24 @@ return require('packer').startup(function(use)
       'williamboman/nvim-lsp-installer',
     }
   }
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup{}
+    end
+  }
+  use 'jose-elias-alvarez/null-ls.nvim'
   -- which key
-  use {'folke/which-key.nvim', config = function()
-    require('which-key').setup{
-      window = {
-        border = "double",
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require('which-key').setup{
+        window = {
+          border = "double",
+        }
       }
-    }
-  end}
+    end
+  }
   -- statusline and bufferline
   use 'akinsho/bufferline.nvim'
   use 'nvim-lualine/lualine.nvim'
@@ -100,7 +110,7 @@ return require('packer').startup(function(use)
   -- register
   use 'tversteeg/registers.nvim'
   -- terminal
-  use 'voldikss/vim-floaterm'
+  use 'akinsho/toggleterm.nvim'
   -- notify
   use 'rcarriga/nvim-notify'
   -- dashboard
@@ -148,4 +158,6 @@ return require('packer').startup(function(use)
   use 'mbbill/undotree'
   -- init.lua dev
   use { 'folke/lua-dev.nvim' }
+  -- scrollbar
+  use 'petertriho/nvim-scrollbar'
 end)
