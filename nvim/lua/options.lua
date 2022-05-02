@@ -39,12 +39,12 @@ vim.g.dashboard_default_executive = 'telescope'
 
 vim.g.dashboard_custom_shortcut = {
   ['last_session']       = 'SPC s l',
-  ['find_history']       = 'SPC f o',
-  ['find_file']          = 'SPC f f',
+  ['find_history']       = 'SPC o',
+  ['find_file']          = 'SPC f',
   ['new_file']           = 'SPC c n',
   ['change_colorscheme'] = 'SPC t c',
-  ['find_word']          = 'SPC f a',
-  ['book_marks']         = 'SPC f b',
+  ['find_word']          = 'SPC /',
+  ['book_marks']         = 'SPC b',
 }
 
 vim.cmd[[
@@ -83,6 +83,6 @@ require('scrollbar.handlers.search').setup()
 
 vim.cmd[[
   if has('win32')
-    let g:sqlite_clib_path = 'C:\libs\sqlite3.dll'
+    let g:sqlite_clib_path = 'C:/lib/sqlite3.dll'
   endif
 ]]
