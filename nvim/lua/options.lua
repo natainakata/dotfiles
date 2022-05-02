@@ -81,3 +81,8 @@ vim.g.oparator_sandwich_no_default_key_mappings = 1
 require('scrollbar').setup()
 require('scrollbar.handlers.search').setup()
 
+vim.cmd[[
+  if has('win32')
+    let g:sqlite_clib_path = 'C:\libs\sqlite3.dll'
+  endif
+]]
