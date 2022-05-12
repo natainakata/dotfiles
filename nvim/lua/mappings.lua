@@ -37,6 +37,22 @@ keymap('n', 'gh', ':bprevious<CR>', opts)
 keymap('n', 'gH', ':blast<CR>', opts)
 keymap('n', 'gL', ':bfirst<CR>', opts)
 
+vim.api.nvim_create_user_command(
+  'BufferDeleteSafety',
+  function()
+    if vim.fn['input']('delete buffer? (y/N): ') == 'y' then
+      vim.cmd[[
+        redraw
+        bdelete!
+      ]]
+      print('delete buffer!')
+    end
+  end,
+  { nargs = 0 }
+)
+
+keymap('n', '<Leader>dd', ':BufferDeleteSafety<CR>', opts)
+
 -- fold
 keymap('n', 'Z', ':set foldmethod=indent<CR>', opts)
 
