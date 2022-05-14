@@ -32,7 +32,7 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
 vim.opt.guifont = 'HackGenNerd Console:h13'
 
 vim.cmd[[
-  colorscheme monokai_soda
+  colorscheme tokyonight
 ]]
 
 vim.g.dashboard_default_executive = 'telescope'

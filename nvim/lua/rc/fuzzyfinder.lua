@@ -66,6 +66,10 @@ require 'telescope'.setup {
         ["conf"]  = "/home/natai/.config",
         ["dot"]  = "/home/natai/.dotfiles",
       }
+    },
+    ['ui-select'] = {
+      require("telescope.themes").get_dropdown {
+      }
     }
   }
 }
@@ -76,6 +80,7 @@ require 'telescope'.load_extension('project')
 require 'telescope'.load_extension('command_palette')
 require 'telescope'.load_extension('frecency')
 require 'telescope'.load_extension('packer')
+require 'telescope'.load_extension('ui-select')
 
 vim.cmd[[
 augroup transparent-windows

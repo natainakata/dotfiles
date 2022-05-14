@@ -43,7 +43,7 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
 
     vim.api.nvim_exec(
       [[
@@ -63,16 +63,17 @@ local function lsp_keymaps(bufnr)
   local opts = { silent=true }
   local keymap = vim.api.nvim_buf_set_keymap
   keymap(bufnr, "n", "<Leader>lD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "<Leader>ld", "<cmd>lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_cursor({}))<CR>", opts)
+  keymap(bufnr, "n", "<Leader>ld", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", opts)
+  keymap(bufnr, "n", "<Leader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
   keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "<Leader>li", "<cmd>lua require('telescope.builtin').lsp_implementation(require('telescope.themes').get_cursor({}))<CR>", opts)
-   keymap(bufnr, "n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  keymap(bufnr, "n", "<Leader>la", "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>", opts)
-  keymap(bufnr, "n", "<Leader>lr", "<cmd>lua require('telescope.builtin').lsp_references(require('telescope.themes').get_ivy({}))<CR>", opts)
-  keymap(bufnr, "n", "<Leader>le", "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)
-  keymap(bufnr, "n", "<Leader>dk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  keymap(bufnr, "n", "<Leader>dj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  keymap(bufnr, "n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  keymap(bufnr, "n", "<Leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  keymap(bufnr, "n", "<Leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  keymap(bufnr, "n", "<Leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+  keymap(bufnr, "n", "<Leader>dj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   keymap(bufnr, "n", "<Leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  keymap(bufnr, "n", "<Leader>l/", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
+  -- keymap(bufnr, "n", "<Leader>l", "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>", opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 

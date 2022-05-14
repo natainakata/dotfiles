@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
       'nvim-telescope/telescope-frecency.nvim',
       'nvim-telescope/telescope-packer.nvim',
       'nvim-telescope/telescope-symbols.nvim',
+      'nvim-telescope/telescope-ui-select.nvim'
     },
   }
   -- file explorer
@@ -127,6 +128,8 @@ return require('packer').startup(function(use)
   use 'projekt0n/github-nvim-theme'
   use 'tanvirtin/monokai.nvim'
   use 'EdenEast/nightfox.nvim'
+  use 'rafamadriz/neon'
+  use 'folke/tokyonight.nvim'
   -- comment toggle
   use 'tpope/vim-commentary'
   -- surrounds
