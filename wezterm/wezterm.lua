@@ -64,6 +64,6 @@ return {
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
   tab_bar_at_bottom = true,
-  default_prog = { 'wsl.exe' },
+  default_prog = { 'wsl.exe', '--distribution', 'Ubuntu-20.04', '--exec', '/bin/zsh', '-l' },
   -- launch_menu = launch_menu,
 }
