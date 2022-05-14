@@ -26,6 +26,8 @@
 !/helix/**
 !/alacritty/
 !/alacritty/**
+!/wezterm/
+!/wezterm/**
 /helix/runtime/
 !/fish/
 !/fish/**
