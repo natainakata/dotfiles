@@ -163,4 +163,6 @@ return require('packer').startup(function(use)
   use { 'folke/lua-dev.nvim' }
   -- scrollbar
   use 'petertriho/nvim-scrollbar'
+
+  use 'DaeZak/crafttweaker-vim-highlighting'
 end)

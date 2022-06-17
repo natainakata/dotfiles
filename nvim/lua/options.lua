@@ -86,3 +86,7 @@ vim.cmd[[
     let g:sqlite_clib_path = 'C:/lib/sqlite3.dll'
   endif
 ]]
+
+vim.cmd[[
+  autocmd BufRead,BufNewFile *.lang set filetype=mclang
+]]
