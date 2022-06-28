@@ -69,8 +69,8 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-calc',
       'hrsh7th/cmp-emoji',
-      'f3fora/cmp-spell',
       'hrsh7th/cmp-cmdline',
+      'f3fora/cmp-spell',
       'ray-x/cmp-treesitter',
       'hrsh7th/cmp-vsnip',
       'hrsh7th/vim-vsnip',
@@ -165,4 +165,5 @@ return require('packer').startup(function(use)
   use 'petertriho/nvim-scrollbar'
 
   use 'DaeZak/crafttweaker-vim-highlighting'
+
 end)

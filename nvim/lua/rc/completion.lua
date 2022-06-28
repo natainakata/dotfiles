@@ -49,11 +49,11 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = "vsnip" },
     { name = "treesitter" },
-  }, {
     { name = "buffer" },
     { name = "path" },
     { name = "emoji" },
     { name = "calc" },
+    { name = "spall" },
   }),
   formatting = {
     format = lspkind.cmp_format({
