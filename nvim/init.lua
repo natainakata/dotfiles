@@ -1,22 +1,5 @@
-vim.cmd[[let g:python3_host_prog = system('echo -n $(which python3)')]]
-vim.cmd('filetype plugin indent on')
-vim.cmd('syntax on')
+require('natainakata.base')
+require('natainakata.maps')
 
-require('plugins')
-require('options')
-require('mappings')
-require('rc/exploler')
-require('rc/statusline')
-require('rc/bufferline')
-require('rc/completion')
--- require('rc/ddc')
--- require('rc/ddu')
-require('rc/lsp/init')
-require('rc/fuzzyfinder')
-require('rc/terminal')
-require('rc/git')
-require('rc/lexima')
-require('rc/treesitter')
---vim.cmd([[
---runtime! plugins/ddu.vim
---]])
+require('natainakata.plugins')
+
