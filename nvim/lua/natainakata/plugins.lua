@@ -61,7 +61,7 @@ packer.startup(function(use)
   use { 'akinsho/toggleterm.nvim', tag = 'v2.*' }
 
   -- git support
-  use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup{} end }
+  use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim'
 
   -- helper
