@@ -1,11 +1,10 @@
 local wezterm = require 'wezterm'
-local utils = require 'utils'
 
 return {
   -- leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
   font = wezterm.font("HackGenNerd Console"),
   use_ime = true,
-  font_size = 13.0,
+  font_size = 16.0,
   color_scheme = "nightfox",
   hide_tab_bar_if_only_one_tab = true,
   adjust_window_size_when_changing_font_size = false,
