@@ -48,29 +48,12 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.h
 
 require 'mason-lspconfig'.setup_handlers({ function(server)
 
-  local node_root_dir = nvim_lsp.util.root_pattern("package.json")
-  local is_node_repo = node_root_dir(vim.api.nvim_buf_get_name(0)) ~= nil
-
   local opts = {}
 
-  if server == "tsserver" then
-    if not is_node_repo then
-        return
-    end
-
-    opts.root_dir = node_root_dir
-  elseif server == "eslint" then
-    if not is_node_repo then
-      return
-    end
-
-    opts.root_dir = node_root_dir
-  elseif server == "denols" then
-    if is_node_repo then
-      return
-    end
-
-    opts.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
+  if server == "tsserver" or server == "eslint" then
+    opts.root_dir = nvim_lsp.util.root_pattern("package.json")
+  else if server == "denols" then
+    opts.root_dir = nvim_lsp.util.root_pattern("deno.json")
     opts.init_options = {
       lint = true,
       unstable = true,
@@ -85,6 +68,7 @@ require 'mason-lspconfig'.setup_handlers({ function(server)
       }
     }
   end
+
   if server == "sumneko_lua" then
     opts.settings = {
       Lua = {
@@ -92,7 +76,9 @@ require 'mason-lspconfig'.setup_handlers({ function(server)
       }
     }
   end
-  opts.on_attach = function(client, bufnr) 
+
+  end
+    opts.on_attach = function(client, bufnr) 
     local opt = { noremap = true, silent = true }
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opt)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', opt)
@@ -113,14 +99,14 @@ require 'mason-lspconfig'.setup_handlers({ function(server)
 end })
 
 -- Reference highlight
-vim.cmd [[
-set updatetime=500
-highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-augroup lsp_document_highlight
-  autocmd!
-  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-augroup END
-]]
+-- vim.cmd [[
+-- set updatetime=500
+-- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- augroup lsp_document_highlight
+--   autocmd!
+--   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+--   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+-- augroup END
+-- ]]

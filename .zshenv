@@ -15,6 +15,7 @@ path=(
   ~/.deno/bin
   $GOPATH/bin
   $path
+  /usr/local/zig
 )
 
 . "$HOME/.cargo/env"
