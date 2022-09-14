@@ -89,12 +89,3 @@ end)
 vim.keymap.set('n', '<Leader>O', function()
   telescope.extensions.frecency.frecency()
 end)
-
-vim.cmd[[
-augroup transparent-windows
-  autocmd!
-  autocmd FileType TelescopePrompt  set winblend=10
-  autocmd FileType TelescopeResults set winblend=10
-  autocmd User TelescopePreviewerLoaded set winblend=10
-augroup END
-]]
