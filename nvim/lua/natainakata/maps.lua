@@ -46,7 +46,7 @@ vim.api.nvim_create_user_command(
   { nargs = 0 }
 )
 
-keymap.set('n', '<Leader>dd', ':BufferDeleteSafety<CR>')
+keymap.set('n', '<Leader>D', ':BufferDeleteSafety<CR>')
 
 -- fold
 keymap.set('n', 'Z', ':set foldmethod=indent<CR>')

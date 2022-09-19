@@ -3,6 +3,7 @@ local wezterm = require 'wezterm'
 local default_keybinds = {
   { key = 'p', mods = 'ALT', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|TABS|LAUNCH_MENU_ITEMS' } },
   { key = 'q', mods = 'ALT', action = wezterm.action({ CloseCurrentTab = { confirm = false } }) },
+  { key = 't', mods = 'ALT', action = wezterm.action.ShowTabNavigator },
   { key = "x", mods = "ALT", action = "ActivateCopyMode" },
 }
 
@@ -61,11 +62,14 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 return {
-  font = wezterm.font("HackGenNerd Console"),
+  font = wezterm.font_with_fallback {
+    "Fira Code",
+    "Noto Sans CJK JP Regular"
+  },
   use_ime = true,
-  font_size = 14.0,
+  font_size = 13.0,
   color_scheme = "nightfox",
-  window_background_opacity = 0.7,
+  window_background_opacity = 0.8,
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
   default_prog = { 'pwsh.exe', '-NoLogo' },
