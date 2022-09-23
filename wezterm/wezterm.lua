@@ -1,41 +1,14 @@
 local wezterm = require 'wezterm'
-
-local default_keybinds = {
-  { key = 'p', mods = 'ALT', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|TABS|LAUNCH_MENU_ITEMS' } },
-  { key = 'q', mods = 'ALT', action = wezterm.action({ CloseCurrentTab = { confirm = false } }) },
-  { key = 't', mods = 'ALT', action = wezterm.action.ShowTabNavigator },
-  { key = "x", mods = "ALT", action = "ActivateCopyMode" },
-}
-
+local utils = require 'utils'
+local act = wezterm.action
 
 local launch_menu = {}
-
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   table.insert(launch_menu, {
     label = 'PowerShell',
     args = { 'pwsh.exe', '-NoLogo' },
   })
-
-  -- Find installed visual studio version(s) and add their compilation
-  -- environment command prompts to the menu
-  for _, vsvers in
-    ipairs(
-      wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)')
-    )
-  do
-    local year = vsvers:gsub('Microsoft Visual Studio/', '')
-    table.insert(launch_menu, {
-      label = 'x64 Native Tools VS ' .. year,
-      args = {
-        'cmd.exe',
-        '/k',
-        'C:/Program Files (x86)/'
-          .. vsvers
-          .. '/BuildTools/VC/Auxiliary/Build/vcvars64.bat',
-      },
-    })
-  end
 
   -- Enumerate any WSL distributions that are installed and add those to the menu
   local success, wsl_list, wsl_err =
@@ -61,6 +34,31 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   end
 end
 
+
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+  local title = wezterm.truncate_right(utils.basename(tab.active_pane.foreground_process_name), max_width)
+  if title == "" then
+    title = wezterm.truncate_right(utils.convert_home_dir(tab.active_pane.current_working_dir), max_width)
+  end
+  return {
+    { Text = tab.tab_index + 1 .. ':' .. title },
+  }
+end)
+
+local default_keybinds = {
+  { key = 'p', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'FUZZY|TABS|LAUNCH_MENU_ITEMS' } },
+  { key = '[', mods = 'ALT', action = act.ActivateTabRelative(-1) },
+  { key = ']', mods = 'ALT', action = act.ActivateTabRelative(1) },
+  { key = 'n', mods = 'LEADER', action = act.SpawnTab 'CurrentPaneDomain' },
+  { key = 't', mods = 'LEADER', action = act.ShowTabNavigator },
+  { key = 'q', mods = 'LEADER', action = act({ CloseCurrentTab = { confirm = false } }) },
+  { key = 'x', mods = 'LEADER', action = 'ActivateCopyMode' },
+  { key = 's', mods = 'LEADER|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'v', mods = 'LEADER|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = 'p', mods = 'LEADER|SHIFT', action = act.PaneSelect },
+  { key = 'x', mods = 'LEADER|SHIFT', action = act.CloseCurrentPane { confirm = false } },
+}
+
 return {
   font = wezterm.font_with_fallback {
     "Fira Code",
@@ -73,6 +71,7 @@ return {
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
   default_prog = { 'pwsh.exe', '-NoLogo' },
+  leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = default_keybinds,
   launch_menu = launch_menu
 }
