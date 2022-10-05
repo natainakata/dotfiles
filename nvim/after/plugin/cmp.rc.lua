@@ -40,7 +40,4 @@ cmp.setup.cmdline(':', {
   },
 })
 
-vim.cmd [[
-  set completeopt=menuone,noinsert,noselect
-  highlight! default link CmpItemKind CmpItemMenuDefault
-]]
+vim.cmd[[highlight! default link CmpItemKind CmpItemMenuDefault]]
