@@ -32,9 +32,16 @@ vim.opt.pumblend=10
 vim.opt.winblend=30
 vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
 
+if vim.fn.has('win32') == 1 then
+  vim.cmd[[
+    let g:sqlite_clib_path = 'C:/lib/sqlite3.dll'
+  ]]
+  vim.o.shell = 'pwsh.exe'
+  vim.o.shellcmdflag = '-NoLogo -c'
+  vim.o.shellquote = '"'
+  vim.o.shellxquote = ''
+end
 
 vim.cmd[[
-  if has('win32')
-    let g:sqlite_clib_path = 'C:/lib/sqlite3.dll'
-  endif
+  autocmd BufRead,BufNewFile *.lang set filetype=mclang
 ]]

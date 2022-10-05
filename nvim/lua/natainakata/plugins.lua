@@ -80,7 +80,7 @@ packer.startup(function(use)
   use 'phaazon/hop.nvim'
 
   -- surrounds
-  use 'kylechui/nvim-surround'
+  use 'machakann/vim-sandwich'
 
   -- colorizer
   use 'norcalli/nvim-colorizer.lua'
@@ -90,5 +90,8 @@ packer.startup(function(use)
 
   -- scrollbar
   use 'petertriho/nvim-scrollbar'
+
+  -- zenscript
+  use 'DaeZak/crafttweaker-vim-highlighting'
 
 end)

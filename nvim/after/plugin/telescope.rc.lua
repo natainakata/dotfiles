@@ -48,6 +48,12 @@ vim.keymap.set('n', '<C-f>',
       hidden = true
     })
   end)
+vim.keymap.set('n', '<Leader>f', function()
+  builtin.find_files({
+    no_ignore = true,
+    hidden = true
+  })
+end)
 vim.keymap.set('n', '<C-p>', function()
   builtin.commands()
 end)

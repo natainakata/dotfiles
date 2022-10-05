@@ -1,7 +1,7 @@
 local status, nightfox = pcall(require, 'nightfox')
 if (not status) then return end
 
-nightfox.setup({
+local config = {
   options = {
     transparent = true,
     styles = {
@@ -10,6 +10,11 @@ nightfox.setup({
       types = "italic,bold",
     }
   }
-})
+}
+if (vim.fn.exists('g:neovide') == 1) then
+  config.options.transparent = false
+end
+
+nightfox.setup(config)
 
 vim.cmd[[colorscheme nightfox]]

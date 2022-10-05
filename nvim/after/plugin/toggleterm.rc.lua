@@ -10,7 +10,7 @@ toggleterm.setup{
     end
   end,
   open_mapping = [[<c-\>]],
-    shade_terminals = true,
+  shade_terminals = true,
   shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
   start_in_insert = true,
   insert_mappings = true, -- whether or not the open mapping applies in insert mode
@@ -28,6 +28,6 @@ toggleterm.setup{
     border = 'double',
     width = 80,
     height = 15,
-    winblend = 3,
+    winblend = 0,
   }
 }

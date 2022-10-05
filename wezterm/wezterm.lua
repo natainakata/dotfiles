@@ -61,11 +61,10 @@ local default_keybinds = {
 
 return {
   font = wezterm.font_with_fallback {
-    "Fira Code",
-    "Noto Sans CJK JP Regular"
+    "HackGenNerd Console",
   },
   use_ime = true,
-  font_size = 13.0,
+  font_size = 14.0,
   color_scheme = "nightfox",
   window_background_opacity = 0.8,
   adjust_window_size_when_changing_font_size = false,
