@@ -55,7 +55,11 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use { 'nvim-telescope/telescope-frecency.nvim', requires = { 'tami5/sqlite.lua' } }
-  use 'kyazdani42/nvim-tree.lua'
+  -- use 'kyazdani42/nvim-tree.lua'
+  use 'lambdalisue/fern.vim'
+  use 'lambdalisue/fern-git-status.vim'
+  use { 'lambdalisue/fern-renderer-nerdfont.vim', requires = { 'lambdalisue/nerdfont.vim' } }
+  use 'lambdalisue/fern-hijack.vim'
 
   -- terminal
   use { 'akinsho/toggleterm.nvim', tag = 'v2.*' }
@@ -94,4 +98,6 @@ packer.startup(function(use)
   -- zenscript
   use 'DaeZak/crafttweaker-vim-highlighting'
 
+  -- highlight search
+  use 'kevinhwang91/nvim-hlslens'
 end)

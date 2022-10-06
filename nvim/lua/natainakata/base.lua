@@ -44,3 +44,4 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile'}, {
   pattern = '*.lang',
   command = 'set filetype=mclang',
 })
+vim.g['fern#renderer'] = 'nerdfont'

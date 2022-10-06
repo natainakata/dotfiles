@@ -31,7 +31,6 @@ keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
-
 vim.api.nvim_create_user_command(
   'BufferDeleteSafety',
   function()
@@ -51,4 +50,6 @@ keymap.set('n', '<Leader>D', ':BufferDeleteSafety<CR>')
 -- fold
 keymap.set('n', 'Z', ':set foldmethod=indent<CR>')
 
+-- fern
+keymap.set('n', '<Leader>E', '<Cmd>Fern . -reveal=% -drawer<CR>')
 
