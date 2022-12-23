@@ -103,4 +103,6 @@ packer.startup(function(use)
 
   -- execute
   use 'thinca/vim-quickrun'
+  -- markdown
+  use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, }
 end)

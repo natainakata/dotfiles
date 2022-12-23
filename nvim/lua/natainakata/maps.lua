@@ -26,6 +26,11 @@ keymap.set('n', 'gs', ':split<CR><C-w>w')
 keymap.set('n', 'te', ':tabedit')
 keymap.set('n', 'gv', ':vsplit<CR><C-w>w')
 
+keymap.set('n', '<C-h>', '<Cmd>wincmd h<CR>')
+keymap.set('n', '<C-j>', '<Cmd>wincmd j<CR>')
+keymap.set('n', '<C-k>', '<Cmd>wincmd k<CR>')
+keymap.set('n', '<C-l>', '<Cmd>wincmd l<CR>')
+
 keymap.set('n', '<C-w><left>', '<C-w><')
 keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
@@ -51,7 +56,7 @@ keymap.set('n', '<Leader>D', ':BufferDeleteSafety<CR>')
 keymap.set('n', 'Z', ':set foldmethod=indent<CR>')
 
 -- fern
-keymap.set('n', '<Leader>E', '<Cmd>Fern . -reveal=% -drawer<CR>')
+keymap.set('n', '<Leader>e', '<Cmd>Fern . -reveal=% -drawer -toggle<CR>')
 
 -- quickrun
 keymap.set('n', '<Leader>R', '<Cmd>QuickRun<CR>')

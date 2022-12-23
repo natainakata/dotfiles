@@ -19,9 +19,9 @@ telescope.setup {
   },
   extensions = {
     file_browser = {
-      theme = 'dropdown',
+      theme = 'ivy',
       -- disables netrw and use telescope-file-browser in its place
-      hijack_netrw = true,
+      hijack_netrw = false,
       mappings = {
         -- your custom insert mode mappings
         ['i'] = {
@@ -80,7 +80,7 @@ end
 telescope.load_extension('file_browser')
 telescope.load_extension('frecency')
 
-vim.keymap.set('n', '<Leader>e', function()
+vim.keymap.set('n', '<Leader>E', function()
   telescope.extensions.file_browser.file_browser({
     path = '%:p:h',
     cwd = telescope_buffer_dir(),

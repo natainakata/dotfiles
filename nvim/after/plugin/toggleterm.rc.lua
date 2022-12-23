@@ -1,11 +1,12 @@
 local status, toggleterm = pcall(require, 'toggleterm')
+local keymap = vim.keymap
 if (not status) then return end
 toggleterm.setup{
   -- size can be a number or function which is passed the current terminal
   size = function(term)
-    if term.direction == "horizontal" then
+    if term.direction == 'horizontal' then
       return 15
-    elseif term.direction == "vertical" then
+    elseif term.direction == 'vertical' then
       return vim.o.columns * 0.4
     end
   end,
@@ -26,8 +27,30 @@ toggleterm.setup{
     -- the 'curved' border is a custom border type
     -- not natively supported but implemented in this plugin.
     border = 'double',
-    width = 80,
-    height = 15,
+    width = 160,
+    height = 60,
     winblend = 0,
   }
 }
+
+-- lazygit
+local terminal = require('toggleterm.terminal').Terminal
+local lazygit = terminal:new({
+  cmd = 'lazygit',
+  hidden = true ,
+  count = 5,
+  on_open = function(term)
+    vim.cmd('startinsert!')
+  end
+})
+
+function _G.lazygit_toggle()
+  lazygit:toggle()
+end
+keymap.set('n', '<Leader>gl', '<cmd> lua lazygit_toggle()<CR>')
+keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+-- keymap.set('t', '<C-h>', '<Cmd>wincmd h<CR>')
+-- keymap.set('t', '<C-j>', '<Cmd>wincmd j<CR>')
+-- keymap.set('t', '<C-k>', '<Cmd>wincmd k<CR>')
+-- keymap.set('t', '<C-l>', '<Cmd>wincmd l<CR>')
+
