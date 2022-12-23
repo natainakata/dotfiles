@@ -9,6 +9,8 @@ function _G.init_fern()
   keymap.set('n', '<C-j>', '<Cmd>wincmd j<CR>', opts)
   keymap.set('n', '<C-k>', '<Cmd>wincmd k<CR>', opts)
   keymap.set('n', '<C-l>', '<Cmd>wincmd l<CR>', opts)
+  keymap.set('n', 'gh', '<Nop>', opts)
+  keymap.set('n', 'gl', '<Nop>', opts)
 end
 
 local fern_custom = vim.api.nvim_create_augroup('fern-custom', {})

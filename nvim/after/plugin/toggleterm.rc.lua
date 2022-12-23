@@ -35,14 +35,20 @@ toggleterm.setup{
 
 -- lazygit
 local terminal = require('toggleterm.terminal').Terminal
-local lazygit = terminal:new({ cmd = 'lazygit', hidden = true , count = 5})
+local lazygit = terminal:new({
+  cmd = 'lazygit',
+  hidden = true ,
+  count = 5,
+  on_open = function(term)
+    vim.cmd('startinsert!')
+  end
+})
 
 function _G.lazygit_toggle()
   lazygit:toggle()
 end
 keymap.set('n', '<Leader>gl', '<cmd> lua lazygit_toggle()<CR>')
 keymap.set('t', '<Esc>', [[<C-\><C-n>]])
-keymap.set('t', 'jk', [[<C-\><C-n>]])
 -- keymap.set('t', '<C-h>', '<Cmd>wincmd h<CR>')
 -- keymap.set('t', '<C-j>', '<Cmd>wincmd j<CR>')
 -- keymap.set('t', '<C-k>', '<Cmd>wincmd k<CR>')

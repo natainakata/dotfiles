@@ -100,4 +100,5 @@ packer.startup(function(use)
 
   -- highlight search
   use 'kevinhwang91/nvim-hlslens'
+  use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, }
 end)
