@@ -53,3 +53,5 @@ keymap.set('n', 'Z', ':set foldmethod=indent<CR>')
 -- fern
 keymap.set('n', '<Leader>E', '<Cmd>Fern . -reveal=% -drawer<CR>')
 
+-- quickrun
+keymap.set('n', '<Leader>R', '<Cmd>QuickRun<CR>')

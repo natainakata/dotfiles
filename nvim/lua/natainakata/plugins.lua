@@ -100,4 +100,7 @@ packer.startup(function(use)
 
   -- highlight search
   use 'kevinhwang91/nvim-hlslens'
+
+  -- execute
+  use 'thinca/vim-quickrun'
 end)
