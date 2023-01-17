@@ -38,6 +38,22 @@ if vim.fn.has('win32') == 1 then
   vim.o.shellcmdflag = '-NoLogo -c'
   vim.o.shellquote = '"'
   vim.o.shellxquote = ''
+else
+  vim.opt.clipboard = 'unnamed'
+  vim.cmd[[
+    let g:clipboard = {
+        \   'name': 'myClipboard',
+        \   'copy': {
+        \      '+': 'win32yank -i',
+        \      '*': 'win32yank -i',
+        \    },
+        \   'paste': {
+        \      '+': 'win32yank -o',
+        \      '*': 'win32yank -o',
+        \   },
+        \   'cache_enabled': 1,
+        \ }
+  ]]
 end
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile'}, {

@@ -66,6 +66,7 @@ zinit ice as"program" from"gh-r" \
   pick"starship*/starship" \
   atload'eval "$(starship init zsh)"'
 zinit light starship/starship
+zinit ice as"program" from"gh-r" mv"win32yank* - win32yank" pick"equalsraf/win32yank"; zinit light equalsraf/win32yank
 
 # load rc
 ZSHHOME="${HOME}/.zsh"
