@@ -8,6 +8,8 @@ export KEYTIMEOUT=1
 
 export GOPATH=~/.go
 
+export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
+
 path=(
   ~/.bin
   ~/bin
