@@ -1,6 +1,6 @@
 local fn = vim.fn
 local jetpackfile = fn.stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
-local jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
+local jetpackurl = 'https://raw.githubrcontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
 if fn.filereadable(jetpackfile) == 0 then
   fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
   vim.cmd [[packadd vim-jetpack]]
@@ -19,98 +19,101 @@ if (not status) then
   return
 end
 
-jetpack.startup(function(use)
+jetpack.add {
   -- manager
-  use { 'tani/vim-jetpack', opt = 1 }
+  { 'tani/vim-jetpack', opt = 1 },
   -- runtime
-  use 'kyazdani42/nvim-web-devicons'
-  use 'nvim-lua/plenary.nvim'
+  'kyazdani42/nvim-web-devicons',
+  'nvim-lua/plenary.nvim',
 
   -- colorscheme
-  use 'EdenEast/nightfox.nvim'
+  'EdenEast/nightfox.nvim',
 
   -- statusline
-  use 'nvim-lualine/lualine.nvim'
-  use 'akinsho/nvim-bufferline.lua'
+  'nvim-lualine/lualine.nvim',
+  'akinsho/nvim-bufferline.lua',
 
   -- language server
-  use { 'neovim/nvim-lspconfig', requires = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim'
-    },
-  }
-  use 'folke/trouble.nvim'
-  use 'glepnir/lspsaga.nvim'
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig', 
+  
+  'folke/trouble.nvim',
+  'glepnir/lspsaga.nvim',
 
   -- compilation
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/vim-vsnip'
-  use 'onsails/lspkind-nvim'
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/vim-vsnip',
+  'onsails/lspkind-nvim',
 
   -- syntax highlight
-  use { 'nvim-treesitter/nvim-treesitter', run = function() require('nvim-treesitter.install').update({ with_sync = true }) end}
-  use 'yioneko/nvim-yati'
-  use 'romgrk/nvim-treesitter-context'
-  use 'p00f/nvim-ts-rainbow'
-  use 'machakann/vim-highlightedyank'
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  { 'nvim-treesitter/nvim-treesitter', run = function() require('nvim-treesitter.install').update({ with_sync = true }) end},
+  'yioneko/nvim-yati',
+  'romgrk/nvim-treesitter-context',
+  'p00f/nvim-ts-rainbow',
+  'machakann/vim-highlightedyank',
+  'nvim-treesitter/nvim-treesitter-textobjects',
 
   -- finder
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-file-browser.nvim'
-  use { 'nvim-telescope/telescope-frecency.nvim', requires = { 'tami5/sqlite.lua' } }
-  -- use 'kyazdani42/nvim-tree.lua'
-  use 'lambdalisue/fern.vim'
-  use 'lambdalisue/fern-git-status.vim'
-  use { 'lambdalisue/fern-renderer-nerdfont.vim', requires = { 'lambdalisue/nerdfont.vim' } }
-  use 'lambdalisue/fern-hijack.vim'
+  'nvim-telescope/telescope.nvim',
+  'nvim-telescope/telescope-file-browser.nvim', 
+  'tami5/sqlite.lua' ,
+  'nvim-telescope/telescope-frecency.nvim',
+  --  'kyazdani42/nvim-tree.lua'
+  'lambdalisue/fern.vim',
+  'lambdalisue/fern-git-status.vim',
+  'lambdalisue/nerdfont.vim',
+  'lambdalisue/fern-renderer-nerdfont.vim', 
+  'lambdalisue/fern-hijack.vim',
 
   -- terminal
-  use { 'akinsho/toggleterm.nvim', tag = 'v2.*' }
+  { 'akinsho/toggleterm.nvim', tag = 'v2.*' },
 
   -- git support
-  use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim'
+  'lewis6991/gitsigns.nvim',
+  'dinhhuy258/git.nvim',
 
   -- helper
-  use 'folke/which-key.nvim'
+  'folke/which-key.nvim',
 
   -- register
-  use 'tversteeg/registers.nvim'
+  'tversteeg/registers.nvim',
 
   -- auto pairs
-  use 'cohama/lexima.vim'
+  'cohama/lexima.vim',
 
   -- comment toggle
-  use 'tpope/vim-commentary'
+  'tpope/vim-commentary',
 
   -- easymotion
-  use 'phaazon/hop.nvim'
+  'phaazon/hop.nvim',
 
   -- surrounds
-  use 'machakann/vim-sandwich'
+  'machakann/vim-sandwich',
 
   -- colorizer
-  use 'norcalli/nvim-colorizer.lua'
+  'norcalli/nvim-colorizer.lua',
 
   -- editorconfig
-  use 'sgur/vim-editorconfig'
+  'sgur/vim-editorconfig',
 
   -- scrollbar
-  use 'petertriho/nvim-scrollbar'
+  'petertriho/nvim-scrollbar',
 
   -- zenscript
-  use 'DaeZak/crafttweaker-vim-highlighting'
+  'DaeZak/crafttweaker-vim-highlighting',
 
   -- highlight search
-  use 'kevinhwang91/nvim-hlslens'
+  'kevinhwang91/nvim-hlslens',
 
   -- execute
-  use 'thinca/vim-quickrun'
+  'thinca/vim-quickrun',
+
   -- markdown
-  use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, }
-end)
+  { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, },
+}
+  
