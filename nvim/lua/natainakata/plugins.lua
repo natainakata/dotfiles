@@ -1,19 +1,27 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd [[packadd packer.nvim]]
+local jetpackfile = fn.stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+local jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
+if fn.filereadable(jetpackfile) == 0 then
+  fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
+  vim.cmd [[packadd vim-jetpack]]
+else 
+  vim.cmd [[packadd vim-jetpack]]
 end
+-- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--   fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+--   vim.cmd [[packadd packer.nvim]]
+-- end
 
-local status, packer = pcall(require, "packer")
+local status, jetpack = pcall(require, 'jetpack.packer')
 if (not status) then
-  print("Packer is not installed")
+  print("Jetpack is not installed")
   return
 end
 
-packer.startup(function(use)
+jetpack.startup(function(use)
   -- manager
-  use 'wbthomason/packer.nvim'
+  use { 'tani/vim-jetpack', opt = 1 }
   -- runtime
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lua/plenary.nvim'
