@@ -92,7 +92,7 @@ require 'mason-lspconfig'.setup_handlers({ function(server)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>', opt)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opt)
   end
-  opts.capabilities = require('cmp_nvim_lsp').update_capabilities(
+  opts.capabilities = require('cmp_nvim_lsp').default_capabilities(
       vim.lsp.protocol.make_client_capabilities()
   )
   nvim_lsp[server].setup(opts)
