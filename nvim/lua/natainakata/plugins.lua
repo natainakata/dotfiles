@@ -36,8 +36,8 @@ jetpack.add {
   -- language server
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig', 
-  
+  'neovim/nvim-lspconfig',
+
   'folke/trouble.nvim',
   'glepnir/lspsaga.nvim',
 
@@ -60,18 +60,18 @@ jetpack.add {
 
   -- finder
   'nvim-telescope/telescope.nvim',
-  'nvim-telescope/telescope-file-browser.nvim', 
+  'nvim-telescope/telescope-file-browser.nvim',
   'tami5/sqlite.lua' ,
   'nvim-telescope/telescope-frecency.nvim',
   --  'kyazdani42/nvim-tree.lua'
   'lambdalisue/fern.vim',
   'lambdalisue/fern-git-status.vim',
   'lambdalisue/nerdfont.vim',
-  'lambdalisue/fern-renderer-nerdfont.vim', 
+  'lambdalisue/fern-renderer-nerdfont.vim',
   'lambdalisue/fern-hijack.vim',
 
   -- terminal
-  { 'akinsho/toggleterm.nvim', tag = 'v2.*' },
+  { 'akinsho/toggleterm.nvim', tag = '*' },
 
   -- git support
   'lewis6991/gitsigns.nvim',
@@ -116,4 +116,3 @@ jetpack.add {
   -- markdown
   { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, },
 }
-  
