@@ -89,7 +89,7 @@ autoload -Uz compinit; compinit
 if [[ ! -n $TMUX && $- == *l* ]]; then
   # get the IDs
   ID="`tmux list-sessions`"
-  SESSION_TEMPLATE="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\"`"
+  # SESSION_TEMPLATE="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\"`"
   if [[ -z "$ID" ]]; then
     tmux new-session
   fi
