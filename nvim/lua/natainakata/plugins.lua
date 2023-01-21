@@ -28,6 +28,7 @@ jetpack.add {
 
   -- colorscheme
   'EdenEast/nightfox.nvim',
+  'tanvirtin/monokai.nvim',
 
   -- statusline
   'nvim-lualine/lualine.nvim',
