@@ -24,6 +24,7 @@ vim.opt.showmatch = true
 vim.opt.wildmode = { 'list', 'longest' }
 
 vim.opt.cmdwinheight = 10
+vim.opt.showtabline = 2
 
 local cmdwin = vim.api.nvim_create_augroup("vimrc-cmdwin", { clear = true })
 vim.api.nvim_create_autocmd({ 'CmdwinEnter' },

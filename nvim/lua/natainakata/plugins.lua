@@ -4,7 +4,7 @@ local jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/pl
 if fn.filereadable(jetpackfile) == 0 then
   fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
   vim.cmd [[packadd vim-jetpack]]
-else 
+else
   vim.cmd [[packadd vim-jetpack]]
 end
 -- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -25,6 +25,7 @@ jetpack.add {
   -- runtime
   'kyazdani42/nvim-web-devicons',
   'nvim-lua/plenary.nvim',
+  'vim-jp/vimdoc-ja',
 
   -- colorscheme
   'EdenEast/nightfox.nvim',
