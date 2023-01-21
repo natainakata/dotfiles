@@ -23,6 +23,19 @@ vim.opt.visualbell = true
 vim.opt.showmatch = true
 vim.opt.wildmode = { 'list', 'longest' }
 
+vim.opt.cmdwinheight = 10
+
+local cmdwin = vim.api.nvim_create_augroup("vimrc-cmdwin", { clear = true })
+vim.api.nvim_create_autocmd({ 'CmdwinEnter' },
+  {
+    pattern = '*',
+    callback = function ()
+      vim.keymap.set('n', 'q', '<Cmd>quit<CR>', { buffer = true })
+    end,
+    group = cmdwin,
+  }
+)
+
 vim.opt.virtualedit = 'onemore'
 
 vim.opt.mouse = 'a'
@@ -70,4 +83,3 @@ let g:quickrun_config._ = {
       \ 'outputter/buffer/close_on_empty': 1,
       \ }
 ]]
-
