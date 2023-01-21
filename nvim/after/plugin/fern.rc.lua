@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 vim.g['fern#renderer'] = 'nerdfont'
 
-keymap.set('n', '<Leader>e', '<Cmd>Fern . -reveal=% -drawer -toggle<CR>')
+-- keymap.set('n', '<Leader>e', '<Cmd>Fern . -reveal=% -drawer -toggle<CR>')
 
 function _G.init_fern()
   local opts = { buffer = 0 }

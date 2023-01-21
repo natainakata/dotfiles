@@ -3,7 +3,7 @@ if (not status) then return end
 
 local config = {
   options = {
-    transparent = true,
+    -- transparent = true,
     styles = {
       comments = "italic",
       keywords = "bold",

@@ -25,7 +25,10 @@ jetpack.add {
   -- runtime
   'kyazdani42/nvim-web-devicons',
   'nvim-lua/plenary.nvim',
+  'MunifTanjim/nui.nvim',
   'vim-jp/vimdoc-ja',
+  'rcarriga/nvim-notify',
+  'folke/noice.nvim',
 
   -- colorscheme
   'EdenEast/nightfox.nvim',
@@ -65,12 +68,15 @@ jetpack.add {
   'nvim-telescope/telescope-file-browser.nvim',
   'tami5/sqlite.lua' ,
   'nvim-telescope/telescope-frecency.nvim',
+
+  -- explorer
   --  'kyazdani42/nvim-tree.lua'
   'lambdalisue/fern.vim',
   'lambdalisue/fern-git-status.vim',
   'lambdalisue/nerdfont.vim',
   'lambdalisue/fern-renderer-nerdfont.vim',
   'lambdalisue/fern-hijack.vim',
+  { 'nvim-neo-tree/neo-tree.nvim', branch = 'v2.x' },
 
   -- terminal
   { 'akinsho/toggleterm.nvim', tag = '*' },
@@ -117,4 +123,10 @@ jetpack.add {
 
   -- markdown
   { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, },
+
+  -- startup
+  'goolord/alpha-nvim',
+
+  -- repl
+  'hkupty/iron.nvim',
 }
