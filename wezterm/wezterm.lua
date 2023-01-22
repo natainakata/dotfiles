@@ -12,7 +12,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 
   -- Enumerate any WSL distributions that are installed and add those to the menu
   local success, wsl_list, wsl_err =
-    wezterm.run_child_process { 'wsl.exe', '-l' }
+    wezterm.run_child_process { 'wsl.exe', '-l'}
   -- `wsl.exe -l` has a bug where it always outputs utf16:
   -- https://github.com/microsoft/WSL/issues/4607
   -- So we get to convert it
@@ -65,8 +65,8 @@ return {
   },
   use_ime = true,
   font_size = 14.0,
-  color_scheme = "nightfox",
-  window_background_opacity = 0.8,
+  color_scheme = "nordfox",
+  window_background_opacity = 1.0,
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
   default_prog = { 'pwsh.exe', '-NoLogo' },
