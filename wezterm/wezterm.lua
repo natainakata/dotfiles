@@ -70,7 +70,7 @@ return {
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
   default_prog = { 'pwsh.exe', '-NoLogo' },
-  leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 1000 },
+  leader = { key = '\\', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = default_keybinds,
   launch_menu = launch_menu
 }
