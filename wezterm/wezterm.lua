@@ -66,7 +66,7 @@ return {
   use_ime = true,
   font_size = 14.0,
   color_scheme = "nordfox",
-  window_background_opacity = 1.0,
+  window_background_opacity = 0.8,
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
   default_prog = { 'pwsh.exe', '-NoLogo' },
