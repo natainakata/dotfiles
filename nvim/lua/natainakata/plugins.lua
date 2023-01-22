@@ -28,7 +28,7 @@ jetpack.add {
   'MunifTanjim/nui.nvim',
   'vim-jp/vimdoc-ja',
   'rcarriga/nvim-notify',
-  'folke/noice.nvim',
+  -- 'folke/noice.nvim',
 
   -- colorscheme
   'EdenEast/nightfox.nvim',
