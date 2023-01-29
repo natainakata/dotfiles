@@ -21,3 +21,4 @@ path=(
 )
 
 . "$HOME/.cargo/env"
+

@@ -56,7 +56,30 @@ keymap.set('n', '<Leader>D', ':BufferDeleteSafety<CR>')
 keymap.set('n', 'Z', ':set foldmethod=indent<CR>')
 
 -- fern
-keymap.set('n', '<Leader>e', '<Cmd>Fern . -reveal=% -drawer -toggle<CR>')
+-- keymap.set('n', '<Leader>e', '<Cmd>Fern . -reveal=% -drawer -toggle<CR>')
 
 -- quickrun
 keymap.set('n', '<Leader>R', '<Cmd>QuickRun<CR>')
+
+local mapsgroup = vim.api.nvim_create_augroup('MapsGroup', {
+  clear = true
+})
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = 'quickrun',
+  callback = function ()
+    vim.keymap.set('n', 'q', '<Cmd>quit<CR>', { buffer = true })
+  end,
+  group = mapsgroup
+})
+
+-- cmdwin
+vim.api.nvim_create_autocmd({ 'CmdwinEnter' },
+  {
+    pattern = '*',
+    callback = function ()
+      vim.keymap.set('n', 'q', '<Cmd>quit<CR>', { buffer = true })
+    end,
+    group = mapsgroup,
+  }
+)
