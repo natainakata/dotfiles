@@ -128,7 +128,7 @@ __fzf-git-add() {
   local target_add=$(
     git status -s |
       awk '{ print $2 }' |
-      ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} -m --preview="${__FZF_FILE_PREVIEW_CMD[*]}" --prompt="git add → " |
+      ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} -m --preview="git diff {} | bat --style=numbers --color=always --line-range :100" --prompt="git add → " |
       sed -z "s/\n/ /g"
   )
   if [ -n "$target_add" ]; then
