@@ -15,6 +15,7 @@ if [[ -n ${TMUX-} ]]; then
     '--margin=0,2'
     '--tiebreak=index'
     '--filepath-word'
+    '--ansi'
   )
   export FZF_TMUX_OPTS="-d 15"
   __FZF_CMD="fzf-tmux"
@@ -35,6 +36,7 @@ else
     '--margin=0,2'
     '--tiebreak=index'
     '--filepath-word'
+    '--ansi'
   )
 fi
 
@@ -126,12 +128,11 @@ zle -N __fzf-git-switch
 
 __fzf-git-add() {
   local target_add=$(
-    git status -s |
-      awk '{ print $2 }' |
-      ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} -m --preview="git diff {} | bat --style=numbers --color=always --line-range :100" --prompt="git add → " |
-      sed -z "s/\n/ /g"
+    unbuffer git status -s  |
+      ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} -m --preview="echo {} | awk '{ print \$2 }' | xargs git diff --color | bat --style=numbers " --prompt="git add → " | awk '{ print $2 }'
   )
   if [ -n "$target_add" ]; then
+    target_add=$(tr '\n' ' ' <<< "$target_add")
     local BUFFER="git add $target_add"
     zle accept-line
   fi
