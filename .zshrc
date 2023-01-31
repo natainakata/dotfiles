@@ -7,8 +7,6 @@
 # 
 tput cup $LINES
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 fpath=(~/.zsh/functions/*(N-/) $fpath)
 . $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -104,23 +102,8 @@ if [[ ! -n $TMUX && $- == *l* ]]; then
     :  # Start terminal normally
   fi
 fi
-# if [[ ! -n $ZELLIJ && $- == *l* ]]; then
-#   # get the IDs
-#   ID="`zellij list-sessions`"
-#   if [[ "$ID" = "No active zellij sessions found." ]]; then
-#     zellij
-#   else
-#     create_new_session="Create New Session"
-#     ID="$ID\n${create_new_session}:"
-#     ID="`echo $ID | fzf | cut -d: -f1`"
-#     if [[ "$ID" = "${create_new_session}" ]]; then
-#       zellij
-#     elif [[ -n "$ID" ]]; then
-#       zellij attach "$ID"
-#     else
-#       :  # Start terminal normally
-#     fi
-#   fi
-# fi
-# 
+if [[ -n ${TMUX-} ]]; then
+  export TERM=tmux-256color
+fi
+
 enable-fzf-tab

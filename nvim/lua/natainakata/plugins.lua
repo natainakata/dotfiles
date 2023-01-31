@@ -79,7 +79,7 @@ jetpack.add {
   { 'nvim-neo-tree/neo-tree.nvim', branch = 'v2.x' },
 
   -- terminal
-  { 'akinsho/toggleterm.nvim', tag = '*' },
+  'akinsho/toggleterm.nvim',
 
   -- git support
   'lewis6991/gitsigns.nvim',

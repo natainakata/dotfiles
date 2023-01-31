@@ -1,23 +1,99 @@
+# Sources：https://zenn.dev/yushin_hirano/articles/28e7ea8cd11bc1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # DEFAULT_OPTS
 export FZF_COMPLETION_TRIGGER=','
-typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " " 
-fzf_default_opts=(
-  '--height=70%'
-  '--reverse'
-  '--border'
-  '--inline-info'
-  '--prompt="→ "'
-  '--margin=0,2'
-  '--tiebreak=index'
-  '--filepath-word'
+if [[ -n ${TMUX-} ]]; then
+  typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " " 
+  fzf_default_opts=(
+    '--height=70%'
+    '--reverse'
+    '--inline-info'
+    # '--prompt="→ "'
+    '--margin=0,2'
+    '--tiebreak=index'
+    '--filepath-word'
+  )
+  export FZF_TMUX_OPTS="-p 80%"
+  __FZF_CMD="fzf-tmux"
+  __FZF_CMD_OPTS=(
+      -p
+      80%
+    )
+else
+  __FZF_CMD="fzf"
+  __FZF_CMD_OPTS=()
+  typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " " 
+  fzf_default_opts=(
+    '--height=70%'
+    '--reverse'
+    '--border'
+    '--inline-info'
+    # '--prompt="→ "'
+    '--margin=0,2'
+    '--tiebreak=index'
+    '--filepath-word'
+  )
+fi
+
+export FZF_DEFAULT_COMMAND='fd --tye f --strip-cwd-prefix'
+
+__FZF_FD_FILES_CMD=(
+  fd --type f
+)
+
+__FZF_FD_DIRS_CMD=(
+  fd --type d
+)
+
+__FZF_FD_ALL_OPTS=(
+    --hidden --follow --exclude ".git"
+)
+
+__FZF_FD_ALL_FILES_CMD=(
+    ${__FZF_FD_FILES_CMD[@]}
+    ${__FZF_FD_ALL_OPTS[@]}
+)
+
+__FZF_FD_ALL_DIRS_CMD=(
+    ${__FZF_FD_DIRS_CMD[@]}
+    ${__FZF_FD_ALL_OPTS[@]}
+)
+
+__FZF_DIR_PREVIEW_CMD=(
+    lsd
+    --icon=never
+    --color=always
+    --almost-all
+    '{}'
+    '|'
+    head -n 100
+)
+
+__FZF_FILE_PREVIEW_CMD=(
+    bat
+    --style=numbers
+    --color=always
+    --line-range :100
+    '{}'
 )
 
 # FZF FUNCTIONS
+
+fzcdr() {
+  local selected_dir=$(cdr -l | awk '{ print $2 }' | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="cdr →" --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    local BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+}
+zle -N fzcdr
+
+bindkey "^O" fzcdr
+
 fbr() {
-  local branches branch
-  branches=$(git branch -vv) && 
-    branch=$(echo "$branches" fzf +m) &&
-    git checkout $(echo $"branch" | awk '{print $1}' | sed "s/.* //")
+  local branch=$(git branch -vv | awk '{ print $2 }' | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="branch →" --query "$LBUFFER")
+  git checkout $(echo ${branch} | awk '{ print $1 }' | sed "s/.* //")
 }
 
 fbrm() {
@@ -45,6 +121,15 @@ fcd() {
   cd "$dir"
 }
 
+fhistory() {
+  local BUFFER=$(history -n -r 1 | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="cmd history → " --no-sort +m --query "$LBUFFER")
+  local CURSOR=$#BUFFER
+}
+
+zle -N fhistory
+bindkey '^r' fhistory
+
+
 # dedit() {
 #   local dot
 #   dot=$(fd --full-path -t f -H "$HOME/.dotfiles" | sed 's/ /\\ /g' | fzf --multi --preview="fzf-preview-file {}" ) &&
@@ -52,7 +137,7 @@ fcd() {
 # }
 
 fzf-src() {
-  local src=$(ghq list --full-path | fzf)
+  local src=$(ghq list --full-path | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="src →" +m --query "$LBUFFER")
   if [ -n "$src" ]; then
     BUFFER="cd $src"
     zle accept-line
