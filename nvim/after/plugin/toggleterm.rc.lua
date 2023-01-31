@@ -47,7 +47,7 @@ local lazygit = terminal:new({
 function _G.lazygit_toggle()
   lazygit:toggle()
 end
-keymap.set('n', '<Leader>T', '<cmd>')
+
 keymap.set('n', '<Leader>gl', '<cmd> lua lazygit_toggle()<CR>')
 keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 -- keymap.set('t', '<C-h>', '<Cmd>wincmd h<CR>')
