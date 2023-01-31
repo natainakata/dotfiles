@@ -1,8 +1,0 @@
-- description: fzf path complete file
-  regexp-left: ^(?P<cmd>.*?)\s+(?P<args>\S+\s+)*(?P<query>\S*)$
-  cmd-groups:
-    - stmt: fd --color=always --hidden
-      after: paste -s -d ' ' -
-  fuzzy-finder-cmd: fzf --multi --preview="fzf-preview-check {}" --query=<query> --ansi
-  buffer-left: '<cmd> <args>'
-  buffer-right: '[]'
