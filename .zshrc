@@ -7,10 +7,6 @@
 # 
 tput cup $LINES
 
-fpath=(~/.zsh/functions/*(N-/) $fpath)
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-
 ZINITHOME="$HOME/.zinit"
 ### Added by Zinit's installer
 if [[ ! -f $ZINITHOME/bin/zinit.zsh ]]; then
@@ -77,7 +73,6 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 fi
 
 # eval "$(gh completion -s zsh)"
-autoload -Uz compinit; compinit
 
 # service docker status > /dev/null 2>&1
 # if [ $? = 1 ]; then
@@ -106,4 +101,6 @@ if [[ -n ${TMUX-} ]]; then
   export TERM=tmux-256color
 fi
 
-enable-fzf-tab
+fpath=(~/.zsh/functions/*(N-/) $fpath)
+. $HOME/.asdf/asdf.sh
+

@@ -5,6 +5,6 @@ if [ "$#" -ne 1 ]; then
 elif [ -f "$1" ]; then
   bat --color=always -- "$1"
 elif [ -d "$1" ]; then
-  exa -T -L3 --icons --color=always -- "$1"
+  lsd --icons --color=always -- "$1"
 fi
 
