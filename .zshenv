@@ -1,7 +1,7 @@
 export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
 
-export EDITOR=${commands[nvim]:-"vim"}
+export EDITOR=nvim
 # export PMY_TRIGGER_KEY="^y"
 export ENHANCD_COMMAND=ecd
 export KEYTIMEOUT=1

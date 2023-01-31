@@ -3,8 +3,8 @@
 if [ "$#" -ne 1 ]; then
   return 1
 elif [ -f "$1" ]; then
-  bat --color=always -- "$1"
+  bat --color=always --style=numbers "$1" | head -100
 elif [ -d "$1" ]; then
-  lsd --icons --color=always -- "$1"
+  lsd -A --icon=always --color=never "$1" | head -100
 fi
 

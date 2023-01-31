@@ -82,6 +82,7 @@ __FZF_FILE_PREVIEW_CMD=(
     '{}'
 )
 
+
 export FZF_ALT_C_OPTS="--prompt='dirs > ' --no-multi --preview '${__FZF_DIR_PREVIEW_CMD[*]}'
             --header=$'Press CTRL-A: --hidden --follow, Ctrl-D: default\n\n'
             --bind 'ctrl-d:change-prompt(dirs > )+reload(${__FZF_FD_DIRS_CMD[*]} .)'
@@ -140,13 +141,13 @@ __fzf-git-add() {
 zle -N __fzf-git-add
 
 __fzf-history() {
-  local BUFFER=$(history -n -r 1 | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="cmd history → " --no-sort +m --query "$LBUFFER")
+  local BUFFER=$(history -n -r 1 | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="cmd history → " --no-sort --query "$LBUFFER")
   local CURSOR=$#BUFFER
 }
 zle -N __fzf-history
 
 __fzf-src() {
-  local src=$(ghq list --full-path | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="src → " +m --query "$LBUFFER")
+  local src=$(ghq list --full-path | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="awk { print \$1 '/README.md' } | ${__FZF_FD_FILES_CMD[1,4]}" --prompt="src → " --query "$LBUFFER")
   if [ -n "$src" ]; then
     BUFFER="cd $src"
     zle accept-line
@@ -154,6 +155,15 @@ __fzf-src() {
   zle -R -c
 }
 zle -N __fzf-src
+
+__fzf-edit() {
+files=$(lsd --almost-all | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e {} | awk '{ print substr(\$1, 2) }' | fzf-preview-check {}" --prompt="edit → " -m --query "$LBUFFER")
+  if [ -n "$files" ]; then
+    BUFFER="${EDITOR} ${files[@]}"
+    zle accept-line
+  fi
+}
+zle -N __fzf-edit
 
 __fzf-tmux() {
   ID="`tmux list-sessions`"
@@ -170,17 +180,17 @@ __fzf-tmux() {
 }
 zle -N __fzf-tmux
 
-
 local -A __FZF_COMMANDS
-
 __FZF_COMMANDS=(
   [c]=fzf-cdr
   [b]=fzf-git-switch
   [h]=fzf-history
   [s]=fzf-src
+  [e]=fzf-edit
   [t]=fzf-tmux
   [a]=fzf-git-add
 )
+
 __fzf-aweken() {
   local prefix=${LBUFFER[-1]}
   zle backward-delete-word
