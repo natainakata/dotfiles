@@ -24,8 +24,6 @@ lazy.setup({
   'nvim-lua/popup.nvim',
   'MunifTanjim/nui.nvim',
   'vim-jp/vimdoc-ja',
-  'rcarriga/nvim-notify',
-
   -- colorscheme
   'EdenEast/nightfox.nvim',
   {
@@ -37,6 +35,7 @@ lazy.setup({
     end
   },
   -- ui
+  'rcarriga/nvim-notify',
   'goolord/alpha-nvim',
   'folke/which-key.nvim',
   {
