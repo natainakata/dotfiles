@@ -70,10 +70,11 @@ lazy.setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
-      'hrsh7th/vim-vsnip',
+      'L3MON4D3/LuaSnip',
       'onsails/lspkind-nvim',
     }
   },
+  -- snippet
 
   -- syntax highlight
   { 'nvim-treesitter/nvim-treesitter',
