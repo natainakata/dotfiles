@@ -71,6 +71,7 @@ lazy.setup({
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
       'onsails/lspkind-nvim',
     }
   },
