@@ -16,4 +16,4 @@ if (vim.fn.exists('g:neovide') == 1) then
 end
 
 nightfox.setup(config)
-vim.cmd[[colorscheme nordfox]]
+-- vim.cmd[[colorscheme nordfox]]

@@ -1,4 +1,3 @@
-local fn = vim.fn
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,19 +10,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
--- local jetpackfile = fn.stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
--- local jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
--- if fn.filereadable(jetpackfile) == 0 then
---   fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
---   vim.cmd [[packadd vim-jetpack]]
--- else
---   vim.cmd [[packadd vim-jetpack]]
--- end
--- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
--- if fn.empty(fn.glob(install_path)) > 0 then
---   fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
---   vim.cmd [[packadd packer.nvim]]
--- end
 
 local status, lazy = pcall(require, 'lazy')
 if (not status) then
@@ -33,7 +19,6 @@ end
 
 lazy.setup({
   -- manager
-  -- { 'tani/vim-jetpack', opt = 1 },
   -- runtime
   'nvim-lua/plenary.nvim',
   'nvim-lua/popup.nvim',
@@ -43,9 +28,24 @@ lazy.setup({
 
   -- colorscheme
   'EdenEast/nightfox.nvim',
-  'tanvirtin/monokai.nvim',
-
-  -- statusline
+  {
+    'sainnhe/sonokai',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd[[colorscheme sonokai]]
+    end
+  },
+  -- ui
+  'goolord/alpha-nvim',
+  'folke/which-key.nvim',
+  {
+    'folke/noice.nvim',
+    dependencies = {
+      'rcarriga/nvim-notify',
+      'MunifTanjim/nui.nvim'
+    }
+  },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' }
@@ -66,7 +66,6 @@ lazy.setup({
 
   -- compilation
   { 'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
@@ -101,14 +100,9 @@ lazy.setup({
   },
 
   -- explorer
-  --  'kyazdani42/nvim-tree.lua'
-  -- 'lambdalisue/fern.vim',
-  -- 'lambdalisue/fern-git-status.vim',
-  -- 'lambdalisue/nerdfont.vim',
-  -- 'lambdalisue/fern-renderer-nerdfont.vim',
-  -- 'lambdalisue/fern-hijack.vim',
   { 'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
+    lazy  = true,
     keys = {
       { '<Leader>e', '<Cmd>Neotree<CR>', desc = 'Neotree' }
     }
@@ -120,9 +114,6 @@ lazy.setup({
   -- git support
   'lewis6991/gitsigns.nvim',
   'dinhhuy258/git.nvim',
-
-  -- helper
-  'folke/which-key.nvim',
 
   -- register
   'tversteeg/registers.nvim',
@@ -162,9 +153,6 @@ lazy.setup({
 
   -- markdown
   { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, },
-
-  -- startup
-  'goolord/alpha-nvim',
 
   -- repl
   'hkupty/iron.nvim',
