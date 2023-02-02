@@ -3,42 +3,26 @@
 /.**
 
 ### not ignore ###
-!/.bin/
-!/.bin/**
-!/.zshrc
-!/.zshenv
-!/.p10k.zsh
+!/bin/
+!/bin/**
+!/zshrc
+!/zshenv
 !/starship.toml
-!/.zsh/
-!/.zsh/**
-!/.pmy/
-!/.pmy/**
+!/zsh/
+!/zsh/**
 !/nvim/
 !/nvim/**
 /nvim/plugin/
-!/.tmux.conf
-/.pmy/log.txt
+!/tmux.conf
 !/smug/
 !/smug/**
-!/zellij/
-!/zellij/**
-!/helix/
-!/helix/**
-!/alacritty/
-!/alacritty/**
 !/wezterm/
 !/wezterm/**
-/helix/runtime/
-!/fish/
-!/fish/**
-/fish/fish_variables
-/fish/completions/
-/fish/conf.d/
-/fish/functions/
 
 !/README.md
 !/LICENSE
 !/.gitignore
-!/.gitconfig_shared
+!/gitconfig_shared
+!/tool-versions
 !.keep
 

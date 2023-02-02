@@ -1,0 +1,8 @@
+[user]
+  name = natai
+  email = satzin0521@gmail.com
+[ghq]
+root = ~/src
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com:
