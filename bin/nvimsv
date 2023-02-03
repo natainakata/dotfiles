@@ -28,7 +28,7 @@ class server1(BaseHTTPRequestHandler):
             stdout=PIPE, stderr=PIPE, shell=True)
         try:
             print('Neovim Started!')
-            message = 'nvim address:localhost:{}'.format(port)
+            message = 'NeoVim started! address:localhost:{}'.format(port)
         except subprocess.SubprocessError:
             proc.kill()
             outs, errs = proc.communicate()
@@ -57,7 +57,7 @@ class server1(BaseHTTPRequestHandler):
             stdout=PIPE, stderr=PIPE, shell=True)
         try:
             print('Neovim Started!')
-            message = 'nvim address:localhost:{}'.format(port)
+            message = 'NeoVim started! address:localhost:{}'.format(port)
         except subprocess.SubprocessError:
             proc.kill()
             outs, errs = proc.communicate()
