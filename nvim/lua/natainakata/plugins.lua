@@ -38,13 +38,13 @@ lazy.setup({
   'rcarriga/nvim-notify',
   'goolord/alpha-nvim',
   'folke/which-key.nvim',
-  {
-    'folke/noice.nvim',
-    dependencies = {
-      'rcarriga/nvim-notify',
-      'MunifTanjim/nui.nvim'
-    }
-  },
+  -- {
+  --   'folke/noice.nvim',
+  --   dependencies = {
+  --     'rcarriga/nvim-notify',
+  --     'MunifTanjim/nui.nvim'
+  --   }
+  -- },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' }
