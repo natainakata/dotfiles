@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+import requests
+
+from subprocess import PIPE
+
+url = 'http://localhost:8000'
+
+args = sys.argv
+print(len(args))
+if len(args) > 1:
+    print(args[1])
+    response = requests.post(url, args[1])
+    port = response.text
+    print(port)
+else:
+    response = requests.get(url)
+    port = response.text
+    print(port)
+
+
+print(f'Neovim attach: {port}')
+proc = subprocess.Popen(f'goneovim --server {port}', stdout=PIPE, stderr=PIPE, shell=True)
+proc.communicate()
+print('end')
