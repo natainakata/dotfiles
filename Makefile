@@ -1,5 +1,5 @@
-.PHONY: all
-all: git asdf nvim tmux bin zsh starship
+.PHONY: install
+install: git asdf nvim tmux bin zsh starship
 
 .PHONY: git
 git: 
