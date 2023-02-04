@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+DOT_DIR="$HOME/.dotfiles"
+
+has() {
+  type "$1" > /dev/null 2>&1
+}
+
+if if [ ! -d ${DOT_DIR} ]; then
+  if has "git"; then
+    git clone https://github.com/natainakata/dotfiles.git ${DOT_DIR}
+  else 
+    wget https://github.com/natainakata/dotfiles/tarball/master
+    tar xvf master ${DOT_DIR}/
+  fi
+fi
