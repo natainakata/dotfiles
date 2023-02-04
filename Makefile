@@ -9,11 +9,7 @@ git:
 asdf:
 	ln -snfv ${PWD}/tool-versions ${HOME}/.tool-versions
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
-	. ${HOME}/.asdf/asdf.sh
-	cd ${HOME}
-	cat tool-versions | awk '{print $$1}' | xargs -I X asdf plugin add X
-	asdf install
-
+	
 .PHONY: nvim
 nvim:
 	mkdir -p ${HOME}/.config
