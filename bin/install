@@ -18,8 +18,8 @@ if [ ! -d ${DOT_DIR} ]; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   fi
   make install
-  . ${HOME}/.asdf/asdf.sh
-	cat .tool-versions | awk '{print $1}' | xargs -I X asdf plugin add X
+  . "$HOME/.asdf/asdf.sh"
+	cat "${DOT_DIR}/tool-versions" | awk '{print $1}' | xargs -I X asdf plugin add X
 	asdf install
 
   # if has "zsh"; then
