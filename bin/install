@@ -23,7 +23,12 @@ if [ ! -d ${DOT_DIR} ]; then
     echo "curl or wget or git required"
     exit 1
   fi
-  echo "Run make install"
+  cd ${DOT_DIR}
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  make install
+  if has "zsh"; then
+    zsh
+  fi
 else
   echo "dotfiles already exists"
   exit 1
