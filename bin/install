@@ -19,7 +19,7 @@ if [ ! -d ${DOT_DIR} ]; then
   fi
   make install
   if has "zsh"; then
-    zsh
+    # zsh
   fi
 else
   echo "dotfiles already exists"
