@@ -21,10 +21,6 @@ if [ ! -d ${DOT_DIR} ]; then
   . "$HOME/.asdf/asdf.sh"
 	cat $HOME/.tool-versions | awk '{print $1}' | xargs -I X asdf plugin add X
 	asdf install
-
-  # if has "zsh"; then
-    # zsh
-  # fi
 else
   echo "dotfiles already exists"
   exit 1
