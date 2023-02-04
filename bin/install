@@ -14,7 +14,9 @@ if [ ! -d ${DOT_DIR} ]; then
     exit 1
   fi
   cd ${DOT_DIR}
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  if [ ! -d "$HOME/.cargo/" ]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  fi
   make install
   if has "zsh"; then
     zsh
