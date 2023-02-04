@@ -18,9 +18,9 @@ if [ ! -d ${DOT_DIR} ]; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   fi
   make install
-  if has "zsh"; then
+  # if has "zsh"; then
     # zsh
-  fi
+  # fi
 else
   echo "dotfiles already exists"
   exit 1
