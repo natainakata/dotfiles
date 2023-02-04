@@ -6,7 +6,7 @@ has() {
   type "$1" > /dev/null 2>&1
 }
 
-if if [ ! -d ${DOT_DIR} ]; then
+if [ ! -d ${DOT_DIR} ]; then
   if has "git"; then
     git clone https://github.com/natainakata/dotfiles.git ${DOT_DIR}
   else 
