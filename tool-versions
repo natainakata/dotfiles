@@ -1,3 +1,7 @@
 neovim nightly
 nodejs 19.4.0
-golang 1.19.5
+golang 1.20
+deno 1.30.2
+tmux 3.3a
+github-cli 2.22.1
+python 3.11.1
