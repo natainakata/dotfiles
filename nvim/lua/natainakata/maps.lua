@@ -13,9 +13,6 @@ keymap.set('n', 'U', '<C-r>')
 keymap.set('n', '<Leader>w', ':w<CR>')
 keymap.set('i', 'jj', '<Esc>')
 keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR>')
-keymap.set('n', '+', '<C-a>')
-keymap.set('n', '-', '<C-x>')
-keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- window and buffer
 keymap.set('n', 'gl', ':bnext<CR>')
