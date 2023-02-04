@@ -5,3 +5,4 @@ deno 1.30.2
 tmux 3.3a
 github-cli 2.22.1
 python 3.11.1
+rust 1.67.0
