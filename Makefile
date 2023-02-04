@@ -11,7 +11,7 @@ asdf:
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
 	. ${HOME}/.asdf/asdf.sh
 	cd ${HOME}
- 	cat tool-versions | awk '{print $$1}' | xargs -I@ asdf plugin add @
+	cat tool-versions | awk '{print $$1}' | xargs -I X asdf plugin add X
 	asdf install
 
 .PHONY: nvim
