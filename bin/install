@@ -16,7 +16,7 @@ if [ ! -d ${DOT_DIR} ]; then
     else
       wget ${TARBALL}
     fi
-    tar -zxvf master.tar.gz
+    tar -xvf master.tar.gz
     rm -f master.tar.gz
     mv -f dotfiles-master "${DOT_DIR}"
   else
