@@ -38,10 +38,11 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # rust cil
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
-zinit ice as"program" from"gh-r" mv"exa* -> exa" pick"exa/exa"; zinit light ogham/exa
 zinit ice as"program" from"gh-r" pick"lsd*/lsd"; zinit light Peltoche/lsd
 zinit ice as"program" from"gh-r" mv"hexyl* -> hexyl" pick"hexyl/hexyl"; zinit light sharkdp/hexyl
 zinit ice as"program" from"gh-r" pick"delta*/delta"; zinit light dandavison/delta
+zinit ice as"program" from"gh-r" pick"ripgrep*/rg"; zinit light BurntSushi/ripgrep
+zinit ice atclone"./install"; zinit light junegunn/fzf
 zinit wait'1' lucid \
   from"gh-r" as"program" mv"tealdeer-* -> tldr" pick"tldr" \
   light-mode for @dbrgn/tealdeer
