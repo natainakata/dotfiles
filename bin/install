@@ -19,7 +19,7 @@ if [ ! -d ${DOT_DIR} ]; then
   fi
   make install
   . ${HOME}/.asdf/asdf.sh
-	cat .tool-versions | awk '{print $$1}' | xargs -I X asdf plugin add X
+	cat .tool-versions | awk '{print $1}' | xargs -I X asdf plugin add X
 	asdf install
 
   # if has "zsh"; then
