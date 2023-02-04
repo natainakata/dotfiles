@@ -3,6 +3,7 @@
 /.**
 
 ### not ignore ###
+!/Makefile
 !/bin/
 !/bin/**
 !/zshrc
@@ -22,7 +23,7 @@
 !/README.md
 !/LICENSE
 !/.gitignore
-!/gitconfig_shared
+!/gitconfig
 !/tool-versions
 !.keep
 

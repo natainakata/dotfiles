@@ -14,6 +14,9 @@ alias gcb='git checkout -b'
 alias ghw='gh repo view -w $(ghq list | fzf)'
 alias gp='git push'
 
+# dotfiles
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+
 # shell
 alias l='lsd -l'
 alias la='lsd -a'
