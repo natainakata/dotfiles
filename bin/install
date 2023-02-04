@@ -14,10 +14,9 @@ if [ ! -d ${DOT_DIR} ]; then
     exit 1
   fi
   cd ${DOT_DIR}
-  if [ ! -d "$HOME/.cargo/" ]; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  fi
+
   make install
+
   . "$HOME/.asdf/asdf.sh"
 	cat $HOME/.tool-versions | awk '{print $1}' | xargs -I X asdf plugin add X
 	asdf install
