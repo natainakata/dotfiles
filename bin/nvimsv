@@ -26,14 +26,8 @@ class server1(BaseHTTPRequestHandler):
         proc = subprocess.Popen(
             'nvim --listen localhost:{} --headless'.format(port),
             stdout=PIPE, stderr=PIPE, shell=True)
-        try:
-            print('Neovim Started!\n')
-            message = 'localhost:{}'.format(port)
-        except subprocess.SubprocessError:
-            proc.kill()
-            outs, errs = proc.communicate()
-            print('neovim error: {}'.format(errs))
-            message = 'nvim errored\n'
+        print('Neovim Started!\n')
+        message = 'localhost:{}'.format(port)
         self.wfile.write(message.encode())
 
     def do_POST(self):
@@ -55,14 +49,8 @@ class server1(BaseHTTPRequestHandler):
         proc = subprocess.Popen(
             'nvim --listen localhost:{} --headless {}'.format(port, body),
             stdout=PIPE, stderr=PIPE, shell=True)
-        try:
-            print('Neovim Started!\n')
-            message = 'localhost:{}'.format(port)
-        except subprocess.SubprocessError:
-            proc.kill()
-            outs, errs = proc.communicate()
-            print('neovim error: {}'.format(errs))
-            message = 'nvim errored\n'
+        print('Neovim Started!\n')
+        message = 'localhost:{}'.format(port)
         self.wfile.write(message.encode())
 
 
