@@ -22,5 +22,5 @@ else:
 
 print(f'Neovim attach: {port}')
 proc = subprocess.Popen(f'neovide --remote-tcp {port}', stdout=PIPE, stderr=PIPE, shell=True)
-proc.communicate()
-print('end')
+# proc.communicate()
+# print('end')
