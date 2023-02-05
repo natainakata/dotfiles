@@ -96,6 +96,7 @@ lazy.setup({
       'nvim-telescope/telescope-file-browser.nvim',
       'tami5/sqlite.lua' ,
       'nvim-telescope/telescope-frecency.nvim',
+      'nvim-telescope/telescope-symbols.nvim',
       'kyazdani42/nvim-web-devicons',
     }
   },
