@@ -7,7 +7,7 @@ export EDITOR=nvim
 export ENHANCD_COMMAND=ecd
 export KEYTIMEOUT=1
 
-export GOPATH=~/.go
+# export GOPATH=~/.go
 
 export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
 
@@ -15,11 +15,11 @@ path=(
   ~/.bin
   ~/bin
   ~/.local/bin
-  ~/.deno/bin
-  $GOPATH/bin
+  # ~/.deno/bin
+  # $GOPATH/bin
   $path
-  /usr/local/zig
+  # /usr/local/zig
 )
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
