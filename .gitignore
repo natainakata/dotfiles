@@ -14,6 +14,7 @@
 !/nvim/
 !/nvim/**
 /nvim/plugin/
+/nvim/lazy-lock.json
 !/tmux.conf
 !/smug/
 !/smug/**
