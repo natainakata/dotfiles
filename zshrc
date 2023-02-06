@@ -99,3 +99,4 @@ fi
 fpath=(~/.zsh/functions/*(N-/) $fpath)
 . $HOME/.asdf/asdf.sh
 
+# eval $(/mnt/c/Users/natai/scoop/apps/ssh-agent-wsl/current/ssh-agent-wsl -r)

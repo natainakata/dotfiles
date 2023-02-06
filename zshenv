@@ -18,3 +18,4 @@ path=(
   $path
   # /usr/local/zig
 )
+. "$HOME/.cargo/env"
