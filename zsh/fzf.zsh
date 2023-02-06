@@ -1,5 +1,4 @@
 # Sources：https://zenn.dev/yushin_hirano/articles/28e7ea8cd11bc1
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # DEFAULT_OPTS
 export FZF_COMPLETION_TRIGGER='@@'
@@ -147,7 +146,7 @@ __fzf-history() {
 zle -N __fzf-history
 
 __fzf-src() {
-  local src=$(ghq list --full-path | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="awk { print \$1 '/README.md' } | ${__FZF_FD_FILES_CMD[1,4]}" --prompt="src → " --query "$LBUFFER")
+  local src=$(ghq list --full-path | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo {} | ${__FZF_DIR_PREVIEW_CMD[*]}" --prompt="src → " --query "$LBUFFER")
   if [ -n "$src" ]; then
     BUFFER="cd $src"
     zle accept-line
