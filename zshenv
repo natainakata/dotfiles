@@ -18,5 +18,3 @@ path=(
   $path
   # /usr/local/zig
 )
-
-
