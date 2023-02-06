@@ -25,6 +25,7 @@ vim.opt.wildmode = { 'list', 'longest' }
 
 vim.opt.cmdwinheight = 10
 vim.opt.showtabline = 2
+vim.opt.laststatus = 3
 
 vim.opt.virtualedit = 'onemore'
 
@@ -34,6 +35,11 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.pumblend=10
 vim.opt.winblend=30
 vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
+vim.opt.guifont = { 'HackGen35 Console NF', 'h13', 'n' }
+if vim.g.neovide then
+  vim.g.neovide_cursor_vfx_mode = 'railgun'
+  vim.g.neovide_transparency=0.8
+end
 
 if vim.fn.has('win32') == 1 then
   vim.g.sqlite_clib_path = 'C:/lib/sqlite3.dll'

@@ -6,7 +6,7 @@ local builtin = require('telescope.builtin')
 local configuration = vim.fn['sonokai#get_configuration']()
 local palette = vim.fn['sonokai#get_palette'](configuration.style, configuration.colors_override)
 
-vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = palette.bg2[1], bg = palette.bg2[1] })
+vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = palette.bg2[1], bg = palette.bg2[1] })
 vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = palette.bg4[1], bg = palette.bg4[1] })
 vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = palette.fg[1], bg = palette.bg4[1] })
 vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = palette.red[1], bg = palette.bg4[1] })
@@ -47,6 +47,7 @@ telescope.setup {
     selection_caret = "  ",
     entry_prefix = "  ",
     selection_strategy = "reset",
+    sorting_strategy = "ascending",
     layout_storategy = 'horizontal',
     layout_config = {
       horizontal = {
@@ -65,9 +66,11 @@ telescope.setup {
     file_ignore_patterns = { "node_modules" },
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     path_display = { 'truncate' },
-    border = true,
+    border = {},
+    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+    color_devicons = true,
     set_env = { ["COLORTERM"] = "truecolor" },
-    winblend = 0,
+    winblend = 10,
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,

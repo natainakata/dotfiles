@@ -21,10 +21,10 @@ end
 
 return {
   font = wezterm.font_with_fallback {
-    "HackGenNerd Console",
+    "HackGen35 Console NF",
   },
   use_ime = true,
-  font_size = 14.0,
+  font_size = 13.0,
   color_scheme = "Sonokai (Gogh)",
   window_background_opacity = 0.8,
   adjust_window_size_when_changing_font_size = false,
