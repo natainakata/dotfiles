@@ -9,6 +9,10 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     label = 'PowerShell',
     args = { 'pwsh.exe', '-NoLogo' }
   })
+  table.insert(launch_menu, {
+    label = 'Builtin PowerShell',
+    args = { 'powershell.exe', '-NoLogo' }
+  })
   for idx, domain in ipairs(wezterm.default_wsl_domains()) do
     table.insert(launch_menu, {
       label = domain['name'],
