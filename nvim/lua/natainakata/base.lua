@@ -29,7 +29,7 @@ vim.opt.laststatus = 3
 vim.opt.virtualedit = 'onemore'
 
 vim.opt.mouse = 'a'
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard:append{ 'unnamed', 'unnamedplus' }
 
 vim.opt.pumblend=10
 vim.opt.winblend=30
@@ -48,6 +48,23 @@ if vim.fn.has('win32') == 1 then
   vim.o.shellquote = '"'
   vim.o.shellxquote = ''
 end
+
+vim.cmd[[
+if system('uname -a | grep microsoft') != ''
+  let g:clipboard = {
+  \   'name': 'WslClipboard',
+  \   'copy': {
+  \      '+': 'clip.exe',
+  \      '*': 'clip.exe',
+  \    },
+  \   'paste': {
+  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \   },
+  \   'cache_enabled': 0,
+  \ }
+endif
+]]
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile'}, {
   pattern = '*.lang',

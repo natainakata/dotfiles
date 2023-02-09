@@ -25,13 +25,14 @@ lazy.setup({
   'MunifTanjim/nui.nvim',
   'vim-jp/vimdoc-ja',
   -- colorscheme
+  'echasnovski/mini.nvim',
   'EdenEast/nightfox.nvim',
   {
     'sainnhe/sonokai',
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd[[colorscheme sonokai]]
+    --  vim.cmd[[colorscheme sonokai]]
     end
   },
   -- ui
@@ -133,7 +134,7 @@ lazy.setup({
   'machakann/vim-sandwich',
 
   -- colorizer
-  'norcalli/nvim-colorizer.lua',
+  { 'norcalli/nvim-colorizer.lua', config = function () require('colorizer').setup() end, },
 
   -- editorconfig
   'sgur/vim-editorconfig',

@@ -2,22 +2,23 @@ local status, telescope = pcall(require, 'telescope')
 if (not status) then return end
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
+local sonokai = require('natainakata.base16sonokai').base16_sonokai
 
-local configuration = vim.fn['sonokai#get_configuration']()
-local palette = vim.fn['sonokai#get_palette'](configuration.style, configuration.colors_override)
-
-vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = palette.bg2[1], bg = palette.bg2[1] })
-vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = palette.bg4[1], bg = palette.bg4[1] })
-vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = palette.fg[1], bg = palette.bg4[1] })
-vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = palette.red[1], bg = palette.bg4[1] })
-vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = palette.bg2[1] })
-vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = palette.bg_dim[1], bg = palette.green[1] })
-vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = palette.bg_dim[1], bg = palette.red[1] })
-vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = palette.bg_dim[1], bg = palette.blue[1] })
-vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = palette.fg[1], bg = palette.bg4[1] })
-vim.api.nvim_set_hl(0, 'TelescopeResultsDiffAdd', { fg = palette.green[1] })
-vim.api.nvim_set_hl(0, 'TelescopeResultsDiffChange', { fg = palette.yellow[1] })
-vim.api.nvim_set_hl(0, 'TelescopeResultsDiffDelete', { fg = palette.red[1] })
+-- local configuration = vim.fn['sonokai#get_configuration']()
+-- local palette = vim.fn['sonokai#get_palette'](configuration.style, configuration.colors_override)
+-- 
+vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = sonokai.base08, bg = sonokai.base00 })
+vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = sonokai.base07, bg = sonokai.base02 })
+vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = sonokai.base07, bg = sonokai.base02 })
+vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = sonokai.base08, bg = sonokai.base02 })
+vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = sonokai.base00 })
+vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = sonokai.base01, bg = sonokai.base0B })
+vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = sonokai.base01, bg = sonokai.base08 })
+vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = sonokai.base01, bg = sonokai.base0D })
+vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = sonokai.base05, bg = sonokai.base02 })
+vim.api.nvim_set_hl(0, 'TelescopeResultsDiffAdd', { fg = sonokai.base0B })
+vim.api.nvim_set_hl(0, 'TelescopeResultsDiffChange', { fg = sonokai.base0A })
+vim.api.nvim_set_hl(0, 'TelescopeResultsDiffDelete', { fg = sonokai.base08 })
 
 
 local function telescope_buffer_dir()

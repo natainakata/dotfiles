@@ -31,10 +31,9 @@ zinit ice wait'0' blockf atpull'zinit creinstall -q .'; zinit light zsh-users/zs
 zinit ice wait'0'; zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light ryutok/rust-zsh-completions
 zinit ice pick'cli.zsh'; zinit light sudosubin/zsh-github-cli
-zinit light Aloxaf/fzf-tab
 zinit light chrissicool/zsh-256color
-zinit light b4b4r07/enhancd
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+zinit light chriskempson/base16-shell
 # rust cil
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
@@ -42,7 +41,6 @@ zinit ice as"program" from"gh-r" pick"lsd*/lsd"; zinit light Peltoche/lsd
 zinit ice as"program" from"gh-r" mv"hexyl* -> hexyl" pick"hexyl/hexyl"; zinit light sharkdp/hexyl
 zinit ice as"program" from"gh-r" pick"delta*/delta"; zinit light dandavison/delta
 zinit ice as"program" from"gh-r" pick"ripgrep*/rg"; zinit light BurntSushi/ripgrep
-zinit ice atclone"./install"; zinit light junegunn/fzf
 zinit wait'1' lucid \
   from"gh-r" as"program" mv"tealdeer-* -> tldr" pick"tldr" \
   light-mode for @dbrgn/tealdeer
@@ -55,6 +53,11 @@ zinit ice as"program" from"gh-r" \
   pick"starship*/starship" \
   atload'eval "$(starship init zsh)"'
 zinit light starship/starship
+# fzf
+zinit ice atclone"./install"; zinit light junegunn/fzf
+zinit light Aloxaf/fzf-tab
+zinit light b4b4r07/enhancd
+
 zinit ice as"program" from"gh-r" mv"win32yank* - win32yank" pick"equalsraf/win32yank"; zinit light equalsraf/win32yank
 
 # load rc
@@ -69,15 +72,9 @@ fi
 
 # eval "$(gh completion -s zsh)"
 
-# service docker status > /dev/null 2>&1
-# if [ $? = 1 ]; then
-#     sudo service docker start
-# fi
-
 if [[ ! -n $TMUX && $- == *l* ]]; then
   # get the IDs
   ID="`tmux list-sessions`"
-  # SESSION_TEMPLATE="`ls $HOME/.config/smug | sed -e \"s/\\.yml//g\"`"
   if [[ -z "$ID" ]]; then
     tmux new-session
   fi
@@ -99,4 +96,3 @@ fi
 fpath=(~/.zsh/functions/*(N-/) $fpath)
 . $HOME/.asdf/asdf.sh
 
-# eval $(/mnt/c/Users/natai/scoop/apps/ssh-agent-wsl/current/ssh-agent-wsl -r)
