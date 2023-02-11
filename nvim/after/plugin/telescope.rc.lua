@@ -7,11 +7,11 @@ local sonokai = require('natainakata.base16sonokai').base16_sonokai
 -- local configuration = vim.fn['sonokai#get_configuration']()
 -- local palette = vim.fn['sonokai#get_palette'](configuration.style, configuration.colors_override)
 -- 
-vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = sonokai.base08, bg = sonokai.base00 })
+vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = sonokai.base08, bg = sonokai.base01 })
 vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = sonokai.base07, bg = sonokai.base02 })
 vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = sonokai.base07, bg = sonokai.base02 })
 vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = sonokai.base08, bg = sonokai.base02 })
-vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = sonokai.base00 })
+vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = sonokai.base01 })
 vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = sonokai.base01, bg = sonokai.base0B })
 vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = sonokai.base01, bg = sonokai.base08 })
 vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = sonokai.base01, bg = sonokai.base0D })
