@@ -4,7 +4,7 @@ if (not status) then return end
 mason.setup()
 local nvim_lsp = require 'lspconfig'
 -- LSP handlers
-
+--
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --   vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
 -- )
@@ -73,12 +73,15 @@ require 'mason-lspconfig'.setup_handlers({ function(server)
     opts.settings = {
       Lua = {
         diagnostics = { globals = { 'vim' } },
+        completion = {
+          callSnippet = "Replace"
+        }
       }
     }
   end
 
   end
-    opts.on_attach = function(client, bufnr) 
+    opts.on_attach = function(client, bufnr)
     local opt = { noremap = true, silent = true }
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opt)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', opt)
@@ -97,16 +100,3 @@ require 'mason-lspconfig'.setup_handlers({ function(server)
   )
   nvim_lsp[server].setup(opts)
 end })
-
--- Reference highlight
--- vim.cmd [[
--- set updatetime=500
--- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
--- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
--- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
--- augroup lsp_document_highlight
---   autocmd!
---   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
---   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
--- augroup END
--- ]]
