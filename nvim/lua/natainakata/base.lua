@@ -23,8 +23,9 @@ vim.opt.visualbell = true
 vim.opt.showmatch = true
 vim.opt.wildmode = { 'list', 'longest' }
 
-vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
+vim.opt.cmdheight = 1
+vim.opt.cmdwinheight = 10
 
 vim.opt.virtualedit = 'onemore'
 

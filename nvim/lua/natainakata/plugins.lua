@@ -23,7 +23,7 @@ lazy.setup(
     'nvim-lua/plenary.nvim',
     'nvim-lua/popup.nvim',
     'MunifTanjim/nui.nvim',
-    'vim-jp/vimdoc-ja',
+    -- 'vim-jp/vimdoc-ja',
     { 'folke/neodev.nvim', config = function() require('neodev').setup() end },
     -- colorscheme
     {
@@ -37,15 +37,7 @@ lazy.setup(
     },
     { 'EdenEast/nightfox.nvim', config = function() require('plugins/nightfox') end },
     -- ui
-    {
-      'folke/noice.nvim',
-      dependencies = {
-        { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
-      },
-      config = function()
-        require('noice').setup()
-      end
-    },
+    { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
     { 'goolord/alpha-nvim', config = function() require('plugins/alpha') end },
     {
       'folke/which-key.nvim',
