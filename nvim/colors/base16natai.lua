@@ -1,7 +1,5 @@
-local status, base16 = pcall(require, 'mini.base16')
-if (not status) then return end
-local M = {}
-M.base16_nataigainen = {
+local palette
+palette = {
   base00 = '#242225', -- light background
   base01 = '#342d38', -- background
   base02 = '#b197a0', -- selection
@@ -20,10 +18,13 @@ M.base16_nataigainen = {
   base0F = '#3b4e62', -- tags
 }
 
-base16.setup({
-  palette = M.base16_nataigainen,
-  use_cterm = true,
-  plugins = { default = true },
-})
+if palette then
+  local status, base16 = pcall(require, 'mini.base16')
+  if (not status) then return end
+  base16.setup({
+    palette = palette,
+    use_cterm = true,
+    plugins = { default = true },
+  })
+end
 
-return M

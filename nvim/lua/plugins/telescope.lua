@@ -1,31 +1,28 @@
 local status, telescope = pcall(require, 'telescope')
 if (not status) then return end
 local actions = require('telescope.actions')
-local builtin = require('telescope.builtin')
-local sonokai = require('natainakata.base16sonokai').base16_sonokai
-
--- local configuration = vim.fn['sonokai#get_configuration']()
--- local palette = vim.fn['sonokai#get_palette'](configuration.style, configuration.colors_override)
--- 
-vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = sonokai.base08, bg = sonokai.base01 })
-vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = sonokai.base07, bg = sonokai.base02 })
-vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = sonokai.base07, bg = sonokai.base02 })
-vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = sonokai.base08, bg = sonokai.base02 })
-vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = sonokai.base01 })
-vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = sonokai.base01, bg = sonokai.base0B })
-vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = sonokai.base01, bg = sonokai.base08 })
-vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = sonokai.base01, bg = sonokai.base0D })
-vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = sonokai.base05, bg = sonokai.base02 })
-vim.api.nvim_set_hl(0, 'TelescopeResultsDiffAdd', { fg = sonokai.base0B })
-vim.api.nvim_set_hl(0, 'TelescopeResultsDiffChange', { fg = sonokai.base0A })
-vim.api.nvim_set_hl(0, 'TelescopeResultsDiffDelete', { fg = sonokai.base08 })
-
 
 local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
 
 local fb_actions = require 'telescope'.extensions.file_browser.actions
+
+local palette = _G.MiniBase16.config.palette
+if palette then
+  vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = palette.base08, bg = palette.base01 })
+  vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = palette.base07, bg = palette.base02 })
+  vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = palette.base07, bg = palette.base02 })
+  vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = palette.base08, bg = palette.base02 })
+  vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = palette.base01 })
+  vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = palette.base01, bg = palette.base0B })
+  vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = palette.base01, bg = palette.base08 })
+  vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = palette.base01, bg = palette.base0D })
+  vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = palette.base05, bg = palette.base02 })
+  vim.api.nvim_set_hl(0, 'TelescopeResultsDiffAdd', { fg = palette.base0B })
+  vim.api.nvim_set_hl(0, 'TelescopeResultsDiffChange', { fg = palette.base0A })
+  vim.api.nvim_set_hl(0, 'TelescopeResultsDiffDelete', { fg = palette.base08 })
+end
 
 telescope.setup {
   defaults = {
@@ -100,41 +97,7 @@ telescope.setup {
 }
 
 -- keymaps
-vim.keymap.set('n', '<C-f>',
-  function()
-    builtin.find_files({
-      no_ignore = false,
-      hidden = true
-    })
-  end)
-vim.keymap.set('n', '<Leader>f', function()
-  builtin.find_files({
-    no_ignore = true,
-    hidden = true
-  })
-end)
-vim.keymap.set('n', '<C-p>', function()
-  builtin.commands()
-end)
-vim.keymap.set('n', '<Leader>r', function()
-  builtin.live_grep()
-end)
-vim.keymap.set('n', '<Leader>b', function()
-  builtin.buffers()
-end)
-vim.keymap.set('n', '<Leader>t', function()
-  builtin.help_tags()
-end)
-vim.keymap.set('n', '<Leader><Leader>', function()
-  builtin.resume()
-end)
-vim.keymap.set('n', '<Leader>le', function()
-  builtin.diagnostics()
-end)
-vim.keymap.set('n', '<Leader>o', function()
-  builtin.oldfiles()
-end
-)
+
 
 telescope.load_extension('file_browser')
 telescope.load_extension('frecency')
@@ -154,6 +117,3 @@ end)
 vim.keymap.set('n', '<Leader>O', function()
   telescope.extensions.frecency.frecency()
 end)
-
-
-
