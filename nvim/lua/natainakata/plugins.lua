@@ -92,14 +92,20 @@ lazy.setup(
     -- outline
     {
       'stevearc/aerial.nvim',
+      lazy = true,
+      keys = {
+        { '<Leader>a', '<cmd>AerialToggle!<CR>' }
+      },
       config = function()
         require('aerial').setup({
           on_attach = function(bufnr)
             vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr, silent = true})
             vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr, silent = true})
-          end
+          end,
+          layout = {
+            default_direction = 'float'
+          }
         })
-        vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
       end
     },
 
@@ -182,10 +188,17 @@ lazy.setup(
     'tversteeg/registers.nvim',
 
     -- auto pairs
-    'cohama/lexima.vim',
+    {
+      'windwp/nvim-autopairs',
+      lazy = true,
+      event = 'InsertEnter',
+      config = function()
+        require("nvim-autopairs").setup()
+      end
+    },
 
     -- comment toggle
-    'tpope/vim-commentary',
+    { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
 
     -- easymotion
     { 'phaazon/hop.nvim',
@@ -200,7 +213,17 @@ lazy.setup(
     },
 
     -- surrounds
-    { 'machakann/vim-sandwich', },
+    {
+      'machakann/vim-sandwich',
+      lazy = true,
+      keys = {
+        { 'sa', '<Plug>(sandwich-add)' },
+        { 'sd', '<Plug>(sandwich-delete)' },
+        { 'sdb', '<Plug>(sandwich-delete-auto)' },
+        { 'sr', '<Plug>(sandwich-replace)' },
+        { 'srb', '<Plug>(sandwich-replace-auto)' },
+      }
+    },
 
     -- colorizer
     { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end, },
@@ -223,14 +246,23 @@ lazy.setup(
     -- highlight yank
     'machakann/vim-highlightedyank',
 
-    -- execute
-    'thinca/vim-quickrun',
-
-    -- markdown
+        -- markdown
     { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, },
 
     -- repl
-    'hkupty/iron.nvim',
+    {
+      'hkupty/iron.nvim',
+      lazy = true,
+      keys = {
+        { '<Leader>rs', '<cmd>IronRepl<cr>'},
+        { '<Leader>rr', '<cmd>IronRestart<cr>'},
+        { '<Leader>rf', '<cmd>IronFocus<cr>'},
+        { '<Leader>rh', '<cmd>IronHide<cr>'}
+      },
+      config = function()
+        require('plugins.iron')
+      end
+    },
 
     -- dial
     {
@@ -241,16 +273,7 @@ lazy.setup(
         { '-', '<Plug>(dial-decrement)' },
       },
       config = function()
-        local augend = require("dial.augend")
-        require("dial.config").augends:register_group{
-          -- augends used when group with name `mygroup` is specified
-          default = {
-            augend.integer.alias.decimal,
-            augend.integer.alias.hex,
-            augend.constant.alias.bool,
-            augend.date.alias["%Y/%m/%d"],
-          },
-        }
+        require('plugins.dial')
       end
     }
   }
