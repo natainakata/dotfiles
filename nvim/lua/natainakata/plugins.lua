@@ -16,7 +16,6 @@ if (not status) then
   print("Lazy is not installed")
   return
 end
-
 lazy.setup(
   {
     -- runtime
@@ -232,9 +231,27 @@ lazy.setup(
 
     -- repl
     'hkupty/iron.nvim',
-  },
-  {
-    defaults = {
+
+    -- dial
+    {
+      'monaqa/dial.nvim',
+      lazy = true,
+      keys = {
+        { '+', '<Plug>(dial-increment)' },
+        { '-', '<Plug>(dial-decrement)' },
+      },
+      config = function()
+        local augend = require("dial.augend")
+        require("dial.config").augends:register_group{
+          -- augends used when group with name `mygroup` is specified
+          default = {
+            augend.integer.alias.decimal,
+            augend.integer.alias.hex,
+            augend.constant.alias.bool,
+            augend.date.alias["%Y/%m/%d"],
+          },
+        }
+      end
     }
   }
 )
