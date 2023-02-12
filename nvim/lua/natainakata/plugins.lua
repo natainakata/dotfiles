@@ -38,6 +38,7 @@ lazy.setup(
     { 'EdenEast/nightfox.nvim', config = function() require('plugins/nightfox') end },
     -- ui
     { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
+    { 'folke/noice.nvim', config = function() require('plugins.noice') end },
     { 'goolord/alpha-nvim', config = function() require('plugins/alpha') end },
     {
       'folke/which-key.nvim',
