@@ -13,9 +13,7 @@ keymap.set('n', 'gk', 'k')
 keymap.set('n', 'U', '<C-r>')
 keymap.set('n', '<Leader>w', ':w<CR>', opts)
 keymap.set('i', 'jj', '<Esc>')
-keymap.set('n', ';', ':')
-keymap.set('n', ':', ';')
-    keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
+keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
 
 -- window and buffer
 keymap.set('n', 'gl', ':bnext<CR>', opts)
@@ -54,12 +52,6 @@ keymap.set('n', '<Leader>D', ':BufferDeleteSafety<CR>', opts)
 
 -- fold
 keymap.set('n', 'Z', ':set foldmethod=indent<CR>', opts)
-
--- fern
--- keymap.set('n', '<Leader>e', '<Cmd>Fern . -reveal=% -drawer -toggle<CR>')
-
--- quickrun
--- keymap.set('n', '<Leader>R', '<Cmd>QuickRun<CR>', opts)
 
 local mapsgroup = vim.api.nvim_create_augroup('MapsGroup', {
   clear = true

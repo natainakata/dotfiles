@@ -27,7 +27,6 @@ lazy.setup(
     -- colorscheme
     {
       'echasnovski/mini.nvim',
-      lazy = false,
       config = function()
         require('mini.basics').setup({})
         vim.cmd[[colorscheme base16dracula]]
@@ -36,8 +35,15 @@ lazy.setup(
     },
     { 'EdenEast/nightfox.nvim', config = function() require('plugins/nightfox') end },
     -- ui
-    { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
-    { 'folke/noice.nvim', config = function() require('plugins.noice') end },
+    {
+      'folke/noice.nvim',
+      dependencies = {
+        { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
+      },
+      config = function()
+        require('plugins.noice')
+      end
+    },
     { 'goolord/alpha-nvim', config = function() require('plugins/alpha') end },
     {
       'folke/which-key.nvim',
@@ -63,7 +69,7 @@ lazy.setup(
         require('plugins/bufferline')
       end
     },
-
+    { 'petertriho/nvim-scrollbar', config = function() require('scrollbar').setup() end },
     -- language server
     {
       'williamboman/mason.nvim',
@@ -91,21 +97,13 @@ lazy.setup(
 
     -- outline
     {
-      'stevearc/aerial.nvim',
+      'simrat39/symbols-outline.nvim',
       lazy = true,
       keys = {
-        { '<Leader>a', '<cmd>AerialToggle!<CR>' }
+        { '<Leader>a', '<cmd>SymbolsOutline<CR>'}
       },
-      config = function()
-        require('aerial').setup({
-          on_attach = function(bufnr)
-            vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr, silent = true})
-            vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr, silent = true})
-          end,
-          layout = {
-            default_direction = 'float'
-          }
-        })
+      config = function ()
+        require('symbols-outline').setup()
       end
     },
 
@@ -170,7 +168,16 @@ lazy.setup(
     { 'akinsho/toggleterm.nvim', config = function() require('plugins/toggleterm') end },
 
     -- git support
-    { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end },
+    {
+      'lewis6991/gitsigns.nvim',
+      dependencies = {
+        'petertriho/nvim-scrollbar',
+      },
+      config = function()
+        require('gitsigns').setup()
+        require("scrollbar.handlers.gitsigns").setup()
+      end
+    },
     {
       'dinhhuy258/git.nvim',
       config = function()
@@ -232,7 +239,6 @@ lazy.setup(
     'sgur/vim-editorconfig',
 
     -- scrollbjr
-    'petertriho/nvim-scrollbar',
 
     -- zenscript
     {
@@ -241,7 +247,15 @@ lazy.setup(
     },
 
     -- highlight search
-    { 'kevinhwang91/nvim-hlslens', config = function() require('hlslens').setup() end, },
+    {
+      'kevinhwang91/nvim-hlslens',
+      dependencies = {
+        'petertriho/nvim-scrollbar'
+      },
+      config = function()
+        require('scrollbar.handlers.search').setup()
+      end,
+    },
 
     -- highlight yank
     'machakann/vim-highlightedyank',
