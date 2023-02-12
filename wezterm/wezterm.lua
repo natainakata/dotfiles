@@ -29,7 +29,7 @@ return {
   },
   use_ime = true,
   font_size = 13.0,
-  color_scheme = "Sonokai (Gogh)",
+  color_scheme = "Dracula (base16)",
   window_background_opacity = 0.8,
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
