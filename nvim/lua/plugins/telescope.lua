@@ -1,16 +1,13 @@
 local status, telescope = pcall(require, 'telescope')
 if (not status) then return end
 local actions = require('telescope.actions')
-
-local function telescope_buffer_dir()
-  return vim.fn.expand('%:p:h')
-end
+local builtins = require('telescope.builtin')
 
 local fb_actions = require 'telescope'.extensions.file_browser.actions
 
 local palette = _G.MiniBase16.config.palette
 if palette then
-  vim.api.nvim_set_hl(0, 'TelescopeBorder', {fg = palette.base08, bg = palette.base01 })
+  vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = palette.base08, bg = palette.base01 })
   vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = palette.base07, bg = palette.base02 })
   vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = palette.base07, bg = palette.base02 })
   vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = palette.base08, bg = palette.base02 })
@@ -50,14 +47,14 @@ telescope.setup {
     layout_config = {
       horizontal = {
         prompt_position = 'top',
-        preview_width = 0.55,
-        results_width = 0.8
+        preview_width = 0.5,
+        results_width = 0.6
       },
       vertical = {
         mirror = false
       },
-      width = 0.87,
-      height = 0.80,
+      width = 0.5,
+      height = 0.6,
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -65,7 +62,7 @@ telescope.setup {
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     path_display = { 'truncate' },
     border = {},
-    borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
     set_env = { ["COLORTERM"] = "truecolor" },
     winblend = 10,
@@ -75,9 +72,9 @@ telescope.setup {
   },
   extensions = {
     file_browser = {
-      theme = 'ivy',
+      theme = 'cursor',
       -- disables netrw and use telescope-file-browser in its place
-      hijack_netrw = false,
+      hijack_netrw = true,
       mappings = {
         -- your custom insert mode mappings
         ['i'] = {
@@ -97,21 +94,52 @@ telescope.setup {
 }
 
 -- keymaps
-
+vim.keymap.set('n', '<C-f>', function()
+  builtins.find_files({
+    no_ignore = false,
+    hidden = false
+  })
+end)
+vim.keymap.set('n', '<Leader><C-f>', function()
+  builtins.find_files({
+    no_ignore = true,
+    hidden = true
+  })
+end)
+vim.keymap.set('n', '<C-p>', function()
+  builtins.commands()
+end)
+vim.keymap.set('n', '<Leader>r', function()
+  builtins.live_grep()
+end)
+vim.keymap.set('n', '<Leader>b', function()
+  builtins.buffers()
+end)
+vim.keymap.set('n', '<Leader>t', function()
+  builtins.help_tags()
+end)
+vim.keymap.set('n', '<Leader><Leader>', function()
+  builtins.resume()
+end)
+vim.keymap.set('n', '<Leader>le', function()
+  builtins.diagnostics()
+end)
+vim.keymap.set('n', '<Leader>o', function()
+  builtins.oldfiles()
+end)
 
 telescope.load_extension('file_browser')
 telescope.load_extension('frecency')
-
-vim.keymap.set('n', '<Leader>E', function()
+vim.keymap.set('n', '<Leader>f', function()
   telescope.extensions.file_browser.file_browser({
-    path = '%:p:h',
-    cwd = telescope_buffer_dir(),
+    path = vim.fn.getcwd(),
+    cwd = vim.fn.getcwd(),
     respect_gitignore = false,
     hidden = true,
     grouped = true,
     previewer = false,
     initial_mode = 'normal',
-    layout_config = {height = 0.5 }
+    layout_config = { height = 0.5 }
   })
 end)
 vim.keymap.set('n', '<Leader>O', function()

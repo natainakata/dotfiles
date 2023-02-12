@@ -82,13 +82,26 @@ lazy.setup(
       'glepnir/lspsaga.nvim',
       config = function()
         require('lspsaga').setup()
-        vim.keymap.set('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>')
+        vim.keymap.set('n', '<Leader>lj', '<Cmd>Lspsaga diagnostic_jump_next<CR>')
         vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>')
         vim.keymap.set('n', '<Leader>lf', '<Cmd>Lspsaga lsp_finder<CR>')
-        vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>')
         vim.keymap.set('n', '<Leader>lp', '<Cmd>Lspsaga preview_definition<CR>')
         vim.keymap.set('n', '<F2>', '<Cmd>Lspsaga rename<CR>')
       end,
+    },
+
+    -- outline
+    {
+      'stevearc/aerial.nvim',
+      config = function()
+        require('aerial').setup({
+          on_attach = function(bufnr)
+            vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr, silent = true})
+            vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr, silent = true})
+          end
+        })
+        vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+      end
     },
 
     -- compilation
@@ -128,7 +141,6 @@ lazy.setup(
     -- finder
     {
       'nvim-telescope/telescope.nvim',
-      lazy = true,
       dependencies = {
         'nvim-telescope/telescope-file-browser.nvim',
         'tami5/sqlite.lua' ,
@@ -139,68 +151,11 @@ lazy.setup(
       config = function()
         require('plugins/telescope')
       end,
-      keys = {
-        { '<C-f>',
-          function()
-            require('telescope.builtin').find_files({
-              no_ignore = false,
-              hidden = true
-            })
-          end
-        },
-        { '<Leader>f',
-          function()
-            require('telescope.builtin').find_files({
-              no_ignore = true,
-              hidden = true
-            })
-          end
-        },
-        { '<C-p>',
-          function()
-            require('telescope.builtin').commands()
-          end
-        },
-        { '<Leader>r',
-          function()
-            require('telescope.builtin').live_grep()
-          end
-        },
-        { '<Leader>b',
-          function()
-            require('telescope.builtin').buffers()
-          end
-        },
-        { '<Leader>t',
-          function()
-            require('telescope.builtin').help_tags()
-          end
-        },
-        { '<Leader><Leader>',
-          function()
-            require('telescope.builtin').resume()
-          end
-        },
-        { '<Leader>le',
-          function()
-            require('telescope.builtin').diagnostics()
-          end
-        },
-        { '<Leader>o',
-          function()
-            require('telescope.builtin').oldfiles()
-          end
-        }
-      }
     },
 
     -- explorer
     { 'nvim-neo-tree/neo-tree.nvim',
       branch = 'v2.x',
-      lazy  = true,
-      keys = {
-        { '<Leader>e', '<Cmd>Neotree<CR>', desc = 'Neotree' }
-      },
       config = function()
         require('plugins/neotree')
       end
@@ -246,7 +201,7 @@ lazy.setup(
     },
 
     -- surrounds
-    'machakann/vim-sandwich',
+    { 'machakann/vim-sandwich', },
 
     -- colorizer
     { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end, },
@@ -254,11 +209,14 @@ lazy.setup(
     -- editorconfig
     'sgur/vim-editorconfig',
 
-    -- scrollbar
+    -- scrollbjr
     'petertriho/nvim-scrollbar',
 
     -- zenscript
-    'DaeZak/crafttweaker-vim-highlighting',
+    {
+      'DaeZak/crafttweaker-vim-highlighting',
+      ft = 'crafttweaker',
+    },
 
     -- highlight search
     { 'kevinhwang91/nvim-hlslens', config = function() require('hlslens').setup() end, },
