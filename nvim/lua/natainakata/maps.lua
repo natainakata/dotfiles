@@ -14,6 +14,9 @@ keymap.set('n', 'U', '<C-r>')
 keymap.set('n', '<Leader>w', ':w<CR>', opts)
 keymap.set('i', 'jj', '<Esc>')
 keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR>', opts)
+keymap.set('n', ';', ':')
+keymap.set('n', ':', ';')
+keymap.set('n', 'q:', '<Nop>')
 
 -- window and buffer
 keymap.set('n', 'gl', ':bnext<CR>', opts)
@@ -58,12 +61,12 @@ local mapsgroup = vim.api.nvim_create_augroup('MapsGroup', {
 })
 
 -- cmdwin
-vim.api.nvim_create_autocmd({ 'CmdwinEnter' },
-  {
-    pattern = '*',
-    callback = function ()
-      vim.keymap.set('n', 'q', '<Cmd>quit<CR>', { buffer = true, silent = true })
-    end,
-    group = mapsgroup,
-  }
-)
+-- vim.api.nvim_create_autocmd({ 'CmdwinEnter' },
+--   {
+--     pattern = '*',
+--     callback = function ()
+--       vim.keymap.set('n', 'q', '<Cmd>quit<CR>', { buffer = true, silent = true })
+--     end,
+--     group = mapsgroup,
+--   }
+-- )
