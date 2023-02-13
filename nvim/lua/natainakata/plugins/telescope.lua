@@ -57,8 +57,8 @@ telescope.setup {
       vertical = {
         mirror = false
       },
-      width = 0.5,
-      height = 0.6,
+      width = 0.7,
+      height = 0.8,
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -138,7 +138,7 @@ wk.register({
     function ()
       builtins.diagnostics()
     end, 'LSP Diagnostics'},
-  ['<Leader>o'] = {
+  ['<Leader>r'] = {
     function()
       builtins.oldfiles()
     end, 'Old Files'},

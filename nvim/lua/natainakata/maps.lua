@@ -19,10 +19,10 @@ keymap.set('n', ':', ';')
 keymap.set('n', 'q:', '<Nop>')
 
 -- window and buffer
-keymap.set('n', 'gl', ':bnext<CR>', opts)
-keymap.set('n', 'gh', ':bprevious<CR>', opts)
-keymap.set('n', 'gH', ':blast<CR>', opts)
-keymap.set('n', 'gL', ':bfirst<CR>', opts)
+-- keymap.set('n', 'gl', ':bnext<CR>', opts)
+-- keymap.set('n', 'gh', ':bprevious<CR>', opts)
+-- keymap.set('n', 'gH', ':bfirst<CR>', opts)
+-- keymap.set('n', 'gL', ':blast<CR>', opts)
 keymap.set('n', 'gs', ':split<CR><C-w>w', opts)
 keymap.set('n', 'te', ':tabedit', opts)
 keymap.set('n', 'gv', ':vsplit<CR><C-w>w', opts)
@@ -32,10 +32,10 @@ keymap.set('n', '<C-j>', '<Cmd>wincmd j<CR>', {remap = true})
 keymap.set('n', '<C-k>', '<Cmd>wincmd k<CR>', {remap = true})
 keymap.set('n', '<C-l>', '<Cmd>wincmd l<CR>', {remap = true})
 
-keymap.set('n', '<C-w><left>', '<C-w><', {remap = true})
-keymap.set('n', '<C-w><right>', '<C-w>>', {remap = true})
-keymap.set('n', '<C-w><up>', '<C-w>+', {remap = true})
-keymap.set('n', '<C-w><down>', '<C-w>-', {remap = true})
+keymap.set('n', '<C-Up>', '<Cmd>resize +2<CR>', {remap = true})
+keymap.set('n', '<C-Down>', '<Cmd>resize -2<CR>', {remap = true})
+keymap.set('n', '<C-Left>', '<Cmd>vertical resize -2<CR>', {remap = true})
+keymap.set('n', '<C-Right>', '<Cmd>vertical resize +2<CR>', {remap = true})
 
 vim.api.nvim_create_user_command(
   'BufferDeleteSafety',

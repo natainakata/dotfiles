@@ -16,8 +16,8 @@ if (not status) then
   print("Lazy is not installed")
   return
 end
-lazy.setup(
-  {
+lazy.setup({
+  spec = {
     -- runtime
     'nvim-lua/plenary.nvim',
     'nvim-lua/popup.nvim',
@@ -32,7 +32,7 @@ lazy.setup(
       end,
       priority = 1000,
     },
-    { 'EdenEast/nightfox.nvim', config = function() require('plugins/nightfox') end },
+    { 'EdenEast/nightfox.nvim', config = function() require('natainakata.plugins/nightfox') end },
     -- ui
     {
       'folke/noice.nvim',
@@ -40,12 +40,10 @@ lazy.setup(
         { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
       },
       config = function()
-        if (not vim.g.neovide) then
-          require('plugins.noice')
-        end
+        require('natainakata.plugins.noice')
       end
     },
-    { 'goolord/alpha-nvim', config = function() require('plugins/alpha') end },
+    { 'goolord/alpha-nvim', config = function() require('natainakata.plugins.alpha') end },
     {
       'folke/which-key.nvim',
       config = function()
@@ -60,14 +58,14 @@ lazy.setup(
       'nvim-lualine/lualine.nvim',
       dependencies = { 'kyazdani42/nvim-web-devicons' },
       config = function()
-        require('plugins/lualine')
+        require('natainakata.plugins.lualine')
       end
     },
     {
       'akinsho/nvim-bufferline.lua',
       dependencies = { 'kyazdani42/nvim-web-devicons' },
       config = function()
-        require('plugins/bufferline')
+        require('natainakata.plugins.bufferline')
       end
     },
     { 'petertriho/nvim-scrollbar', config = function() require('scrollbar').setup() end },
@@ -94,12 +92,12 @@ lazy.setup(
             { 'jay-babu/mason-nvim-dap.nvim', config = function() require('mason-nvim-dap').setup() end}
           },
           config = function()
-            require('plugins/dap')
+            require('natainakata.plugins.dap')
           end
         },
       },
       config = function()
-        require('plugins/lsp')
+        require('natainakata.plugins.lsp')
       end
     },
     {
@@ -139,7 +137,7 @@ lazy.setup(
         { 'rafamadriz/friendly-snippets' }
       },
       config = function()
-        require('plugins/cmp')
+        require('natainakata.plugins.cmp')
       end
     },
 
@@ -157,7 +155,7 @@ lazy.setup(
         'nvim-treesitter/nvim-treesitter-textobjects',
       },
       config = function()
-        require('plugins/treesitter')
+        require('natainakata.plugins.treesitter')
       end
     },
     -- finder
@@ -171,7 +169,7 @@ lazy.setup(
         'kyazdani42/nvim-web-devicons',
       },
       config = function()
-        require('plugins/telescope')
+        require('natainakata.plugins.telescope')
       end,
     },
 
@@ -179,12 +177,12 @@ lazy.setup(
     { 'nvim-neo-tree/neo-tree.nvim',
       branch = 'v2.x',
       config = function()
-        require('plugins/neotree')
+        require('natainakata.plugins.neotree')
       end
     },
 
     -- terminal
-    { 'akinsho/toggleterm.nvim', config = function() require('plugins/toggleterm') end },
+    { 'akinsho/toggleterm.nvim', config = function() require('natainakata.plugins/toggleterm') end },
 
     -- git support
     {
@@ -287,13 +285,13 @@ lazy.setup(
       'hkupty/iron.nvim',
       lazy = true,
       keys = {
-        { '<Leader>rs', '<cmd>IronRepl<cr>'},
-        { '<Leader>rr', '<cmd>IronRestart<cr>'},
-        { '<Leader>rf', '<cmd>IronFocus<cr>'},
-        { '<Leader>rh', '<cmd>IronHide<cr>'}
+        { '<Leader>Is', '<cmd>IronRepl<cr>'},
+        { '<Leader>Ir', '<cmd>IronRestart<cr>'},
+        { '<Leader>If', '<cmd>IronFocus<cr>'},
+        { '<Leader>Ih', '<cmd>IronHide<cr>'}
       },
       config = function()
-        require('plugins.iron')
+        require('natainakata.plugins.iron')
       end
     },
 
@@ -306,10 +304,11 @@ lazy.setup(
         { '-', '<Plug>(dial-decrement)' },
       },
       config = function()
-        require('plugins.dial')
+        require('natainakata.plugins.dial')
       end
     }
-  }
-)
+  },
+  checker = { enabled = true },
+})
 
 vim.keymap.set('n', '<Leader>lz', '<Cmd>Lazy log<CR>', { silent = true })
