@@ -51,7 +51,7 @@ lazy.setup(
       config = function()
         require('which-key').setup{
           window = {
-            border = "double",
+            border = "none",
           }
         }
       end,

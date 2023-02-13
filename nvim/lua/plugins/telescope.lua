@@ -4,6 +4,10 @@ local actions = require('telescope.actions')
 local builtins = require('telescope.builtin')
 
 local fb_actions = require 'telescope'.extensions.file_browser.actions
+local wk = require('which-key')
+telescope.load_extension('file_browser')
+telescope.load_extension('frecency')
+
 
 local palette = _G.MiniBase16.config.palette
 if palette then
@@ -94,54 +98,66 @@ telescope.setup {
 }
 
 -- keymaps
-vim.keymap.set('n', '<C-f>', function()
-  builtins.find_files({
-    no_ignore = false,
-    hidden = false
-  })
-end)
-vim.keymap.set('n', '<Leader><C-f>', function()
-  builtins.find_files({
-    no_ignore = true,
-    hidden = true
-  })
-end)
-vim.keymap.set('n', '<C-p>', function()
-  builtins.commands()
-end)
-vim.keymap.set('n', '<Leader>/', function()
-  builtins.live_grep()
-end)
-vim.keymap.set('n', '<Leader>b', function()
-  builtins.buffers()
-end)
-vim.keymap.set('n', '<Leader>?', function()
-  builtins.help_tags()
-end)
-vim.keymap.set('n', '<Leader><Leader>', function()
-  builtins.resume()
-end)
-vim.keymap.set('n', '<Leader>le', function()
-  builtins.diagnostics()
-end)
-vim.keymap.set('n', '<Leader>o', function()
-  builtins.oldfiles()
-end)
+wk.register({
+  ['<C-f>'] = {
+    function()
+      builtins.find_files({
+        no_ignore = false,
+        hidden = false
+      })
+    end, 'Find File'},
+  ['<Leader><C-f>'] = {
+    function()
+      builtins.find_files({
+        no_ignore = true,
+        hidden = true
+      })
+    end, 'Find File (ALL)'},
+  ['<C-p>'] = {
+    function ()
+      builtins.commands()
+    end, 'Command Palette'},
+  ['<C-/>'] = {
+    function ()
+      builtins.live_grep()
+    end, 'Live Grep'},
+  ['<Leader>b'] = {
+    function ()
+      builtins.buffers()
+    end, 'Buffer List'},
+  ['<Leader>?'] = {
+    function ()
+      builtins.help_tags()
+    end, 'Neovim Documents'},
+  ['<Leader><Leader>'] = {
+    function ()
+      builtins.resume()
+    end, 'Telescope Resume'
+  },
+  ['<Leader>le'] = {
+    function ()
+      builtins.diagnostics()
+    end, 'LSP Diagnostics'},
+  ['<Leader>o'] = {
+    function()
+      builtins.oldfiles()
+    end, 'Old Files'},
+  ['<Leader>f'] = {
+    function()
+      telescope.extensions.file_browser.file_browser({
+        path = vim.fn.getcwd(),
+        cwd = vim.fn.getcwd(),
+        respect_gitignore = false,
+        hidden = true,
+        grouped = true,
+        previewer = false,
+        initial_mode = 'normal',
+        layout_config = { height = 0.5 }
+      })
+    end, 'File Browser'},
+  ['<Leader>O'] = {
+    function()
+      telescope.extensions.frecency.frecency()
+    end, 'Frecency'}
+})
 
-telescope.load_extension('file_browser')
-telescope.load_extension('frecency')
-vim.keymap.set('n', '<Leader>f', function()
-  telescope.extensions.file_browser.file_browser({
-    path = vim.fn.getcwd(),
-    cwd = vim.fn.getcwd(),
-    respect_gitignore = false,
-    hidden = true,
-    grouped = true,
-    previewer = false,
-    initial_mode = 'normal',
-    layout_config = { height = 0.5 }
-  })
-end)
-vim.keymap.set('n', '<Leader>O', function()
-  telescope.extensions.frecency.frecency()
-end)
