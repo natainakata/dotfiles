@@ -79,8 +79,24 @@ lazy.setup(
         'williamboman/mason-lspconfig.nvim',
         'folke/trouble.nvim',
         'glepnir/lspsaga.nvim',
-        { 'folke/neodev.nvim', config = function() require('neodev').setup() end },
-        { 'mfussenegger/nvim-dap', dependencies = { { 'rcarriga/nvim-dap-ui', config = function() require('dapui').setup() end } } },
+        {
+          'folke/neodev.nvim',
+          config = function()
+            require('neodev').setup({
+              library = { plugins = { 'nvim-dap-ui' }, types = true},
+            })
+          end
+        },
+        {
+          'mfussenegger/nvim-dap',
+          dependencies = {
+            { 'rcarriga/nvim-dap-ui', config = function() require('dapui').setup() end },
+            { 'jay-babu/mason-nvim-dap.nvim', config = function() require('mason-nvim-dap').setup() end}
+          },
+          config = function()
+            require('plugins/dap')
+          end
+        },
       },
       config = function()
         require('plugins/lsp')
