@@ -5,6 +5,8 @@
 ### not ignore ###
 !/Makefile
 !/base16_sonokai
+!/colors/
+!/colors/**
 !/bin/
 !/bin/**
 !/zshrc

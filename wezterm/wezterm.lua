@@ -23,13 +23,15 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   end
 end
 
+local colors, metadata = wezterm.color.load_base16_scheme('C:/Users/natai/.dotfiles/colors/sonokai.yaml')
 return {
   font = wezterm.font_with_fallback {
     "HackGen35 Console NF",
   },
   use_ime = true,
   font_size = 13.0,
-  color_scheme = "Dracula (base16)",
+  -- color_scheme = "Sonokai (Gogh)",
+  colors = colors,
   window_background_opacity = 0.8,
   adjust_window_size_when_changing_font_size = false,
   -- disable_default_key_bindings = true,
