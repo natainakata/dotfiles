@@ -28,7 +28,7 @@ lazy.setup(
       'echasnovski/mini.nvim',
       config = function()
         require('mini.basics').setup({})
-        vim.cmd[[colorscheme base16dracula]]
+        vim.cmd[[colorscheme base16sonokai]]
       end,
       priority = 1000,
     },
@@ -80,6 +80,7 @@ lazy.setup(
         'folke/trouble.nvim',
         'glepnir/lspsaga.nvim',
         { 'folke/neodev.nvim', config = function() require('neodev').setup() end },
+        { 'mfussenegger/nvim-dap', dependencies = { { 'rcarriga/nvim-dap-ui', config = function() require('dapui').setup() end } } },
       },
       config = function()
         require('plugins/lsp')

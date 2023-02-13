@@ -4,6 +4,7 @@
 
 ### not ignore ###
 !/Makefile
+!/base15_sonokai
 !/bin/
 !/bin/**
 !/zshrc
