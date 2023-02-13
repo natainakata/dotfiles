@@ -11,7 +11,7 @@ ts.setup {
     disable = {},
   },
   ensure_installed = {
-    'bash', 'c', 'cpp', 'cmake', 'css', 'html', 'java', 'javascript', 'go', 'json', 'kotlin', 'lua', 'make', 'pug', 'php', 'markdown', 'python', 'rust', 'scss', 'toml', 'typescript', 'vim', 'vue', 'yaml'
+    'bash', 'c', 'cpp', 'cmake', 'css', 'html', 'java', 'javascript', 'go', 'json', 'kotlin', 'lua', 'make', 'pug', 'php', 'markdown', 'markdown_inline','python', 'rust', 'scss', 'toml', 'typescript', 'vim', 'vue', 'yaml', 
   },
   autotag = {
     enable = true,

@@ -23,7 +23,6 @@ lazy.setup(
     'nvim-lua/popup.nvim',
     'MunifTanjim/nui.nvim',
     -- 'vim-jp/vimdoc-ja',
-    { 'folke/neodev.nvim', config = function() require('neodev').setup() end },
     -- colorscheme
     {
       'echasnovski/mini.nvim',
@@ -41,7 +40,9 @@ lazy.setup(
         { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
       },
       config = function()
-        require('plugins.noice')
+        if (not vim.g.neovide) then
+          require('plugins.noice')
+        end
       end
     },
     { 'goolord/alpha-nvim', config = function() require('plugins/alpha') end },
@@ -78,6 +79,7 @@ lazy.setup(
         'williamboman/mason-lspconfig.nvim',
         'folke/trouble.nvim',
         'glepnir/lspsaga.nvim',
+        { 'folke/neodev.nvim', config = function() require('neodev').setup() end },
       },
       config = function()
         require('plugins/lsp')

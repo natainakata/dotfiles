@@ -69,7 +69,7 @@ require 'mason-lspconfig'.setup_handlers({ function(server)
     }
   end
 
-  if server == "sumneko_lua" then
+  if server == "lua_ls" then
     opts.settings = {
       Lua = {
         diagnostics = { globals = { 'vim' } },
