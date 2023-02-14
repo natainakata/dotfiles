@@ -18,8 +18,11 @@
 !/powershell/**
 !/nvim/
 !/nvim/**
+!/lazyvim/
+!/lazyvim/**
 /nvim/plugin/
 /nvim/lazy-lock.json
+/lazyvim/lazy-lock.json
 !/tmux.conf
 !/wezterm/
 !/wezterm/**
