@@ -37,7 +37,9 @@ lazy.setup({
     {
       'folke/noice.nvim',
       dependencies = {
-        { 'rcarriga/nvim-notify', config = function() require('notify').setup() end },
+        { 'rcarriga/nvim-notify', config = function()
+          require('notify').setup()
+        end },
       },
       config = function()
         require('natainakata.plugins.noice')

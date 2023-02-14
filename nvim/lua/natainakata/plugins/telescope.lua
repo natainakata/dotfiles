@@ -8,21 +8,25 @@ local wk = require('which-key')
 telescope.load_extension('file_browser')
 telescope.load_extension('frecency')
 
-
 local palette = _G.MiniBase16.config.palette
 if palette then
-  vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = palette.base08, bg = palette.base01 })
-  vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = palette.base07, bg = palette.base02 })
-  vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = palette.base07, bg = palette.base02 })
-  vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = palette.base08, bg = palette.base02 })
-  vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = palette.base01 })
-  vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = palette.base01, bg = palette.base0B })
-  vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = palette.base01, bg = palette.base08 })
-  vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = palette.base01, bg = palette.base0D })
-  vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = palette.base05, bg = palette.base02 })
-  vim.api.nvim_set_hl(0, 'TelescopeResultsDiffAdd', { fg = palette.base0B })
-  vim.api.nvim_set_hl(0, 'TelescopeResultsDiffChange', { fg = palette.base0A })
-  vim.api.nvim_set_hl(0, 'TelescopeResultsDiffDelete', { fg = palette.base08 })
+  local telescopePalette = {
+    TelescopeBorder = { fg = palette.base01, bg = palette.base01 },
+    TelescopePromptBorder = { fg = palette.base02, bg = palette.base02 },
+    TelescopePromptNormal = { fg = palette.base07, bg = palette.base02 },
+    TelescopePromptPrefix = { fg = palette.base08, bg = palette.base02 },
+    TelescopeNormal = { bg = palette.base01 },
+    TelescopePreviewTitle = { fg = palette.base01, bg = palette.base0B },
+    TelescopePromptTitle = { fg = palette.base01, bg = palette.base08 },
+    TelescopeResultsTitle = { fg = palette.base01, bg = palette.base0D },
+    TelescopeSelection = { fg = palette.base05, bg = palette.base02 },
+    TelescopeResultsDiffAdd = { fg = palette.base0B },
+    TelescopeResultsDiffChange = { fg = palette.base0A },
+    TelescopeResultsDiffDelete = { fg = palette.base08 },
+  }
+  for hl, col in pairs(telescopePalette) do
+    vim.api.nvim_set_hl(0, hl, col)
+  end
 end
 
 telescope.setup {
@@ -69,10 +73,14 @@ telescope.setup {
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
     set_env = { ["COLORTERM"] = "truecolor" },
-    winblend = 20,
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+  },
+  pickers = {
+    find_files = {
+      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+    }
   },
   extensions = {
     file_browser = {

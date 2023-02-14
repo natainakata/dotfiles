@@ -23,7 +23,7 @@ if palette then
   if (not status) then return end
   base16.setup({
     palette = palette,
-    use_cterm = true,
+    use_cterm = false,
     plugins = { default = true },
   })
 end
