@@ -32,7 +32,7 @@ return {
 		"HackGen35 Console NF",
 	}),
 	use_ime = true,
-	font_size = 13.0,
+	font_size = 16.0,
 	-- color_scheme = "Sonokai (Gogh)",
 	colors = colors,
 	window_background_opacity = 1.0,
