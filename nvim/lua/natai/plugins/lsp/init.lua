@@ -13,7 +13,7 @@ return {
       diagnostics = {
         underline = true,
         update_in_insert = false,
-        virtual_text = { spacing = 4, prefix = "" },
+        virtual_text = { spacing = 4, prefix = "⦿" },
         severity_sort = true,
       },
       update_in_insert = true,
@@ -45,6 +45,10 @@ return {
       require("natai.utils").on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
       end)
+      for name, icon in pairs(require('natai.options').icons.diagnostics) do
+        name = "DiagnosticSign" .. name
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = ""})
+      end
       local servers = opts.servers
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       local function setup(server)

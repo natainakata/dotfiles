@@ -38,7 +38,13 @@ return {
           ghost_text = true,
         },
         formatting = {
-          format = require("lspkind").cmp_format({ with_text = false, maxwidth = 50 }),
+          format = function(_, item)
+            local icons = require('natai.options').icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] ..  item.kind
+            end
+            return item
+          end,
         },
       }
     end,
