@@ -30,9 +30,8 @@ return {
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
-
       local maps = {
-        ["<C-l>"] = cmp.mapping.complete({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -51,7 +50,8 @@ return {
         end, { "i", "s" }),
       }
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
-      opts.mapping = cmp.mapping.preset.insert(vim.list_extend(opts.mapping, maps))
+      opts.mapping = cmp.mapping.preset.insert(vim.tbl_deep_extend("force", opts.mapping, maps))
+      opts.completion.completeopt = "menu,menuone,noinsert,noselect"
     end,
   },
   {

@@ -1,3 +1,4 @@
-require('natainakata.base')
-require('natainakata.maps')
-require('natainakata.plugins')
+require("natai.options")
+require("natai.keymaps")
+require("natai.lazy")
+vim.cmd.colorscheme("base16sonokai")

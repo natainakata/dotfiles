@@ -18,6 +18,11 @@ keymap.set("n", "<Esc><Esc>", ":nohlsearch<CR>", opts)
 keymap.set("n", "<Leader>qq", "<Cmd>qa<cr>", opts)
 
 -- window and buffer
+--
+keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>")
+keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>")
+keymap.set("n", "<S-h>", "<Cmd>BufferLineCyclePrev<CR>")
+keymap.set("n", "<S-l>", "<Cmd>BufferLineCycleNext<CR>")
 keymap.set("n", "gs", "<Cmd>split<CR><C-w>w", opts)
 keymap.set("n", "gv", "<Cmd>vsplit<CR><C-w>w", opts)
 
@@ -37,13 +42,13 @@ keymap.set("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { remap = true })
 keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { remap = true })
 
 vim.api.nvim_create_user_command("BufferDeleteSafety", function()
-	if vim.fn["input"]("delete buffer? (y/N): ") == "y" then
-		vim.cmd([[
+  if vim.fn["input"]("delete buffer? (y/N): ") == "y" then
+    vim.cmd([[
         redraw
         bdelete!
       ]])
-		print("delete buffer!")
-	end
+    print("delete buffer!")
+  end
 end, { nargs = 0 })
 
 keymap.set("n", "<Leader>D", ":BufferDeleteSafety<CR>", opts)
@@ -52,29 +57,29 @@ keymap.set("n", "<Leader>D", ":BufferDeleteSafety<CR>", opts)
 keymap.set("n", "Z", ":set foldmethod=indent<CR>", opts)
 
 local mapsgroup = vim.api.nvim_create_augroup("MapsGroup", {
-	clear = true,
+  clear = true,
 })
 
 -- cmdwin
 vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
-	pattern = "*",
-	callback = function()
-		vim.keymap.set("n", "q", "<Cmd>quit<CR>", { buffer = true, silent = true })
-	end,
-	group = mapsgroup,
+  pattern = "*",
+  callback = function()
+    vim.keymap.set("n", "q", "<Cmd>quit<CR>", { buffer = true, silent = true })
+  end,
+  group = mapsgroup,
 })
 
 local function reloadConfig()
-	for name, _ in pairs(package.loaded) do
-		if name:match("^natainakata") then
-			package.loaded[name] = nil
-		end
-	end
+  for name, _ in pairs(package.loaded) do
+    if name:match("^natainakata") then
+      package.loaded[name] = nil
+    end
+  end
 
-	dofile(vim.env.MYVIMRC)
-	vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+  dofile(vim.env.MYVIMRC)
+  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
 end
 
 vim.keymap.set("n", "<Leader>R", function()
-	reloadConfig()
+  reloadConfig()
 end)
