@@ -28,7 +28,7 @@ end
 local colors, metadata = wezterm.color.load_base16_scheme("C:/Users/natai/.dotfiles/colors/sonokai.yaml")
 return {
 	font = wezterm.font_with_fallback({
-		"FiraCode NF",
+    "FiraCode NF",
 		"HackGen35 Console NF",
 	}),
 	use_ime = true,

@@ -173,7 +173,7 @@ return {
     end,
     keys = {
       {
-        "<leader><leader>",
+        "<leader>f",
         function()
           require("telescope").extensions.file_browser.file_browser({
             path = vim.fn.getcwd(),
