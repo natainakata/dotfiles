@@ -36,7 +36,7 @@ vim.opt.pumblend=10
 vim.opt.winblend=30
 vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
 
-vim.opt.guifont = { 'HackGen35 Console NF', 'h13', 'n' }
+vim.opt.guifont = { 'HackGen35 Console NF', 'h16', 'b' }
 if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = 'railgun'
   vim.g.neovide_transparency = 0.8
