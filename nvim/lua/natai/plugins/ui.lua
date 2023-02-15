@@ -4,9 +4,7 @@ return {
     dependencies = {
       {
         "rcarriga/nvim-notify",
-        config = function()
-          require("notify").setup()
-        end,
+        config = true,
       },
     },
     config = function()
@@ -101,9 +99,7 @@ return {
   },
   {
     "petertriho/nvim-scrollbar",
-    config = function()
-      require("scrollbar").setup()
-    end,
+    config = true,
   },
   {
     "kevinhwang91/nvim-hlslens",
@@ -126,9 +122,7 @@ return {
   },
   {
     "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
-    end,
+    config = true,
   },
   "machakann/vim-highlightedyank",
 }

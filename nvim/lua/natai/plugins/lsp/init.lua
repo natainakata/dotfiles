@@ -7,6 +7,7 @@ return {
       "folke/trouble.nvim",
       "glepnir/lspsaga.nvim",
       "folke/neodev.nvim",
+      "onsails/lspkind.nvim",
     },
     opts = {
       diagnostics = {

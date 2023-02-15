@@ -125,15 +125,11 @@ return {
     "windwp/nvim-autopairs",
     lazy = true,
     event = "InsertEnter",
-    config = function()
-      require("nvim-autopairs").setup()
-    end,
+    config = true,
   },
   {
     "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
+    config = true,
   },
   {
     "DaeZak/crafttweaker-vim-highlighting",

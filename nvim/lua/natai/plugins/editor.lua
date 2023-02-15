@@ -66,9 +66,11 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     lazy = true,
+    cmd = "SymbolsOutline",
     keys = {
       { "<Leader>o", "<cmd>SymbolsOutline<CR>" },
     },
+    config = true,
   },
   {
     "dinhhuy258/git.nvim",
@@ -83,9 +85,7 @@ return {
   },
   {
     "phaazon/hop.nvim",
-    config = function()
-      require("hop").setup()
-    end,
+    config = true,
     keys = {
       { "<Leader>h", ":<C-u>HopWord<CR>", silent = true },
       { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true },
