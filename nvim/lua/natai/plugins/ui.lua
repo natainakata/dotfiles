@@ -1,5 +1,7 @@
 return {
-  { "rcarriga/nvim-notify", config = true },
+  { "rcarriga/nvim-notify", opts = {
+      background_colour = "#37343a"
+  } },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
