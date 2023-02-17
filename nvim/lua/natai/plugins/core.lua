@@ -6,4 +6,12 @@ return {
   { "MunifTanjim/nui.nvim", lazy = true },
   {"kyazdani42/nvim-web-devicons", lazy = true},
   { "vim-jp/vimdoc-ja" },
+  {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime",
+    config = function()
+      vim.g.startuptime_tries = 30
+    end,
+  },
+
 }

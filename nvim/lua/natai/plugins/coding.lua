@@ -1,6 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    lazy = true,
     version = false,
     event = "InsertEnter",
     dependencies = {
@@ -10,7 +11,6 @@ return {
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
     },
     opts = function()
       local cmp = require("cmp")
@@ -39,7 +39,7 @@ return {
         },
         formatting = {
           format = function(_, item)
-            local icons = require('natai.options').icons.kinds
+            local icons = require('natai.icons').icons.kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] ..  item.kind
             end
@@ -51,6 +51,7 @@ return {
   },
   {
     "L3MON4D3/LuaSnip",
+    lazy = true,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -76,6 +77,7 @@ return {
   },
   {
     "hrsh7th/cmp-cmdline",
+    lazy = true,
     config = function()
       local cmp = require("cmp")
       cmp.setup.cmdline("/", {
@@ -135,10 +137,13 @@ return {
   },
   {
     "numToStr/Comment.nvim",
+    lazy = true,
+    event = "BufEnter",
     config = true,
   },
   {
     "DaeZak/crafttweaker-vim-highlighting",
+    lazy = true,
     ft = "crafttweaker",
   },
 }

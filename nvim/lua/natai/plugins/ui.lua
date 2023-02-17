@@ -1,20 +1,44 @@
 return {
   {
     "folke/noice.nvim",
+    event = "VeryLazy",
     dependencies = {
       {
         "rcarriga/nvim-notify",
         config = true,
       },
     },
-    config = function()
-      if not vim.g.neovide then
-        require("noice").setup()
+    enabled = function ()
+      if vim.fn.exists("g:neovide") == 1 then
+        return false
       end
+      return true
     end,
+    opts = {
+      lsp = {
+         override = {
+           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+           ["vim.lsp.util.stylize_markdown"] = true,
+         },
+       },
+       presets = {
+         bottom_search = true,
+         command_palette = true,
+         long_message_to_split = true,
+       },
+    },
+    keys = {
+      { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+      { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+      { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
+      { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
+      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward", mode = {"i", "n", "s"} },
+      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
+    }
   },
   {
     "goolord/alpha-nvim",
+    event = "VimEnter",
     config = function()
       local dashboard = require("alpha.themes.dashboard")
       dashboard.section.buttons.val = {
@@ -28,6 +52,7 @@ return {
   },
   {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     config = function()
       require("which-key").setup({
         window = {
@@ -38,6 +63,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     opts = {
       options = {
@@ -86,6 +112,7 @@ return {
   },
   {
     "akinsho/nvim-bufferline.lua",
+    event = "VeryLazy",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     opts = {
       options = {
@@ -99,10 +126,12 @@ return {
   },
   {
     "petertriho/nvim-scrollbar",
+    event = "VeryLazy",
     config = true,
   },
   {
     "kevinhwang91/nvim-hlslens",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "petertriho/nvim-scrollbar",
     },
@@ -112,6 +141,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "petertriho/nvim-scrollbar",
     },
@@ -122,7 +152,7 @@ return {
   },
   {
     "norcalli/nvim-colorizer.lua",
+    event = { "BufReadPre", "BufNewFile" },
     config = true,
   },
-  "machakann/vim-highlightedyank",
 }

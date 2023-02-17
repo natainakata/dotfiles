@@ -1,13 +1,13 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "folke/trouble.nvim",
       "glepnir/lspsaga.nvim",
-      "folke/neodev.nvim",
-      "onsails/lspkind.nvim",
+      {"folke/neodev.nvim", opts = { experimental = { pathStrict = true }},},
     },
     opts = {
       diagnostics = {
@@ -31,7 +31,6 @@ return {
         lua_ls = {
           settings = {
             Lua = {
-              diagnostics = { globals = { "vim" } },
               completion = {
                 callSnippet = "Replace",
               },
@@ -45,7 +44,7 @@ return {
       require("natai.utils").on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
       end)
-      for name, icon in pairs(require('natai.options').icons.diagnostics) do
+      for name, icon in pairs(require('natai.icons').icons.diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = ""})
       end
@@ -198,13 +197,5 @@ return {
       { "K", "<Cmd>Lspsaga hover_doc<CR>", desc = "Hover Document" },
       { "<F2>", "<Cmd>Lspsaga rename<CR>", desc = "Rename" },
     },
-  },
-  {
-    "folke/neodev.nvim",
-    config = function()
-      require("neodev").setup({
-        library = { plugins = { "nvim-dap-ui" }, types = true },
-      })
-    end,
   },
 }

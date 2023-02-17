@@ -2,6 +2,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
+    cmd = "Neotree",
     keys = {
       { "<leader>e", "<Cmd>Neotree<CR>", desc = "Neotree" },
     },
@@ -72,17 +73,17 @@ return {
     },
     config = true,
   },
-  {
-    "dinhhuy258/git.nvim",
-    opts = {
-      keymaps = {
-        -- Open blame window
-        blame = "<Leader>gb",
-        -- Open file/folder in git repository
-        browse = "<Leader>go",
-      },
-    },
-  },
+  -- {
+  --   "dinhhuy258/git.nvim",
+  --   opts = {
+  --     keymaps = {
+  --       -- Open blame window
+  --       blame = "<Leader>gb",
+  --       -- Open file/folder in git repository
+  --       browse = "<Leader>go",
+  --     },
+  --   },
+  -- },
   {
     "phaazon/hop.nvim",
     config = true,
