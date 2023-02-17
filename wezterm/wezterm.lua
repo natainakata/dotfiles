@@ -25,7 +25,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	end
 end
 
-local colors, metadata = wezterm.color.load_base16_scheme("C:/Users/natai/.dotfiles/colors/sonokai.yaml")
+local colors, metadata = wezterm.color.load_base16_scheme("C:/Users/natai/.config/colors/sonokai.yaml")
 return {
 	font = wezterm.font_with_fallback({
     "FiraCode NF",

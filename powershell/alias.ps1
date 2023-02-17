@@ -13,4 +13,4 @@ if (Get-Command lsd) {
   function lt() { lsd --tree }
 }
 
-function nvde() { neovide --multigrid $args }
+function nvde() { neovide --multigrid --wsl $args }
