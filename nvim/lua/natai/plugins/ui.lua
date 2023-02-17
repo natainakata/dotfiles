@@ -1,15 +1,11 @@
 return {
+  { "rcarriga/nvim-notify", config = true },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    dependencies = {
-      {
-        "rcarriga/nvim-notify",
-        config = true,
-      },
-    },
+    dependencies = "rcarriga/nvim-notify",
     enabled = function ()
-      if vim.fn.exists("g:neovide") == 1 then
+      if vim.g.neovide then
         return false
       end
       return true

@@ -1,5 +1,3 @@
-vim.cmd[[autocmd!]]
-
 local M = {}
 M.icons = {
   diagnostics = {

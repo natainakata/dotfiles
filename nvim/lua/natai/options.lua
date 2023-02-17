@@ -1,38 +1,42 @@
 local indent = 2
+local opt = vim.opt
 
-vim.opt.fenc = 'utf-8'
-vim.opt.backup = false
-vim.opt.swapfile = false
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.tabstop = indent
-vim.opt.shiftwidth = indent
+opt.fenc = 'utf-8'
+opt.backup = false
+opt.swapfile = false
 
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.smartcase = true
-vim.opt.wrapscan = true
-vim.opt.number = true
-vim.opt.termguicolors = true
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
-vim.opt.visualbell = true
-vim.opt.showmatch = true
-vim.opt.wildmode = { 'list', 'longest' }
+opt.expandtab = true
+opt.smartindent = true
+opt.tabstop = indent
+opt.shiftwidth = indent
 
-vim.opt.laststatus = 3
-vim.opt.cmdheight = 1
-vim.opt.cmdwinheight = 10
+opt.hlsearch = true
+opt.incsearch = true
+opt.smartcase = true
+opt.wrapscan = true
+opt.number = true
+opt.termguicolors = true
+opt.cursorline = true
+opt.cursorcolumn = true
+opt.visualbell = true
+opt.showmatch = true
+opt.wildmode = { 'list', 'longest' }
 
-vim.opt.virtualedit = 'onemore'
+opt.laststatus = 3
+opt.cmdheight = 0
+opt.cmdwinheight = 10
 
-vim.opt.mouse = 'a'
-vim.opt.clipboard:append{ 'unnamed', 'unnamedplus' }
+opt.virtualedit = 'onemore'
 
-vim.opt.pumblend=10
-vim.opt.winblend=30
-vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
+opt.mouse = 'a'
+opt.clipboard:append{ 'unnamed', 'unnamedplus' }
+
+opt.pumblend=10
+opt.winblend=30
+opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
 
 vim.opt.guifont = { 'HackGen35 Console NF', 'h16', 'b' }
 if vim.g.neovide then
