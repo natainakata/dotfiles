@@ -1,7 +1,16 @@
 return {
   {
     "akinsho/toggleterm.nvim",
+    keys = {
+      { "<C-\\>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal"},
+    },
     config = function()
+      if vim.loop.os_uname().sysname == "Windows_NT" then
+        vim.o.shell = 'pwsh.exe'
+        vim.o.shellcmdflag = '-NoLogo -c'
+        vim.o.shellquote = '"'
+        vim.o.shellxquote = ''
+      end
       local toggleterm = require('toggleterm')
       toggleterm.setup({
         -- size can be a number or function which is passed the current terminal
@@ -48,6 +57,7 @@ return {
         lazygit:toggle()
       end
       vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+      
     end,
   },
 }

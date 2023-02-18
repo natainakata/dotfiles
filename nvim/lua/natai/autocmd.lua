@@ -32,3 +32,9 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
     vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
   end,
 })
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile'}, {
+  pattern = '*.lang',
+  command = 'set filetype=mclang',
+})
+

@@ -44,33 +44,33 @@ if vim.g.neovide then
   vim.g.neovide_transparency = 0.8
 end
 
-if vim.fn.has('win32') == 1 then
-  vim.g.sqlite_clib_path = 'C:/lib/sqlite3.dll'
-  vim.o.shell = 'pwsh.exe'
-  vim.o.shellcmdflag = '-NoLogo -c'
-  vim.o.shellquote = '"'
-  vim.o.shellxquote = ''
+if vim.loop.os_uname().sysname == 'Linux' then
+  if vim.fn.system('uname -a | grep microsoft') then
+    vim.g.clipboard = {
+      name = "WslClipboard",
+      copy = {
+        ['+']  = 'win32yank.exe -i',
+        ['*']  = 'win32yank.exe -i',
+      },
+      paste = {
+        ['+']  = 'win32yank.exe -o',
+        ['*']  = 'win32yank.exe -o',
+      },
+      cache_enabled = 1,
+    }
+    --vim.cmd([[
+    --  let g:clipboard = {
+    --    \   'name': 'WslClipboard',
+    --    \   'copy': {
+    --    \      '+': 'clip.exe',
+    --    \      '*': 'clip.exe',
+    --    \    },
+    --    \   'paste': {
+    --    \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    --    \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    --    \   },
+    --    \   'cache_enabled': 0,
+    --    \ }
+    --  ]])
+  end
 end
-
-vim.cmd[[
-if system('uname -a | grep microsoft') != ''
-  let g:clipboard = {
-  \   'name': 'WslClipboard',
-  \   'copy': {
-  \      '+': 'clip.exe',
-  \      '*': 'clip.exe',
-  \    },
-  \   'paste': {
-  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  \   },
-  \   'cache_enabled': 0,
-  \ }
-endif
-]]
-
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile'}, {
-  pattern = '*.lang',
-  command = 'set filetype=mclang',
-})
-
