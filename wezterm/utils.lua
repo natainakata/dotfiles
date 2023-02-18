@@ -36,4 +36,22 @@ function M.convert_home_dir(path)
 	return cwd
 end
 
+function M.day_of_week_ja(w_num)
+  if w_num == 1 then
+    return "日"
+  elseif w_num == 2 then
+    return "月"
+  elseif w_num == 3 then
+    return "火"
+  elseif w_num == 4 then
+    return '水'
+  elseif w_num == 5 then
+    return '木'
+  elseif w_num == 6 then
+    return '金'
+  elseif w_num == 7 then
+    return '土'
+  end
+end
+
 return M
