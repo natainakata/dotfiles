@@ -10,6 +10,7 @@ return {
       filesystem = {
         hijack_netrw_behavior = "open_default",
       },
+      close_if_last_window = true,
     },
   },
   {
@@ -69,7 +70,7 @@ return {
     lazy = true,
     cmd = "SymbolsOutline",
     keys = {
-      { "<Leader>o", "<cmd>SymbolsOutline<CR>" },
+      { "<Leader>o", "<cmd>SymbolsOutline<CR>", desc = "Outline List" },
     },
     config = true,
   },
@@ -88,9 +89,9 @@ return {
     "phaazon/hop.nvim",
     config = true,
     keys = {
-      { "<Leader>h", ":<C-u>HopWord<CR>", silent = true },
-      { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true },
-      { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true },
+      { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word"},
+      { "<Leader>H", ":<C-u>HopPattern<CR>", silent = tru, desc = "Hop Pattern" },
+      { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line"},
     },
   },
 }

@@ -25,8 +25,8 @@ color18="37/34/3A" # Base 01
 color19="42/3F/46" # Base 02
 color20="66/D9/EF" # Base 04
 color21="A1/EF/E4" # Base 06
-color_foreground="E3/E1/E4" # Base 05
-color_background="2D/2A/2E" # Base 00
+color_foreground="F8/F8/F2" # Base 05
+color_background="37/34/3A" # Base 00
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through

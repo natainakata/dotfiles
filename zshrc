@@ -33,7 +33,7 @@ zinit light ryutok/rust-zsh-completions
 zinit ice pick'cli.zsh'; zinit light sudosubin/zsh-github-cli
 zinit light chrissicool/zsh-256color
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-zinit light chriskempson/base16-shell
+# zinit light chriskempson/base16-shell
 # rust cil
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
@@ -72,23 +72,23 @@ fi
 
 # eval "$(gh completion -s zsh)"
 
-if [[ ! -n $TMUX && $- == *l* ]]; then
-  # get the IDs
-  ID="`tmux list-sessions`"
-  if [[ -z "$ID" ]]; then
-    tmux new-session
-  fi
-  create_new_session="Create New Session"
-  ID="$ID\n${create_new_session}:"
-  ID="`echo $ID | fzf | cut -d: -f1`"
-  if [[ "$ID" = "${create_new_session}" ]]; then
-    tmux new-session
-  elif [[ -n "$ID" ]]; then
-    tmux attach-session -t "$ID"
-  else
-    :  # Start terminal normally
-  fi
-fi
+# if [[ ! -n $TMUX && $- == *l* ]]; then
+#   # get the IDs
+#   ID="`tmux list-sessions`"
+#   if [[ -z "$ID" ]]; then
+#     tmux new-session
+#   fi
+#   create_new_session="Create New Session"
+#   ID="$ID\n${create_new_session}:"
+#   ID="`echo $ID | fzf | cut -d: -f1`"
+#   if [[ "$ID" = "${create_new_session}" ]]; then
+#     tmux new-session
+#   elif [[ -n "$ID" ]]; then
+#     tmux attach-session -t "$ID"
+#   else
+#     :  # Start terminal normally
+#   fi
+# fi
 if [[ -n ${TMUX-} ]]; then
   export TERM=tmux-256color
 fi

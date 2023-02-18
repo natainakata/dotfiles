@@ -24,10 +24,10 @@ keymap.set("n", "<S-l>", "<Cmd>BufferLineCycleNext<CR>")
 keymap.set("n", "gs", "<Cmd>split<CR><C-w>w", opts)
 keymap.set("n", "gv", "<Cmd>vsplit<CR><C-w>w", opts)
 
-keymap.set("n", "g<tab><tab>", "<Cmd>tabnew<CR>", opts)
-keymap.set("n", "g<tab>h", "<Cmd>tabprevious<CR>", opts)
-keymap.set("n", "g<tab>l", "<Cmd>tabnext<CR>", opts)
-keymap.set("n", "g<tab>d", "<Cmd>tabclose<CR>", opts)
+keymap.set("n", "<leader><Tab>", "<Cmd>tabnew<CR>", opts)
+keymap.set("n", "<C-p>", "<Cmd>tabprevious<CR>", opts)
+keymap.set("n", "<C-n>", "<Cmd>tabnext<CR>", opts)
+keymap.set("n", "<leader><S-Tab>", "<Cmd>tabclose<CR>", opts)
 
 keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { remap = true })
 keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { remap = true })
@@ -40,7 +40,7 @@ keymap.set("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { remap = true })
 keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { remap = true })
 
 vim.api.nvim_create_user_command("BufferDeleteSafety", function()
-  if vim.fn["input"]("delete buffer? (y/N): ") == "y" then
+  if vim.fn.input("delete buffer? (y/N): ") == "y" then
     vim.cmd([[
         redraw
         bdelete!
@@ -53,31 +53,3 @@ keymap.set("n", "<Leader>D", ":BufferDeleteSafety<CR>", opts)
 
 -- fold
 keymap.set("n", "Z", ":set foldmethod=indent<CR>", opts)
-
-local mapsgroup = vim.api.nvim_create_augroup("MapsGroup", {
-  clear = true,
-})
-
--- cmdwin
-vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
-  pattern = "*",
-  callback = function()
-    vim.keymap.set("n", "q", "<Cmd>quit<CR>", { buffer = true, silent = true })
-  end,
-  group = mapsgroup,
-})
-
-local function reloadConfig()
-  for name, _ in pairs(package.loaded) do
-    if name:match("^natainakata") then
-      package.loaded[name] = nil
-    end
-  end
-
-  dofile(vim.env.MYVIMRC)
-  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
-end
-
-vim.keymap.set("n", "<Leader>R", function()
-  reloadConfig()
-end)

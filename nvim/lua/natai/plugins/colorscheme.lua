@@ -6,20 +6,53 @@ return {
   {
     "EdenEast/nightfox.nvim",
     lazy = true,
-    opts = function()
-      local trans = true
-      if vim.fn.exists("g:neovide") == 1 then
-        trans = false
-      end
-
-      return {
-        transparent = trans,
-        styles = {
-          comments = "italic",
-          keywords = "bold",
-          types = "italic,bold",
-        },
+    opts = {
+      styles = {
+        comments = "italic",
+        keywords = "bold",
+        types = "italic,bold",
+      },
+    }
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = {
+      terminal_colors = true,
+      transparent = false,
+      styles = {
+        keywords = { bold = true },
+        comments = { italic = true },
       }
+    }
+  },
+  {
+    "tiagovla/tokyodark.nvim",
+    opts = function()
+      vim.g.tokyodark_enable_italic_comment = true
+      vim.g.tokyodark_enable_italic = true
+      vim.g.tokyodark_color_gamma = "1.0"
     end,
+    config = function() end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      flavour = "frappe",
+      transparent_background = false,
+      styles = {
+        comments = { "italic" },
+        functions = { "bold" },
+        keywords = { "bold" },
+        types = { "bold" },
+      },
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        telescope = true,
+        notify = true,
+      }
+    }
   },
 }

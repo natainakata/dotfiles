@@ -1,7 +1,18 @@
 return {
-  { "rcarriga/nvim-notify", opts = {
-      background_colour = "#37343a"
-  } },
+  { "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "NormalFloat"
+    },
+    keys = {
+      {
+        "<leader>un",
+        function()
+          require("notify").dismiss({ silent = true, pending = true })
+        end,
+        desc = "Delete all Notifications"
+      },
+    },
+  },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -51,12 +62,22 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = function()
-      require("which-key").setup({
-        window = {
-          border = "none",
-        },
-      })
+    opts = {
+      window = {
+        border = "none",
+      },
+    },
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+      local keymaps = {
+        mode = {"n", "v"},
+        ["<leader>d"] = { name = "+dap"},
+        ["<leader>I"] = { name = "+iron"},
+        ["<leader>l"] = { name = "+lsp"},
+        ["<leader>sn"] = { name = "+noice"},
+      }
+      wk.register(keymaps)
     end,
   },
   {
@@ -151,6 +172,8 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
-    config = true,
+    config = function ()
+      require('colorizer').setup()
+    end,
   },
 }

@@ -28,21 +28,7 @@ if palette then
     use_cterm = false,
     plugins = { default = true },
   })
-  if not vim.g.neovide then
-    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "NonText", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "Folded", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = palette.base01, fg = palette.base03 })
-    vim.api.nvim_set_hl(0, "NotifyERRORBorder", { bg = palette.base01, fg = palette.base08 })
-    vim.api.nvim_set_hl(0, "NotifyINFOBorder", { bg = palette.base01, fg = palette.base0C })
-    vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { bg = palette.base01, fg = palette.base0D })
-    vim.api.nvim_set_hl(0, "NotifyWARNBorder", { bg = palette.base01, fg = palette.base0E })
-  end
-
-  vim.g.base16_palette = palette
+    vim.g.base16_palette = palette
 end
 
 

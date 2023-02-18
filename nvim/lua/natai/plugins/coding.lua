@@ -100,8 +100,8 @@ return {
     "monaqa/dial.nvim",
     lazy = true,
     keys = {
-      { "+", "<Plug>(dial-increment)" },
-      { "-", "<Plug>(dial-decrement)" },
+      { "+", "<Plug>(dial-increment)", desc = "Increment" },
+      { "-", "<Plug>(dial-decrement)", desc = "Decrement" },
     },
     config = function()
       local dial = require("dial.config")

@@ -125,12 +125,14 @@ return {
           generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
           path_display = { "truncate" },
           border = {},
-          borderchars = { "─", "━", "─", "━", "╭", "╮", "╯", "╰" },
+--           borderchars = { "─", "━", "─", "━", "╭", "╮", "╯", "╰" },
+          borderchars = {" ", " ", " ", " ", " ", " ", " ", " ",},
           color_devicons = true,
           set_env = { ["COLORTERM"] = "truecolor" },
           file_previewer = require("telescope.previewers").vim_buffer_cat.new,
           grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
           qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+          winblend = 10,
         },
         pickers = {
           find_files = {
@@ -148,7 +150,7 @@ return {
         file_browser = {
           theme = "cursor",
           -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
+          hijack_netrw = false,
           mappings = {
             -- your custom insert mode mappings
             ["i"] = {
