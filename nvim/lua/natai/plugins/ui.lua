@@ -76,6 +76,7 @@ return {
         ["<leader>I"] = { name = "+iron"},
         ["<leader>l"] = { name = "+lsp"},
         ["<leader>sn"] = { name = "+noice"},
+        ["<leader><tab>"] = { name = "+tab"},
       }
       wk.register(keymaps)
     end,

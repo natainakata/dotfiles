@@ -44,6 +44,15 @@ if vim.g.neovide then
   vim.g.neovide_transparency = 0.8
 end
 
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  vim.g.sqlite_clib_path = 'C:/lib/sqlite3.dll'
+  vim.o.shell = 'pwsh.exe'
+  vim.o.shellcmdflag = '-NoLogo -c'
+  vim.o.shellquote = '"'
+  vim.o.shellxquote = ''
+end
+
+
 if vim.loop.os_uname().sysname == 'Linux' then
   if vim.fn.system('uname -a | grep microsoft') then
     vim.g.clipboard = {

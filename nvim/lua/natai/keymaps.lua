@@ -24,10 +24,10 @@ keymap.set("n", "<S-l>", "<Cmd>BufferLineCycleNext<CR>")
 keymap.set("n", "gs", "<Cmd>split<CR><C-w>w", opts)
 keymap.set("n", "gv", "<Cmd>vsplit<CR><C-w>w", opts)
 
-keymap.set("n", "<leader><Tab>", "<Cmd>tabnew<CR>", opts)
-keymap.set("n", "<C-p>", "<Cmd>tabprevious<CR>", opts)
-keymap.set("n", "<C-n>", "<Cmd>tabnext<CR>", opts)
-keymap.set("n", "<leader><S-Tab>", "<Cmd>tabclose<CR>", opts)
+keymap.set("n", "<leader><Tab><Tab>", "<Cmd>tabnew<CR>", opts)
+keymap.set("n", "<leader><Tab>h", "<Cmd>tabprevious<CR>", opts)
+keymap.set("n", "<leader><Tab>l", "<Cmd>tabnext<CR>", opts)
+keymap.set("n", "<leader><Tab>q", "<Cmd>tabclose<CR>", opts)
 
 keymap.set("n", "<C-h>", "<Cmd>wincmd h<CR>", { remap = true })
 keymap.set("n", "<C-j>", "<Cmd>wincmd j<CR>", { remap = true })
@@ -53,3 +53,6 @@ keymap.set("n", "<Leader>D", ":BufferDeleteSafety<CR>", opts)
 
 -- fold
 keymap.set("n", "Z", ":set foldmethod=indent<CR>", opts)
+
+-- terminal
+keymap.set("t", "<Esc>", [[<C-\><C-n>]])
