@@ -11,6 +11,7 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-endwise",
       "p00f/nvim-ts-rainbow",
+      "andymass/vim-matchup",
     },
     opts = {
       highlight = {
@@ -85,6 +86,9 @@ return {
             ["<leader>A"] = "@parameter.inner",
           },
         },
+      },
+      matchup = {
+        enable = true,
       },
     },
     config = function(_, opts)
