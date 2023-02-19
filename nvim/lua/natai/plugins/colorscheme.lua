@@ -4,6 +4,18 @@ return {
     lazy = true,
   },
   {
+    "sainnhe/sonokai",
+    lazy = true,
+    config = function()
+      vim.g.sonokai_style = "default"
+      vim.g.sonokai_better_performanec = 1
+    end,
+  },
+  {
+    "Mofiqul/dracula.nvim",
+    lazy = true,
+  },
+  {
     "EdenEast/nightfox.nvim",
     lazy = true,
     opts = {

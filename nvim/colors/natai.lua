@@ -6,8 +6,8 @@ palette = {
   base03 = "#4d4c4e", -- comment
   base04 = "#FF3894", -- foreground
   base05 = "#8d0000", -- dark foreground
-  base06 = "#ff8f91", -- light foreground
-  base07 = "#ffd3d4", -- light background
+  base06 = "#ffd3d4", -- light foreground
+  base07 = "#ff8f91", -- light background
   base08 = "#d24d4f", -- variables
   base09 = "#6942FF", -- integer
   base0A = "#2c5443", -- classes
@@ -28,6 +28,4 @@ if palette then
     use_cterm = false,
     plugins = { default = true },
   })
-
-  vim.g.base16_palette = palette
 end

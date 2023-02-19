@@ -31,6 +31,10 @@ opt.cmdwinheight = 10
 
 opt.virtualedit = "onemore"
 
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
 opt.mouse = "a"
 opt.clipboard:append({ "unnamed", "unnamedplus" })
 
@@ -66,19 +70,5 @@ if vim.loop.os_uname().sysname == "Linux" then
       },
       cache_enabled = 1,
     }
-    --vim.cmd([[
-    --  let g:clipboard = {
-    --    \   'name': 'WslClipboard',
-    --    \   'copy': {
-    --    \      '+': 'clip.exe',
-    --    \      '*': 'clip.exe',
-    --    \    },
-    --    \   'paste': {
-    --    \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    --    \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    --    \   },
-    --    \   'cache_enabled': 0,
-    --    \ }
-    --  ]])
   end
 end

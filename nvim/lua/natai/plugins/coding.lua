@@ -3,7 +3,7 @@ return {
     "hrsh7th/nvim-cmp",
     lazy = true,
     version = false,
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdLineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",

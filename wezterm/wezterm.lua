@@ -72,33 +72,10 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	end
 end
 
--- local colors, metadata = wezterm.color.load_base16_scheme("C:/Users/natai/.config/colors/sonokai.yaml")
-local base_colors = {
-	dark = "#37343a",
-	yellow = "#e5c463",
-}
-local colors = {
-	split = "#66d9ef",
-	selection_fg = base_colors["dark"],
-	selection_bg = base_colors["yellow"],
-	tab_bar = {
-		background = base_colors["dark"],
-		active_tab = {
-			bg_color = "aliceblue",
-			fg_color = base_colors["dark"],
-		},
-		new_tab = {
-			bg_color = base_colors["dark"],
-			fg_color = base_colors["dark"],
-		},
-	},
-}
-
 local default_cwd = os.getenv("HOME")
 
 return {
 	font = wezterm.font_with_fallback({
-		"FiraCode NF",
 		"HackGen35 Console NF",
 	}),
 	use_ime = true,

@@ -9,7 +9,8 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "HiPhish/nvim-ts-rainbow2",
+      "RRethy/nvim-treesitter-endwise",
+      "p00f/nvim-ts-rainbow",
     },
     opts = {
       highlight = {
@@ -52,12 +53,9 @@ return {
       },
       rainbow = {
         enable = true,
-        -- list of languages you want to disable the plugin for
-        disable = { "jsx", "cpp" },
-        -- Which query to use for finding delimiters
-        query = "rainbow-parens",
-        -- Do not enable for files with more than n lines
-        max_file_lines = 3000,
+      },
+      endwise = {
+        enable = true,
       },
     },
     config = function(_, opts)

@@ -63,27 +63,6 @@ return {
 
       telescope.load_extension("file_browser")
 
-      local palette = vim.g.base16_palette
-      if palette then
-        local telescopePalette = {
-          TelescopeBorder = { fg = palette.base01, bg = palette.base01 },
-          TelescopePromptBorder = { fg = palette.base02, bg = palette.base02 },
-          TelescopePromptNormal = { fg = palette.base07, bg = palette.base02 },
-          TelescopePromptPrefix = { fg = palette.base08, bg = palette.base02 },
-          TelescopeNormal = { bg = palette.base01 },
-          TelescopePreviewTitle = { fg = palette.base01, bg = palette.base0B },
-          TelescopePromptTitle = { fg = palette.base01, bg = palette.base08 },
-          TelescopeResultsTitle = { fg = palette.base01, bg = palette.base0D },
-          TelescopeSelection = { fg = palette.base05, bg = palette.base02 },
-          TelescopeResultsDiffAdd = { fg = palette.base0B },
-          TelescopeResultsDiffChange = { fg = palette.base0A },
-          TelescopeResultsDiffDelete = { fg = palette.base08 },
-        }
-        for hl, col in pairs(telescopePalette) do
-          vim.api.nvim_set_hl(0, hl, col)
-        end
-      end
-
       telescope.setup({
         defaults = {
           vimgrep_arguments = {
@@ -124,9 +103,6 @@ return {
           file_ignore_patterns = { "node_modules" },
           generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
           path_display = { "truncate" },
-          border = {},
-          --           borderchars = { "─", "━", "─", "━", "╭", "╮", "╯", "╰" },
-          borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
           color_devicons = true,
           set_env = { ["COLORTERM"] = "truecolor" },
           file_previewer = require("telescope.previewers").vim_buffer_cat.new,
