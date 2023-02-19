@@ -7,6 +7,7 @@ return {
     "EdenEast/nightfox.nvim",
     lazy = true,
     opts = {
+      transparent = true,
       styles = {
         comments = "italic",
         keywords = "bold",
@@ -19,7 +20,6 @@ return {
     lazy = true,
     opts = {
       terminal_colors = true,
-      transparent = false,
       styles = {
         keywords = { bold = true },
         comments = { italic = true },
