@@ -42,6 +42,7 @@ return {
     config = function(_, opts)
       require("natai.utils").on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
+        require("natai.plugins.lsp.format").on_attach(client, buffer)
       end)
       for name, icon in pairs(require("natai.icons").icons.diagnostics) do
         name = "DiagnosticSign" .. name
@@ -198,7 +199,7 @@ return {
       },
     },
   },
-  
+
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
