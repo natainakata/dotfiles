@@ -119,14 +119,14 @@ return {
   },
 
   {
-    "machakann/vim-sandwich",
-    lazy = true,
-    keys = {
-      { "sa", "<Plug>(sandwich-add)" },
-      { "sd", "<Plug>(sandwich-delete)" },
-      { "sdb", "<Plug>(sandwich-delete-auto)" },
-      { "sr", "<Plug>(sandwich-replace)" },
-      { "srb", "<Plug>(sandwich-replace-auto)" },
+    "kylechui/nvim-surround",
+    opts = {
+      keymaps = {
+        normal = "sa",
+        normal_cur = "saa",
+        delete = "sd",
+        change = "sr",
+      },
     },
   },
   {

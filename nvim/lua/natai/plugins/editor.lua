@@ -74,17 +74,6 @@ return {
     },
     config = true,
   },
-  -- {
-  --   "dinhhuy258/git.nvim",
-  --   opts = {
-  --     keymaps = {
-  --       -- Open blame window
-  --       blame = "<Leader>gb",
-  --       -- Open file/folder in git repository
-  --       browse = "<Leader>go",
-  --     },
-  --   },
-  -- },
   {
     "phaazon/hop.nvim",
     config = true,
@@ -92,6 +81,26 @@ return {
       { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word" },
       { "<Leader>H", ":<C-u>HopPattern<CR>", silent = tru, desc = "Hop Pattern" },
       { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line" },
+    },
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = { delay = 200 },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          local buffer = vim.api.nvim_get_current_buf()
+          pcall(vim.keymap.del, "n", "]]", { buffer = buffer })
+          pcall(vim.keymap.del, "n", "[[", { buffer = buffer })
+        end,
+      })
+    end,
+    -- stylua: ignore
+    keys = {
+      { "]]", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
+      { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
     },
   },
 }
