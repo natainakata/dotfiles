@@ -22,7 +22,9 @@ return {
     "EdenEast/nightfox.nvim",
     lazy = true,
     opts = {
-      transparent = true,
+      options = {
+        transparent = true,
+      },
       styles = {
         comments = "italic",
         keywords = "bold",
