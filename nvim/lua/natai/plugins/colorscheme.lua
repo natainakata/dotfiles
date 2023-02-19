@@ -21,16 +21,22 @@ return {
   {
     "EdenEast/nightfox.nvim",
     lazy = true,
-    opts = {
-      options = {
-        transparent = true,
-      },
-      styles = {
-        comments = "italic",
-        keywords = "bold",
-        types = "italic,bold",
-      },
-    },
+    opts = function()
+      local trans = true
+      if vim.g.neovide then
+        trans = false
+      end
+      return {
+        options = {
+          transparent = trans,
+        },
+        styles = {
+          comments = "italic",
+          keywords = "bold",
+          types = "italic,bold",
+        },
+      }
+    end,
   },
   {
     "folke/tokyonight.nvim",
