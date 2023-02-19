@@ -32,7 +32,6 @@ opt.cmdwinheight = 10
 opt.virtualedit = "onemore"
 
 vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 
 opt.mouse = "a"

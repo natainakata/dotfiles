@@ -10,13 +10,11 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.runtimepath:prepend(lazypath)
--- if (not status) then
---   print("Lazy is not installed")
---   return
--- end
+
 local plugins = {
   { import = "natai.plugins" },
 }
+
 require("lazy").setup(plugins, {
   defaults = {
     lazy = false,
@@ -24,5 +22,3 @@ require("lazy").setup(plugins, {
   },
   checker = { enabled = true }, -- automatically check for plugin updates
 })
-
-vim.keymap.set("n", "<Leader>lz", "<Cmd>Lazy log<CR>", { silent = true })

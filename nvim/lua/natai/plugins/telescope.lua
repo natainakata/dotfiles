@@ -19,7 +19,7 @@ return {
         desc = "Find File",
       },
       {
-        "<leader><C-f>",
+        "<Leader><C-f>",
         function()
           require("telescope.builtin").find_files({
             no_ignore = true,
@@ -29,28 +29,28 @@ return {
         desc = "Find File (ALL)",
       },
       {
-        "<c-/>",
+        "<C-/>",
         function()
           require("telescope.builtin").live_grep()
         end,
         desc = "live grep",
       },
       {
-        "<leader>b",
+        "<Leader>b",
         function()
           require("telescope.builtin").buffers()
         end,
         desc = "Buffer List",
       },
       {
-        "<leader>?",
+        "<Leader>?",
         function()
           require("telescope.builtin").help_tags()
         end,
         desc = "Neovim Documents",
       },
       {
-        "<leader>r",
+        "<Leader>r",
         function()
           require("telescope.builtin").oldfiles()
         end,
@@ -108,7 +108,6 @@ return {
           file_previewer = require("telescope.previewers").vim_buffer_cat.new,
           grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
           qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-          winblend = 10,
         },
         pickers = {
           find_files = {
@@ -152,7 +151,7 @@ return {
     end,
     keys = {
       {
-        "<leader>f",
+        "<Leader>f",
         function()
           require("telescope").extensions.file_browser.file_browser({
             path = vim.fn.getcwd(),

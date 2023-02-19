@@ -57,6 +57,35 @@ return {
       endwise = {
         enable = true,
       },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+            ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+          },
+
+          selection_modes = {
+            ["@parameter.outer"] = "v", -- charwise
+            ["@function.outer"] = "V", -- linewise
+            ["@class.outer"] = "<c-v>", -- blockwise
+          },
+          include_surrounding_whitespace = true,
+        },
+        swap = {
+          enable = true,
+          swap_next = {
+            ["<leader>a"] = "@parameter.inner",
+          },
+          swap_previous = {
+            ["<leader>A"] = "@parameter.inner",
+          },
+        },
+      },
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
@@ -68,12 +97,5 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = true,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    init = function()
-      -- no need to load the plugin, since we only need its queries
-      require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-    end,
   },
 }
