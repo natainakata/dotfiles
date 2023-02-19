@@ -13,7 +13,7 @@ return {
         keywords = "bold",
         types = "italic,bold",
       },
-    }
+    },
   },
   {
     "folke/tokyonight.nvim",
@@ -23,8 +23,8 @@ return {
       styles = {
         keywords = { bold = true },
         comments = { italic = true },
-      }
-    }
+      },
+    },
   },
   {
     "tiagovla/tokyodark.nvim",
@@ -52,7 +52,7 @@ return {
         gitsigns = true,
         telescope = true,
         notify = true,
-      }
-    }
+      },
+    },
   },
 }

@@ -17,7 +17,7 @@ vim.opt.runtimepath:prepend(lazypath)
 local plugins = {
   { import = "natai.plugins" },
 }
-require('lazy').setup(plugins,{
+require("lazy").setup(plugins, {
   defaults = {
     lazy = false,
     version = false,

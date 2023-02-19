@@ -6,8 +6,7 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "folke/trouble.nvim",
-      "glepnir/lspsaga.nvim",
-      {"folke/neodev.nvim", opts = { experimental = { pathStrict = true }},},
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
     opts = {
       diagnostics = {
@@ -44,9 +43,9 @@ return {
       require("natai.utils").on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
       end)
-      for name, icon in pairs(require('natai.icons').icons.diagnostics) do
+      for name, icon in pairs(require("natai.icons").icons.diagnostics) do
         name = "DiagnosticSign" .. name
-        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = ""})
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       end
       local servers = opts.servers
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -94,8 +93,17 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
+    keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
     opts = {
-      ensure_installed = {},
+      ensure_installed = {
+        "lua-language-server",
+        "bash-language-server",
+        "vim-language-server",
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+      },
     },
     config = function(plugin, opts)
       require("mason").setup(opts)
@@ -190,12 +198,19 @@ return {
       },
     },
   },
+  
   {
-    "glepnir/lspsaga.nvim",
-    keys = {
-      { "<Leader>lj", "<Cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnostic Jump Next" },
-      { "K", "<Cmd>Lspsaga hover_doc<CR>", desc = "Hover Document" },
-      { "<F2>", "<Cmd>Lspsaga rename<CR>", desc = "Rename" },
-    },
+    "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "mason.nvim" },
+    opts = function()
+      local nls = require("null-ls")
+      return {
+        sources = {
+          nls.builtins.formatting.stylua,
+          nls.builtins.diagnostics.flake8,
+        },
+      }
+    end,
   },
 }

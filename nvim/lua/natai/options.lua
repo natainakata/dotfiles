@@ -4,7 +4,7 @@ local opt = vim.opt
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-opt.fenc = 'utf-8'
+opt.fenc = "utf-8"
 opt.backup = false
 opt.swapfile = false
 
@@ -23,47 +23,46 @@ opt.cursorline = true
 opt.cursorcolumn = true
 opt.visualbell = true
 opt.showmatch = true
-opt.wildmode = { 'list', 'longest' }
+opt.wildmode = { "list", "longest" }
 
 opt.laststatus = 3
 opt.cmdheight = 0
 opt.cmdwinheight = 10
 
-opt.virtualedit = 'onemore'
+opt.virtualedit = "onemore"
 
-opt.mouse = 'a'
-opt.clipboard:append{ 'unnamed', 'unnamedplus' }
+opt.mouse = "a"
+opt.clipboard:append({ "unnamed", "unnamedplus" })
 
-opt.pumblend=10
+opt.pumblend = 10
 -- opt.winblend=20
-opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
+opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 
-vim.opt.guifont = { 'HackGen35 Console NF', 'h16', 'b' }
+vim.opt.guifont = { "HackGen35 Console NF", "h16", "b" }
 if vim.g.neovide then
-  vim.g.neovide_cursor_vfx_mode = 'railgun'
+  vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_transparency = 0.8
 end
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
-  vim.g.sqlite_clib_path = 'C:/lib/sqlite3.dll'
-  vim.o.shell = 'pwsh.exe'
-  vim.o.shellcmdflag = '-NoLogo -c'
+  vim.g.sqlite_clib_path = "C:/lib/sqlite3.dll"
+  vim.o.shell = "pwsh.exe"
+  vim.o.shellcmdflag = "-NoLogo -c"
   vim.o.shellquote = '"'
-  vim.o.shellxquote = ''
+  vim.o.shellxquote = ""
 end
 
-
-if vim.loop.os_uname().sysname == 'Linux' then
-  if vim.fn.system('uname -a | grep microsoft') then
+if vim.loop.os_uname().sysname == "Linux" then
+  if vim.fn.system("uname -a | grep microsoft") then
     vim.g.clipboard = {
       name = "WslClipboard",
       copy = {
-        ['+']  = 'win32yank.exe -i',
-        ['*']  = 'win32yank.exe -i',
+        ["+"] = "win32yank.exe -i",
+        ["*"] = "win32yank.exe -i",
       },
       paste = {
-        ['+']  = 'win32yank.exe -o',
-        ['*']  = 'win32yank.exe -o',
+        ["+"] = "win32yank.exe -o",
+        ["*"] = "win32yank.exe -o",
       },
       cache_enabled = 1,
     }

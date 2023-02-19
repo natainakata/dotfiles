@@ -4,9 +4,9 @@ end
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
-  callback = function ()
+  callback = function()
     vim.highlight.on_yank()
-  end
+  end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -19,10 +19,10 @@ vim.api.nvim_create_autocmd("FileType", {
     "lspinfo",
     "startuptime",
   },
-  callback = function (event)
+  callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
-  end
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
@@ -33,8 +33,7 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile'}, {
-  pattern = '*.lang',
-  command = 'set filetype=mclang',
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.lang",
+  command = "set filetype=mclang",
 })
-

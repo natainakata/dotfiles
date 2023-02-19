@@ -28,7 +28,5 @@ if palette then
     use_cterm = false,
     plugins = { default = true },
   })
-    vim.g.base16_palette = palette
+  vim.g.base16_palette = palette
 end
-
-

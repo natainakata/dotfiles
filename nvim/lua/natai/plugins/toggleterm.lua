@@ -2,10 +2,10 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<C-\\>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal"},
+      { "<C-\\>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal" },
     },
     config = function()
-      local toggleterm = require('toggleterm')
+      local toggleterm = require("toggleterm")
       toggleterm.setup({
         -- size can be a number or function which is passed the current terminal
         size = function(term)
