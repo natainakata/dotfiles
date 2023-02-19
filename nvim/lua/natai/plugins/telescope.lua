@@ -29,7 +29,7 @@ return {
         desc = "Find File (ALL)",
       },
       {
-        "<C-/>",
+        "<Leader>/",
         function()
           require("telescope.builtin").live_grep()
         end,
