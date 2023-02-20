@@ -1,3 +1,8 @@
+local trans = true
+if vim.g.neovide then
+  trans = false
+end
+
 return {
   {
     "echasnovski/mini.base16",
@@ -17,26 +22,25 @@ return {
   {
     "Mofiqul/dracula.nvim",
     lazy = true,
+    config = function()
+      require("dracula").setup({
+        transparent_bg = trans,
+      })
+    end,
   },
   {
     "EdenEast/nightfox.nvim",
     lazy = true,
-    opts = function()
-      local trans = true
-      if vim.g.neovide then
-        trans = false
-      end
-      return {
-        options = {
-          transparent = trans,
-        },
-        styles = {
-          comments = "italic",
-          keywords = "bold",
-          types = "italic,bold",
-        },
-      }
-    end,
+    opts = {
+      options = {
+        transparent = trans,
+      },
+      styles = {
+        comments = "italic",
+        keywords = "bold",
+        types = "italic,bold",
+      },
+    },
   },
   {
     "folke/tokyonight.nvim",
@@ -50,20 +54,12 @@ return {
     },
   },
   {
-    "tiagovla/tokyodark.nvim",
-    opts = function()
-      vim.g.tokyodark_enable_italic_comment = true
-      vim.g.tokyodark_enable_italic = true
-      vim.g.tokyodark_color_gamma = "1.0"
-    end,
-    config = function() end,
-  },
-  {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
     opts = {
       flavour = "frappe",
-      transparent_background = false,
+      transparent_background = trans,
       styles = {
         comments = { "italic" },
         functions = { "bold" },
@@ -77,5 +73,16 @@ return {
         notify = true,
       },
     },
+  },
+  {
+    "projekt0n/github-nvim-theme",
+    lazy = true,
+    config = function()
+      require("github-theme").setup({
+        transparent = trans,
+        theme_style = "dark",
+        keyword_style = "NONE",
+      })
+    end,
   },
 }

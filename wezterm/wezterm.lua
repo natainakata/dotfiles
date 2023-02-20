@@ -80,7 +80,7 @@ return {
 	}),
 	use_ime = true,
 	font_size = 16.0,
-	color_scheme = "nightfox",
+	color_scheme = "Sonokai (Gogh)",
 	-- colors = colors,
 	window_background_opacity = 0.8,
 	adjust_window_size_when_changing_font_size = false,

@@ -7,8 +7,11 @@ return {
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-document-symbol",
       "hrsh7th/cmp-emoji",
+      "ray-x/cmp-treesitter",
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
     },
@@ -22,6 +25,7 @@ return {
         },
         sources = {
           { name = "nvim_lsp" },
+          { name = "nvim_lua" },
           { name = "buffer" },
           { name = "path" },
           { name = "luasnip" },
@@ -84,6 +88,7 @@ return {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
+          { name = "nvim_lsp_document_symbol" },
         },
       })
       cmp.setup.cmdline(":", {
