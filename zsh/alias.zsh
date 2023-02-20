@@ -35,4 +35,4 @@ alias diff='diff -U1'
 alias fzc='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 alias vidot="vi $HOME/.dotfiles"
-alias neovide='(){/mnt/c/Users/natai/scoop/shims/neovide.exe --multigrid --wsl $@ &}'
+alias nvde='(){/mnt/c/Users/natai/scoop/shims/neovide.exe --multigrid --wsl $@ &}'
