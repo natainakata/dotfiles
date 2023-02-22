@@ -34,7 +34,7 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-p>"] = cmp.mapping.select_prev_item(),
           ["<C-n>"] = cmp.mapping.select_next_item(),
-          ["<C-l>"] = cmp.mapping.complete(),
+          ["<C-Space>"] = cmp.mapping.complete({}),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
@@ -125,14 +125,8 @@ return {
 
   {
     "kylechui/nvim-surround",
-    opts = {
-      keymaps = {
-        normal = "sa",
-        normal_cur = "saa",
-        delete = "sd",
-        change = "sr",
-      },
-    },
+    event = { "BufEnter" },
+    config = true,
   },
   {
     "windwp/nvim-autopairs",
