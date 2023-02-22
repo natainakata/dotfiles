@@ -57,6 +57,27 @@ return {
         end,
         desc = "Recent Files",
       },
+      {
+        "<C-g>s",
+        function()
+          require("telescope.builtin").git_status()
+        end,
+        desc = "Git Status",
+      },
+      {
+        "<C-g>b",
+        function()
+          require("telescope.builtin").git_branches()
+        end,
+        desc = "Git Branches",
+      },
+      {
+        "<C-g>C",
+        function()
+          require("telescope.builtin").git_commits()
+        end,
+        desc = "Git Commits",
+      },
     },
     config = function()
       local telescope = require("telescope")
