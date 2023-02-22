@@ -6,7 +6,7 @@ return {
     },
     keys = {
       {
-        "<leader>un",
+        "<leader>nu",
         function()
           require("notify").dismiss({ silent = true, pending = true })
         end,
@@ -39,7 +39,7 @@ return {
     },
     keys = {
       {
-        "<S-Enter>",
+        "<C-Enter>",
         function()
           require("noice").redirect(vim.fn.getcmdline())
         end,
@@ -47,21 +47,21 @@ return {
         desc = "Redirect Cmdline",
       },
       {
-        "<leader>snl",
+        "<leader>nl",
         function()
           require("noice").cmd("last")
         end,
         desc = "Noice Last Message",
       },
       {
-        "<leader>snh",
+        "<leader>nh",
         function()
           require("noice").cmd("history")
         end,
         desc = "Noice History",
       },
       {
-        "<leader>sna",
+        "<leader>na",
         function()
           require("noice").cmd("all")
         end,
@@ -143,7 +143,7 @@ return {
         ["<leader>d"] = { name = "+dap" },
         ["<leader>I"] = { name = "+iron" },
         ["<leader>l"] = { name = "+lsp" },
-        ["<leader>sn"] = { name = "+noice" },
+        ["<leader>n"] = { name = "+noice" },
         ["<leader><tab>"] = { name = "+tab" },
       }
       wk.register(keymaps)

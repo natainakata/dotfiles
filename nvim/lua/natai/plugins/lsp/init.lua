@@ -94,7 +94,7 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
+    keys = { { "<leader>lm", "<cmd>Mason<CR>", desc = "Mason" } },
     opts = {
       ensure_installed = {
         "lua-language-server",
@@ -202,7 +202,7 @@ return {
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "LspAttach" },
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")

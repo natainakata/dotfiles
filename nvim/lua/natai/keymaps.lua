@@ -13,7 +13,7 @@ keymap.set("n", "<Leader>w", ":w<CR>", opts)
 keymap.set({ "n", "i", "v", "s" }, "<C-s>", ":w<CR><Esc>", opts)
 keymap.set("i", "jj", "<Esc>")
 keymap.set("n", "<Esc><Esc>", ":nohlsearch<CR>", opts)
-keymap.set("n", "<Leader>qq", "<Cmd>qa<cr>", opts)
+keymap.set("n", "<Leader>q", "<Cmd>qa<cr>", opts)
 
 -- window and buffer
 --
@@ -41,7 +41,7 @@ keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { remap = true })
 
 -- kill buffer
 vim.api.nvim_create_user_command("BufferDeleteSafety", function()
-  if vim.fn.input("delete buffer? (y/N): ") == "y" then
+  if vim.fn.input({ "delete buffer? (y/N): " }) == "y" then
     vim.cmd([[
         redraw
         bdelete!
@@ -59,4 +59,4 @@ keymap.set("n", "Z", ":set foldmethod=indent<CR>", opts)
 keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 -- lazy
-keymap.set("n", "<Leader>lz", "<Cmd>Lazy log<CR>", { silent = true })
+keymap.set("n", "<Leader>lz", "<Cmd>Lazy<CR>", { silent = true })

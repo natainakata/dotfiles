@@ -2,7 +2,8 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<C-\\>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal" },
+      { "<C-\\><C-\\>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal" },
+      { "<C-\\><C-g>", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
     },
     config = function()
       local toggleterm = require("toggleterm")
@@ -15,7 +16,7 @@ return {
             return vim.o.columns * 0.4
           end
         end,
-        open_mapping = [[<c-\>]],
+        open_mapping = [[<c-\><c-\>]],
         shade_terminals = true,
         shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
         start_in_insert = true,

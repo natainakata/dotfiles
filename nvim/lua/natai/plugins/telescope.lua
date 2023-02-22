@@ -4,6 +4,7 @@ return {
     cmd = "Telescope",
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-frecency.nvim",
       "nvim-telescope/telescope-symbols.nvim",
       "kyazdani42/nvim-web-devicons",
     },
@@ -50,7 +51,7 @@ return {
         desc = "Neovim Documents",
       },
       {
-        "<Leader>r",
+        "<Leader>R",
         function()
           require("telescope.builtin").oldfiles()
         end,
@@ -165,6 +166,22 @@ return {
           })
         end,
         desc = "File Browser",
+      },
+    },
+  },
+  {
+    "nvim-telescope/telescope-frecency.nvim",
+    dependencies = "kkharji/sqlite.lua",
+    config = function()
+      require("telescope").load_extension("frecency")
+    end,
+    keys = {
+      {
+        "<Leader>r",
+        function()
+          require("telescope").extensions.frecency.frecency({})
+        end,
+        desc = "File Frecency",
       },
     },
   },

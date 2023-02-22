@@ -79,7 +79,7 @@ return {
     config = true,
     keys = {
       { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word" },
-      { "<Leader>H", ":<C-u>HopPattern<CR>", silent = tru, desc = "Hop Pattern" },
+      { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
       { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line" },
     },
   },
