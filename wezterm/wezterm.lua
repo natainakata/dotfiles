@@ -76,7 +76,7 @@ local default_cwd = os.getenv("HOME")
 
 return {
 	font = wezterm.font_with_fallback({
-		"HackGen35 Console NF",
+		"UDEV Gothic 35NFLG",
 	}),
 	use_ime = true,
 	font_size = 16.0,
