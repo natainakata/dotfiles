@@ -11,6 +11,7 @@ return {
     event = "VeryLazy",
     keys = {
       { "<C-g>c", "<Cmd>Gin ++wait add . | Gin commit<CR>", desc = "Git Commit" },
+      { "<C-g><C-g>", ":Gin ", desc = "Gin Palette" },
     },
     config = function()
       denops.load("gin.vim", {})

@@ -144,6 +144,7 @@ return {
         ["<leader>I"] = { name = "+iron" },
         ["<leader>l"] = { name = "+lsp" },
         ["<leader>n"] = { name = "+noice" },
+        ["<C-g>"] = { name = "+git" },
         ["<leader><tab>"] = { name = "+tab" },
       }
       wk.register(keymaps)
