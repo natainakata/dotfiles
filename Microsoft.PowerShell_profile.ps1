@@ -8,21 +8,27 @@ Set-PSReadLineOption -HistoryNoDuplicates
 Set-PSReadLineOption -BellStyle None
 
 # Wsl Command Import
-Import-WslCommand "awk", "grep", "head", "less", "sed", "seq", "tail", "man"
+Import-WslCommand 'awk', 'grep', 'head', 'less', 'sed', 'seq', 'tail', 'man'
 $WslDefaultParameterValues = @{}
-$WslDefaultParameterValues["grep"] = "-E --color=auto"
-$WslDefaultParameterValues["less"] = "-i"
+$WslDefaultParameterValues['grep'] = '-E --color=auto'
+$WslDefaultParameterValues['less'] = '-i'
 
-$env:FZF_DEFAULT_OPTS = "--height=70% --reverse
+$env:FZF_DEFAULT_OPTS = "
+  --height=70% 
+  --reverse
   --border
   --inline-info
   --prompt='→ '
   --margin=0,2
   --tiebreak=index
-  --filepath-word"
+  --filepath-word
+  --ansi"
 # --preview `"bat --pager=never --color=always --style=numbers --line-range :300 {}`""
+$env:FZF_DEFAULT_COMMAND = 'fd --type f --strip-cwd-prefix'
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
     (zoxide init --hook $hook powershell) -join "`n"
