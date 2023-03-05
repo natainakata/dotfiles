@@ -6,7 +6,7 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-frecency.nvim",
       "nvim-telescope/telescope-symbols.nvim",
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
     },
     keys = {
       {

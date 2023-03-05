@@ -3,11 +3,13 @@ M._keys = nil
 
 function M.get()
   local format = require("natai.plugins.lsp.format").format
+  local toggle = require("natai.plugins.lsp.format").toggle
   local telescope = require("telescope.builtin")
   if not M._keys then
     M._keys = {
-      { "<Leader>F", format, desc = "Format Document", has = "documentFormatting" },
-      { "<Leader>F", format, desc = "Format", mode = "v", has = "documentFormatting" },
+      { "<Leader>F",  format, desc = "Format Document", has = "documentFormatting" },
+      { "<Leader>F",  format, desc = "Format",          mode = "v",                has = "documentFormatting" },
+      { "<Leader>lT", toggle, desc = "Toggle Format",   has = "documentFormatting" },
       {
         "<Leader>lr",
         function()
@@ -22,7 +24,7 @@ function M.get()
         end,
         desc = "Definition",
       },
-      { "<Leader>lD", vim.lsp.buf.declaration, desc = "Declaration" },
+      { "<Leader>lD", vim.lsp.buf.declaration,                   desc = "Declaration" },
       {
         "<Leader>li",
         function()
@@ -44,13 +46,13 @@ function M.get()
         end,
         desc = "Open Diagnostic",
       },
-      { "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
-      { "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
-      { "<Leader>la", vim.lsp.buf.code_action, desc = "Action", mode = { "n", "v" }, has = "codeAction" },
-      { "<F2>", vim.lsp.buf.hover, desc = "Rename", has = "rename" },
-      { "K", vim.lsp.buf.hover, desc = "Hover" },
-      { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
-      { "<C-k", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
+      { "g]",         "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
+      { "g[",         "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
+      { "<Leader>la", vim.lsp.buf.code_action,                   desc = "Action",         mode = { "n", "v" },     has = "codeAction" },
+      { "<F2>",       vim.lsp.buf.hover,                         desc = "Rename",         has = "rename" },
+      { "K",          vim.lsp.buf.hover,                         desc = "Hover" },
+      { "gK",         vim.lsp.buf.signature_help,                desc = "Signature Help", has = "signatureHelp" },
+      { "<C-k",       vim.lsp.buf.signature_help,                mode = "i",              desc = "Signature Help", has = "signatureHelp" },
     }
   end
   return M._keys

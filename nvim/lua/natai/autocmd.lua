@@ -2,14 +2,16 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("natai_" .. name, { clear = true })
 end
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
     "qf",
@@ -25,7 +27,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
+autocmd({ "CmdwinEnter" }, {
   group = augroup("cmdwinclose"),
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -33,7 +35,14 @@ vim.api.nvim_create_autocmd({ "CmdwinEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.lang",
   command = "set filetype=mclang",
+})
+
+autocmd("FileType", {
+  pattern = "ps1",
+  callback = function()
+    vim.b.autoformat = false
+  end
 })

@@ -116,7 +116,7 @@ return {
       local dashboard = require("alpha.themes.dashboard")
       dashboard.section.buttons.val = {
         dashboard.button("n", "  New file", "<cmd>ene<CR>"),
-        dashboard.button("e", "  Browze Directory", "<cmd>Neotree<CR>"),
+        dashboard.button("e", "  Browze Directory", "<cmd>NvimTreeOpen<CR>"),
         dashboard.button(
           "f",
           "  Find file",
@@ -152,7 +152,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
         icons_enabled = true,
@@ -204,7 +204,7 @@ return {
   {
     "akinsho/nvim-bufferline.lua",
     event = "VeryLazy",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
         separator_style = "thin",

@@ -1,17 +1,49 @@
 return {
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v2.x",
+  --   cmd = "Neotree",
+  --   keys = {
+  --     { "<leader>e", "<Cmd>Neotree<CR>", desc = "Neotree" },
+  --   },
+  --   opts = {
+  --     filesystem = {
+  --       hijack_netrw_behavior = "open_default",
+  --     },
+  --     close_if_last_window = true,
+  --   },
+  -- },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    cmd = "Neotree",
+    "nvim-tree/nvim-tree.lua",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     keys = {
-      { "<leader>e", "<Cmd>Neotree<CR>", desc = "Neotree" },
+      { "<leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
     },
     opts = {
-      filesystem = {
-        hijack_netrw_behavior = "open_default",
+      disable_netrw = true,
+
+      filters = {
+        dotfiles = true,
       },
-      close_if_last_window = true,
     },
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = vim.api.nvim_create_augroup("NvimTreeClose", { clear = true }),
+        pattern = "NvimTree_*",
+        callback = function()
+          local layout = vim.api.nvim_call_function("winlayout", {})
+          if
+            layout[1] == "leaf"
+            and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+            and layout[3] == nil
+          then
+            vim.cmd("confirm quit")
+          end
+        end,
+      })
+    end,
   },
   {
     "hkupty/iron.nvim",

@@ -76,16 +76,17 @@ local default_cwd = os.getenv("HOME")
 
 return {
 	font = wezterm.font_with_fallback({
-		"UDEV Gothic 35NFLG",
+		{ family = "UDEV Gothic 35NFLG", weight = "Bold" },
+		{ family = "JetBrainsMono NFM", weight = "Bold" },
 	}),
 	use_ime = true,
-	font_size = 16.0,
+	font_size = 14.0,
 	color_scheme = "Sonokai (Gogh)",
 	-- colors = colors,
 	window_background_opacity = 0.8,
 	adjust_window_size_when_changing_font_size = false,
 	-- disable_default_key_bindings = true,
-	default_prog = { "wsl.exe" },
+	default_prog = { "pwsh.exe" },
 	default_cwd = default_cwd,
 	leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 },
 	keys = keybind.create_keybinds(),

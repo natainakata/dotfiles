@@ -1,3 +1,4 @@
+local on_attach = require("natai.utils").on_attach
 return {
   {
     "neovim/nvim-lspconfig",
@@ -36,11 +37,16 @@ return {
             },
           },
         },
+        powershell_es = {
+          on_attach = on_attach(function(client, buffer)
+            client.server_capabilities.semanticTokensProvider = nil
+          end),
+        },
       },
       setup = {},
     },
     config = function(_, opts)
-      require("natai.utils").on_attach(function(client, buffer)
+      on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
         require("natai.plugins.lsp.format").on_attach(client, buffer)
       end)
@@ -104,6 +110,7 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "prettier",
       },
     },
     config = function(plugin, opts)
@@ -199,7 +206,6 @@ return {
       },
     },
   },
-
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "LspAttach" },
@@ -208,7 +214,7 @@ return {
       local nls = require("null-ls")
       return {
         sources = {
-          nls.builtins.formatting.stylua,
+          nls.builtins.formatting.prettier,
           nls.builtins.diagnostics.flake8,
         },
       }
