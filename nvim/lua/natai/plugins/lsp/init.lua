@@ -1,5 +1,6 @@
 local on_attach = require("natai.utils").on_attach
 return {
+
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -7,6 +8,16 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "folke/trouble.nvim",
+      {
+        "tamago324/nlsp-settings.nvim",
+        opts = {
+          config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
+          local_settings_dir = ".nlsp-settings",
+          local_settings_root_markers_fallback = { '.git' },
+          append_default_schemas = true,
+          loader = 'json'
+        }
+      },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
     opts = {
@@ -37,6 +48,12 @@ return {
             },
           },
         },
+        jsonls = {
+          settings = {
+            json = {
+            }
+          }
+        },
         powershell_es = {
           on_attach = on_attach(function(client, buffer)
             client.server_capabilities.semanticTokensProvider = nil
@@ -55,12 +72,12 @@ return {
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       end
       local servers = opts.servers
+      servers.jsonls.settings.json.schemas = require("nlspsettings.loaders.json").get_default_schemas()
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
         }, servers[server] or {})
-
         if opts.setup[server] then
           if opts.setup[server](server, server_opts) then
             return
@@ -97,6 +114,7 @@ return {
       require("mason-lspconfig").setup_handlers({ setup })
     end,
   },
+
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
@@ -212,6 +230,8 @@ return {
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
+      local helpers = require("null-ls.helpers")
+
       return {
         sources = {
           nls.builtins.formatting.prettier,

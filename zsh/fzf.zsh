@@ -7,7 +7,7 @@ __HOME=$(echo -e $HOME | sed -e "s%/%\\/%g")
 if [[ -n ${TMUX-} ]]; then
   typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " " 
   fzf_default_opts=(
-    '--height=70%'
+    '--height=40%'
     '--reverse'
     '--inline-info'
     '--prompt="→ "'

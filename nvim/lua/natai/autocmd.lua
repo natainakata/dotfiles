@@ -36,13 +36,15 @@ autocmd({ "CmdwinEnter" }, {
 })
 
 autocmd({ "BufRead", "BufNewFile" }, {
+  group = augroup("mclang"),
   pattern = "*.lang",
   command = "set filetype=mclang",
 })
 
-autocmd("FileType", {
-  pattern = "ps1",
-  callback = function()
-    vim.b.autoformat = false
-  end
-})
+-- autocmd("FileType", {
+--   group = augroup("ps1"),
+--   pattern = "ps1",
+--   callback = function()
+--     vim.b.autoformat = false
+--   end
+-- })

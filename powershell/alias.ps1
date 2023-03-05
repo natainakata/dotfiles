@@ -1,5 +1,4 @@
 Set-Alias grep rg
-Set-Alias ls lsd
 
 function gs { git status }
 function gc { git commit -m $args }
