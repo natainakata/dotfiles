@@ -14,8 +14,8 @@ path=(
   ~/.bin
   ~/bin
   ~/.local/bin
+  ~/.local/zig
   $GOPATH/bin
   $path
-  # /usr/local/zig
 )
 . "$HOME/.cargo/env"
