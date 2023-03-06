@@ -3,13 +3,11 @@ M._keys = nil
 
 function M.get()
   local format = require("natai.plugins.lsp.format").format
-  local toggle = require("natai.plugins.lsp.format").toggle
   local telescope = require("telescope.builtin")
   if not M._keys then
     M._keys = {
-      { "<Leader>F",  format, desc = "Format Document", has = "documentFormatting" },
-      { "<Leader>F",  format, desc = "Format",          mode = "v",                has = "documentFormatting" },
-      { "<Leader>lT", toggle, desc = "Toggle Format",   has = "documentFormatting" },
+      { "<Leader>F", format, desc = "Format Document", has = "documentFormatting" },
+      { "<Leader>F", format, desc = "Format",          mode = "v",                has = "documentFormatting" },
       {
         "<Leader>lr",
         function()
