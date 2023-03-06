@@ -1,6 +1,4 @@
-local on_attach = require("natai.utils").on_attach
 return {
-
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -55,7 +53,7 @@ return {
           }
         },
         powershell_es = {
-          on_attach = on_attach(function(client, buffer)
+          on_attach = require("natai.utils").on_attach(function(client, buffer)
             client.server_capabilities.semanticTokensProvider = nil
           end),
         },
@@ -63,7 +61,7 @@ return {
       setup = {},
     },
     config = function(_, opts)
-      on_attach(function(client, buffer)
+      require("natai.utils").on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
         require("natai.plugins.lsp.format").on_attach(client, buffer)
       end)
