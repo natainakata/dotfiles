@@ -75,7 +75,7 @@ return {
         end,
         expr = true, silent = true, mode = "i",
       },
-      { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
+      { "<tab>",   function() require("luasnip").jump(1) end,   mode = "s" },
       { "<s-tab>", function() require("luasnip").jump( -1) end, mode = { "i", "s" } },
     },
   },
@@ -145,4 +145,12 @@ return {
     lazy = true,
     ft = "crafttweaker",
   },
+  {
+    'iamcco/markdown-preview.nvim',
+    lazy = true,
+    build = function()
+      vim.fn['mkdp#util#install']()
+    end,
+    ft = "markdown"
+  }
 }
