@@ -53,6 +53,7 @@ return {
           }
         },
         powershell_es = {
+          mason = false,
           on_attach = require("natai.utils").on_attach(function(client, buffer)
             client.server_capabilities.semanticTokensProvider = nil
           end),
@@ -228,7 +229,6 @@ return {
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
-      local helpers = require("null-ls.helpers")
 
       return {
         sources = {

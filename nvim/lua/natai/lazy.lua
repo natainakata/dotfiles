@@ -20,5 +20,9 @@ require("lazy").setup(plugins, {
     lazy = false,
     version = false,
   },
+  dev = {
+    path = "~/src",
+    patterns = {}
+  },
   checker = { enabled = true }, -- automatically check for plugin updates
 })
