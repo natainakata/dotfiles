@@ -41,7 +41,7 @@ keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { remap = true })
 
 -- kill buffer
 vim.api.nvim_create_user_command("BufferDeleteSafety", function()
-  if vim.fn.input({ "delete buffer? (y/N): " }) == "y" then
+  if vim.fn.input("delete buffer? (y/N): ") == "y" then
     vim.cmd([[
         redraw
         bdelete!
