@@ -232,7 +232,7 @@ return {
 
       return {
         sources = {
-          nls.builtins.formatting.prettier,
+          nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.flake8,
         },
       }

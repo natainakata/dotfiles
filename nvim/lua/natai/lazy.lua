@@ -21,7 +21,7 @@ require("lazy").setup(plugins, {
     version = false,
   },
   dev = {
-    path = "~/src",
+    path = "~/src/github.com/natainakata",
     patterns = {}
   },
   checker = { enabled = true }, -- automatically check for plugin updates
