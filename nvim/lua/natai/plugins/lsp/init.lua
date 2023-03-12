@@ -65,7 +65,7 @@ return {
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
         require("natai.plugins.lsp.format").on_attach(client, buffer)
       end)
-      for name, icon in pairs(require("natai.icons").icons.diagnostics) do
+      for name, icon in pairs(require("natai.icons").diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       end

@@ -26,13 +26,13 @@ opt.showmatch = true
 opt.wildmode = { "list", "longest" }
 
 opt.laststatus = 3
-opt.cmdheight = 0
+opt.cmdheight = 1
 opt.cmdwinheight = 10
 
 opt.virtualedit = "onemore"
 
-vim.opt.list = true
-vim.opt.listchars:append("eol:↴")
+opt.list = true
+opt.listchars:append("eol:↴")
 
 opt.mouse = "a"
 opt.clipboard:append({ "unnamed", "unnamedplus" })
@@ -72,4 +72,4 @@ if vim.loop.os_uname().sysname == "Linux" then
   end
 end
 
-vim.cmd("command! VimShowHlGroup echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')")
+-- vim.cmd("command! VimShowHlGroup echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')")

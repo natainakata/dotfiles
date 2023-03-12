@@ -43,7 +43,7 @@ return {
         },
         formatting = {
           format = function(_, item)
-            local icons = require("natai.icons").icons.kinds
+            local icons = require("natai.icons").kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
@@ -146,11 +146,11 @@ return {
     ft = "crafttweaker",
   },
   {
-    'iamcco/markdown-preview.nvim',
+    "iamcco/markdown-preview.nvim",
     lazy = true,
     build = function()
-      vim.fn['mkdp#util#install']()
+      vim.fn["mkdp#util#install"]()
     end,
-    ft = "markdown"
-  }
+    ft = "markdown",
+  },
 }

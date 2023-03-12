@@ -1,3 +1,4 @@
+local icons = require("natai.icons")
 return {
   {
     "nvim-tree/nvim-tree.lua",
@@ -12,6 +13,21 @@ return {
       filters = {
         dotfiles = true,
       },
+      renderer = {
+        icons = {
+          glyphs = {
+            git = {
+              unstaged = icons.files.modified,
+              staged = icons.git.staged,
+              unmerged = icons.git.merged,
+              renamed = icons.git.renamed,
+              untracked = icons.git.added,
+              deleted = icons.git.removed,
+              ignored = icons.git.ignored,
+            },
+          },
+        },
+      },
     },
     config = function(_, opts)
       require("nvim-tree").setup(opts)
@@ -21,9 +37,9 @@ return {
         callback = function()
           local layout = vim.api.nvim_call_function("winlayout", {})
           if
-              layout[1] == "leaf"
-              and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
-              and layout[3] == nil
+            layout[1] == "leaf"
+            and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+            and layout[3] == nil
           then
             vim.cmd("confirm quit")
           end
@@ -34,10 +50,10 @@ return {
   {
     "hkupty/iron.nvim",
     keys = {
-      { "<Leader>Is", "<cmd>IronRepl<cr>",    desc = "IronRepl" },
+      { "<Leader>Is", "<cmd>IronRepl<cr>", desc = "IronRepl" },
       { "<Leader>Ir", "<cmd>IronRestart<cr>", desc = "IronRestart" },
-      { "<Leader>If", "<cmd>IronFocus<cr>",   desc = "IronFocus" },
-      { "<Leader>Ih", "<cmd>IronHide<cr>",    desc = "IronHide" },
+      { "<Leader>If", "<cmd>IronFocus<cr>", desc = "IronFocus" },
+      { "<Leader>Ih", "<cmd>IronHide<cr>", desc = "IronHide" },
     },
     config = function()
       local iron = require("iron.core")
@@ -96,8 +112,8 @@ return {
     "phaazon/hop.nvim",
     config = true,
     keys = {
-      { "<Leader>h", ":<C-u>HopWord<CR>",      silent = true, desc = "Hop Word" },
-      { "<Leader>H", ":<C-u>HopPattern<CR>",   silent = true, desc = "Hop Pattern" },
+      { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word" },
+      { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
       { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line" },
     },
   },

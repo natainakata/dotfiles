@@ -76,8 +76,8 @@ local default_cwd = os.getenv("HOME")
 
 return {
 	font = wezterm.font_with_fallback({
-		{ family = "UDEV Gothic 35NFLG", weight = "Bold" },
-		{ family = "JetBrainsMono NFM", weight = "Bold" },
+		{ family = "UDEV Gothic 35NFLG", weight = "Regular" },
+		{ family = "JetBrainsMono NFM", weight = "Regular" },
 	}),
 	use_ime = true,
 	font_size = 14.0,

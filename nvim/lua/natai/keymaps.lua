@@ -17,10 +17,11 @@ keymap.set("n", "<Leader>q", "<Cmd>qa<cr>", opts)
 
 -- window and buffer
 --
-keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>")
-keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>")
-keymap.set("n", "<S-h>", "<Cmd>BufferLineCyclePrev<CR>")
-keymap.set("n", "<S-l>", "<Cmd>BufferLineCycleNext<CR>")
+keymap.set("n", "<S-Tab>", "<Cmd>bprevious<CR>")
+keymap.set("n", "<Tab>", "<Cmd>bnext<CR>")
+keymap.set("n", "<S-h>", "<Cmd>bprevious<CR>")
+keymap.set("n", "<S-l>", "<Cmd>bnext<CR>")
+
 keymap.set("n", "gs", "<Cmd>split<CR><C-w>w", opts)
 keymap.set("n", "gv", "<Cmd>vsplit<CR><C-w>w", opts)
 

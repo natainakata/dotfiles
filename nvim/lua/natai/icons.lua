@@ -1,15 +1,22 @@
-local M = {}
-M.icons = {
+local icons = {
   diagnostics = {
     Error = " ",
     Warn = " ",
     Hint = " ",
     Info = " ",
   },
+  files = {
+    modified = "",
+    readonly = "",
+  },
+  separator = { left = " ", right = "" },
   git = {
-    added = " ",
-    modified = " ",
-    removed = " ",
+    added = "",
+    removed = "",
+    merged = "שּׁ",
+    ignored = "﬒",
+    staged = "",
+    renamed = "﯀",
   },
   kinds = {
     Array = " ",
@@ -48,6 +55,21 @@ M.icons = {
     Value = " ",
     Variable = " ",
   },
+  mode = {
+    n = "",
+    i = "",
+    v = "󰦨",
+    V = "",
+    ["^V"] = "󰿦",
+    c = "",
+    s = "",
+    R = "󰉼",
+    r = "",
+    ["?"] = "",
+    ["!"] = "󰜎",
+    t = "",
+    o = "∙",
+  },
 }
 
-return M
+return icons

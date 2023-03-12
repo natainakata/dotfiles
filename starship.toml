@@ -1,7 +1,7 @@
 [battery]
-full_symbol = "🔋"
-charging_symbol = "🔌"
-discharging_symbol = "⚡"
+full_symbol = " "
+charging_symbol = " "
+discharging_symbol = " "
 
 [[battery.display]]
 threshold = 30
@@ -20,7 +20,7 @@ format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 [git_branch]
 format = " [$symbol$branch]($style) "
-symbol = "🍣 "
+symbol = "שׂ "
 style = "bold yellow"
 
 [git_commit]
@@ -31,16 +31,16 @@ style = "bold white"
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
 
 [git_status]
-conflicted = "⚔️ "
-ahead = "🏎️ 💨 ×${count}"
-behind = "🐢 ×${count}"
-diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
-untracked = "🛤️  ×${count}"
-stashed = "📦 "
-modified = "📝 ×${count}"
-staged = "🗃️  ×${count}"
-renamed = "📛 ×${count}"
-deleted = "🗑️  ×${count}"
+conflicted = "ﲅ "
+ahead = "嶺×${count}"
+behind = "寧×${count}"
+diverged = "嶺 ×${ahead_count} 寧 ×${behind_count}"
+untracked = "  ×${count}"
+stashed = "﬒ "
+modified = "  ×${count}"
+staged = "  ×${count}"
+renamed = "﯀  ×${count}"
+deleted = "  ×${count}"
 style = "bright-white"
 format = "$all_status$ahead_behind"
 

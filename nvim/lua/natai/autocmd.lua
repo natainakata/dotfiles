@@ -27,7 +27,7 @@ autocmd("FileType", {
   end,
 })
 
-autocmd({ "CmdwinEnter" }, {
+autocmd("CmdwinEnter", {
   group = augroup("cmdwinclose"),
   callback = function(event)
     vim.bo[event.buf].buflisted = false

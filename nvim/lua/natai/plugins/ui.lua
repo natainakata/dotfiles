@@ -16,7 +16,7 @@ return {
   },
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    lazy = false,
     dependencies = "rcarriga/nvim-notify",
     enabled = function()
       if vim.g.neovide then
@@ -203,20 +203,20 @@ return {
   --   },
   -- },
 
-  {
-    "akinsho/nvim-bufferline.lua",
-    event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      options = {
-        separator_style = "thin",
-        always_show_bufferline = true,
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-        color_icons = true,
-      },
-    },
-  },
+  -- {
+  --   "akinsho/nvim-bufferline.lua",
+  --   event = "VeryLazy",
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   opts = {
+  --     options = {
+  --       separator_style = "thin",
+  --       always_show_bufferline = true,
+  --       show_buffer_close_icons = false,
+  --       show_close_icon = false,
+  --       color_icons = true,
+  --     },
+  --   },
+  -- },
   {
     "petertriho/nvim-scrollbar",
     event = "VeryLazy",

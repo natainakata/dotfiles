@@ -1,9 +1,13 @@
-local trans = true
+local trans = {
+  lua = true,
+  vim = 1,
+}
 if vim.g.neovide then
-  trans = false
+  trans.lua = false
+  trans.vim = 0
 end
 
-local spec = {
+return {
   {
     "echasnovski/mini.base16",
     priority = 700000000,
@@ -14,24 +18,16 @@ local spec = {
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
-      if not vim.g.neovide then
-        vim.g.sonokai_transparent_background = 1
-      end
+      vim.g.sonokai_transparent_background = trans.vim
+      vim.cmd.colorscheme("sonokai")
     end,
-  },
-  {
-    "Mofiqul/dracula.nvim",
-    priority = 700000000,
-    opts = {
-      transparent_bg = trans,
-    },
   },
   {
     "EdenEast/nightfox.nvim",
     priority = 700000000,
     opts = {
       options = {
-        transparent = trans,
+        transprent = trans.lua,
       },
       styles = {
         comments = "italic",
@@ -40,41 +36,7 @@ local spec = {
       },
     },
     config = function()
-      vim.cmd.colorscheme("nightfox")
+      -- vim.cmd.colorscheme("nightfox")
     end,
   },
-  {
-    "folke/tokyonight.nvim",
-    priority = 700000000,
-    opts = {
-      terminal_colors = true,
-      styles = {
-        keywords = { bold = true },
-        comments = { italic = true },
-      },
-    },
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 700000000,
-    opts = {
-      flavour = "frappe",
-      transparent_background = trans,
-      styles = {
-        comments = { "italic" },
-        functions = { "bold" },
-        keywords = { "bold" },
-        types = { "bold" },
-      },
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        telescope = true,
-        notify = true,
-      },
-    },
-  },
 }
-
-return spec

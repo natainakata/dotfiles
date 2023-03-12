@@ -30,7 +30,7 @@ local opts = {
     path = "~/src/github.com/natainakata",
     patterns = {},
   },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = { enabled = true, frequency = 1600 }, -- automatically check for plugin updates
   install = { colorscheme = { "nightfox", "habamax" } },
 }
 

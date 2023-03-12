@@ -78,12 +78,18 @@ return {
         end,
         desc = "Git Commits",
       },
+      {
+        "<C-S>",
+        function()
+          require("telescope.builtin").symbols()
+        end,
+        desc = "Symbols",
+        mode = "i",
+      },
     },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
-
-      telescope.load_extension("file_browser")
 
       telescope.setup({
         defaults = {
