@@ -1,4 +1,4 @@
-local Util = require("lazy.core.util")
+local utils = require("lazy.core.util")
 
 local M = {}
 
@@ -12,9 +12,9 @@ function M.toggle()
     M.autoformat = not M.autoformat
   end
   if M.autoformat then
-    Util.info("Enabled format on save", { title = "Format" })
+    utils.info("Enabled format on save", { title = "Format" })
   else
-    Util.warn("Disabled format on save", { title = "Format" })
+    utils.warn("Disabled format on save", { title = "Format" })
   end
 end
 
@@ -34,7 +34,7 @@ function M.format()
       end
       return client.name ~= "null-ls"
     end,
-  }, require("natai.utils").opts("nvim-lspconfig").format or {}))
+  }, require("natai.util").opts("nvim-lspconfig").format or {}))
 end
 
 function M.on_attach(client, buf)

@@ -3,14 +3,14 @@ if vim.g.neovide then
   trans = false
 end
 
-return {
+local spec = {
   {
     "echasnovski/mini.base16",
-    lazy = true,
+    priority = 700000000,
   },
   {
     "sainnhe/sonokai",
-    lazy = true,
+    priority = 700000000,
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
@@ -21,16 +21,14 @@ return {
   },
   {
     "Mofiqul/dracula.nvim",
-    lazy = true,
-    config = function()
-      require("dracula").setup({
-        transparent_bg = trans,
-      })
-    end,
+    priority = 700000000,
+    opts = {
+      transparent_bg = trans,
+    },
   },
   {
     "EdenEast/nightfox.nvim",
-    lazy = true,
+    priority = 700000000,
     opts = {
       options = {
         transparent = trans,
@@ -41,10 +39,13 @@ return {
         types = "italic,bold",
       },
     },
+    config = function()
+      vim.cmd.colorscheme("nightfox")
+    end,
   },
   {
     "folke/tokyonight.nvim",
-    lazy = true,
+    priority = 700000000,
     opts = {
       terminal_colors = true,
       styles = {
@@ -55,8 +56,8 @@ return {
   },
   {
     "catppuccin/nvim",
-    lazy = true,
     name = "catppuccin",
+    priority = 700000000,
     opts = {
       flavour = "frappe",
       transparent_background = trans,
@@ -74,15 +75,6 @@ return {
       },
     },
   },
-  {
-    "projekt0n/github-nvim-theme",
-    lazy = true,
-    config = function()
-      require("github-theme").setup({
-        transparent = trans,
-        theme_style = "dark",
-        keyword_style = "NONE",
-      })
-    end,
-  },
 }
+
+return spec

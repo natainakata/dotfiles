@@ -19,4 +19,16 @@ function M.opts(name)
   return Plugin.values(plugin, "opts", false)
 end
 
+function M.ensure(spec, callback)
+  local ok, module = pcall(require, spec)
+  if ok then
+    if callback then
+      return callback(module)
+    end
+  else
+    vim.notify(string.format("failed to load module %q", spec), vim.log.levels.WARN)
+  end
+  return ok, module
+end
+
 return M

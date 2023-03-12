@@ -1,9 +1,6 @@
-local status, denops = pcall(require, "denops-lazy")
-if not status then
-  return
-end
-
-return {
+local utils = require("natai.util")
+local spec = {
+  { "yuki-yano/denops-lazy.nvim", lazy = true },
   { "vim-denops/denops.vim", event = "VeryLazy" },
   {
     "lambdalisue/gin.vim",
@@ -14,7 +11,11 @@ return {
       { "<C-g><C-g>", ":Gin ", desc = "Gin Palette" },
     },
     config = function()
-      denops.load("gin.vim", {})
+      utils.ensure("denops-lazy", function(m)
+        m.load("gin.vim", {})
+      end)
     end,
   },
 }
+
+return spec

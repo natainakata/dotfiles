@@ -9,12 +9,12 @@ return {
       {
         "tamago324/nlsp-settings.nvim",
         opts = {
-          config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
+          config_home = vim.fn.stdpath("config") .. "/nlsp-settings",
           local_settings_dir = ".nlsp-settings",
-          local_settings_root_markers_fallback = { '.git' },
+          local_settings_root_markers_fallback = { ".git" },
           append_default_schemas = true,
-          loader = 'json'
-        }
+          loader = "json",
+        },
       },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
@@ -48,13 +48,12 @@ return {
         },
         jsonls = {
           settings = {
-            json = {
-            }
-          }
+            json = {},
+          },
         },
         powershell_es = {
           mason = false,
-          on_attach = require("natai.utils").on_attach(function(client, buffer)
+          on_attach = require("natai.util").on_attach(function(client, buffer)
             client.server_capabilities.semanticTokensProvider = nil
           end),
         },
@@ -62,7 +61,7 @@ return {
       setup = {},
     },
     config = function(_, opts)
-      require("natai.utils").on_attach(function(client, buffer)
+      require("natai.util").on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
         require("natai.plugins.lsp.format").on_attach(client, buffer)
       end)
