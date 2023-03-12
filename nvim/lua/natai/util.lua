@@ -19,6 +19,7 @@ function M.opts(name)
   return Plugin.values(plugin, "opts", false)
 end
 
+-- source: https://github.com/kyoh86/dotfiles/blob/8c834eb1de6e8f1cd2e021c506cba7de42eb971a/nvim/lua/kyoh86/root/preload.lua
 function M.ensure(spec, callback)
   local ok, module = pcall(require, spec)
   if ok then
