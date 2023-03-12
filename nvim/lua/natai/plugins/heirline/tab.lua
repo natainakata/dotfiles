@@ -223,48 +223,12 @@ local TablineBufferBlock = utils.surround({ "", "" }, function(self)
   end
 end, { TablineFileNameBlock, TablineCloseButton })
 
--- this is the default function used to retrieve buffers
-local get_bufs = function()
-  return vim.tbl_filter(function(bufnr)
-    return vim.api.nvim_buf_get_option(bufnr, "buflisted")
-  end, vim.api.nvim_list_bufs())
-end
-
--- initialize the buflist cache
-local buflist_cache = {}
-
--- setup an autocmd that updates the buflist_cache every time that buffers are added/removed
-vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-  callback = function()
-    vim.schedule(function()
-      local buffers = get_bufs()
-      for i, v in ipairs(buffers) do
-        buflist_cache[i] = v
-      end
-      for i = #buffers + 1, #buflist_cache do
-        buflist_cache[i] = nil
-      end
-
-      -- check how many buffers we have and set showtabline accordingly
-      if #buflist_cache > 1 then
-        vim.o.showtabline = 2 -- always
-      else
-        vim.o.showtabline = 1 -- only when #tabpages > 1
-      end
-    end)
-  end,
-})
-
 -- and here we go
 local BufferLine = utils.make_buflist(
   TablineBufferBlock,
   { provider = "", hl = { fg = "gray" } }, -- left truncation, optional (defaults to "<")
-  { provider = "", hl = { fg = "gray" } }, -- right trunctation, also optional (defaults to ...... yep, ">")
+  { provider = "", hl = { fg = "gray" } } -- right trunctation, also optional (defaults to ...... yep, ">")
   -- by the way, open a lot of buffers and try clicking them ;)
-  function()
-    return buflist_cache
-  end,
-  false
 )
 
 return { TabLineOffset, BufferLine, TabPages }
