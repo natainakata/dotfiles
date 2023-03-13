@@ -46,7 +46,7 @@ local function setup_lsp_global()
   -- })
 end
 
-local function register_lsp_servers(servers)
+local function register_lsp_servers(opts)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -60,23 +60,48 @@ local function register_lsp_servers(servers)
     capabilities = m.default_capabilities(capabilities)
   end)
   local function register(name, config)
-    config.capabilities = vim.deepcopy(capabilities)
-    config.on_attach = utils.on_attach(function(client, buffer)
-      require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
-      require("natai.plugins.lsp.format").on_attach(client, buffer)
-      if client.server_capabilities.documentSymbolProvider then
-        utils.ensure("nvim-navic", function(m)
-          m.attach(client, buffer)
-        end)
+    server_opts = vim.tbl_deep_extend("force", {
+      capabilities = vim.deepcopy(capabilities),
+      on_attach = utils.on_attach(function(client, buffer)
+        require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
+        require("natai.plugins.lsp.format").on_attach(client, buffer)
+        if client.server_capabilities.documentSymbolProvider then
+          utils.ensure("nvim-navic", function(m)
+            m.attach(client, buffer)
+          end)
+        end
+      end),
+    }, config or {})
+    if opts.setup[name] then
+      if opts.setup[name](name, server_opts) then
+        return
+      elseif opts.setup["*"] then
+        if opts.setup["*"](name, server_opts) then
+          return
+        end
       end
-    end)
+    end
     utils.ensure("lspconfig", function(m)
-      m[name].setup(config)
+      m[name].setup(server_opts)
     end)
   end
-  for k, v in pairs(servers) do
-    register(k, v)
-  end
+  utils.ensure("mason-lspconfig", function(m)
+    local available = m.get_available_servers()
+    local ensure_installed = {}
+    for server, server_opts in pairs(opts.servers) do
+      if server_opts then
+        server_opts = server_opts == true and {} or server_opts
+        -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
+        if server_opts.mason == false or not vim.tbl_contains(available, server) then
+          register(server, server_opts)
+        else
+          ensure_installed[#ensure_installed + 1] = server
+        end
+      end
+    end
+    m.setup({ ensure_installed = ensure_installed })
+    m.setup_handlers({ register })
+  end)
 end
 
 local spec = {
@@ -145,10 +170,11 @@ local spec = {
           end),
         },
       },
+      setup = {},
     },
     config = function(_, opts)
       setup_lsp_global()
-      register_lsp_servers(opts.servers)
+      register_lsp_servers(opts)
       -- local mappings = require("mason-lspconfig.mappings.server")
       -- if not mappings.lspconfig_to_package.lua then
       --   mappings.lspconfig_to_package.lua_ls = "lua-language-server"

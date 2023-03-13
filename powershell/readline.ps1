@@ -4,4 +4,3 @@ Set-PSReadLineOption -HistoryNoDuplicates
 Set-PSReadLineOption -WordDelimiters ";:,.[]{}()/\|^&*-=+'`" !?@#$%&_<>「」（）『』『』［］、，。：；／"
 Set-PSReadLineOption -BellStyle None
 
-
