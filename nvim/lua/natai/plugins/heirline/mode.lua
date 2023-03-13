@@ -45,29 +45,29 @@ local indicator = { -- see :help mode(1)
 }
 
 local mode_colors = {
-  n = utils.get_highlight("Type").fg,
-  i = utils.get_highlight("Function").fg,
-  v = utils.get_highlight("Keyword").fg,
-  V = utils.get_highlight("Keyword").fg,
-  ["\22"] = utils.get_highlight("Keyword").fg,
-  c = utils.get_highlight("Character").fg,
-  s = utils.get_highlight("Keyword").fg,
-  S = utils.get_highlight("Keyword").fg,
-  ["\19"] = utils.get_highlight("Keyword").fg,
-  R = utils.get_highlight("Tag").fg,
-  r = utils.get_highlight("Tag").fg,
-  ["!"] = utils.get_highlight("Keyword").fg,
-  t = utils.get_highlight("Special").fg,
+  n = "cyan",
+  i = "yellow",
+  v = "red",
+  V = "red",
+  ["\22"] = "red",
+  c = "yellow",
+  s = "red",
+  S = "red",
+  ["\19"] = "red",
+  R = "orange",
+  r = "orange",
+  ["!"] = "red",
+  t = "purple",
 }
 
 return {
   hl = function()
     local mode = vim.fn.mode(1):sub(1, 1)
-    return { bg = mode_colors[mode], fg = utils.get_highlight("StatusLine").bg }
+    return { fg = mode_colors[mode] }
   end,
   {
     provider = function()
-      return "  " .. indicator[vim.fn.mode(1)]
+      return indicator[vim.fn.mode(1)]
     end,
   },
 }

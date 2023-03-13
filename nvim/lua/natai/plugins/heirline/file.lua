@@ -5,7 +5,6 @@ local FileNameBlock = {
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(0)
   end,
-  hl = { bg = utils.get_highlight("StatusLine").bg },
 }
 
 local FileIcon = {
@@ -67,7 +66,7 @@ FileNameBlock = utils.insert(
   FileIcon,
   utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
   FileFlags,
-  { provider = " " }
+  { provider = "%<" }
 )
 
 return FileNameBlock
