@@ -27,7 +27,7 @@ opt.wildmode = { "list", "longest" }
 
 opt.laststatus = 3
 opt.showtabline = 2
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.cmdwinheight = 10
 
 opt.virtualedit = "onemore"
