@@ -1,3 +1,4 @@
+local utils = require("natai.util")
 return {
   {
     "akinsho/toggleterm.nvim",
@@ -17,14 +18,15 @@ return {
           end
         end,
         on_open = function(term)
-          local nvimtree = require("nvim-tree")
-          local nvimtree_view = require("nvim-tree.view")
-          if nvimtree_view.is_visible() and term.direction == "horizontal" then
-            local nvimtree_width = vim.fn.winwidth(nvimtree_view.get_winnr())
-            nvimtree.toggle()
-            nvimtree_view.View.width = nvimtree_width
-            nvimtree.toggle(false, true)
-          end
+          utils.ensure("nvim-tree.api", function(m)
+            local nvimtree_view = require("nvim-tree.view")
+            if nvimtree_view.is_visible() and term.direction == "horizontal" then
+              local nvimtree_width = vim.fn.winwidth(nvimtree_view.get_winnr())
+              m.tree.toggle()
+              nvimtree_view.View.width = nvimtree_width
+              m.tree.toggle(false, true)
+            end
+          end)
         end,
         open_mapping = [[<c-\><c-\>]],
         shade_terminals = true,

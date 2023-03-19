@@ -1,10 +1,10 @@
-local trans = {
-  lua = true,
-  vim = 1,
-}
-if vim.g.neovide then
-  trans.lua = false
-  trans.vim = 0
+local trans, trans_vim
+if not vim.g.neovide then
+  trans = true
+  trans_vim = 1
+else
+  trans = false
+  trans_vim = 0
 end
 
 return {
@@ -18,8 +18,7 @@ return {
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
-      vim.g.sonokai_transparent_background = trans.vim
-
+      vim.g.sonokai_transparent_background = trans_vim
       -- vim.cmd.colorscheme("sonokai")
     end,
   },
@@ -28,7 +27,7 @@ return {
     priority = 1000,
     opts = {
       options = {
-        transprent = trans.lua,
+        transprent = trans,
       },
       styles = {
         comments = "italic",
@@ -36,8 +35,20 @@ return {
         types = "italic,bold",
       },
     },
-    config = function()
-      vim.cmd.colorscheme("nightfox")
+    config = function(_, opts)
+      require("nightfox").setup(opts)
+      -- vim.cmd.colorscheme("nightfox")
+    end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+    opts = {
+      transparent = false,
+    },
+    config = function(_, opts)
+      require("kanagawa").setup(opts)
+      vim.cmd.colorscheme("kanagawa")
     end,
   },
 }
