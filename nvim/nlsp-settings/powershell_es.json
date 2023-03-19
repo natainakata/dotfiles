@@ -1,5 +1,0 @@
-{
-  "powershell.codeFormatting.preset": "OTBS",
-  "powershell.codeFormatting.newLineAfterOpenBrace": false,
-  "powershell.codeFormatting.newLineAfterCloseBrace": true
-}

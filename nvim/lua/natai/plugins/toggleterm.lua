@@ -8,6 +8,7 @@ return {
     },
     config = function()
       local toggleterm = require("toggleterm")
+      local terminal = require("toggleterm.terminal").Terminal
       toggleterm.setup({
         -- size can be a number or function which is passed the current terminal
         size = function(term)
@@ -50,12 +51,11 @@ return {
           winblend = 0,
         },
       })
-      local terminal = require("toggleterm.terminal").Terminal
       local lazygit = terminal:new({
         cmd = "lazygit",
         hidden = true,
         count = 5,
-        on_open = function(term)
+        on_open = function(_)
           vim.cmd("startinsert!")
         end,
       })
