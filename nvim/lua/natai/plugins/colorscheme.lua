@@ -44,7 +44,7 @@ return {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     opts = {
-      transparent = false,
+      transparent = trans,
     },
     config = function(_, opts)
       require("kanagawa").setup(opts)

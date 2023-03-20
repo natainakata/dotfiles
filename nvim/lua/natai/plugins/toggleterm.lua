@@ -3,8 +3,8 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<C-\\><C-\\>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal" },
-      { "<C-\\><C-g>", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
+      { "<Leader>t", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal" },
+      { "<Leader>g", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
     },
     config = function()
       local toggleterm = require("toggleterm")
@@ -55,6 +55,7 @@ return {
         cmd = "lazygit",
         hidden = true,
         count = 5,
+        direction = "float",
         on_open = function(_)
           vim.cmd("startinsert!")
         end,

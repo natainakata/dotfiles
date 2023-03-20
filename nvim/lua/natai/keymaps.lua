@@ -56,9 +56,5 @@ keymap.set("n", "<Leader>D", ":BufferDeleteSafety<CR>", opts)
 -- fold
 keymap.set("n", "Z", ":set foldmethod=indent<CR>", opts)
 
--- terminal
-keymap.set("t", "<Esc>", [[<C-\><C-n>]])
-keymap.set("t", "jk", [[<C-\><C-n>]])
-
 -- lazy
 keymap.set("n", "<Leader>lz", "<Cmd>Lazy<CR>", { silent = true })
