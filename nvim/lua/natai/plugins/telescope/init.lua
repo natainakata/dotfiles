@@ -102,7 +102,14 @@ local spec = {
       local viewers = require("telescope.previewers")
       local actions = require("telescope.actions")
       local sorters = require("telescope.sorters")
+      local builtin = require("telescope.builtin")
       telescope_setup(telescope, actions, sorters, viewers)
+      --:Telescope keymap regisiteration
+      for k, v in pairs(builtin) do
+        if type(v) == "function" then
+          vim.keymap.set("n", "<Plug>(telescope." .. k .. ")", v)
+        end
+      end
     end,
   },
 }

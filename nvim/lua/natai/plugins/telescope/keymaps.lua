@@ -11,6 +11,13 @@ M.core = {
     desc = "Find File",
   },
   {
+    "<C-p>",
+    function()
+      require("telescope.builtin").keymaps()
+    end,
+    desc = "Find Keymaps",
+  },
+  {
     "<Leader><C-f>",
     function()
       require("telescope.builtin").find_files({
