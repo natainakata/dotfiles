@@ -104,7 +104,7 @@ return {
 	color_scheme = "OneDark (base16)",
 	-- color_scheme = "kanagawa (Gogh)",
 	-- colors = colors,
-	window_background_opacity = 0.9,
+	-- window_background_opacity = 0.9,
 	adjust_window_size_when_changing_font_size = false,
 	-- disable_default_key_bindings = true,
 	default_prog = { "pwsh.exe" },

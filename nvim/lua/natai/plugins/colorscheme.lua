@@ -1,11 +1,11 @@
-local trans, trans_vim
-if not vim.g.neovide then
-  trans = true
-  trans_vim = 1
-else
-  trans = false
-  trans_vim = 0
-end
+-- local trans, trans_vim
+-- if not vim.g.neovide then
+--   trans = true
+--   trans_vim = 1
+-- else
+--   trans = false
+--   trans_vim = 0
+-- end
 
 return {
   {
@@ -15,7 +15,7 @@ return {
   {
     "navarasu/onedark.nvim",
     opts = {
-      transparent = trans,
+      -- transparent = trans,
     },
     config = function(_, opts)
       local onedark = require("onedark")
@@ -29,7 +29,7 @@ return {
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
-      vim.g.sonokai_transparent_background = trans_vim
+      -- vim.g.sonokai_transparent_background = trans_vim
     end,
   },
   {
@@ -37,7 +37,7 @@ return {
     -- priority = 1000,
     opts = {
       options = {
-        transprent = trans,
+        -- transprent = trans,
       },
       styles = {
         comments = "italic",
@@ -53,7 +53,7 @@ return {
     "rebelot/kanagawa.nvim",
     -- priority = 1000,
     opts = {
-      transparent = trans,
+      -- transparent = trans,
     },
     config = function(_, opts)
       require("kanagawa").setup(opts)
