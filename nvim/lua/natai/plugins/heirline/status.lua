@@ -2,7 +2,6 @@ local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
 local Mode = require("natai.plugins.heirline.mode")
-Mode = utils.surround({ "", "" }, "bright_bg", { Mode })
 local File = require("natai.plugins.heirline.file")
 local Git = require("natai.plugins.heirline.git")
 local Terminal = require("natai.plugins.heirline.terminal")

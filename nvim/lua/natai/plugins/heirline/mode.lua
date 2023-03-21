@@ -67,7 +67,7 @@ return {
   end,
   {
     provider = function()
-      return indicator[vim.fn.mode(1)]
+      return " " .. indicator[vim.fn.mode(1)]
     end,
   },
 }

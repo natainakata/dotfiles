@@ -2,7 +2,7 @@
 local spec = {
   {
     "rebelot/heirline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    dependencies = { "nvim-tree/nvim-web-devicons", "navarasu/onedark.nvim" },
     config = function()
       vim.opt.showmode = false
       vim.opt.laststatus = 3

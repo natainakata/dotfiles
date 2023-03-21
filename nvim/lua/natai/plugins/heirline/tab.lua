@@ -22,7 +22,7 @@ local TablinePicker = {
   provider = function(self)
     return self.label
   end,
-  hl = { fg = "red", bold = true },
+  hl = { fg = "bright_bg", bold = true },
 }
 
 vim.keymap.set("n", "<Leader>b", function()
