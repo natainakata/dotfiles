@@ -1,13 +1,14 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 local icons = require("natai.icons")
-local FileNameBlock = {
+local M = {}
+M.FileNameBlock = {
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(0)
   end,
 }
 
-local FileIcon = {
+M.FileIcon = {
   init = function(self)
     local filename = self.filename
     local extension = vim.fn.fnamemodify(filename, ":e")
@@ -21,7 +22,7 @@ local FileIcon = {
   end,
 }
 
-local FileName = {
+M.FileName = {
   provider = function(self)
     local filename = vim.fn.fnamemodify(self.filename, ":.")
     if filename == "" then
@@ -35,7 +36,7 @@ local FileName = {
   hl = { fg = utils.get_highlight("Directory").fg },
 }
 
-local FileFlags = {
+M.FileFlags = {
   {
     condition = function()
       return vim.bo.modified
@@ -52,7 +53,7 @@ local FileFlags = {
   },
 }
 
-local FileNameModifer = {
+M.FileNameModifer = {
   hl = function()
     if vim.bo.modified then
       -- use `force` because we need to override the child's hl foreground
@@ -61,12 +62,12 @@ local FileNameModifer = {
   end,
 }
 
-FileNameBlock = utils.insert(
-  FileNameBlock,
-  FileIcon,
-  utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
-  FileFlags,
+M.FileNameBlock = utils.insert(
+  M.FileNameBlock,
+  M.FileIcon,
+  utils.insert(M.FileNameModifer, M.FileName), -- a new table where FileName is a child of FileNameModifier
+  M.FileFlags,
   { provider = "%<" }
 )
 
-return FileNameBlock
+return M

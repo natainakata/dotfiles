@@ -35,7 +35,7 @@ M.core = {
     desc = "live grep",
   },
   {
-    "<Leader>b",
+    "<Leader>B",
     function()
       require("telescope.builtin").buffers()
     end,

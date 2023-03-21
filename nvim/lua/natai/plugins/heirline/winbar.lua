@@ -2,6 +2,7 @@ local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
 local Component = require("natai.plugins.heirline.component")
+local Lsp = require("natai.plugins.heirline.lsp")
 local File = require("natai.plugins.heirline.file")
 local Terminal = require("natai.plugins.heirline.terminal")
 
@@ -25,16 +26,27 @@ local WinBars = {
       Component.FileType,
       Component.Space,
       Terminal.TerminalName,
+      Component.CloseButton,
     }),
   },
   { -- An inactive winbar for regular files
     condition = function()
       return not conditions.is_active()
     end,
-    utils.surround({ "", "" }, "bright_bg", { hl = { fg = "gray", force = true }, File }),
+    utils.surround(
+      { "", "" },
+      "bright_bg",
+      { hl = { fg = "gray", force = true }, { File, Component.CloseButton } }
+    ),
   },
   -- A winbar for regular files
-  utils.surround({ "", "" }, "bright_bg", File),
+  utils.surround({ "", "" }, "bright_bg", {
+    Lsp.Navic,
+    { provider = "%<" },
+    Component.Align,
+    File.FileNameBlock,
+    Component.CloseButton,
+  }),
 }
 
 return WinBars
