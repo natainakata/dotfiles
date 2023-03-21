@@ -18,12 +18,6 @@ return {
     "folke/noice.nvim",
     lazy = false,
     dependencies = "rcarriga/nvim-notify",
-    enabled = function()
-      if vim.g.neovide then
-        return false
-      end
-      return true
-    end,
     opts = {
       lsp = {
         override = {
