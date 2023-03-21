@@ -3,8 +3,7 @@ return {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<Leader>t", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", desc = "Terminal" },
-      { "<Leader>g", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
+      { "<Leader>G", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
     },
     config = function()
       local toggleterm = require("toggleterm")
@@ -36,7 +35,7 @@ return {
         insert_mappings = true, -- whether or not the open mapping applies in insert mode
         terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
         persist_size = true,
-        direction = "horizontal",
+        direction = "float",
         close_on_exit = true, -- close the terminal window when the process exits
         shell = vim.o.shell, -- change the default shell
         -- This field is only relevant if direction is set to 'float'

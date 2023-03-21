@@ -4,6 +4,14 @@ end
 
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd("TermOpen", {
+  group = augroup("term_insert_in"),
+  callback = function()
+    vim.opt_local.number = false
+    vim.cmd.startinsert()
+  end,
+})
+
 autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
