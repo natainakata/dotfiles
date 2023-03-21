@@ -48,3 +48,13 @@ autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.lang",
   command = "set filetype=mclang",
 })
+
+if vim.fn.executable("zenhan") then
+  autocmd({"InsertLeave", "CmdlineLeave"}, {
+    group = augroup("disable_ime"),
+    callback = function ()
+      os.execute("zenhan 0")
+    end
+  })
+end
+
