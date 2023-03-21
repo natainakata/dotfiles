@@ -39,7 +39,7 @@ opt.mouse = "a"
 opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 opt.pumblend = 10
--- opt.winblend=20
+opt.winblend = 20
 opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 
 vim.opt.guifont = { "UDEV Gothic 35NFLG:h14:n" }
