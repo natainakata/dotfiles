@@ -49,12 +49,22 @@ autocmd({ "BufRead", "BufNewFile" }, {
   command = "set filetype=mclang",
 })
 
-if vim.fn.executable("zenhan") then
-  autocmd({"InsertLeave", "CmdlineLeave"}, {
-    group = augroup("disable_ime"),
-    callback = function ()
-      os.execute("zenhan 0")
-    end
-  })
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  if vim.fn.executable("zenhan") == 1 then
+    autocmd({ "InsertLeave", "CmdlineLeave" }, {
+      group = augroup("disable_ime"),
+      callback = function()
+        os.execute("zenhan 0")
+      end,
+    })
+  end
+elseif vim.loop.os_uname().sysname == "Linux" then
+  if vim.fn.system("uname -a | grep microsoft") then
+    autocmd({ "InsertLeave", "CmdlineLeave" }, {
+      group = augroup("disable_ime"),
+      callback = function()
+        vim.fn.system("/mnt/c/bin/zenhan.exe 0")
+      end,
+    })
+  end
 end
-
