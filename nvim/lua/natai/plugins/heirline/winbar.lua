@@ -7,6 +7,16 @@ local Terminal = require("natai.plugins.heirline.terminal")
 
 local WinBars = {
   fallthrough = false,
+  {
+    condition = function()
+      return conditions.buffer_matches({
+        buftype = { "nofile", "prompt", "help", "quickfix" },
+      })
+    end,
+    init = function()
+      vim.opt_local.winbar = nil
+    end,
+  },
   { -- A special winbar for terminals
     condition = function()
       return conditions.buffer_matches({ filetype = { "toggleterm" }, buftype = { "terminal" } })
