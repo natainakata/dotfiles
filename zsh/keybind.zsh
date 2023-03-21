@@ -19,6 +19,6 @@ zle -N __return-home
 zle -N __reload-zsh
 
 bindkey -e
-bindkey '^F' autosuggest-accept
+bindkey '^L' autosuggest-accept
 [[ -n "${key[Home]}" ]] &&  bindkey "${key[Home]}" __return-home
 [[ -n "${key[End]}" ]] && bindkey "${key[End]}" __reload-zsh
