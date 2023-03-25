@@ -31,7 +31,7 @@ local opts = {
     patterns = {},
   },
   checker = { enabled = true, frequency = 1600 }, -- automatically check for plugin updates
-  install = { colorscheme = { "onedark", "nightfox", "habamax" } },
+  install = { colorscheme = { "onedark", "habamax" } },
 }
 
 utils.ensure("lazy", function(m)
