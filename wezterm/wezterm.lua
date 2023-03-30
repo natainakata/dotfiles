@@ -100,6 +100,8 @@ return {
 	}),
 	use_ime = true,
 	font_size = 14.0,
+	initial_cols = 120,
+	initial_rows = 30,
 	-- color_scheme = "Sonokai (Gogh)",
 	color_scheme = "OneDark (base16)",
 	-- color_scheme = "kanagawa (Gogh)",
