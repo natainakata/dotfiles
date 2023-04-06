@@ -123,6 +123,10 @@ local spec = {
             },
           },
         },
+        bashls = {
+          mason = false,
+        },
+        vimls = {},
         powershell_es = {
           mason = false,
           settings = {
@@ -153,9 +157,6 @@ local spec = {
     keys = { { "<leader>lm", "<cmd>Mason<CR>", desc = "Mason" } },
     opts = {
       ensure_installed = {
-        "lua-language-server",
-        "bash-language-server",
-        "vim-language-server",
         "stylua",
         "shellcheck",
         "shfmt",

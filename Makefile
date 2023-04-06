@@ -33,3 +33,4 @@ zsh:
 starship:
 	mkdir -p ${HOME}/.config
 	ln -snfv ${PWD}/starship.toml ${HOME}/.config/
+
