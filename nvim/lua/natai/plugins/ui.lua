@@ -1,4 +1,4 @@
-return {
+local spec = {
   {
     "rcarriga/nvim-notify",
     opts = {
@@ -197,3 +197,9 @@ return {
     end,
   },
 }
+
+if not require("natai.util").is_vscode then
+  return spec
+else
+  return {}
+end

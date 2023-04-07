@@ -1,4 +1,4 @@
-return {
+local spec = {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = true,
@@ -89,3 +89,9 @@ return {
     config = true,
   },
 }
+
+if vim.g.vscode then
+  return {}
+else
+  return spec
+end

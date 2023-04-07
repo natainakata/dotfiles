@@ -1,9 +1,11 @@
 local icons = require("natai.icons")
+local is_nvim = require("natai.util").is_vscode
 return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
+    enabled = is_nvim,
     keys = {
       { "<leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
     },
@@ -49,6 +51,7 @@ return {
   },
   {
     "hkupty/iron.nvim",
+    enabled = is_nvim,
     keys = {
       { "<Leader>Is", "<cmd>IronRepl<cr>", desc = "IronRepl" },
       { "<Leader>Ir", "<cmd>IronRestart<cr>", desc = "IronRestart" },
@@ -102,6 +105,7 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     lazy = true,
+    enabled = is_nvim,
     cmd = "SymbolsOutline",
     keys = {
       { "<Leader>o", "<cmd>SymbolsOutline<CR>", desc = "Outline List" },
@@ -116,6 +120,11 @@ return {
       { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
       { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line" },
     },
+  },
+  {
+    "echasnovski/mini.jump",
+    event = { "BufReadPre", "BufNewFile" },
+    config = true,
   },
   -- {
   --   "RRethy/vim-illuminate",

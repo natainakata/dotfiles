@@ -32,4 +32,12 @@ function M.ensure(spec, callback)
   return ok, module
 end
 
+M.is_nvim = function ()
+  if vim.g.vscode then
+    return false
+  else
+    return true
+  end
+end
+
 return M

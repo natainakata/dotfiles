@@ -1,9 +1,11 @@
+local is_nvim = require("natai.util").is_nvim
 return {
   {
     "hrsh7th/nvim-cmp",
     lazy = true,
     version = false,
     event = { "InsertEnter", "CmdLineEnter" },
+    enabled = is_nvim,
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -56,6 +58,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     lazy = true,
+    enabled = is_nvim,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -82,6 +85,7 @@ return {
   {
     "hrsh7th/cmp-cmdline",
     lazy = true,
+    enabled = is_nvim,
     config = function()
       local cmp = require("cmp")
       cmp.setup.cmdline("/", {
@@ -143,11 +147,13 @@ return {
   {
     "DaeZak/crafttweaker-vim-highlighting",
     lazy = true,
+    enabled = is_nvim,
     ft = "crafttweaker",
   },
   {
     "iamcco/markdown-preview.nvim",
     lazy = true,
+    enabled = is_nvim,
     build = function()
       vim.fn["mkdp#util#install"]()
     end,

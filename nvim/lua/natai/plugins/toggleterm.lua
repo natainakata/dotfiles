@@ -1,5 +1,5 @@
 local utils = require("natai.util")
-return {
+local spec = {
   {
     "akinsho/toggleterm.nvim",
     keys = {
@@ -66,3 +66,9 @@ return {
     end,
   },
 }
+
+if not require("natai.util").is_vscode then
+  return spec
+else
+  return {}
+end

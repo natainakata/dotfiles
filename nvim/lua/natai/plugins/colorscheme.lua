@@ -7,7 +7,7 @@
 --   trans_vim = 0
 -- end
 
-return {
+local spec = {
   {
     "echasnovski/mini.base16",
     -- priority = 1000,
@@ -60,3 +60,9 @@ return {
     end,
   },
 }
+
+if vim.g.vscode then
+  return {}
+else
+  return spec
+end

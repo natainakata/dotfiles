@@ -113,5 +113,8 @@ local spec = {
     end,
   },
 }
-
-return spec
+if vim.g.vscode then
+  return {}
+else
+  return spec
+end

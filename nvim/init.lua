@@ -1,4 +1,8 @@
 require("natai.options")
-require("natai.keymaps")
+if vim.g.vscode then
+  require("natai.vscode.keymaps")
+else
+  require("natai.keymaps")
+end
 require("natai.autocmd")
 require("natai.lazy")
