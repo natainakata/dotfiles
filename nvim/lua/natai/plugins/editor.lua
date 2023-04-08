@@ -124,7 +124,9 @@ return {
   {
     "echasnovski/mini.jump",
     event = { "BufReadPre", "BufNewFile" },
-    config = true,
+    config = function()
+      require("mini.jump").setup()
+    end,
   },
   -- {
   --   "RRethy/vim-illuminate",

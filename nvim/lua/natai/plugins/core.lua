@@ -5,6 +5,7 @@ return {
   { "nvim-lua/popup.nvim", lazy = true },
   { "MunifTanjim/nui.nvim", lazy = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "echasnovski/mini.nvim", version = false },
   { "vim-jp/vimdoc-ja" },
   {
     "dstein64/vim-startuptime",

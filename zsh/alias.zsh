@@ -15,14 +15,14 @@ alias ghw='gh repo view -w $(ghq list | fzf)'
 alias gp='git push'
 
 # dotfiles
-alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias dtfl="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # shell
 alias l='lsd -l'
 alias la='lsd -a'
 alias lla='lsd -la'
 alias lt='lsd --tree'
-# alias vi=${commands[nvim]:-"vim"}
+alias vi=${commands[nvim]:-"vim"}
 alias c='cdr'
 alias cp='cp -i'
 alias rm='rm -i'
@@ -34,5 +34,10 @@ alias diff='diff -U1'
 # fzf
 alias fzc='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
+# vim
 alias vidot="vi $HOME/.dotfiles"
-alias nvde='(){/mnt/c/Users/natai/scoop/shims/neovide.exe --multigrid --wsl $@ &}'
+# alias nvde='(){/mnt/c/Users/natai/scoop/shims/neovide.exe --multigrid --wsl $@ &}'
+
+#rlwrap
+alias python="rlwrap python"
+alias gosh="rlwrap gosh"
