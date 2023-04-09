@@ -27,14 +27,15 @@ opt.wildmode = { "list", "longest" }
 
 opt.laststatus = 3
 opt.showtabline = 2
-opt.cmdheight = 0
 opt.cmdwinheight = 10
+opt.cmdheight = 0
 
 opt.virtualedit = "onemore"
 
 opt.list = true
-opt.listchars:append("eol:↴")
-
+if not vim.g.vscode then
+  opt.listchars:append("eol:↴")
+end
 opt.mouse = "a"
 opt.clipboard:append({ "unnamed", "unnamedplus" })
 
