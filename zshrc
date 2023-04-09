@@ -60,6 +60,32 @@ zinit light b4b4r07/enhancd
 
 zinit ice as"program" from"gh-r" mv"win32yank* - win32yank" pick"equalsraf/win32yank"; zinit light equalsraf/win32yank
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [[ ! -n $TMUX && $- == *l* ]]; then
+  # get the IDs
+  ID="`tmux list-sessions`"
+  if [[ -z "$ID" ]]; then
+    tmux new-session
+  fi
+  create_new_session="Create New Session"
+  ID="$ID\n${create_new_session}:"
+  ID="`echo $ID | fzf | cut -d: -f1`"
+  if [[ "$ID" = "${create_new_session}" ]]; then
+    tmux new-session
+  elif [[ -n "$ID" ]]; then
+    tmux attach-session -t "$ID"
+  else
+    :  # Start terminal normally
+  fi
+fi
+if [[ -n ${TMUX-} ]]; then
+  export TERM=tmux-256color
+fi
+
+fpath=(~/.zsh/functions/*(N-/) $fpath)
+. $HOME/.asdf/asdf.sh
+
 # load rc
 ZSHHOME="${HOME}/.zsh"
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
@@ -70,29 +96,6 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
   done
 fi
 
-# eval "$(gh completion -s zsh)"
+eval "$(gh completion -s zsh)"
 
-# if [[ ! -n $TMUX && $- == *l* ]]; then
-#   # get the IDs
-#   ID="`tmux list-sessions`"
-#   if [[ -z "$ID" ]]; then
-#     tmux new-session
-#   fi
-#   create_new_session="Create New Session"
-#   ID="$ID\n${create_new_session}:"
-#   ID="`echo $ID | fzf | cut -d: -f1`"
-#   if [[ "$ID" = "${create_new_session}" ]]; then
-#     tmux new-session
-#   elif [[ -n "$ID" ]]; then
-#     tmux attach-session -t "$ID"
-#   else
-#     :  # Start terminal normally
-#   fi
-# fi
-if [[ -n ${TMUX-} ]]; then
-  export TERM=tmux-256color
-fi
-
-fpath=(~/.zsh/functions/*(N-/) $fpath)
-. $HOME/.asdf/asdf.sh
 

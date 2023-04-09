@@ -1,5 +1,4 @@
 # Sources：https://zenn.dev/yushin_hirano/articles/28e7ea8cd11bc1
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # DEFAULT_OPTS
 export FZF_COMPLETION_TRIGGER='@@'
 # HOMEDIR ESCAPE INSERT
@@ -165,16 +164,11 @@ files=$(lsd --almost-all | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e 
 zle -N __fzf-edit
 
 __fzf-tmux() {
-  ID="`tmux list-sessions`"
-  create_new_session="Create New Session"
-  ID="$ID\n${create_new_session}:"
-  ID="`echo $ID | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="sessions → " +m --query "$LBUFFER" | cut -d: -f1`"
-  if [[ "$ID" = "${create_new_session}" ]]; then
-    tmux new-session
-  elif [[ -n "$ID" ]]; then
-    tmux attach-session -t "$ID"
-  else
-    :  # Start terminal normally
+  if [ -n "$TMUX" ]; then
+    local sessions=$(tmux list-sessions | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="sessions → " -m --query "$LBUFFER" | cut -d : -f 1)
+    if [ -n "$sessions" ]; then
+      tmux switch -t $sessions
+    fi
   fi
 }
 zle -N __fzf-tmux

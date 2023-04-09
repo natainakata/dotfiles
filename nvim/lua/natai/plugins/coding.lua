@@ -159,4 +159,9 @@ return {
     end,
     ft = "markdown",
   },
+  {
+    "gpanders/nvim-parinfer",
+    lazy = true,
+    ft = { "scheme", "clojure", "lisp" },
+  },
 }
