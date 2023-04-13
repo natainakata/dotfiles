@@ -8,7 +8,8 @@ export KEYTIMEOUT=1
 
 export GOPATH=~/.go
 
-export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
+# export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 path=(
   ~/.bin
@@ -18,4 +19,4 @@ path=(
   $GOPATH/bin
   $path
 )
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"

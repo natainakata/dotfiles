@@ -37,7 +37,7 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # rust cil
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
-zinit ice as"program" from"gh-r" pick"lsd*/lsd"; zinit light Peltoche/lsd
+zinit ice as"program" from"gh-r" pick"lsd*/lsd"; zinit light lsd-rs/lsd
 zinit ice as"program" from"gh-r" mv"hexyl* -> hexyl" pick"hexyl/hexyl"; zinit light sharkdp/hexyl
 zinit ice as"program" from"gh-r" pick"delta*/delta"; zinit light dandavison/delta
 zinit ice as"program" from"gh-r" pick"ripgrep*/rg"; zinit light BurntSushi/ripgrep
@@ -97,5 +97,5 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 fi
 
 eval "$(gh completion -s zsh)"
-
+eval "$(keychain --eval --quiet github id_ed25519)"
 
