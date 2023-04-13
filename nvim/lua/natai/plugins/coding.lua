@@ -5,7 +5,7 @@ return {
     lazy = true,
     version = false,
     event = { "InsertEnter", "CmdLineEnter" },
-    enabled = is_nvim,
+    cond = is_nvim,
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -58,7 +58,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     lazy = true,
-    enabled = is_nvim,
+    cond = is_nvim,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -85,7 +85,7 @@ return {
   {
     "hrsh7th/cmp-cmdline",
     lazy = true,
-    enabled = is_nvim,
+    cond = is_nvim,
     config = function()
       local cmp = require("cmp")
       cmp.setup.cmdline("/", {
@@ -136,7 +136,10 @@ return {
     "windwp/nvim-autopairs",
     lazy = true,
     event = "InsertEnter",
-    config = true,
+    config = function()
+      require("nvim-autopairs").setup()
+      require("nvim-autopairs").get_rule("'")[1].not_filetypes = { "scheme", "lisp", "clojure" }
+    end,
   },
   {
     "numToStr/Comment.nvim",
@@ -147,16 +150,60 @@ return {
   {
     "DaeZak/crafttweaker-vim-highlighting",
     lazy = true,
-    enabled = is_nvim,
+    cond = is_nvim,
     ft = "crafttweaker",
   },
   {
     "iamcco/markdown-preview.nvim",
     lazy = true,
-    enabled = is_nvim,
+    cond = is_nvim,
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
     ft = "markdown",
+  },
+  {
+    "Olical/conjure",
+    lazy = true,
+    dependencies = {
+      {
+        "PaterJason/cmp-conjure",
+        dependencies = {
+          "hrsh7th/nvim-cmp",
+        },
+        config = function()
+          local cmp = require("cmp")
+          cmp.setup({
+            sources = {
+              { name = "conjure" },
+            },
+          })
+        end,
+      },
+    },
+    ft = { "clojure", "scheme", "lisp" },
+    config = function()
+      vim.g["conjure#client#scheme#stdio#command"] = "gosh"
+      vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "gosh>"
+      vim.g["conjure#mapping#prefix"] = "<Leader>x"
+      vim.g["conjure#mapping#eval_root_form"] = "r"
+      vim.g["conjure#mapping#eval_comment_root_form"] = "cr"
+      vim.g["conjure#mapping#eval_current_form"] = "x"
+      vim.g["conjure#mapping#eval_comment_current_form"] = "cx"
+      vim.g["conjure#mapping#eval_word"] = "w"
+      vim.g["conjure#mapping#eval_comment_word"] = "cw"
+      vim.g["conjure#mapping#eval_visual"] = "v"
+      vim.g["conjure#mapping#eval_file"] = "f"
+      vim.g["conjure#mapping#eval_buf"] = "b"
+    end,
+  },
+  {
+    "guns/vim-sexp",
+    dependencies = {
+      "tpope/vim-sexp-mappings-for-regular-people",
+      "tpope/vim-repeat",
+    },
+    lazy = true,
+    ft = { "clojure", "scheme", "lisp" },
   },
 }

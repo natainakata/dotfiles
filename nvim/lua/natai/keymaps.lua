@@ -9,11 +9,12 @@ keymap.set("n", "gj", "j")
 keymap.set("n", "k", "gk")
 keymap.set("n", "gk", "k")
 keymap.set("n", "U", "<C-r>")
-keymap.set("n", "<Leader>w", ":w<CR>", opts)
+-- keymap.set("n", "<Leader>w", ":w<CR>", opts)
 -- keymap.set({ "n", "i", "v", "s" }, "<C-s>", ":w<CR><Esc>", opts)
 keymap.set("i", "jj", "<Esc>")
 keymap.set("n", "<Esc><Esc>", ":nohlsearch<CR>", opts)
 keymap.set("n", "<Leader>q", "<Cmd>qa<cr>", opts)
+keymap.set("n", "x", [["_x]], opts)
 
 -- window and buffer
 --

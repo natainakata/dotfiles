@@ -127,6 +127,9 @@ local spec = {
           mason = false,
         },
         vimls = {},
+        scheme_langserver = {
+          mason = false,
+        },
         powershell_es = {
           mason = false,
           settings = {
