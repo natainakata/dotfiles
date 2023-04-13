@@ -8,3 +8,4 @@ clojure 1.11.1.1273
 java temurin-20.0.0+36
 lein 2.9.9
 chicken 5.3.0
+racket 8.8

@@ -6,12 +6,15 @@ return {
   { "MunifTanjim/nui.nvim", lazy = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "echasnovski/mini.nvim", version = false },
+  { "notomo/promise.nvim", lazy = true },
+  { "tpope/vim-dispatch" },
+  { "radenling/vim-dispatch-neovim" },
   { "vim-jp/vimdoc-ja" },
-  {
-    "dstein64/vim-startuptime",
-    cmd = "StartupTime",
-    config = function()
-      vim.g.startuptime_tries = 5
-    end,
-  },
+  -- {
+  --   "dstein64/vim-startuptime",
+  --   cmd = "StartupTime",
+  --   config = function()
+  --     vim.g.startuptime_tries = 5
+  --   end,
+  -- },
 }

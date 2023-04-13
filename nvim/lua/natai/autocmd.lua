@@ -3,6 +3,7 @@ local function augroup(name)
 end
 
 local autocmd = vim.api.nvim_create_autocmd
+local utils = require("natai.util")
 
 autocmd("TermOpen", {
   group = augroup("term_insert_in"),

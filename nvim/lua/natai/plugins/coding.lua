@@ -12,7 +12,7 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
-      "PaterJason/cmp-conjure",
+      -- "PaterJason/cmp-conjure",
       "hrsh7th/cmp-emoji",
       "ray-x/cmp-treesitter",
       "hrsh7th/cmp-cmdline",
@@ -165,9 +165,20 @@ return {
     ft = "markdown",
   },
   {
+    "wlangstroth/vim-racket",
+    lazy = true,
+  },
+  {
     "Olical/conjure",
     lazy = true,
-    ft = { "clojure", "scheme", "lisp" },
+    dependencies = {
+      "clojure-vim/vim-jack-in",
+      dependencies = {
+        "tpope/vim-dispatch",
+        "radenling/vim-dispatch-neovim",
+      },
+    },
+    ft = { "clojure", "scheme", "racket", "lisp" },
     config = function()
       vim.g["conjure#client#scheme#stdio#command"] = "gosh -i"
       vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "gosh[>$] "

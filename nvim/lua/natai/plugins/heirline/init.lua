@@ -3,6 +3,7 @@ local spec = {
   {
     "rebelot/heirline.nvim",
     commit = "750a112",
+    event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons", "navarasu/onedark.nvim" },
     config = function()
       vim.opt.showmode = false
