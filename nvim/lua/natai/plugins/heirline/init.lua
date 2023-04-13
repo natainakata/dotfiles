@@ -2,7 +2,6 @@
 local spec = {
   {
     "rebelot/heirline.nvim",
-    commit = "750a112",
     event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons", "navarasu/onedark.nvim" },
     config = function()
@@ -17,6 +16,14 @@ local spec = {
         statusline = status,
         winbar = winbar,
         tabline = tabline,
+        opts = {
+          disable_winbar_cb = function(args)
+            return require("heirline.conditions").buffer_matches({
+              buftype = { "nofile", "prompt", "help", "quickfix" },
+              filetype = { "^git.*", "fugitive", "Trouble", "dashboard" },
+            }, args.buf)
+          end,
+        },
       })
     end,
   },
