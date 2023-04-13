@@ -1,14 +1,14 @@
 .PHONY: install
-install: git asdf nvim tmux bin zsh starship
+install: git nvim tmux bin zsh starship
 
 .PHONY: git
 git: 
 	ln -snfv ${PWD}/gitconfig ${HOME}/.gitconfig
 
-.PHONY: asdf
-asdf:
-	ln -snfv ${PWD}/tool-versions ${HOME}/.tool-versions
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+# .PHONY: asdf
+# asdf:
+# 	ln -snfv ${PWD}/tool-versions ${HOME}/.tool-versions
+# 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
 	
 .PHONY: nvim
 nvim:

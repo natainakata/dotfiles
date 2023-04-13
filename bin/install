@@ -17,9 +17,9 @@ if [ ! -d ${DOT_DIR} ]; then
 
   make install
 
-  . "$HOME/.asdf/asdf.sh"
-	cat $HOME/.tool-versions | awk '{print $1}' | xargs -I X asdf plugin add X
-	asdf install
+  # . "$HOME/.asdf/asdf.sh"
+	# cat $HOME/.tool-versions | awk '{print $1}' | xargs -I X asdf plugin add X
+	# asdf install
 else
   echo "dotfiles already exists"
   exit 1

@@ -24,6 +24,12 @@ local function setup_lsp_global()
     vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
   end
 end
+local function definition_custom_server()
+  utils.ensure("lspconfig.configs", function(m)
+    m.racketls = require("natai.plugins.lsp.custom.racketls")
+    m.goshls = require("natai.plugins.lsp.custom.goshls")
+  end)
+end
 
 local function register_lsp_servers(opts)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -127,6 +133,15 @@ local spec = {
           mason = false,
         },
         vimls = {},
+        -- scheme_langserver = {
+        --   mason = false,
+        -- },
+        goshls = {
+          mason = false,
+        },
+        racketls = {
+          mason = false,
+        },
         powershell_es = {
           mason = false,
           settings = {
@@ -147,6 +162,7 @@ local spec = {
     },
     config = function(_, opts)
       setup_lsp_global()
+      definition_custom_server()
       register_lsp_servers(opts)
     end,
   },
