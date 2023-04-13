@@ -12,6 +12,7 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
+      "PaterJason/cmp-conjure",
       "hrsh7th/cmp-emoji",
       "ray-x/cmp-treesitter",
       "hrsh7th/cmp-cmdline",
@@ -32,6 +33,7 @@ return {
           { name = "path" },
           { name = "luasnip" },
           { name = "emoji" },
+          { name = "conjure" },
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -165,26 +167,11 @@ return {
   {
     "Olical/conjure",
     lazy = true,
-    dependencies = {
-      {
-        "PaterJason/cmp-conjure",
-        dependencies = {
-          "hrsh7th/nvim-cmp",
-        },
-        config = function()
-          local cmp = require("cmp")
-          cmp.setup({
-            sources = {
-              { name = "conjure" },
-            },
-          })
-        end,
-      },
-    },
     ft = { "clojure", "scheme", "lisp" },
     config = function()
-      vim.g["conjure#client#scheme#stdio#command"] = "gosh"
-      vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "gosh>"
+      vim.g["conjure#client#scheme#stdio#command"] = "gosh -i"
+      vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "gosh[>$] "
+      vim.g["conjure#client#scheme#stdio#value_prefix_pattern"] = false
       vim.g["conjure#mapping#prefix"] = "<Leader>x"
       vim.g["conjure#mapping#eval_root_form"] = "r"
       vim.g["conjure#mapping#eval_comment_root_form"] = "cr"
