@@ -140,7 +140,7 @@ return {
     event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup()
-      require("nvim-autopairs").get_rule("'")[1].not_filetypes = { "scheme", "lisp", "clojure" }
+      require("nvim-autopairs").get_rule("'")[1].not_filetypes = { "scheme", "lisp", "clojure", "racket" }
     end,
   },
   {

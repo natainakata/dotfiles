@@ -2,7 +2,7 @@ local util = require("lspconfig.util")
 return {
   default_config = {
     cmd = { "racket", "-l", "racket-langserver" },
-    filetypes = { "scheme", "racket" },
+    filetypes = { "racket" },
     root_dir = util.path.dirname,
   },
   docs = {
