@@ -20,20 +20,30 @@ local spec = {
       },
       indent = {
         enable = true,
-        disable = {},
+        disable = { "scheme", "clojure", "python" },
       },
       ensure_installed = {
+        -- shell
         "bash",
-        "cmake",
-        "json",
-        "lua",
-        "make",
+        -- documents
         "markdown",
         "markdown_inline",
-        "python",
+        -- build tool
+        "make",
+        "cmake",
+        -- conf file
         "toml",
-        "vim",
         "yaml",
+        "json",
+        -- vim conf
+        "vim",
+        "lua",
+        -- script
+        "typescript",
+        "python",
+        -- lisp
+        "scheme",
+        "clojure",
       },
       autotag = {
         enable = true,
@@ -79,9 +89,8 @@ local spec = {
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
-      -- require("nvim-treesitter.install").compilers = { "zig" }
+      vim.treesitter.language.register("typescript", "typescriptreact")
+      vim.treesitter.language.register("bash", "zsh")
     end,
   },
   {
