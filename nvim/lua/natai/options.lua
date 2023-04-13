@@ -20,9 +20,7 @@ opt.wrapscan = true
 opt.number = true
 opt.termguicolors = true
 opt.cursorline = true
-opt.cursorcolumn = true
 opt.visualbell = true
-opt.showmatch = true
 opt.wildmode = { "list", "longest" }
 
 opt.laststatus = 3
@@ -35,6 +33,8 @@ opt.virtualedit = "onemore"
 opt.list = true
 if not vim.g.vscode then
   opt.listchars:append("eol:↴")
+  opt.showmatch = true
+  opt.cursorcolumn = true
 end
 opt.mouse = "a"
 opt.clipboard:append({ "unnamed", "unnamedplus" })
