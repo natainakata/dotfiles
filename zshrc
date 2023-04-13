@@ -83,8 +83,8 @@ if [[ -n ${TMUX-} ]]; then
   export TERM=tmux-256color
 fi
 
-. $HOME/.asdf/asdf.sh
-fpath=(~/.asdf/completions $fpath)
+# . $HOME/.asdf/asdf.sh
+# fpath=(~/.asdf/completions $fpath)
 
 # load rc
 ZSHHOME="${HOME}/.zsh"
