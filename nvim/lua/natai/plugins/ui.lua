@@ -114,7 +114,7 @@ local spec = {
         dashboard.button(
           "f",
           "  Find file",
-          "<cmd>lua require('telescope.builtin').find_files({no_ignore = true, hidden = true})<CR>"
+          "<cmd>lua require('telescope.builtin').find_files({no_ignore = true, hidden = false})<CR>"
         ),
         dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),
       }

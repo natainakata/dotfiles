@@ -14,6 +14,7 @@ local diagnosis_config = {
 }
 
 local function setup_lsp_global()
+  vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     update_in_insert = false,
     float = diagnosis_config,
