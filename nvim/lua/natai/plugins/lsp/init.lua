@@ -14,7 +14,6 @@ local diagnosis_config = {
 }
 
 local function setup_lsp_global()
-  vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     update_in_insert = false,
     float = diagnosis_config,
@@ -28,7 +27,7 @@ end
 local function definition_custom_server()
   utils.ensure("lspconfig.configs", function(m)
     m.racketls = require("natai.plugins.lsp.custom.racketls")
-    m.goshls = require("natai.plugins.lsp.custom.goshls")
+    -- m.goshls = require("natai.plugins.lsp.custom.goshls")
   end)
 end
 
@@ -137,9 +136,9 @@ local spec = {
         -- scheme_langserver = {
         --   mason = false,
         -- },
-        goshls = {
-          mason = false,
-        },
+        --goshls = {
+        --  mason = false,
+        --},
         racketls = {
           mason = false,
         },
