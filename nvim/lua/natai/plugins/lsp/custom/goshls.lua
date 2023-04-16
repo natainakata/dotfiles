@@ -2,7 +2,7 @@ local util = require("lspconfig.util")
 return {
   default_config = {
     cmd = { "/home/natai/sandbox/goshls/goshls" },
-    filetypes = { "aaa" },
+    filetypes = { "text" },
     root_dir = util.path.dirname,
   },
   docs = {

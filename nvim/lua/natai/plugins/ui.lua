@@ -198,8 +198,8 @@ local spec = {
   },
 }
 
-if not require("natai.util").is_vscode then
-  return spec
-else
+if vim.g.vscode then
   return {}
+else
+  return spec
 end
