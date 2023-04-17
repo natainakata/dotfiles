@@ -135,13 +135,28 @@ return {
     config = true,
   },
   {
-    "windwp/nvim-autopairs",
+    "cohama/lexima.vim",
     lazy = true,
     event = "InsertEnter",
     config = function()
-      require("nvim-autopairs").setup()
-      require("nvim-autopairs").get_rule("'")[1].not_filetypes = { "scheme", "lisp", "clojure", "racket" }
-      require("nvim-autopairs").get_rule("`")[1].not_filetypes = { "scheme", "lisp", "clojure", "racket" }
+      vim.fn["lexima#add_rule"]({
+        filetype = {
+          "scheme",
+          "clojure",
+          "lisp",
+        },
+        char = "'",
+        input = "'",
+      })
+      vim.fn["lexima#add_rule"]({
+        filetype = {
+          "scheme",
+          "clojure",
+          "lisp",
+        },
+        char = "`",
+        input = "`",
+      })
     end,
   },
   {
