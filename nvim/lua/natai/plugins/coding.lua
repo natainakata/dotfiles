@@ -141,6 +141,7 @@ return {
     config = function()
       require("nvim-autopairs").setup()
       require("nvim-autopairs").get_rule("'")[1].not_filetypes = { "scheme", "lisp", "clojure", "racket" }
+      require("nvim-autopairs").get_rule("`")[1].not_filetypes = { "scheme", "lisp", "clojure", "racket" }
     end,
   },
   {
