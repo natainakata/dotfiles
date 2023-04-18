@@ -44,6 +44,24 @@ autocmd("CmdwinEnter", {
   end,
 })
 
+autocmd("FileType", {
+  group = augroup("qf_position"),
+  pattern = "qf",
+  command = "wincmd H",
+})
+
+autocmd("QuickFixCmdPost", {
+  group = augroup("vimgrep_autoopen"),
+  pattern = "vimgrep",
+  callback = function()
+    vim.cmd([[
+      cw
+      set modifiable
+      vertical resize 30
+    ]])
+  end,
+})
+
 autocmd({ "BufRead", "BufNewFile" }, {
   group = augroup("mclang"),
   pattern = "*.lang",
