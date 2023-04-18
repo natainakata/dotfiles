@@ -28,7 +28,7 @@ end
 local function definition_custom_server()
   utils.ensure("lspconfig.configs", function(m)
     m.racketls = require("natai.plugins.lsp.custom.racketls")
-    m.goshls = require("natai.plugins.lsp.custom.goshls")
+    -- m.goshls = require("natai.plugins.lsp.custom.goshls")
   end)
 end
 
@@ -137,9 +137,9 @@ local spec = {
         -- scheme_langserver = {
         --   mason = false,
         -- },
-        goshls = {
-          mason = false,
-        },
+        -- goshls = {
+        --   mason = false,
+        -- },
         racketls = {
           mason = false,
         },
