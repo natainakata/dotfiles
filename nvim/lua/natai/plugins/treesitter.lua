@@ -84,7 +84,7 @@ local spec = {
         },
       },
       matchup = {
-        enable = false,
+        enable = true,
       },
     },
     config = function(_, opts)
