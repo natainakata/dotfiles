@@ -28,8 +28,9 @@ local spec = {
     end,
   },
 }
--- if vim.g.vscode then
---   return {}
--- else
---   return spec
--- end
+if vim.g.vscode then
+  return {}
+else
+  return {}
+  -- return spec
+end

@@ -178,7 +178,19 @@ local spec = {
             symbols = { modified = icons.files.modified, readonly = icons.files.readonly },
           },
         },
-        lualine_c = {},
+        lualine_c = {
+          {
+            "diagnostics",
+            sources = { "nvim_diagnostic", "nvim_lsp" },
+            sections = { "error", "warn", "info", "hint" },
+            symbols = {
+              error = icons.diagnostics.Error,
+              warn = icons.diagnostics.Warn,
+              info = icons.diagnostics.Info,
+              hint = icons.diagnostics.Hint,
+            },
+          },
+        },
 
         lualine_x = {
           "encoding",
@@ -201,7 +213,12 @@ local spec = {
           },
         },
         lualine_b = {},
-        lualine_c = {},
+        lualine_c = {
+          {
+            "navic",
+            color_correction = "static",
+          },
+        },
         lualine_x = {
           {
             "diff",

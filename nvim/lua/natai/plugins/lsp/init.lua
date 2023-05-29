@@ -51,11 +51,6 @@ local function register_lsp_servers(opts)
       on_attach = utils.on_attach(function(client, buffer)
         require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
         require("natai.plugins.lsp.format").on_attach(client, buffer)
-        if client.server_capabilities.documentSymbolProvider then
-          utils.ensure("nvim-navic", function(m)
-            m.attach(client, buffer)
-          end)
-        end
       end),
     }, config or {})
     if opts.setup[name] then
@@ -77,7 +72,6 @@ local function register_lsp_servers(opts)
     for server, server_opts in pairs(opts.servers) do
       if server_opts then
         server_opts = server_opts == true and {} or server_opts
-        -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
         if server_opts.mason == false or not vim.tbl_contains(available, server) then
           register(server, server_opts)
         else
@@ -98,7 +92,7 @@ local spec = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "folke/trouble.nvim",
-      "SmiteshP/nvim-navic",
+      { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
     opts = {
