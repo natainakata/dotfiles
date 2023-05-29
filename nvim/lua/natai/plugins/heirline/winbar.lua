@@ -42,7 +42,7 @@ local WinBars = {
   -- A winbar for regular files
   utils.surround({ "", "" }, "bright_bg", {
     Lsp.Navic,
-    { provider = "%<" },
+    -- { provider = "%<" },
     Component.Align,
     File.FileNameBlock,
     Component.CloseButton,

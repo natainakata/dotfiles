@@ -14,6 +14,7 @@ local icons = {
     added = "",
     removed = "",
     merged = "שּׁ",
+    branch = "שׂ",
     ignored = "﬒",
     staged = "",
     renamed = "﯀",

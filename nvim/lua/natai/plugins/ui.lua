@@ -1,3 +1,14 @@
+local icons = require("natai.icons")
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+end
 local spec = {
   {
     "rcarriga/nvim-notify",
@@ -143,6 +154,73 @@ local spec = {
       }
       wk.register(keymaps)
     end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = {
+      options = {
+        theme = "auto",
+        globalstatus = true,
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
+      },
+      sections = {
+        lualine_a = {
+          "mode",
+        },
+        lualine_b = {
+          {
+            "filename",
+            newfile_status = true,
+            path = 1,
+            shorting_target = 24,
+            symbols = { modified = icons.files.modified, readonly = icons.files.readonly },
+          },
+        },
+        lualine_c = {},
+
+        lualine_x = {
+          "encoding",
+        },
+        lualine_y = {
+          { "filetype", color = { fg = require("onedark.palette").dark.fg } },
+        },
+        lualine_z = {
+          { "fileformat", icons_enabled = true, separator = { left = "", right = "" } },
+        },
+      },
+      tabline = {
+        lualine_a = {
+          {
+            "buffers",
+            symbols = {
+              modified = " " .. icons.files.modified,
+              directory = " " .. icons.kinds.Folder,
+            },
+          },
+        },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {
+          {
+            "diff",
+            symbols = {
+              added = icons.git.added .. " ",
+              modified = icons.files.modified .. " ",
+              removed = icons.git.removed .. " ",
+            },
+            source = diff_source,
+          },
+        },
+        lualine_y = {
+          { "b:gitsigns_head", icon = { icons.git.branch } },
+        },
+        lualine_z = {
+          "tabs",
+        },
+      },
+    },
   },
   {
     "petertriho/nvim-scrollbar",

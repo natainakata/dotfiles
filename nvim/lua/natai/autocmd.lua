@@ -67,6 +67,10 @@ autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.lang",
   command = "set filetype=mclang",
 })
+autocmd("CursorMoved", {
+  group = augroup("redraw_line"),
+  command = "redrawtabline",
+})
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
   if vim.fn.executable("zenhan") == 1 then
