@@ -217,6 +217,9 @@ local spec = {
           {
             "navic",
             color_correction = "static",
+            navic_opts = {
+              depth_limit = 9,
+            },
           },
         },
         lualine_x = {
