@@ -15,7 +15,7 @@ local spec = {
   {
     "navarasu/onedark.nvim",
     opts = {
-      -- transparent = trans,
+      transparent = trans,
     },
     config = function(_, opts)
       local onedark = require("onedark")
@@ -38,7 +38,7 @@ local spec = {
     -- priority = 1000,
     opts = {
       options = {
-        -- transprent = trans,
+        transprent = trans,
       },
       styles = {
         comments = "italic",
@@ -54,7 +54,7 @@ local spec = {
     "rebelot/kanagawa.nvim",
     -- priority = 1000,
     opts = {
-      -- transparent = trans,
+      transparent = trans,
     },
     config = function(_, opts)
       require("kanagawa").setup(opts)
