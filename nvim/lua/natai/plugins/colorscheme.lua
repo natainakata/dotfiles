@@ -1,5 +1,5 @@
 local trans, trans_vim
-if not vim.g.neovide then
+if not vim.g.nvy then
   trans = true
   trans_vim = 1
 else

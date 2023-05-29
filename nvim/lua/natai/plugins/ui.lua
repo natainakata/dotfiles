@@ -240,6 +240,13 @@ local spec = {
           "tabs",
         },
       },
+      extensions = {
+        "man",
+        "lazy",
+        "nvim-tree",
+        "quickfix",
+        "symbols-outline",
+      },
     },
   },
   {
