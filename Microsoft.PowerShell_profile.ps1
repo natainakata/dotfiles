@@ -4,6 +4,9 @@ $helperDir = "$HOME/.config/powershell"
 . "$($helperDir)/readline.ps1"
 . "$($helperDir)/fzf.ps1"
 
+# ssh-agent settings
+$env:GIT_SSH = "C:\Windows\System32\OpenSSH\ssh.exe"
+
 # Wsl Command Import
 Import-WslCommand 'awk', 'grep', 'head', 'less', 'sed', 'seq', 'tail', 'man'
 $WslDefaultParameterValues = @{}
