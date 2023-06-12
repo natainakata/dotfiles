@@ -127,6 +127,29 @@ local spec = {
         bashls = {
           mason = false,
         },
+        denols = {
+          root_dir = utils.ensure("lspconfig.utils", function(m)
+            m.root_pattern("deno.json")
+          end),
+          init_options = {
+            lint = true,
+            unstable = true,
+            suggest = {
+              imports = {
+                hosts = {
+                  ["https://deno.land"] = true,
+                  ["https://cdn.nest.land"] = true,
+                  ["https://crux.land"] = true,
+                },
+              },
+            },
+          },
+        },
+        kotlin_language_server = {
+          root_dir = utils.ensure("lspconfig.utils", function(m)
+            m.root_pattern("build.gradle.kts")
+          end),
+        },
         vimls = {},
         -- scheme_langserver = {
         --   mason = false,
