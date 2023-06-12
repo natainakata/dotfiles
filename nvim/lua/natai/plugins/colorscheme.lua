@@ -20,7 +20,7 @@ local spec = {
     config = function(_, opts)
       local onedark = require("onedark")
       onedark.setup(opts)
-      -- onedark.load()
+      onedark.load()
     end,
   },
   {
@@ -30,7 +30,7 @@ local spec = {
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
       vim.g.sonokai_transparent_background = trans_vim
-      vim.cmd.colorscheme("sonokai")
+      -- vim.cmd.colorscheme("sonokai")
     end,
   },
   {

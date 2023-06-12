@@ -44,6 +44,9 @@ local spec = {
         -- lisp
         "scheme",
         "clojure",
+        -- java
+        "java",
+        "kotlin"
       },
       autotag = {
         enable = true,

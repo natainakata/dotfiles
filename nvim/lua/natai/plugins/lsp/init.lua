@@ -1,88 +1,4 @@
 local utils = require("natai.util")
-local function format_diagnostics(diag)
-  if diag.code then
-    return string.format("[%s](%s): %s", diag.source, diag.code, diag.message)
-  else
-    return string.format("[%s]: %s", diag.source, diag.message)
-  end
-end
-
-local diagnosis_config = {
-  format = format_diagnostics,
-  header = {},
-  scope = "cursor",
-}
-
-local function setup_lsp_global()
-  vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    update_in_insert = false,
-    float = diagnosis_config,
-    virtual_text = diagnosis_config,
-  })
-  for name, icon in pairs(require("natai.icons").diagnostics) do
-    name = "DiagnosticSign" .. name
-    vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-  end
-end
-local function definition_custom_server()
-  utils.ensure("lspconfig.configs", function(m)
-    m.racketls = require("natai.plugins.lsp.custom.racketls")
-    -- m.goshls = require("natai.plugins.lsp.custom.goshls")
-  end)
-end
-
-local function register_lsp_servers(opts)
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  }
-  utils.ensure("cmp_nvim_lsp", function(m)
-    capabilities = m.default_capabilities(capabilities)
-  end)
-  local function register(name, config)
-    local server_opts = vim.tbl_deep_extend("force", {
-      capabilities = vim.deepcopy(capabilities),
-      on_attach = utils.on_attach(function(client, buffer)
-        require("natai.plugins.lsp.keymaps").on_attach(client, buffer)
-        require("natai.plugins.lsp.format").on_attach(client, buffer)
-      end),
-    }, config or {})
-    if opts.setup[name] then
-      if opts.setup[name](name, server_opts) then
-        return
-      elseif opts.setup["*"] then
-        if opts.setup["*"](name, server_opts) then
-          return
-        end
-      end
-    end
-    utils.ensure("lspconfig", function(m)
-      m[name].setup(server_opts)
-    end)
-  end
-  utils.ensure("mason-lspconfig", function(m)
-    local available = m.get_available_servers()
-    local ensure_installed = {}
-    for server, server_opts in pairs(opts.servers) do
-      if server_opts then
-        server_opts = server_opts == true and {} or server_opts
-        if server_opts.mason == false or not vim.tbl_contains(available, server) then
-          register(server, server_opts)
-        else
-          ensure_installed[#ensure_installed + 1] = server
-        end
-      end
-    end
-    m.setup({ ensure_installed = ensure_installed })
-    m.setup_handlers({ register })
-  end)
-end
 
 local spec = {
   {
@@ -95,93 +11,132 @@ local spec = {
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
-    opts = {
-      diagnostics = {
+    init = function()
+      utils.on_attach(function(client, bufnr)
+        require("natai.plugins.lsp.keymaps").on_attach(client, bufnr)
+        require("natai.plugins.lsp.format").on_attach(client, bufnr)
+      end)
+    end,
+    opts = function()
+      local o = {}
+      o.opts = {}
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = {
+          "documentation",
+          "detail",
+          "additionalTextEdits",
+        },
+      }
+      utils.ensure("cmp_nvim_lsp", function(m)
+        capabilities = m.default_capabilities(capabilities)
+      end)
+      o.opts.capabilities = vim.tbl_deep_extend("force", {}, capabilities or {})
+      local function format_diagnostics(diag)
+        if diag.code then
+          return string.format("[%s](%s): %s", diag.source, diag.code, diag.message)
+        else
+          return string.format("[%s]: %s", diag.source, diag.message)
+        end
+      end
+      local diagnosis_config = {
+        format = format_diagnostics,
+        header = {},
+        scope = "cursor",
+      }
+      vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = false,
+        float = diagnosis_config,
+        virtual_text = diagnosis_config,
+      })
+      for name, icon in pairs(require("natai.icons").diagnostics) do
+        name = "DiagnosticSign" .. name
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+      end
+
+      o.opts.diagnostics = {
         underline = true,
         update_in_insert = false,
         virtual_text = diagnosis_config,
         float = diagnosis_config,
         severity_sort = true,
-      },
-      update_in_insert = true,
-      underline = true,
-      severity_sort = true,
-      float = {
+      }
+      o.opts.update_in_insert = true
+      o.opts.underline = true
+      o.opts.severity_sort = true
+      o.opts.float = {
         focusable = false,
         style = "minimal",
         border = "rounded",
         source = "always",
         header = "",
         prefix = "",
-      },
-      servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
-        bashls = {
-          mason = false,
-        },
-        denols = {
-          root_dir = utils.ensure("lspconfig.utils", function(m)
-            m.root_pattern("deno.json")
-          end),
-          init_options = {
-            lint = true,
-            unstable = true,
-            suggest = {
-              imports = {
-                hosts = {
-                  ["https://deno.land"] = true,
-                  ["https://cdn.nest.land"] = true,
-                  ["https://crux.land"] = true,
-                },
-              },
-            },
-          },
-        },
-        kotlin_language_server = {
-          root_dir = utils.ensure("lspconfig.utils", function(m)
-            m.root_pattern("build.gradle.kts")
-          end),
-        },
-        vimls = {},
-        -- scheme_langserver = {
-        --   mason = false,
-        -- },
-        -- goshls = {
-        --   mason = false,
-        -- },
-        racketls = {
-          mason = false,
-        },
-        powershell_es = {
-          mason = false,
-          settings = {
-            powershell = {
-              codeFormatting = {
-                preset = "OTBS",
-                newLineAfterOpenBrace = false,
-                newLineAfterCloseBrace = true,
-              },
-            },
-          },
-          on_attach = require("natai.util").on_attach(function(client, buffer)
-            client.server_capabilities.semanticTokensProvider = nil
-          end),
-        },
-      },
-      setup = {},
-    },
+      }
+      return o
+    end,
     config = function(_, opts)
-      setup_lsp_global()
-      definition_custom_server()
-      register_lsp_servers(opts)
+      opts = opts.opts
+      local lspconfig = require("lspconfig")
+      lspconfig.configs.racketls = require("natai.plugins.lsp.custom.racketls")
+      -- lspconfig.configs.goshls = require("natai.plugins.lsp.custom.goshls")
+      local function setup(client, server_opts)
+        local default_opts = client.document_config.default_config
+        local local_opts = vim.tbl_deep_extend("force", {}, opts, server_opts or {})
+
+        local_opts.filetypes =
+          utils.merge_tables(local_opts.filetypes or default_opts.filetypes or {}, local_opts.extra_filetypes or {})
+        local_opts.extra_filetypes = nil
+        client.setup(local_opts)
+      end
+
+      setup(lspconfig.lua_ls, {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace",
+            },
+          },
+        },
+      })
+
+      setup(lspconfig.denols, {
+        root_dir = lspconfig.util.root_pattern("deno.json"),
+        init_options = {
+          lint = true,
+          unstable = true,
+          suggest = {
+            imports = {
+              hosts = {
+                ["https://deno.land"] = true,
+                ["https://cdn.nest.land"] = true,
+                ["https://crux.land"] = true,
+              },
+            },
+          },
+        },
+      })
+
+      setup(lspconfig.kotlin_language_server, {
+        root_dir = lspconfig.util.root_pattern("build.gradle.kts"),
+      })
+
+      setup(lspconfig.powershell_es, {
+        mason = false,
+        settings = {
+          powershell = {
+            codeFormatting = {
+              preset = "OTBS",
+              newLineAfterOpenBrace = false,
+              newLineAfterCloseBrace = true,
+            },
+          },
+        },
+        on_attach = utils.on_attach(function(client, bufnr)
+          client.server_capabilities.semanticTokensProvider = nil
+        end),
+      })
     end,
   },
 

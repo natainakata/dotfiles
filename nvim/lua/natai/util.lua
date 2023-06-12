@@ -19,6 +19,18 @@ function M.opts(name)
   return Plugin.values(plugin, "opts", false)
 end
 
+-- source: https://github.com/ryoppippi/dotfiles/blob/3b19caa12b6911a738da4f39604f525176f35f48/nvim/lua/core/utils.lua
+function M.merge_tables(t1, t2)
+  for k, v in pairs(t2) do
+    if (type(v) == "table") and (type(t1[k] or false) == "table") then
+      M.merge_tables(t1[k], t2[k])
+    else
+      t1[k] = v
+    end
+  end
+  return t1
+end
+
 -- source: https://github.com/kyoh86/dotfiles/blob/8c834eb1de6e8f1cd2e021c506cba7de42eb971a/nvim/lua/kyoh86/root/preload.lua
 function M.ensure(spec, callback)
   local ok, module = pcall(require, spec)
@@ -32,7 +44,7 @@ function M.ensure(spec, callback)
   return ok, module
 end
 
-M.is_nvim = function ()
+M.is_nvim = function()
   if vim.g.vscode then
     return false
   else
