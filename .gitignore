@@ -21,6 +21,8 @@
 !/nvim/**
 !/lazyvim/
 !/lazyvim/**
+!/denovim/
+!/denovim/**
 /nvim/plugin/
 /nvim/lazy-lock.json
 /lazyvim/lazy-lock.json
