@@ -77,7 +77,7 @@ M.core = {
     desc = "Git Commits",
   },
   {
-    "<C-S>",
+    "<C-f>",
     function()
       require("telescope.builtin").symbols()
     end,

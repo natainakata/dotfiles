@@ -7,8 +7,8 @@ local keybind = require("keybind")
 
 wezterm.on("update-status", function(window, pane)
 	local wday = os.date("*t").wday
-	local wday_ja = string.format("(%s )", utils.day_of_week_ja(wday))
-	local date = wezterm.strftime("📆  %Y-%m-%d " .. wday_ja .. " ⏰  %H:%M:%S")
+	local wday_ja = string.format("(%s)", utils.day_of_week_ja(wday))
+	local date = wezterm.strftime("  %Y-%m-%d " .. wday_ja .. "   %H:%M:%S")
 
 	local bat = ""
 
@@ -16,21 +16,21 @@ wezterm.on("update-status", function(window, pane)
 		local battery_state_of_charge = b.state_of_charge * 100
 		local battery_icon = ""
 		if battery_state_of_charge >= 80 then
-			battery_icon = "🌕  "
+			battery_icon = "  "
 		elseif battery_state_of_charge >= 70 then
-			battery_icon = "🌖  "
+			battery_icon = "  "
 		elseif battery_state_of_charge >= 60 then
-			battery_icon = "🌖  "
+			battery_icon = "  "
 		elseif battery_state_of_charge >= 50 then
-			battery_icon = "🌗  "
+			battery_icon = "  "
 		elseif battery_state_of_charge >= 40 then
-			battery_icon = "🌗  "
+			battery_icon = "  "
 		elseif battery_state_of_charge >= 30 then
-			battery_icon = "🌘  "
+			battery_icon = "  "
 		elseif battery_state_of_charge >= 20 then
-			battery_icon = "🌘  "
+			battery_icon = "  "
 		else
-			battery_icon = "🌑  "
+			battery_icon = "󱊡  "
 		end
 
 		bat = string.format("%s%.0f%% ", battery_icon, battery_state_of_charge)
@@ -102,16 +102,16 @@ return {
 	font_size = 14.0,
 	initial_cols = 120,
 	initial_rows = 30,
-	olor_scheme = "Sonokai (Gogh)",
-	-- color_scheme = "OneDark (base16)",
+	-- color_scheme = "Sonokai (Gogh)",
+	color_scheme = "OneDark (base16)",
 	-- color_scheme = "kanagawa (Gogh)",
 	-- colors = colors,
-	-- window_background_opacity = 0.9,
+	window_background_opacity = 0.9,
 	adjust_window_size_when_changing_font_size = false,
 	-- disable_default_key_bindings = true,
 	default_prog = { "pwsh.exe" },
 	default_cwd = default_cwd,
-	leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 },
+	leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 },
 	keys = keybind.create_keybinds(),
 	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = true,
