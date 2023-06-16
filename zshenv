@@ -11,6 +11,11 @@ export GOPATH=~/.go
 # export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+export NEOVIM_HOME="$HOME/.local/nvim"
+if [ -d "${NEOVIM_HOME}" ]; then
+  export PATH="${NEOVIM_HOME}/bin:$PATH"
+fi
+
 path=(
   ~/.bin
   ~/bin
@@ -19,4 +24,5 @@ path=(
   $GOPATH/bin
   $path
 )
+
 # . "$HOME/.cargo/env"

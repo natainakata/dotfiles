@@ -62,6 +62,35 @@ zinit ice as"program" from"gh-r" mv"win32yank* - win32yank" pick"equalsraf/win32
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# . $HOME/.asdf/asdf.sh
+# fpath=(~/.asdf/completions $fpath)
+#
+
+eval "$(gh completion -s zsh)"
+eval "$(keychain --eval --quiet id_ed25519)"
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export DENO_INSTALL="/home/natai/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# load rc
+ZSHHOME="${HOME}/.zsh"
+if [ -d $ZSHHOME -a -r $ZSHHOME -a \
+  -x $ZSHHOME ]; then
+  for i in $ZSHHOME/*; do
+    [[ ${i##*/} = *.zsh ]] &&
+      [ \( -f $i -o -h $i \) -a -r $i ] && . $i
+  done
+fi
+
+
 if [[ ! -n $TMUX && $- == *l* ]]; then
   # get the IDs
   ID="`tmux list-sessions`"
@@ -83,19 +112,4 @@ if [[ -n ${TMUX-} ]]; then
   export TERM=tmux-256color
 fi
 
-# . $HOME/.asdf/asdf.sh
-# fpath=(~/.asdf/completions $fpath)
-
-# load rc
-ZSHHOME="${HOME}/.zsh"
-if [ -d $ZSHHOME -a -r $ZSHHOME -a \
-  -x $ZSHHOME ]; then
-  for i in $ZSHHOME/*; do
-    [[ ${i##*/} = *.zsh ]] &&
-      [ \( -f $i -o -h $i \) -a -r $i ] && . $i
-  done
-fi
-
-eval "$(gh completion -s zsh)"
-eval "$(keychain --eval --quiet id_ed25519)"
 

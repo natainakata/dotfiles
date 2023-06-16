@@ -151,6 +151,8 @@ local spec = {
         "shfmt",
         "flake8",
         "prettier",
+        "lua-language-server",
+        "vim-language-server",
       },
     },
     config = function(_, opts)
