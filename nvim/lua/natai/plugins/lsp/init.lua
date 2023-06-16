@@ -79,7 +79,7 @@ local spec = {
     config = function(_, opts)
       opts = opts.opts
       local lspconfig = require("lspconfig")
-      lspconfig.configs.racketls = require("natai.plugins.lsp.custom.racketls")
+      -- lspconfig.configs.racketls = require("natai.plugins.lsp.custom.racketls")
       -- lspconfig.configs.goshls = require("natai.plugins.lsp.custom.goshls")
       local function setup(client, server_opts)
         local default_opts = client.document_config.default_config
@@ -119,7 +119,7 @@ local spec = {
       })
 
       setup(lspconfig.kotlin_language_server, {
-        root_dir = lspconfig.util.root_pattern("build.gradle.kts"),
+        -- root_dir = lspconfig.util.root_pattern("build.gradle.kts"),
       })
 
       setup(lspconfig.powershell_es, {
