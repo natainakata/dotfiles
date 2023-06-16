@@ -5,11 +5,6 @@ install: git nvim tmux bin zsh starship
 git: 
 	ln -snfv ${PWD}/gitconfig ${HOME}/.gitconfig
 
-# .PHONY: asdf
-# asdf:
-# 	ln -snfv ${PWD}/tool-versions ${HOME}/.tool-versions
-# 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
-	
 .PHONY: nvim
 nvim:
 	mkdir -p ${HOME}/.config
