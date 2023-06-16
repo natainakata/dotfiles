@@ -97,5 +97,5 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 fi
 
 eval "$(gh completion -s zsh)"
-eval "$(keychain --eval --quiet github id_ed25519)"
+eval "$(keychain --eval --quiet id_ed25519)"
 
