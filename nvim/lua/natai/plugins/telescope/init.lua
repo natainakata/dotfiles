@@ -90,7 +90,7 @@ local spec = {
       },
       {
         "nvim-telescope/telescope-frecency.nvim",
-        dependencies = "kkharji/sqlite.lua",
+        dependencies = "tami5/sqlite.lua",
         keys = keymap.frecency,
       },
       "nvim-telescope/telescope-symbols.nvim",
