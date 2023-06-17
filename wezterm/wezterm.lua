@@ -60,6 +60,10 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		label = "Builtin PowerShell",
 		args = { "powershell.exe", "-NoLogo" },
 	})
+	table.insert(launch_menu, {
+		label = "Neovim",
+		args = { "nvim.exe" },
+	})
 	for idx, domain in ipairs(wezterm.default_wsl_domains()) do
 		table.insert(launch_menu, {
 			label = domain["name"],
@@ -95,11 +99,11 @@ local colors = {
 
 return {
 	font = wezterm.font_with_fallback({
-		{ family = "UDEV Gothic 35NFLG", weight = "Regular" },
+		{ family = "0xProto", weight = "Regular" },
 		{ family = "JetBrainsMono NFM", weight = "Regular" },
 	}),
 	use_ime = true,
-	font_size = 14.0,
+	font_size = 13.0,
 	initial_cols = 120,
 	initial_rows = 30,
 	-- color_scheme = "Sonokai (Gogh)",

@@ -122,6 +122,8 @@ local spec = {
         -- root_dir = lspconfig.util.root_pattern("build.gradle.kts"),
       })
 
+      setup(lspconfig.pyright, {})
+
       setup(lspconfig.powershell_es, {
         mason = false,
         settings = {
