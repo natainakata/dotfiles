@@ -56,6 +56,7 @@ export async function setOption(denops: Denops) {
       await nvimOption.inccommand.set(denops, "nosplit");
       await nvimOption.pumblend.set(denops, 10);
       await option.laststatus.set(denops, 3);
+      await option.showtabline.set(denops, 2);
       await option.clipboard.set(denops, "unnamed,unnamedplus");
       await option.cmdheight.set(denops, 0);
     }
@@ -91,19 +92,17 @@ export async function setOption(denops: Denops) {
           "lspinfo",
           "startuptime",
         ],
-        `let v:event.buf.buflisted = false
-          nnoremap <buffer> <silent> q <Cmd>close<CR>`,
+        `nnoremap <buffer> <silent> q <Cmd>close<CR>`,
       );
     });
-    await autocmd.group(denops, "natai_cmdwinclose", (helper) => {
-      helper.remove("*");
-      helper.define(
-        "CmdwinEnter",
-        "*",
-        `let v:event.buf.buflisted = false
-            nnoremap <buffer> <silent> q <Cmd>close<CR>`,
-      );
-    });
+    // await autocmd.group(denops, "natai_cmdwinclose", (helper) => {
+    //   helper.remove("*");
+    //   helper.define(
+    //     "CmdwinEnter",
+    //     "*",
+    //     `nnoremap <buffer> <silent> q <Cmd>close<CR>`,
+    //   );
+    // });
     await autocmd.group(denops, "natai_qf_position", (helper) => {
       helper.remove("*");
       helper.define(

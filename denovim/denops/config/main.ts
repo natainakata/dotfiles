@@ -11,10 +11,15 @@ import { setKeymapPost, setKeymapPre } from "./keymap.ts";
 import { plugins } from "./plugins.ts";
 
 export async function main(denops: Denops): Promise<void> {
-  const starttrime = performance.now();
+  const starttime = performance.now();
   await pre(denops);
   await dvpmExec(denops);
   await post(denops);
+  const elapsed = performance.now() - starttime;
+  denops.cmd(
+    `lua vim.notify("Config load completed ! Elapsed: (${elapsed})")`,
+    { elapsed },
+  );
 }
 
 async function pre(denops: Denops): Promise<void> {
