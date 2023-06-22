@@ -182,6 +182,7 @@ return {
   },
   {
     "wlangstroth/vim-racket",
+    ft = "racket",
     lazy = true,
   },
   {
