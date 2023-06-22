@@ -8,7 +8,7 @@ return {
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     enabled = is_nvim,
     keys = {
-      { "<C-E>", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
+      { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
     },
     opts = {
       disable_netrw = true,

@@ -5,11 +5,10 @@ return {
   { "nvim-lua/popup.nvim", lazy = true },
   { "MunifTanjim/nui.nvim", lazy = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
-  { "echasnovski/mini.nvim", version = false },
   { "notomo/promise.nvim", lazy = true },
   { "tpope/vim-dispatch" },
   { "radenling/vim-dispatch-neovim" },
-  { "vim-jp/vimdoc-ja" },
+  { "vim-jp/vimdoc-ja", ft = "help" },
   -- {
   --   "dstein64/vim-startuptime",
   --   cmd = "StartupTime",
