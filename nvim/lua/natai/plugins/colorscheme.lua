@@ -15,7 +15,7 @@ local spec = {
   {
     "navarasu/onedark.nvim",
     opts = {
-      transparent = trans,
+      transparent = false,
     },
     config = function(_, opts)
       local onedark = require("onedark")

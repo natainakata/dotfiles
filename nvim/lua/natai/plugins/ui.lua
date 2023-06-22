@@ -41,6 +41,9 @@ local spec = {
         command_palette = true,
         long_message_to_split = true,
       },
+      cmdline = {
+        view = "cmdline",
+      },
     },
     keys = {
       {

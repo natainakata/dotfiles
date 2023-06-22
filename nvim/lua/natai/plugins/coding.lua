@@ -12,21 +12,29 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
-      -- "PaterJason/cmp-conjure",
+      "PaterJason/cmp-conjure",
       "hrsh7th/cmp-emoji",
       "ray-x/cmp-treesitter",
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
     },
-    opts = function()
+    config = function()
       local cmp = require("cmp")
-      return {
+      cmp.setup({
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
           end,
         },
-        sources = {
+        window = {
+          completion = cmp.config.window.bordered({
+            border = "single",
+          }),
+          documentation = cmp.config.window.bordered({
+            border = "single",
+          }),
+        },
+        sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
           { name = "buffer" },
@@ -34,7 +42,7 @@ return {
           { name = "luasnip" },
           { name = "emoji" },
           { name = "conjure" },
-        },
+        }),
         mapping = cmp.mapping.preset.insert({
           ["<C-p>"] = cmp.mapping.select_prev_item(),
           ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -54,7 +62,22 @@ return {
             return item
           end,
         },
-      }
+      })
+      cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "buffer" },
+          { name = "nvim_lsp_document_symbol" },
+        }),
+      })
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline", keyword_length = 2 },
+        }),
+      })
     end,
   },
   {
@@ -88,23 +111,6 @@ return {
     "hrsh7th/cmp-cmdline",
     lazy = true,
     cond = is_nvim,
-    config = function()
-      local cmp = require("cmp")
-      cmp.setup.cmdline("/", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "buffer" },
-          { name = "nvim_lsp_document_symbol" },
-        },
-      })
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "path" },
-          { name = "cmdline" },
-        },
-      })
-    end,
   },
 
   {
