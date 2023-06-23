@@ -7,50 +7,62 @@ function M.get()
   if not M._keys then
     M._keys = {
       { "<Leader>F", format, desc = "Format Document", has = "documentFormatting" },
-      { "<Leader>F", format, desc = "Format",          mode = "v",                has = "documentFormatting" },
+      { "<Leader>F", format, desc = "Format", mode = "v", has = "documentFormatting" },
       {
-        "<Leader>lr",
+        "gr",
         function()
           telescope.lsp_references()
         end,
         desc = "References",
       },
       {
-        "<Leader>ld",
+        "gd",
         function()
           telescope.lsp_definitions()
         end,
         desc = "Definition",
       },
-      { "<Leader>lD", vim.lsp.buf.declaration,                   desc = "Declaration" },
+      { "gD", vim.lsp.buf.declaration, desc = "Declaration" },
       {
-        "<Leader>li",
+        "gi",
         function()
           telescope.lsp_implementations()
         end,
         desc = "Implementation",
       },
       {
-        "<Leader>lt",
+        "gt",
         function()
           telescope.lsp_type_definitions()
         end,
         desc = "Type Definition",
       },
       {
-        "<Leader>le",
+        "ge",
         function()
           require("telescope.builtin").diagnostics()
         end,
         desc = "Open Diagnostic",
       },
-      { "g]",         "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
-      { "g[",         "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
-      { "<Leader>la", vim.lsp.buf.code_action,                   desc = "Action",         mode = { "n", "v" },     has = "codeAction" },
-      { "<F2>",       vim.lsp.buf.hover,                         desc = "Rename",         has = "rename" },
-      { "K",          vim.lsp.buf.hover,                         desc = "Hover" },
-      { "gK",         vim.lsp.buf.signature_help,                desc = "Signature Help", has = "signatureHelp" },
-      { "<C-k",       vim.lsp.buf.signature_help,                mode = "i",              desc = "Signature Help", has = "signatureHelp" },
+      { "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
+      { "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
+      {
+        "ga",
+        vim.lsp.buf.code_action,
+        desc = "Action",
+        mode = { "n", "v" },
+        has = "codeAction",
+      },
+      { "R", vim.lsp.buf.hover, desc = "Rename", has = "rename" },
+      { "K", vim.lsp.buf.hover, desc = "Hover" },
+      { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
+      {
+        "<C-k>",
+        vim.lsp.buf.signature_help,
+        mode = "i",
+        desc = "Signature Help",
+        has = "signatureHelp",
+      },
     }
   end
   return M._keys

@@ -3,7 +3,7 @@ local function augroup(name)
 end
 
 local autocmd = vim.api.nvim_create_autocmd
-local utils = require("natai.util")
+-- local utils = require("natai.util")
 
 autocmd("TermOpen", {
   group = augroup("term_insert_in"),
@@ -28,7 +28,6 @@ autocmd("FileType", {
     "man",
     "notify",
     "lspinfo",
-    "startuptime",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

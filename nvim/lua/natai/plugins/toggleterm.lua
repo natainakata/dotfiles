@@ -4,6 +4,8 @@ local spec = {
     "akinsho/toggleterm.nvim",
     keys = {
       { "<Leader>G", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
+      { "<C-t>", [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], mode = "n", desc = "Terminal" },
+      { "<C-t>", [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], mode = "i", desc = "Terminal" },
     },
     config = function()
       local toggleterm = require("toggleterm")
@@ -35,7 +37,7 @@ local spec = {
         insert_mappings = true, -- whether or not the open mapping applies in insert mode
         terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
         persist_size = true,
-        direction = "float",
+        direction = "horizontal",
         close_on_exit = true, -- close the terminal window when the process exits
         shell = vim.o.shell, -- change the default shell
         -- This field is only relevant if direction is set to 'float'
@@ -49,6 +51,13 @@ local spec = {
           height = 60,
           winblend = 0,
         },
+      })
+
+      vim.api.nvim_create_autocmd("TermEnter", {
+        pattern = "term://*toggleterm#*",
+        callback = function()
+          vim.keymap.set("t", "<C-t>", [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], { silent = true })
+        end,
       })
       local lazygit = terminal:new({
         cmd = "lazygit",
