@@ -91,54 +91,11 @@ local spec = {
         client.setup(local_opts)
       end
 
-      setup(lspconfig.lua_ls, {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-          },
-        },
-      })
+      local servers = require("natai.plugins.lsp.settings.init")
 
-      setup(lspconfig.denols, {
-        root_dir = lspconfig.util.root_pattern("deno.json"),
-        init_options = {
-          lint = true,
-          unstable = true,
-          suggest = {
-            imports = {
-              hosts = {
-                ["https://deno.land"] = true,
-                ["https://cdn.nest.land"] = true,
-                ["https://crux.land"] = true,
-              },
-            },
-          },
-        },
-      })
-
-      setup(lspconfig.kotlin_language_server, {
-        -- root_dir = lspconfig.util.root_pattern("build.gradle.kts"),
-      })
-
-      setup(lspconfig.pyright, {})
-
-      setup(lspconfig.powershell_es, {
-        mason = false,
-        settings = {
-          powershell = {
-            codeFormatting = {
-              preset = "OTBS",
-              newLineAfterOpenBrace = false,
-              newLineAfterCloseBrace = true,
-            },
-          },
-        },
-        on_attach = utils.on_attach(function(client, bufnr)
-          client.server_capabilities.semanticTokensProvider = nil
-        end),
-      })
+      for k, v in pairs(servers) do
+        setup(lspconfig[k], v)
+      end
     end,
   },
 

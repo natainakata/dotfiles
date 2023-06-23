@@ -22,6 +22,7 @@ opt.termguicolors = true
 opt.cursorline = true
 opt.visualbell = true
 opt.wildmode = { "list", "longest" }
+opt.completeslash = "slash"
 
 opt.laststatus = 3
 opt.showtabline = 2
@@ -39,8 +40,6 @@ end
 opt.mouse = "a"
 opt.clipboard:append({ "unnamed", "unnamedplus" })
 
-opt.pumblend = 10
--- opt.winblend = 20
 opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 
 vim.o.guifont = "UDEV Gothic 35NFLG,JetBrains Mono NFM:h14:n"
