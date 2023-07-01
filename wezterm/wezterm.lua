@@ -8,7 +8,7 @@ local keybind = require("keybind")
 wezterm.on("update-status", function(window, pane)
 	local wday = os.date("*t").wday
 	local wday_ja = string.format("(%s)", utils.day_of_week_ja(wday))
-	local date = wezterm.strftime("  %Y-%m-%d " .. wday_ja .. "   %H:%M:%S")
+	local date = wezterm.strftime("󰃮  %Y-%m-%d " .. wday_ja .. " 󰥔  %H:%M:%S")
 
 	local bat = ""
 
@@ -16,19 +16,19 @@ wezterm.on("update-status", function(window, pane)
 		local battery_state_of_charge = b.state_of_charge * 100
 		local battery_icon = ""
 		if battery_state_of_charge >= 80 then
-			battery_icon = "  "
+			battery_icon = "80  "
 		elseif battery_state_of_charge >= 70 then
-			battery_icon = "  "
+			battery_icon = "70  "
 		elseif battery_state_of_charge >= 60 then
-			battery_icon = "  "
+			battery_icon = "60  "
 		elseif battery_state_of_charge >= 50 then
-			battery_icon = "  "
+			battery_icon = "50  "
 		elseif battery_state_of_charge >= 40 then
-			battery_icon = "  "
+			battery_icon = "40  "
 		elseif battery_state_of_charge >= 30 then
-			battery_icon = "  "
+			battery_icon = "30  "
 		elseif battery_state_of_charge >= 20 then
-			battery_icon = "  "
+			battery_icon = "20  "
 		else
 			battery_icon = "󱊡  "
 		end
@@ -37,8 +37,11 @@ wezterm.on("update-status", function(window, pane)
 	end
 
 	window:set_right_status(wezterm.format({
-		{ Text = date .. " " .. bat },
+		{ Text = date },
 	}))
+	-- window:set_right_status(wezterm.format({
+	-- 	{ Text = date .. " " .. bat },
+	-- }))
 end)
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
@@ -99,8 +102,12 @@ local colors = {
 
 return {
 	font = wezterm.font_with_fallback({
-		{ family = "0xProto", weight = "Regular" },
-		{ family = "JetBrainsMono NFM", weight = "Regular" },
+		{
+			family = "0xProto",
+			weight = "Regular",
+			stretch = "Normal",
+			italic = false,
+		},
 	}),
 	use_ime = true,
 	font_size = 13.0,

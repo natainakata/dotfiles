@@ -42,8 +42,8 @@ opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 
-vim.o.guifont = "UDEV Gothic 35NFLG,JetBrains Mono NFM:h14:n"
-vim.o.guifontwide = "UDEV Gothic 35NFLG:h14:n"
+vim.opt.guifont = { "UDEV Gothic 35NFLG:h14:n" }
+
 if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.g.sqlite_clib_path = "C:/lib/sqlite3.dll"
   vim.o.shell = "pwsh.exe"

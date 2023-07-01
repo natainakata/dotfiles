@@ -1,4 +1,5 @@
 local keymap = require("natai.plugins.telescope.keymaps")
+local icons = require("natai.icons")
 local function telescope_setup(core, actions, sorters, viewers)
   core.setup({
     defaults = {
@@ -17,7 +18,7 @@ local function telescope_setup(core, actions, sorters, viewers)
           ["q"] = actions.close,
         },
       },
-      prompt_prefix = "  ",
+      prompt_prefix = icons.other.search .. " ",
       selection_caret = "  ",
       entry_prefix = "  ",
       selection_strategy = "reset",

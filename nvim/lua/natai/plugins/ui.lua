@@ -123,14 +123,14 @@ local spec = {
     config = function()
       local dashboard = require("alpha.themes.dashboard")
       dashboard.section.buttons.val = {
-        dashboard.button("n", "  New file", "<cmd>ene<CR>"),
-        dashboard.button("e", "  Browze Directory", "<cmd>NvimTreeOpen<CR>"),
+        dashboard.button("n", icons.kinds.File .. " New File", "<cmd>ene<CR>"),
+        dashboard.button("e", icons.kinds.Folder .. " Browze Directory", "<cmd>NvimTreeOpen<CR>"),
         dashboard.button(
           "f",
-          "  Find file",
+          icons.other.search .. " Find File",
           "<cmd>lua require('telescope.builtin').find_files({no_ignore = true, hidden = false})<CR>"
         ),
-        dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),
+        dashboard.button("q", icons.other.exit .. " Quit NVIM", "<cmd>qa<CR>"),
       }
       require("alpha").setup(dashboard.config)
     end,
