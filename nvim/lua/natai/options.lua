@@ -24,6 +24,8 @@ opt.visualbell = true
 opt.wildmode = { "list", "longest" }
 opt.completeslash = "slash"
 
+opt.splitbelow = true
+opt.splitright = true
 opt.laststatus = 3
 opt.showtabline = 2
 opt.cmdwinheight = 10

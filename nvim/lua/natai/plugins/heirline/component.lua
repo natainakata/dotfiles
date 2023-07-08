@@ -1,5 +1,6 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
+local icons = require("natai.icons")
 
 local M = {}
 
@@ -40,7 +41,7 @@ M.CloseButton = {
   update = { "WinNew", "WinClosed", "BufEnter" },
   { provider = " " },
   {
-    provider = " ",
+    provider = icons.other.close,
     hl = { fg = "gray" },
     on_click = {
       callback = function(_, minwid)

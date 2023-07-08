@@ -14,6 +14,7 @@ local icons = {
     command = " ",
     search = " ",
     exit = "󰗼 ",
+    close = " ",
   },
   git = {
     added = "",

@@ -1,5 +1,6 @@
 local utils = require("heirline.utils")
 local File = require("natai.plugins.heirline.file")
+local icons = require("natai.icons")
 local TablinePicker = {
   condition = function(self)
     return self._show_picker
@@ -22,7 +23,7 @@ local TablinePicker = {
   provider = function(self)
     return self.label
   end,
-  hl = { fg = "bright_bg", bold = true },
+  hl = { fg = "red", bold = true },
 }
 
 vim.keymap.set("n", "<Leader>b", function()
@@ -53,18 +54,12 @@ local Tabpage = {
   end,
 }
 
-local TabpageClose = {
-  provider = "%999X  %X",
-  hl = "TabLine",
-}
-
 local TabPages = {
   condition = function()
     return #vim.api.nvim_list_tabpages() >= 2
   end,
   { provider = "%=" },
   utils.make_tablist(Tabpage),
-  TabpageClose,
 }
 
 local TabLineOffset = {
@@ -99,7 +94,7 @@ local TablineBufnr = {
   provider = function(self)
     return tostring(self.bufnr) .. "."
   end,
-  hl = "Comment",
+  hl = "purple",
 }
 
 local TablineFileName = {
@@ -174,7 +169,7 @@ local TablineCloseButton = {
   end,
   { provider = " " },
   {
-    provider = "",
+    provider = icons.other.close,
     hl = { fg = "gray" },
     on_click = {
       callback = function(_, minwid)
@@ -196,43 +191,11 @@ local TablineBufferBlock = utils.surround({ "", "" }, function(self)
   end
 end, { TablinePicker, TablineFileNameBlock, TablineCloseButton })
 
-local get_bufs = function()
-  return vim.tbl_filter(function(bufnr)
-    return vim.api.nvim_buf_get_option(bufnr, "buflisted")
-  end, vim.api.nvim_list_bufs())
-end
-
-local buflist_cache = {}
-
-vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-  callback = function()
-    vim.schedule(function()
-      local buffers = get_bufs()
-      for i, v in ipairs(buffers) do
-        buflist_cache[i] = v
-      end
-      for i = #buffers + 1, #buflist_cache do
-        buflist_cache[i] = nil
-      end
-
-      if #buflist_cache > 1 then
-        vim.o.showtabline = 2
-      else
-        vim.o.showtabline = 1
-      end
-    end)
-  end,
-})
-
 -- and here we go
 local BufferLine = utils.make_buflist(
   TablineBufferBlock,
   { provider = "", hl = { fg = "gray" } },
-  { provider = "", hl = { fg = "gray" } },
-  function()
-    return buflist_cache
-  end,
-  false
+  { provider = "", hl = { fg = "gray" } }
 )
 
 return { TabLineOffset, BufferLine, TabPages }

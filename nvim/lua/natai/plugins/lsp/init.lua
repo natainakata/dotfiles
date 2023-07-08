@@ -8,6 +8,11 @@ local spec = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "folke/trouble.nvim",
+      {
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        config = true,
+      },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
@@ -137,7 +142,10 @@ local spec = {
       {
         "jay-babu/mason-nvim-dap.nvim",
         config = function()
-          require("mason-nvim-dap").setup()
+          require("mason-nvim-dap").setup({
+            ensure_installed = { "python" },
+            handlers = {},
+          })
         end,
       },
     },

@@ -206,7 +206,7 @@ return {
       vim.g["conjure#client#scheme#stdio#command"] = "gosh -i"
       vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "gosh[>$] "
       vim.g["conjure#client#scheme#stdio#value_prefix_pattern"] = false
-      vim.g["conjure#mapping#prefix"] = "<Leader>x"
+      vim.g["conjure#mapping#prefix"] = "<Leader>C"
       vim.g["conjure#mapping#eval_root_form"] = "r"
       vim.g["conjure#mapping#eval_comment_root_form"] = "cr"
       vim.g["conjure#mapping#eval_current_form"] = "x"

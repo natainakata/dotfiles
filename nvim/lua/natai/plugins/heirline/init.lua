@@ -31,6 +31,5 @@ local spec = {
 if vim.g.vscode then
   return {}
 else
-  return {}
-  -- return spec
+  return spec
 end

@@ -23,6 +23,7 @@ autocmd("TextYankPost", {
 autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
+    "quickrun",
     "qf",
     "help",
     "man",

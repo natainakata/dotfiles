@@ -38,6 +38,7 @@ alias fzc='fzf --preview "bat --style=numbers --color=always --line-range :500 {
 alias vidot="vi $HOME/.dotfiles"
 # alias nvde='(){/mnt/c/Users/natai/scoop/shims/neovide.exe --multigrid --wsl $@ &}'
 alias denovim="NVIM_APPNAME=denovim nvim"
+alias asvim="NVIM_APPNAME=astronvim nvim"
 
 #rlwrap
 alias python="rlwrap python"
