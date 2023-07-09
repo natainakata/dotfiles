@@ -72,20 +72,20 @@ autocmd("CursorMoved", {
   command = "redrawtabline",
 })
 
-if vim.loop.os_uname().sysname == "Windows_NT" then
-  autocmd({ "InsertLeave", "CmdlineLeave" }, {
-    group = augroup("disable_ime"),
-    callback = function()
-      vim.fn.system("zenhan 0")
-    end,
-  })
-elseif vim.loop.os_uname().sysname == "Linux" then
-  if vim.fn.system("uname -a | grep microsoft") then
-    autocmd({ "InsertLeave", "CmdlineLeave" }, {
-      group = augroup("disable_ime"),
-      callback = function()
-        vim.fn.system("${zenhan} 0")
-      end,
-    })
-  end
-end
+-- if vim.loop.os_uname().sysname == "Windows_NT" then
+--   autocmd({ "InsertLeave", "CmdlineLeave" }, {
+--     group = augroup("disable_ime"),
+--     callback = function()
+--       vim.fn.system("zenhan 0")
+--     end,
+--   })
+-- elseif vim.loop.os_uname().sysname == "Linux" then
+--   if vim.fn.system("uname -a | grep microsoft") then
+--     autocmd({ "InsertLeave", "CmdlineLeave" }, {
+--       group = augroup("disable_ime"),
+--       callback = function()
+--         vim.fn.system("${zenhan} 0")
+--       end,
+--     })
+--   end
+-- end
