@@ -108,6 +108,7 @@ return {
 			stretch = "Normal",
 			italic = false,
 		},
+		{ family = "BIZ UDGothic", weight = "Regular", stretch = "Normal", style = "Normal" },
 	}),
 	use_ime = true,
 	font_size = 13.0,

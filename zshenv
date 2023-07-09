@@ -16,6 +16,8 @@ if [ -d "${NEOVIM_HOME}" ]; then
   export PATH="${NEOVIM_HOME}/bin:$PATH"
 fi
 
+export zenhan="/mnt/c/Users/natai/scoop/apps/zenhan/current/zenhan.exe"
+
 path=(
   ~/.bin
   ~/bin

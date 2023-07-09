@@ -3,5 +3,6 @@ return {
   denols = require("natai.plugins.lsp.settings.deno"),
   powershell_es = require("natai.plugins.lsp.settings.powershell"),
   pyright = {},
+  tsserver = {},
   kotlin_language_server = require("natai.plugins.lsp.settings.kotlin"),
 }
