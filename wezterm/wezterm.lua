@@ -19,24 +19,27 @@ config.font = wezterm.font_with_fallback({
 })
 config.use_ime = true
 config.font_size = 13.0
+
 config.initial_cols = 120
 config.initial_rows = 30
 config.color_scheme = "OneDark (base16)"
+
 config.window_background_opacity = 0.85
+local mux = wezterm.mux
+wezterm.on("gui-startup", function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():toggle_fullscreen()
+end)
+
 config.adjust_window_size_when_changing_font_size = false
-config.default_prog = function()
-  if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-    return { "pwsh.exe" }
-  else
-    return { "zsh" }
-  end
-end
+config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "pwsh.exe" } or { "zsh" }
 
 config.default_cwd = os.getenv("HOME")
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = keybind.create_keybinds()
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
+config.launch_menu = {}
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   table.insert(config.launch_menu, {
