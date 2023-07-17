@@ -1,4 +1,3 @@
-local is_nvim = require("natai.util").is_nvim
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -55,7 +54,7 @@ return {
         },
         formatting = {
           format = function(_, item)
-            local icons = require("natai.icons").kinds
+            local icons = require("natai.utils.icons").kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end

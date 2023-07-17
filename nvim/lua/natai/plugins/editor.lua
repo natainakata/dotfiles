@@ -1,5 +1,4 @@
-local icons = require("natai.icons")
-local is_nvim = require("natai.util").is_vscode
+local icons = require("natai.utils.icons")
 return {
   {
     "nvim-tree/nvim-tree.lua",

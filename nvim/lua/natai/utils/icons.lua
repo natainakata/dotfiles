@@ -1,4 +1,4 @@
-local icons = {
+return {
   diagnostics = {
     Error = " ",
     Warn = " ",
@@ -9,7 +9,8 @@ local icons = {
     modified = "",
     readonly = "",
   },
-  separator = { left = "", right = "" },
+  separator = { left = " ", right = "" },
+  separator_tab = { left = "", right = "" },
   other = {
     command = " ",
     search = " ",
@@ -78,5 +79,3 @@ local icons = {
     o = "∙",
   },
 }
-
-return icons

@@ -1,4 +1,4 @@
-local utils = require("natai.util")
+local utils = require("natai.utils")
 
 local spec = {
   {
@@ -17,7 +17,7 @@ local spec = {
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
     init = function()
-      utils.on_attach(function(client, bufnr)
+      utils.lsp.on_attach(function(client, bufnr)
         require("natai.plugins.lsp.keymaps").on_attach(client, bufnr)
         require("natai.plugins.lsp.format").on_attach(client, bufnr)
       end)
@@ -37,7 +37,7 @@ local spec = {
       utils.ensure("cmp_nvim_lsp", function(m)
         capabilities = m.default_capabilities(capabilities)
       end)
-      o.opts.capabilities = vim.tbl_deep_extend("force", {}, capabilities or {})
+      o.opts.capabilities = capabilities
       local function format_diagnostics(diag)
         if diag.code then
           return string.format("[%s](%s): %s", diag.source, diag.code, diag.message)
@@ -88,10 +88,10 @@ local spec = {
       -- lspconfig.configs.goshls = require("natai.plugins.lsp.custom.goshls")
       local function setup(client, server_opts)
         local default_opts = client.document_config.default_config
-        local local_opts = vim.tbl_deep_extend("force", {}, opts, server_opts or {})
+        local local_opts = utils.extend_tbl(opts, server_opts)
 
         local_opts.filetypes =
-          utils.merge_tables(local_opts.filetypes or default_opts.filetypes or {}, local_opts.extra_filetypes or {})
+          utils.extend_tbl(local_opts.filetypes or default_opts.filetypes or {}, local_opts.extra_filetypes)
         local_opts.extra_filetypes = nil
         client.setup(local_opts)
       end

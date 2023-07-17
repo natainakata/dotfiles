@@ -1,5 +1,5 @@
 local utils_h = require("heirline.utils")
-local utils = require("natai.util")
+local utils = require("natai.utils")
 local M = {}
 local colors = {
   bright_bg = utils_h.get_highlight("StatusLine").bg,

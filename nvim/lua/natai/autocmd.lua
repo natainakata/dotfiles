@@ -1,12 +1,8 @@
-local function augroup(name)
-  return vim.api.nvim_create_augroup("natai_" .. name, { clear = true })
-end
-
+local utils = require("natai.utils")
 local autocmd = vim.api.nvim_create_autocmd
--- local utils = require("natai.util")
 
 autocmd("TermOpen", {
-  group = augroup("term_insert_in"),
+  group = utils.augroup("term_insert_in"),
   callback = function()
     vim.opt_local.number = false
     vim.cmd.startinsert()
@@ -14,14 +10,14 @@ autocmd("TermOpen", {
 })
 
 autocmd("TextYankPost", {
-  group = augroup("highlight_yank"),
+  group = utils.augroup("highlight_yank"),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
 autocmd("FileType", {
-  group = augroup("close_with_q"),
+  group = utils.augroup("close_with_q"),
   pattern = {
     "quickrun",
     "qf",
@@ -37,7 +33,7 @@ autocmd("FileType", {
 })
 
 autocmd("CmdwinEnter", {
-  group = augroup("cmdwinclose"),
+  group = utils.augroup("cmdwinclose"),
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
@@ -45,13 +41,13 @@ autocmd("CmdwinEnter", {
 })
 
 autocmd("FileType", {
-  group = augroup("qf_position"),
+  group = utils.augroup("qf_position"),
   pattern = "qf",
   command = "wincmd H",
 })
 
 autocmd("QuickFixCmdPost", {
-  group = augroup("vimgrep_autoopen"),
+  group = utils.augroup("vimgrep_autoopen"),
   pattern = "vimgrep",
   callback = function()
     vim.cmd([[
@@ -63,18 +59,18 @@ autocmd("QuickFixCmdPost", {
 })
 
 autocmd({ "BufRead", "BufNewFile" }, {
-  group = augroup("mclang"),
+  group = utils.augroup("mclang"),
   pattern = "*.lang",
   command = "set filetype=mclang",
 })
 autocmd("CursorMoved", {
-  group = augroup("redraw_line"),
+  group = utils.augroup("redraw_line"),
   command = "redrawtabline",
 })
 
 -- if vim.loop.os_uname().sysname == "Windows_NT" then
 --   autocmd({ "InsertLeave", "CmdlineLeave" }, {
---     group = augroup("disable_ime"),
+--     group = utils.augroup("disable_ime"),
 --     callback = function()
 --       vim.fn.system("zenhan 0")
 --     end,
@@ -82,7 +78,7 @@ autocmd("CursorMoved", {
 -- elseif vim.loop.os_uname().sysname == "Linux" then
 --   if vim.fn.system("uname -a | grep microsoft") then
 --     autocmd({ "InsertLeave", "CmdlineLeave" }, {
---       group = augroup("disable_ime"),
+--       group = utils.augroup("disable_ime"),
 --       callback = function()
 --         vim.fn.system("${zenhan} 0")
 --       end,

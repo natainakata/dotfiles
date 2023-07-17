@@ -1,5 +1,4 @@
 local conditions = require("heirline.conditions")
-local utils = require("heirline.utils")
 
 local Mode = require("natai.plugins.heirline.mode")
 local File = require("natai.plugins.heirline.file")

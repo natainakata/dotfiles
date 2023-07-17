@@ -1,6 +1,6 @@
 local utils = require("heirline.utils")
 local File = require("natai.plugins.heirline.file")
-local icons = require("natai.icons")
+local icons = require("natai.utils.icons")
 local TablinePicker = {
   condition = function(self)
     return self._show_picker
