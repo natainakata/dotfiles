@@ -163,8 +163,8 @@ local spec = {
   },
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    enabled = false,
+    event = "UIEnter",
+    enabled = true,
     opts = {
       options = {
         theme = "auto",

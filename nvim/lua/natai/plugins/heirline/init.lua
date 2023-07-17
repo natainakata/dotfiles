@@ -2,7 +2,8 @@
 local spec = {
   {
     "rebelot/heirline.nvim",
-    event = "VeryLazy",
+    event = "UIEnter",
+    enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons", "navarasu/onedark.nvim" },
     config = function()
       vim.opt.showmode = false

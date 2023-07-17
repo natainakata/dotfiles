@@ -19,6 +19,7 @@ config.font = wezterm.font_with_fallback({
 })
 config.use_ime = true
 config.font_size = 13.0
+config.command_palette_font_size = 13.0
 
 config.initial_cols = 120
 config.initial_rows = 30
@@ -116,8 +117,32 @@ wezterm.on("update-status", function(window, pane)
   }))
 end)
 
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+  if title and #title > 0 then
+    return title
+  end
+  return tab_info.active_pane.title
+end
+
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local tab_index = tab.tab_index + 1
+  local edge_background = "#31353f"
+  local background = "#393f4a"
+  local foreground = "#abb2bf"
+
+  if tab.is_active then
+    background = "#393f4a"
+    foreground = "#abb2bf"
+  elseif hover then
+    background = "#3b3052"
+    foreground = "#909090"
+  end
+  local title = tab_title(tab)
+  -- return {}
   if tab.is_active and string.match(tab.active_pane.title, "Copy mode:") then
     return string.format(" %d %s ", tab_index, "Copy mode...")
   end

@@ -64,7 +64,7 @@ local TabPages = {
 
 local TabLineOffset = {
   condition = function(self)
-    local win = vim.api.nvim_tabpage_list_wins(0)[1]
+    local win = vim.api.nvim_tabpage_list_wins(1)[1]
     local bufnr = vim.api.nvim_win_get_buf(win)
     self.winid = win
 
@@ -183,7 +183,7 @@ local TablineCloseButton = {
   },
 }
 
-local TablineBufferBlock = utils.surround({ "", "" }, function(self)
+local TablineBufferBlock = utils.surround({ "", "" }, function(self)
   if self.is_active then
     return utils.get_highlight("TabLineSel").bg
   else
