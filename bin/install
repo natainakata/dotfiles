@@ -15,7 +15,18 @@ if [ ! -d ${DOT_DIR} ]; then
   fi
   cd ${DOT_DIR}
 
-  make install
+  if [ ! -d "$HOME/.config" ]; then
+    mkdir -p "$HOME/.config"
+  fi
+
+	ln -snfv "$DOT_DIR/gitconfig" "$HOME/.gitconfig"
+  ln -snfv "$DOT_DIR/nvim" "$HOME/.config/"
+  ln -snfv "$DOT_DIR/tmux.conf" "$HOME/.tmux.conf"
+  ln -snfv "$DOT_DIR/bin" "$HOME/.bin"
+  ln -snfv "$DOT_DIR/zsh" "$HOME/.zsh"
+  ln -snfv "$DOT_DIR/zshrc" "$HOME/.zshrc"
+  ln -snfv "$DOT_DIR/zshenv" "$HOME/.zshenv"
+  ln -snfv "$DOT_DIR/starship.toml" "$HOME/.config/"
 
 else
   echo "dotfiles already exists"
