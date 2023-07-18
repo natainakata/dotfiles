@@ -56,7 +56,7 @@ local spec = {
         float = diagnosis_config,
         virtual_text = diagnosis_config,
       })
-      for name, icon in pairs(require("natai.icons").diagnostics) do
+      for name, icon in pairs(require("natai.utils.icons").diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       end
