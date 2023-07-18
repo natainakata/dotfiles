@@ -72,6 +72,19 @@ function M.augroup(name)
   return vim.api.nvim_create_augroup("natai_" .. name, { clear = true })
 end
 
+function M.diff_source()
+  M.ensure("gitsigns", function(m)
+    local gitsigns = vim.b.gitsigns_status_dict
+    if gitsigns then
+      return {
+        added = gitsigns.added,
+        modified = gitsigns.changed,
+        removed = gitsigns.removed,
+      }
+    end
+  end)
+end
+
 M.is_nvim = function()
   if vim.g.vscode then
     return false

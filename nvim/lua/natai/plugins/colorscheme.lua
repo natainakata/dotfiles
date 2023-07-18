@@ -1,12 +1,3 @@
-local trans, trans_vim
-if not vim.g.neovide then
-  trans = true
-  trans_vim = 1
-else
-  trans = false
-  trans_vim = 0
-end
-
 local spec = {
   -- {
   --   "echasnovski/mini.base16",
@@ -15,7 +6,7 @@ local spec = {
   {
     "navarasu/onedark.nvim",
     opts = {
-      transparent = trans,
+      transparent = true,
     },
     config = function(_, opts)
       local onedark = require("onedark")

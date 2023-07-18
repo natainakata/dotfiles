@@ -4,7 +4,6 @@ return {
     lazy = true,
     version = false,
     event = { "InsertEnter", "CmdLineEnter" },
-    cond = is_nvim,
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -82,7 +81,6 @@ return {
   {
     "L3MON4D3/LuaSnip",
     lazy = true,
-    cond = is_nvim,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -109,7 +107,6 @@ return {
   {
     "hrsh7th/cmp-cmdline",
     lazy = true,
-    cond = is_nvim,
   },
 
   {
@@ -173,13 +170,11 @@ return {
   {
     "DaeZak/crafttweaker-vim-highlighting",
     lazy = true,
-    cond = is_nvim,
     ft = "crafttweaker",
   },
   {
     "iamcco/markdown-preview.nvim",
     lazy = true,
-    cond = is_nvim,
     build = function()
       vim.fn["mkdp#util#install"]()
     end,

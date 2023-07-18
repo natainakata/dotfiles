@@ -1,14 +1,5 @@
 local icons = require("natai.utils.icons")
-local function diff_source()
-  local gitsigns = vim.b.gitsigns_status_dict
-  if gitsigns then
-    return {
-      added = gitsigns.added,
-      modified = gitsigns.changed,
-      removed = gitsigns.removed,
-    }
-  end
-end
+local utils = require("natai.utils")
 local spec = {
   {
     "rcarriga/nvim-notify",
@@ -237,7 +228,7 @@ local spec = {
               modified = icons.files.modified .. " ",
               removed = icons.git.removed .. " ",
             },
-            source = diff_source,
+            source = utils.diff_source,
           },
         },
         lualine_y = {
