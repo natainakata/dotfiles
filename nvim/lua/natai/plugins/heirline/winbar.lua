@@ -2,15 +2,15 @@ local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 local icons = require("natai.utils.icons")
 
-local Component = require("natai.plugins.heirline.component")
-local Lsp = require("natai.plugins.heirline.lsp")
-local File = require("natai.plugins.heirline.file")
-local Terminal = require("natai.plugins.heirline.terminal")
+local components = require("natai.plugins.heirline.components")
 
 local separator = { icons.separator.right, icons.separator.left }
+local M = {}
 
-local WinBars = {
-  fallthrough = false,
+M.winbar = {
+  init = function(self)
+    self.filename = vim.api.nvim_buf_get_name(0)
+  end,
   {
     condition = function()
       return conditions.buffer_matches({
@@ -26,26 +26,28 @@ local WinBars = {
       return conditions.buffer_matches({ filetype = { "toggleterm" }, buftype = { "terminal" } })
     end,
     utils.surround(separator, "bright_bg", {
-      Component.FileType,
-      Component.Space,
-      Terminal.TerminalName,
-      Component.CloseButton,
+      components.filetype,
+      components.space,
+      components.terminal_name,
+      components.close_button,
     }),
   },
   { -- An inactive winbar for regular files
     condition = function()
       return not conditions.is_active()
     end,
-    utils.surround(separator, "bright_bg", { hl = { fg = "gray", force = true }, { File, Component.CloseButton } }),
+    utils.surround(
+      separator,
+      "bright_bg",
+      { hl = { fg = "gray", force = true }, { components.file_name_full, components.close_button } }
+    ),
   },
-  -- A winbar for regular files
   utils.surround(separator, "bright_bg", {
-    Lsp.Navic,
-    -- { provider = "%<" },
-    Component.Align,
-    File.FileNameBlock,
-    Component.CloseButton,
+    components.lsp_info,
+    components.fill,
+    components.file_info,
+    components.close_button,
   }),
 }
 
-return WinBars
+return M

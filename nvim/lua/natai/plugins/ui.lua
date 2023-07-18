@@ -164,7 +164,7 @@ local spec = {
   {
     "nvim-lualine/lualine.nvim",
     event = "UIEnter",
-    enabled = true,
+    enabled = false,
     opts = {
       options = {
         theme = "auto",

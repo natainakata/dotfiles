@@ -1,7 +1,8 @@
 local utils = require("heirline.utils")
-local File = require("natai.plugins.heirline.file")
 local icons = require("natai.utils.icons")
-local TablinePicker = {
+local components = require("natai.plugins.heirline.components")
+local M = {}
+M.tab_line_picker = {
   condition = function(self)
     return self._show_picker
   end,
@@ -26,22 +27,7 @@ local TablinePicker = {
   hl = { fg = "red", bold = true },
 }
 
-vim.keymap.set("n", "<Leader>b", function()
-  local tabline = require("heirline").tabline
-  local buflist = tabline._buflist[1]
-  buflist._picker_labels = {}
-  buflist._show_picker = true
-  vim.cmd.redrawtabline()
-  local char = vim.fn.getcharstr()
-  local bufnr = buflist._picker_labels[char]
-  if bufnr then
-    vim.api.nvim_win_set_buf(0, bufnr)
-  end
-  buflist._show_picker = false
-  vim.cmd.redrawtabline()
-end)
-
-local Tabpage = {
+M.tab_page = {
   provider = function(self)
     return "%" .. self.tabnr .. "T " .. self.tabpage .. " %T"
   end,
@@ -54,15 +40,15 @@ local Tabpage = {
   end,
 }
 
-local TabPages = {
+M.tab_pages = {
   condition = function()
     return #vim.api.nvim_list_tabpages() >= 2
   end,
-  { provider = "%=" },
-  utils.make_tablist(Tabpage),
+  components.fill,
+  utils.make_tablist(M.tabpage),
 }
 
-local TabLineOffset = {
+M.tab_offset = {
   condition = function(self)
     local win = vim.api.nvim_tabpage_list_wins(1)[1]
     local bufnr = vim.api.nvim_win_get_buf(win)
@@ -90,49 +76,7 @@ local TabLineOffset = {
   end,
 }
 
-local TablineBufnr = {
-  provider = function(self)
-    return tostring(self.bufnr) .. "."
-  end,
-  hl = "purple",
-}
-
-local TablineFileName = {
-  provider = function(self)
-    local filename = self.filename
-    filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":t")
-    return filename
-  end,
-  hl = function(self)
-    return { bold = self.is_active or self.is_visible, italic = true }
-  end,
-}
-
-local TablineFileFlags = {
-  {
-    condition = function(self)
-      return vim.api.nvim_buf_get_option(self.bufnr, "modified")
-    end,
-    provider = "[+]",
-    hl = { fg = "green" },
-  },
-  {
-    condition = function(self)
-      return not vim.api.nvim_buf_get_option(self.bufnr, "modifiable")
-        or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
-    end,
-    provider = function(self)
-      if vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" then
-        return "  "
-      else
-        return ""
-      end
-    end,
-    hl = { fg = "orange" },
-  },
-}
-
-local TablineFileNameBlock = {
+M.tab_line_name_block = {
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(self.bufnr)
   end,
@@ -156,14 +100,14 @@ local TablineFileNameBlock = {
     end,
     name = "heirline_tabline_buffer_callback",
   },
-  TablineBufnr,
-  File.FileIcon,
-  { provider = " " },
-  TablineFileName,
-  TablineFileFlags,
+  components.bufnr,
+  components.file_icon,
+  components.space,
+  components.file_name,
+  components.file_modified,
 }
 
-local TablineCloseButton = {
+M.close_button = {
   condition = function(self)
     return not vim.api.nvim_buf_get_option(self.bufnr, "modified")
   end,
@@ -183,19 +127,24 @@ local TablineCloseButton = {
   },
 }
 
-local TablineBufferBlock = utils.surround({ "", "" }, function(self)
+M.buffer_block = utils.surround({ icons.separator_tab.left, icons.separator_tab.right }, function(self)
   if self.is_active then
     return utils.get_highlight("TabLineSel").bg
   else
     return utils.get_highlight("TabLine").bg
   end
-end, { TablinePicker, TablineFileNameBlock, TablineCloseButton })
+end, { M.tab_line_picker, M.tab_line_name_block, M.close_button })
 
 -- and here we go
-local BufferLine = utils.make_buflist(
-  TablineBufferBlock,
+M.buffer_line = utils.make_buflist(
+  M.buffer_block,
   { provider = "", hl = { fg = "gray" } },
   { provider = "", hl = { fg = "gray" } }
 )
 
-return { TabLineOffset, BufferLine, TabPages }
+M.tabline = {
+  M.tab_offset,
+  M.buffer_line,
+  M.tab_pages,
+}
+return M

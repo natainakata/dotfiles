@@ -1,44 +1,53 @@
 local conditions = require("heirline.conditions")
 
-local Mode = require("natai.plugins.heirline.mode")
-local File = require("natai.plugins.heirline.file")
-local Git = require("natai.plugins.heirline.git")
-local Terminal = require("natai.plugins.heirline.terminal")
-local Lsp = require("natai.plugins.heirline.lsp")
-local Component = require("natai.plugins.heirline.component")
+local mode = require("natai.plugins.heirline.mode")
+local components = require("natai.plugins.heirline.components")
 
-local DefaultStatusline = {
+local M = {}
 
-  Mode,
-  Component.Space,
-  File.FileNameBlock,
-  Component.Space,
-  Git,
-  Component.Space,
-  Lsp.Diagnostics,
-  Component.Align,
-  Lsp.LSPActive,
-  Component.Space,
-  Component.FileType,
-  Component.Space,
-  Component.Ruler,
-  Component.Space,
-  Component.ScrollBar,
+M.defaults = {
+  mode,
+  components.space,
+  components.file_info,
+  components.space,
+  {
+    condition = conditions.is_git_repo,
+    init = function(self)
+      self.status_dict = vim.b.gitsigns_status_dict
+      self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
+    end,
+    components.git_branch,
+    components.git_diff,
+    hl = { fg = "orange" },
+  },
+
+  components.space,
+  components.diagnostics,
+  components.fill,
+  components.lsp_active,
+  components.space,
+  components.filetype,
+  components.space,
+  components.ruler,
+  components.space,
+  components.scrollbar,
 }
 
-local TerminalStatusLine = {
+M.terminal = {
   condition = function()
     return conditions.buffer_matches({ filetype = { "toggleterm" }, buftype = { "terminal" } })
   end,
-  { condition = conditions.is_active, Mode, Component.Space },
-  Component.FileType,
-  Component.Space,
-  Terminal.TerminalName,
-  Component.Align,
+  { condition = conditions.is_active, mode, components.space },
+  components.filetype,
+  components.space,
+  components.terminal_name,
+  components.fill,
 }
 
-local StatusLines = {
-
+M.statusline = {
+  init = function(self)
+    self.filename = vim.api.nvim_buf_get_name(0)
+  end,
   hl = function()
     if conditions.is_active() then
       return "StatusLine"
@@ -48,8 +57,8 @@ local StatusLines = {
   end,
   fallthrough = false,
 
-  TerminalStatusLine,
-  DefaultStatusline,
+  M.defaults,
+  M.terminal,
 }
 
-return StatusLines
+return M

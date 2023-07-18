@@ -3,20 +3,17 @@ local spec = {
   {
     "rebelot/heirline.nvim",
     event = "UIEnter",
-    enabled = false,
+    enabled = true,
     dependencies = { "nvim-tree/nvim-web-devicons", "navarasu/onedark.nvim" },
     config = function()
       vim.opt.showmode = false
       vim.opt.laststatus = 3
       local heirline = require("heirline")
       require("natai.plugins.heirline.palette").init()
-      local status = require("natai.plugins.heirline.status")
-      local tabline = require("natai.plugins.heirline.tab")
-      local winbar = require("natai.plugins.heirline.winbar")
       heirline.setup({
-        statusline = status,
-        winbar = winbar,
-        tabline = tabline,
+        statusline = require("natai.plugins.heirline.status").statusline,
+        winbar = require("natai.plugins.heirline.winbar").winbar,
+        tabline = require("natai.plugins.heirline.tabbar").tabline,
         opts = {
           disable_winbar_cb = function(args)
             return require("heirline.conditions").buffer_matches({
@@ -26,11 +23,22 @@ local spec = {
           end,
         },
       })
+      require("natai.utils").nmap("<Leader>b", function()
+        local tabline = require("heirline").tabline
+        local buflist = tabline._buflist[1]
+        buflist._picker_labels = {}
+        buflist._show_picker = true
+        vim.cmd.redrawtabline()
+        local char = vim.fn.getcharstr()
+        local bufnr = buflist._picker_labels[char]
+        if bufnr then
+          vim.api.nvim_win_set_buf(0, bufnr)
+        end
+        buflist._show_picker = false
+        vim.cmd.redrawtabline()
+      end)
     end,
   },
 }
-if vim.g.vscode then
-  return {}
-else
-  return spec
-end
+
+return spec

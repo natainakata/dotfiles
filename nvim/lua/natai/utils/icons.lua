@@ -9,7 +9,7 @@ return {
     modified = "",
     readonly = "",
   },
-  separator = { left = " ", right = "" },
+  separator = { left = "", right = "" },
   separator_tab = { left = "", right = "" },
   other = {
     command = " ",
