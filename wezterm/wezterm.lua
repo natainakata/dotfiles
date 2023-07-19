@@ -15,7 +15,7 @@ config.font = wezterm.font_with_fallback({
     stretch = "Normal",
     italic = false,
   },
-  { family = "BIZ UDGothic", weight = "Regular", stretch = "Normal", style = "Normal" },
+  { family = "UDEV Gothic 35", weight = "Regular", stretch = "Normal", style = "Normal" },
 })
 config.use_ime = true
 config.font_size = 13.0
@@ -27,10 +27,10 @@ config.color_scheme = "OneDark (base16)"
 
 config.window_background_opacity = 0.85
 local mux = wezterm.mux
-wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():toggle_fullscreen()
-end)
+-- wezterm.on("gui-startup", function(cmd)
+--   local tab, pane, window = mux.spawn_window(cmd or {})
+--   window:gui_window():toggle_fullscreen()
+-- end)
 
 config.adjust_window_size_when_changing_font_size = false
 config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "pwsh.exe" } or { "zsh" }

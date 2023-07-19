@@ -54,19 +54,19 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.o.shellxquote = ""
 end
 
-if vim.loop.os_uname().sysname == "Linux" then
-  if vim.fn.system("uname -a | grep microsoft") then
-    vim.g.clipboard = {
-      name = "WslClipboard",
-      copy = {
-        ["+"] = "win32yank -i",
-        ["*"] = "win32yank -i",
-      },
-      paste = {
-        ["+"] = "win32yank -o",
-        ["*"] = "win32yank -o",
-      },
-      cache_enabled = 1,
-    }
-  end
-end
+-- if vim.loop.os_uname().sysname == "Linux" then
+--   if vim.fn.system("uname -a | grep microsoft") then
+--     vim.g.clipboard = {
+--       name = "WslClipboard",
+--       copy = {
+--         ["+"] = "win32yank -i",
+--         ["*"] = "win32yank -i",
+--       },
+--       paste = {
+--         ["+"] = "win32yank -o",
+--         ["*"] = "win32yank -o",
+--       },
+--       cache_enabled = 1,
+--     }
+--   end
+-- end

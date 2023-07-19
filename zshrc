@@ -35,30 +35,8 @@ zinit light chrissicool/zsh-256color
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # zinit light chriskempson/base16-shell
 # rust cil
-zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"; zinit light sharkdp/bat
-zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"; zinit light sharkdp/fd
-zinit ice as"program" from"gh-r" pick"lsd*/lsd"; zinit light lsd-rs/lsd
-zinit ice as"program" from"gh-r" mv"hexyl* -> hexyl" pick"hexyl/hexyl"; zinit light sharkdp/hexyl
-zinit ice as"program" from"gh-r" pick"delta*/delta"; zinit light dandavison/delta
-zinit ice as"program" from"gh-r" pick"ripgrep*/rg"; zinit light BurntSushi/ripgrep
-zinit wait'1' lucid \
-  from"gh-r" as"program" mv"tealdeer-* -> tldr" pick"tldr" \
-  light-mode for @dbrgn/tealdeer
-zinit ice wait'1' lucid as"completion" mv'zsh_tealdeer -> _tldr'
-zinit ice as"program" from"gh-r" \
-  pick"zoxide*/zoxide" \
-  atload'eval "$(zoxide init zsh)"'
-zinit light ajeetdsouza/zoxide
-zinit ice as"program" from"gh-r" \
-  pick"starship*/starship" \
-  atload'eval "$(starship init zsh)"'
-zinit light starship/starship
-# fzf
-zinit ice atclone"./install"; zinit light junegunn/fzf
 zinit light Aloxaf/fzf-tab
 zinit light b4b4r07/enhancd
-
-zinit ice as"program" from"gh-r" mv"win32yank* - win32yank" pick"equalsraf/win32yank"; zinit light equalsraf/win32yank
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -68,17 +46,6 @@ zinit ice as"program" from"gh-r" mv"win32yank* - win32yank" pick"equalsraf/win32
 
 eval "$(gh completion -s zsh)"
 eval "$(keychain --eval --quiet id_ed25519)"
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export DENO_INSTALL="/home/natai/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 # load rc
 ZSHHOME="${HOME}/.zsh"
@@ -112,4 +79,4 @@ if [[ -n ${TMUX-} ]]; then
   export TERM=tmux-256color
 fi
 
-
+eval $(starship init zsh)
