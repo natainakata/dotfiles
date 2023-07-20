@@ -12,14 +12,14 @@ M.bufnr = {
   provider = function(self)
     return tostring(self.bufnr) .. "."
   end,
-  hl = "purple",
+  hl = "lavender",
 }
 
 M.filetype = {
   provider = function()
     return string.upper(vim.bo.filetype)
   end,
-  hl = { fg = "cyan", bold = true },
+  hl = { fg = "sky", bold = true },
 }
 
 M.file_icon = {
@@ -74,7 +74,7 @@ M.file_readonly = {
     return not vim.bo.modifiable or vim.bo.readonly
   end,
   provider = icons.files.readonly .. " ",
-  hl = { fg = "orange" },
+  hl = { fg = "maroon" },
 }
 
 M.file_info = {
@@ -155,25 +155,25 @@ M.diagnostics = {
       -- 0 is just another output, we can decide to print it or not!
       return self.errors > 0 and (self.error_icon .. self.errors .. " ")
     end,
-    hl = { fg = "diag_error" },
+    hl = { fg = "red" },
   },
   {
     provider = function(self)
       return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
     end,
-    hl = { fg = "diag_warn" },
+    hl = { fg = "yellow" },
   },
   {
     provider = function(self)
       return self.info > 0 and (self.info_icon .. self.info .. " ")
     end,
-    hl = { fg = "diag_info" },
+    hl = { fg = "sky" },
   },
   {
     provider = function(self)
       return self.hints > 0 and (self.hint_icon .. self.hints)
     end,
-    hl = { fg = "diag_hint" },
+    hl = { fg = "teal" },
   },
   {
     provider = "]",
@@ -280,7 +280,7 @@ M.lsp_info = {
       if #data > 1 and i < #data then
         table.insert(child, {
           provider = " > ",
-          hl = { fg = "bright_fg" },
+          hl = { fg = "surface1" },
         })
       end
       table.insert(children, child)
@@ -291,7 +291,7 @@ M.lsp_info = {
   provider = function(self)
     return self.child:eval()
   end,
-  hl = { fg = "gray" },
+  hl = { fg = "text" },
   update = "CursorMoved",
 }
 
@@ -332,7 +332,7 @@ M.close_button = {
   { provider = " " },
   {
     provider = icons.other.close,
-    hl = { fg = "gray" },
+    hl = { fg = "surface1" },
     on_click = {
       callback = function(_, minwid)
         vim.api.nvim_win_close(minwid, true)

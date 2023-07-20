@@ -4,7 +4,7 @@ local spec = {
   {
     "rcarriga/nvim-notify",
     opts = {
-      background_colour = "NormalFloat",
+      background_colour = require("catppuccin.palettes").get_palette("frappe").mantle,
     },
     keys = {
       {
@@ -22,9 +22,6 @@ local spec = {
     dependencies = "rcarriga/nvim-notify",
     opts = {
       lsp = {
-        progress = {
-          enabled = false,
-        },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,

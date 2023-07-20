@@ -2,19 +2,20 @@
 local spec = {
   {
     "rebelot/heirline.nvim",
-    event = "UIEnter",
+    event = "VeryLazy",
     enabled = true,
     dependencies = { "nvim-tree/nvim-web-devicons", "navarasu/onedark.nvim" },
     config = function()
       vim.opt.showmode = false
       vim.opt.laststatus = 3
       local heirline = require("heirline")
-      require("natai.plugins.heirline.palette").init()
+      -- require("natai.plugins.heirline.palette").init()
       heirline.setup({
         statusline = require("natai.plugins.heirline.status").statusline,
         winbar = require("natai.plugins.heirline.winbar").winbar,
         tabline = require("natai.plugins.heirline.tabbar").tabline,
         opts = {
+          colors = heirline.load_colors(require("catppuccin.palettes").get_palette("frappe")),
           disable_winbar_cb = function(args)
             return require("heirline.conditions").buffer_matches({
               buftype = { "nofile", "prompt", "help", "quickfix" },

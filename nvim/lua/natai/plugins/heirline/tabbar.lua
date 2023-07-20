@@ -33,9 +33,9 @@ M.tab_page = {
   end,
   hl = function(self)
     if not self.is_active then
-      return "TabLine"
+      return utils.get_highlight("TabLine")
     else
-      return "TabLineSel"
+      return utils.get_highlight("TabLineSel")
     end
   end,
 }
@@ -69,9 +69,9 @@ M.tab_offset = {
 
   hl = function(self)
     if vim.api.nvim_get_current_win() == self.winid then
-      return "TablineSel"
+      return utils.get_highlight("TabLineSel")
     else
-      return "Tabline"
+      return utils.get_highlight("TabLine")
     end
   end,
 }
@@ -82,9 +82,9 @@ M.tab_line_name_block = {
   end,
   hl = function(self)
     if self.is_active then
-      return "TabLineSel"
+      return utils.get_highlight("TabLineSel")
     else
-      return "TabLine"
+      return utils.get_highlight("TabLine")
     end
   end,
   on_click = {
@@ -114,7 +114,7 @@ M.close_button = {
   { provider = " " },
   {
     provider = icons.other.close,
-    hl = { fg = "gray" },
+    hl = { fg = "surface1" },
     on_click = {
       callback = function(_, minwid)
         vim.api.nvim_buf_delete(minwid, { force = false })
@@ -138,8 +138,8 @@ end, { M.tab_line_picker, M.tab_line_name_block, M.close_button })
 -- and here we go
 M.buffer_line = utils.make_buflist(
   M.buffer_block,
-  { provider = "", hl = { fg = "gray" } },
-  { provider = "", hl = { fg = "gray" } }
+  { provider = "", hl = { fg = "surface1" } },
+  { provider = "", hl = { fg = "surface1" } }
 )
 
 M.tabline = {

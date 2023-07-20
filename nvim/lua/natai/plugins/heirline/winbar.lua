@@ -25,7 +25,7 @@ M.winbar = {
     condition = function()
       return conditions.buffer_matches({ filetype = { "toggleterm" }, buftype = { "terminal" } })
     end,
-    utils.surround(separator, "bright_bg", {
+    utils.surround(separator, "mantle", {
       components.filetype,
       components.space,
       components.terminal_name,
@@ -38,11 +38,11 @@ M.winbar = {
     end,
     utils.surround(
       separator,
-      "bright_bg",
-      { hl = { fg = "gray", force = true }, { components.file_name_full, components.close_button } }
+      "mantle",
+      { hl = { fg = "surface1", force = true }, { components.file_name_full, components.close_button } }
     ),
   },
-  utils.surround(separator, "bright_bg", {
+  utils.surround(separator, "mantle", {
     components.lsp_info,
     components.fill,
     components.file_info,

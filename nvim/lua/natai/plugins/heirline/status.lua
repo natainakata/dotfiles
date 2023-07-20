@@ -18,7 +18,7 @@ M.defaults = {
     end,
     components.git_branch,
     components.git_diff,
-    hl = { fg = "orange" },
+    hl = { fg = "maroon" },
   },
 
   components.space,
@@ -48,13 +48,7 @@ M.statusline = {
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(0)
   end,
-  hl = function()
-    if conditions.is_active() then
-      return "StatusLine"
-    else
-      return "StatusLineNC"
-    end
-  end,
+  hl = { bg = "mantle" },
   fallthrough = false,
 
   M.defaults,

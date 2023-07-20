@@ -11,7 +11,34 @@ local spec = {
     config = function(_, opts)
       local onedark = require("onedark")
       onedark.setup(opts)
-      onedark.load()
+      -- onedark.load()
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      flavor = "frappe",
+      transparent_background = true,
+      highlight_overrides = {
+        all = function(colors)
+          return {
+            CursorColumn = {
+              bg = U.vary_color({ latte = U.lighten(C.mantle, 0.70, C.base) }, U.darken(C.surface0, 0.64, C.base)),
+            },
+            NoiceMini = {
+              bg = U.vary_color({ latte = U.lighten(C.mantle, 0.70, C.base) }, U.darken(C.surface0, 0.64, C.base)),
+            },
+            NoiceFormatProgressTodo = {
+              bg = C.surface1,
+            },
+          }
+        end,
+      },
+    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
   -- {

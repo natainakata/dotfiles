@@ -5,7 +5,6 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     lazy = false,
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
-    enabled = is_nvim,
     keys = {
       { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
     },

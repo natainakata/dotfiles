@@ -44,7 +44,7 @@ local indicator = { -- see :help mode(1)
 }
 
 local mode_colors = {
-  n = "cyan",
+  n = "sky",
   i = "yellow",
   v = "red",
   V = "red",
@@ -53,10 +53,10 @@ local mode_colors = {
   s = "red",
   S = "red",
   ["\19"] = "red",
-  R = "orange",
-  r = "orange",
+  R = "maroon",
+  r = "maroon",
   ["!"] = "red",
-  t = "purple",
+  t = "lavender",
 }
 
 return {

@@ -8,11 +8,11 @@ local spec = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "folke/trouble.nvim",
-      {
-        "j-hui/fidget.nvim",
-        tag = "legacy",
-        config = true,
-      },
+      -- {
+      --   "j-hui/fidget.nvim",
+      --   tag = "legacy",
+      --   config = true,
+      -- },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
