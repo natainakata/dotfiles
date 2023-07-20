@@ -1,0 +1,56 @@
+* {
+  font-family: UDEV Gothic 35;
+  font-size: 18px;
+  color: #abb2bf
+}
+
+window {
+  margin: 0px;
+  border-radius: 5px;
+  border: 1px solid #61afef;
+  background-color: #282c34;
+  box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.3),
+    0px 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+#input {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #31353f;
+}
+
+#inner-box {
+  margin: 5px;
+}
+
+#outer-box {
+  margin: 5px;
+}
+
+#scroll {
+  margin: 0px;
+  border: none;
+}
+
+#text {
+  margin: 5px;
+  border: none;
+}
+
+#entry {
+  margin: 5px;
+}
+
+#entry:selected {
+  background-color: #31353f;
+  border: none;
+}
+
+#selected #text {
+  /*color: @fg_color;*/
+}
+
+/* #img */
+
+/* #unselected */

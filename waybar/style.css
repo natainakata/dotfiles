@@ -1,0 +1,77 @@
+* {
+	font-family: "UDEV Gothic 35NF"; 
+	font-size: 18px;
+}
+
+window#waybar {
+	background: #282c34;
+	color: #abb2bf;
+}
+
+#workspaces,
+#pulseaudio,
+#memory,
+#cpu,
+#network,
+#disk,
+#tray {
+	background: #282c34;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: #abb2bf;
+}
+#workspaces button.focused {
+	color: #56b6c2;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: #31353f;
+	border: #31353f;
+	padding: 0 3px;
+}
+
+#mode {
+  font-weight: bold;
+  background: #393f4a;
+  color: #e86671;
+  padding: 0 3px;
+}
+
+#window {
+  font-weight: bold;
+  color: #61afef;
+  padding: 0 3px;
+}
+
+#pulseaudio {
+	color: #56b6c2;
+}
+#memory {
+	color: #98c379;
+}
+#cpu {
+	color: #c678dd;
+}
+#disk {
+	color: #d19a66;
+}
+#network {
+  color: #61afef;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#disk {
+	padding: 0 10px;
+}
