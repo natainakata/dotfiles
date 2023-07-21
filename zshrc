@@ -75,6 +75,7 @@ if [[ ! -n $TMUX && $- == *l* ]]; then
     :  # Start terminal normally
   fi
 fi
+
 if [[ -n ${TMUX-} ]]; then
   export TERM=tmux-256color
 fi

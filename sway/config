@@ -8,6 +8,8 @@
 #
 # Logo key. Use Mod1 for Alt.
 
+include catppuccin-frappe
+
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 
 font pango:Noto Sans CJK JP 12
@@ -20,7 +22,7 @@ default_border pixel 3
 exec_always ~/.config/sway/window-transparency.sh
 # exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.8
 
-exec mako
+# exec mako
 exec fcitx5 -d
 exec bitwarden-desktop
 exec dropbox
@@ -31,11 +33,14 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
 exec wl-paste -t text --watch clipman store
+# Notification Daemon
+exec swaync
+
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output "*" bg /usr/share/backgrounds/archlinux/conference.png fill
+output "*" bg ~/.local/share/background/catppuccin.jpeg fill
 
 
 #
@@ -131,6 +136,10 @@ bindsym $mod+o exec vivaldi-stable
 bindsym $mod+e exec thunar
 
 bindsym $mod+p exec clipman pick -t wofi
+
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.

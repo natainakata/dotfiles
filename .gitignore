@@ -23,6 +23,8 @@
 !/sway/**
 !/swaylock/
 !/swaylock/**/
+!/swaync/
+!/swaync/**
 !/waybar/
 !/waybar/**
 !/wofi/
@@ -37,9 +39,6 @@
 !/tmux.conf
 !/wezterm/
 !/wezterm/**
-!/lazygit/
-!/lazygit/config.yml
-/lazygit/state.yml
 
 !/README.md
 !/LICENSE

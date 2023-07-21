@@ -1,14 +1,18 @@
+@define-color base   #303446;
+@define-color mantle #292c3c;
+@define-color blue   #8caaee;
+
 * {
-  font-family: UDEV Gothic 35;
-  font-size: 18px;
-  color: #abb2bf
+  font-family: UDEV Gothic 35NF;
+  font-size: 16px;
+  color: @text;
 }
 
 window {
   margin: 0px;
   border-radius: 5px;
-  border: 1px solid #61afef;
-  background-color: #282c34;
+  border: 1px solid @blue;
+  background-color: @base;
   box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.3),
     0px 15px 12px rgba(0, 0, 0, 0.22);
 }
@@ -17,7 +21,7 @@ window {
   margin: 10px;
   padding: 10px;
   border: none;
-  background-color: #31353f;
+  background-color: @mantle;
 }
 
 #inner-box {
@@ -43,7 +47,7 @@ window {
 }
 
 #entry:selected {
-  background-color: #31353f;
+  background-color: @mantle;
   border: none;
 }
 

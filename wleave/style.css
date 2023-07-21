@@ -3,12 +3,12 @@
 }
 
 window {
-	background-color: rgba(40, 44, 52, 0.9);
+	background-color: rgba(48, 52, 70, 0.9);
 }
 
 button {
-    color: #abb2bf;
-	background-color: #393f4a;
+  color: #c6d0f5;
+	background-color: #292c3c;
 	border-style: solid;
 	border-width: 2px;
 	background-repeat: no-repeat;
@@ -16,7 +16,7 @@ button {
 }
 
 button:focus, button:active, button:hover {
-	background-color: #61afef;
+	background-color: #8eacee;
 	outline-style: none;
 }
 
