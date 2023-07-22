@@ -55,7 +55,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
 end
 
 if vim.loop.os_uname().sysname == "Linux" then
-  if vim.fn.has("wsl") then
+  if vim.fn.has("wsl") == 1 then
     vim.g.clipboard = {
       name = "WslClipboard",
       copy = {
