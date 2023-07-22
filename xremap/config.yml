@@ -2,3 +2,9 @@ modmap:
   - name: Global
     remap:
       CapsLock: Ctrl_L
+      Shift_R:
+        held: Shift_R
+        alone: KEY_HENKAN
+      Shift_L:
+        held: Shift_L
+        alone: KEY_MUHENKAN

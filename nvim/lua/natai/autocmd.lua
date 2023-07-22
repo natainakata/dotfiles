@@ -16,6 +16,12 @@ autocmd("TextYankPost", {
   end,
 })
 
+autocmd({ "BufNewFile", "BufRead" }, {
+  group = utils.augroup("ime"),
+  pattern = "*.ime",
+  command = "set filetype=ime",
+})
+
 autocmd("FileType", {
   group = utils.augroup("close_with_q"),
   pattern = {
@@ -29,6 +35,16 @@ autocmd("FileType", {
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
+  end,
+})
+autocmd("FileType", {
+  group = utils.augroup("ime_settings"),
+  pattern = {
+    "ime",
+  },
+  callback = function()
+    require("notify").dismiss({ silent = true, pending = true })
+    utils.nmap("q", "<Cmd>wq!<CR>")
   end,
 })
 
@@ -67,4 +83,3 @@ autocmd("CursorMoved", {
   group = utils.augroup("redraw_line"),
   command = "redrawtabline",
 })
-

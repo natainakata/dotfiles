@@ -1,5 +1,6 @@
 local utils = require("natai.utils")
 local spec = {
+
   {
     "hrsh7th/nvim-cmp",
     lazy = true,
@@ -89,8 +90,9 @@ local spec = {
     lazy = false,
     dependencies = "vim-denops/denops.vim",
     init = function()
-      utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
-      utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
+      utils.imap("<C-i>", "<Plug>(skkeleton-toggle)")
+      utils.cmap("<C-i>", "<Plug>(skkeleton-toggle)")
+
       local dictionaries = {}
       local handle = io.popen("ls $HOME/.skk/*")
       if handle then

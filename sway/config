@@ -22,7 +22,6 @@ default_border pixel 3
 exec_always ~/.config/sway/window-transparency.sh
 # exec /usr/share/sway/scripts/inactive-windows-transparency.py --opacity 0.8
 
-# exec mako
 exec fcitx5 -d
 exec bitwarden-desktop
 exec dropbox
@@ -256,6 +255,13 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+
+for_window [app_id="FloatingVim"] {
+  floating enable
+  move position 50ppt 0
+}
+bindsym $mod+i exec XMODIFIERS=@im= ~/.config/sway/ime.sh
+
 #
 # Resizing containers:
 #
@@ -280,7 +286,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
 
 
 include /etc/sway/config.d/*
