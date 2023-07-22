@@ -72,19 +72,35 @@ end
 wezterm.on("update-status", function(window, pane)
   local wday = os.date("*t").wday
   local wday_ja = string.format("(%s)", utils.day_of_week_ja(wday))
-  local date = wezterm.strftime("󰃮  %Y-%m-%d " .. wday_ja .. " 󰥔  %H:%M:%S")
-
+  local title = string.format(" %s %s ", pane:get_title(), utils.basename(pane:get_current_working_dir()))
+  local date = wezterm.strftime(" 󰃮  %Y-%m-%d " .. wday_ja .. " 󰥔  %H:%M:%S")
+  local fg = "#303446"
+  local title_bg = "#a6d189"
+  local date_bg = "#85c1dc"
   window:set_right_status(wezterm.format({
+    { Background = { Color = title_bg } },
+    { Foreground = { Color = fg } },
+    { Text = title },
+    { Background = { Color = date_bg } },
+    { Foreground = { Color = fg } },
     { Text = date },
   }))
 end)
 
 wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
   local tab_index = tab.tab_index + 1
-  if tab.is_active and string.match(tab.active_pane.title, "Copy mode:") then
-    return string.format(" %d %s ", tab_index, "Copy mode...")
+  local title = string.format(" %d ", tab_index)
+  local bg = "#292c3c"
+  local fg = "#c6d0f5"
+  if tab.is_active then
+    bg = "#ef9f76"
+    fg = "#303446"
   end
-  return string.format(" %d ", tab_index)
+  return {
+    { Background = { Color = bg } },
+    { Foreground = { Color = fg } },
+    { Text = title },
+  }
 end)
 
 return config

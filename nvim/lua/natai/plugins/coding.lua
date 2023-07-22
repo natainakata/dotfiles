@@ -1,4 +1,5 @@
-return {
+local utils = require("natai.utils")
+local spec = {
   {
     "hrsh7th/nvim-cmp",
     lazy = true,
@@ -225,3 +226,5 @@ return {
     end,
   },
 }
+
+return spec

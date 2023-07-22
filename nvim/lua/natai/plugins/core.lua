@@ -8,5 +8,6 @@ return {
   { "notomo/promise.nvim", lazy = true },
   { "tpope/vim-dispatch" },
   { "radenling/vim-dispatch-neovim" },
+  { "vim-denops/denops.vim" },
   { "vim-jp/vimdoc-ja", ft = "help" },
 }

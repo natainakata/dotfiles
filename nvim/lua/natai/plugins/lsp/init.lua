@@ -34,9 +34,9 @@ local spec = {
           "additionalTextEdits",
         },
       }
-      utils.ensure("cmp_nvim_lsp", function(m)
-        capabilities = m.default_capabilities(capabilities)
-      end)
+      -- utils.ensure("cmp_nvim_lsp", function(m)
+      --   capabilities = m.default_capabilities(capabilities)
+      -- end)
       o.opts.capabilities = capabilities
       local function format_diagnostics(diag)
         if diag.code then

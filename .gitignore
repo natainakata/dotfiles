@@ -3,7 +3,6 @@
 /.**
 
 ### not ignore ###
-!/Makefile
 !/base16_sonokai
 !/colors/
 !/colors/**
@@ -19,6 +18,9 @@
 !/powershell/**
 !/nvim/
 !/nvim/**
+!/skk/
+!/skk/**
+!/skkeleton
 !/sway/
 !/sway/**
 !/swaylock/
@@ -35,7 +37,6 @@
 !/xremap/**
 /nvim/plugin/
 /nvim/lazy-lock.json
-/lazyvim/lazy-lock.json
 !/tmux.conf
 !/wezterm/
 !/wezterm/**

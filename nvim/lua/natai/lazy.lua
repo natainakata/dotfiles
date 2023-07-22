@@ -12,15 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
-vim.g.loaded_gzip = 1
-vim.g.loaded_matchit = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrw = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_tar = 1
-
 local opts = {
   defaults = {
     lazy = false,
@@ -32,6 +23,25 @@ local opts = {
   },
   checker = { enabled = true, frequency = 1600 }, -- automatically check for plugin updates
   install = { colorscheme = { "onedark", "habamax" } },
+  performance = {
+    cache = { enabled = true },
+    rtp = {
+      disabled_plugins = {
+        "2html_plugin",
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+        "shada",
+        "rplugin",
+        "man",
+      },
+    },
+  },
 }
 
 utils.ensure("lazy", function(m)
