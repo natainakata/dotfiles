@@ -58,6 +58,10 @@
         "/home/natai/.local/share/nvim/lazy/nvim-ts-rainbow/lua",
         "/home/natai/.local/share/nvim/lazy/ddc-source-nvim-lsp/lua",
         "/home/natai/.local/share/nvim/lazy/plenary.nvim/lua",
-        "/home/natai/.dotfiles/nvim/lua"
-    ]
+        "/home/natai/.dotfiles/nvim/lua",
+        "${3rd}/luv/library"
+    ],
+  "diagnostics": {
+    "globals": ["vim"]
+  }
 }
