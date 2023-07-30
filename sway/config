@@ -40,7 +40,7 @@ exec swaync
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output "*" bg ~/.local/share/background/catppuccin.jpeg fill
-
+input "*" xkb_numlock enabled
 
 #
 # Status Bar:
