@@ -77,6 +77,9 @@ set $menu wofi | xargs swaymsg exec --
 # Start a terminal
 bindsym $mod+Return exec $term
 
+# cheatsheet
+bindsym $mod+F1 exec ~/.bin/keyhint.sh
+
 # Kill focused window
 bindsym $mod+q kill
 
