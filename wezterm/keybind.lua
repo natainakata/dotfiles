@@ -6,8 +6,13 @@ local utils = require("utils")
 M.default_keybinds = {
   {
     key = "Space",
-    mods = "META",
+    mods = "META|SHIFT",
     action = act.ShowLauncherArgs({ flags = "FUZZY|COMMANDS|DOMAINS", title = "Commands Palette" }),
+  },
+  {
+    key = "Space",
+    mods = "META|",
+    action = act.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS|DOMAINS", title = "Commands Palette" }),
   },
   -- { key = "Space", mods = "META", action = act.ActivateCommandPalette },
   { key = "f", mods = "META", action = act.ToggleFullScreen },

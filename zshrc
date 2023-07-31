@@ -74,7 +74,7 @@ fi
 #   fi
 # fi
 
-eval $(starship init zsh)
+eval "$(starship init zsh)"
 eval "$(gh completion -s zsh)"
 eval "$(keychain --eval --quiet id_ed25519)"
 

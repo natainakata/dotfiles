@@ -1,13 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
-
 include catppuccin-frappe
 
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
@@ -76,45 +66,9 @@ set $right l
 set $term wezterm
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | ~/.bin/mywofi.sh | xargs swaymsg exec --
-# set $menu ~/.bin/mywofi.sh
 set $dmenu dmenu_path | wofi -d | xargs swaymsg exec --
 set $menu wofi | xargs swaymsg exec --
 
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
@@ -127,12 +81,12 @@ bindsym $mod+Return exec $term
 bindsym $mod+q kill
 
 # Start your launcher
-bindsym $mod+d exec $dmenu
-bindsym $mod+Space exec $menu
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+d exec $dmenu
 
-bindsym $mod+o exec vivaldi-stable
+bindsym $mod+i exec vivaldi-stable
 
-bindsym $mod+e exec thunar
+bindsym $mod+o exec thunar
 
 bindsym $mod+p exec clipman pick -t wofi
 
@@ -147,23 +101,23 @@ bindsym $mod+Shift+n exec swaync-client -t -sw
 # mouse button for dragging.
 floating_modifier $mod normal
 
-# Reload the configuration file
-bindsym $mod+Shift+c reload
 
 # [slurp, copy & save]
-bindsym $mod+shift+s exec grimshot --notify copy area | wl-paste -t image/png > ~/Pictures/Screenshots/$(date "+%Y%m%d-%H%M%S")'_grim_area.png'
+bindsym $mod+Shift+c exec grimshot --notify copy area | wl-paste -t image/png > ~/Pictures/Screenshots/$(date "+%Y%m%d-%H%M%S")'_grim_area.png'
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
 
 # Exit sway (logs you out of your Wayland session)
-# bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 bindsym $mod+shift+e exec wleave -f
 
+# Audio control:
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 bindsym XF86AudioMute exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
-
 
 #
 # Moving around:
@@ -221,22 +175,19 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # Layout stuff:
 #
 # You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
-bindsym $mod+b splith
-bindsym $mod+v splitv
+bindsym $mod+v split toggle
 
 # Switch the current container between different layout styles
+bindsym $mod+e layout default
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+t layout toggle split
-bindsym $mod+u splitn
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # Swap focus between the tiling area and the floating area
 # bindsym $mod+space focus mode_toggle
@@ -250,17 +201,11 @@ bindsym $mod+a focus parent
 # You can send windows there and get them back later.
 
 # Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+g move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-for_window [app_id="FloatingVim"] {
-  floating enable
-  move position 50ppt 0
-}
-bindsym $mod+i exec XMODIFIERS=@im= ~/.config/sway/ime.sh
+bindsym $mod+g scratchpad show
 
 #
 # Resizing containers:
@@ -286,6 +231,5 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
 
 include /etc/sway/config.d/*
