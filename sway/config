@@ -17,6 +17,7 @@ exec bitwarden-desktop
 exec dropbox
 exec thunar --daemon
 exec discord
+exec blueman-applet
 
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
@@ -86,6 +87,7 @@ bindsym $mod+q kill
 # Start your launcher
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+d exec $dmenu
+bindsym $mod+b exec ~/.config/sway/windowswitch.sh
 
 bindsym $mod+i exec vivaldi-stable
 
@@ -182,7 +184,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+v split toggle
 
 # Switch the current container between different layout styles
-bindsym $mod+e layout default
+bindsym $mod+e layout toggle split
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 
@@ -234,5 +236,10 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+bindsym $mod+Control+$left resize grow width 10px
+bindsym $mod+Control+$right resize shrink width 10px
+bindsym $mod+Control+$up resize shrink height 10px
+bindsym $mod+Control+$down resize grow height 10px
 
 include /etc/sway/config.d/*

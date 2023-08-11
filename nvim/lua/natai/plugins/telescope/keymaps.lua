@@ -107,7 +107,7 @@ M.frecency = {
   {
     "<Leader>r",
     function()
-      require("telescope").extensions.frecency.frecency({})
+      require("telescope").extensions.frecency.frecency()
     end,
     desc = "File Frecency",
   },

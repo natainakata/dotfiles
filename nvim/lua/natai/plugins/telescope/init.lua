@@ -91,6 +91,7 @@ local spec = {
       },
       {
         "nvim-telescope/telescope-frecency.nvim",
+        commit = "62d3381",
         dependencies = "tami5/sqlite.lua",
         keys = keymap.frecency,
       },
