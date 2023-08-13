@@ -16,6 +16,8 @@ M.default_keybinds = {
   },
   -- { key = "Space", mods = "META", action = act.ActivateCommandPalette },
   { key = "f", mods = "META", action = act.ToggleFullScreen },
+  { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+  { key = "C", mods = "CTRL", action = act.CopyTo("ClipboardAndPrimarySelection") },
 }
 
 M.tmux_keybinds = {
@@ -30,7 +32,6 @@ M.tmux_keybinds = {
   { key = "v", mods = "META", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "s", mods = "META", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "q", mods = "META", action = act.CloseCurrentPane({ confirm = true }) },
-
   { key = "p", mods = "META", action = act.PaneSelect },
   { key = "h", mods = "META", action = act.ActivatePaneDirection("Left") },
   { key = "l", mods = "META", action = act.ActivatePaneDirection("Right") },

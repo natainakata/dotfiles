@@ -46,7 +46,7 @@ local spec = {
         "clojure",
         -- java
         "java",
-        "kotlin"
+        "kotlin",
       },
       autotag = {
         enable = true,
@@ -102,8 +102,4 @@ local spec = {
   },
 }
 
-if vim.g.vscode then
-  return {}
-else
-  return spec
-end
+return spec

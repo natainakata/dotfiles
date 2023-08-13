@@ -31,3 +31,4 @@ path=(
 
 export DENO_INSTALL="/home/natai/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export BAT_THEME="Catppuccin-frappe"

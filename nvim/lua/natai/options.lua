@@ -70,3 +70,8 @@ if vim.loop.os_uname().sysname == "Linux" then
     }
   end
 end
+
+for name, icon in pairs(require("natai.utils.icons").diagnostics) do
+  name = "DiagnosticSign" .. name
+  vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+end

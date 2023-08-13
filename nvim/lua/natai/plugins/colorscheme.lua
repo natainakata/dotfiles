@@ -18,7 +18,7 @@ local spec = {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
-      flavor = "frappe",
+      flavour = "frappe",
       transparent_background = true,
       highlight_overrides = {
         all = function(colors)
@@ -80,8 +80,4 @@ local spec = {
   -- },
 }
 
-if vim.g.vscode then
-  return {}
-else
-  return spec
-end
+return spec
