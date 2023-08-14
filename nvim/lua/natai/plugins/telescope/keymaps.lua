@@ -76,14 +76,6 @@ M.core = {
     end,
     desc = "Git Commits",
   },
-  {
-    "<C-f>",
-    function()
-      require("telescope.builtin").symbols()
-    end,
-    desc = "Symbols",
-    mode = "i",
-  },
 }
 M.file_browser = {
   {
@@ -110,6 +102,16 @@ M.frecency = {
       require("telescope").extensions.frecency.frecency()
     end,
     desc = "File Frecency",
+  },
+}
+M.symbols = {
+  {
+    "<C-f>",
+    function()
+      require("telescope.builtin").symbols()
+    end,
+    desc = "Symbols",
+    mode = "i",
   },
 }
 

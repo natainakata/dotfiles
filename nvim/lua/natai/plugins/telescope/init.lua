@@ -91,12 +91,10 @@ local spec = {
       },
       {
         "nvim-telescope/telescope-frecency.nvim",
-        commit = "62d3381",
         dependencies = "tami5/sqlite.lua",
         keys = keymap.frecency,
       },
-      "nvim-telescope/telescope-symbols.nvim",
-      "nvim-tree/nvim-web-devicons",
+      { "nvim-telescope/telescope-symbols.nvim", keys = keymap.symbols },
     },
     keys = keymap.core,
     config = function()
@@ -115,8 +113,5 @@ local spec = {
     end,
   },
 }
-if vim.g.vscode then
-  return {}
-else
-  return spec
-end
+
+return spec

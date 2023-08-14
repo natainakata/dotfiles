@@ -30,6 +30,7 @@ config.keys = keybind.create_keybinds()
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.launch_menu = {}
+config.enable_wayland = false
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   table.insert(config.launch_menu, {

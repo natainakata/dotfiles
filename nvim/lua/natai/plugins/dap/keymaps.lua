@@ -1,32 +1,39 @@
 local M = {}
 M.keys = {
   {
+    "<leader>x",
+    function()
+      require("dap").continue()
+    end,
+    desc = "DAP Continue",
+  },
+  {
     "<F5>",
     function()
       require("dap").continue()
     end,
-    desc = "Continue",
+    desc = "DAP Continue",
   },
   {
     "<F10>",
     function()
       require("dap").step_over()
     end,
-    desc = "Step Over",
+    desc = "DAP Step Over",
   },
   {
     "<F11>",
     function()
       require("dap").step_into()
     end,
-    desc = "Step Into",
+    desc = "DAP Step Into",
   },
   {
     "<F12>",
     function()
       require("dap").step_out()
     end,
-    desc = "Step Out",
+    desc = "DAP Step Out",
   },
   {
     "<leader>db",

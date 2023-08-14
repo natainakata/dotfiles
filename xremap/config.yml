@@ -8,6 +8,6 @@ modmap:
       Shift_L:
         held: Shift_L
         alone: KEY_MUHENKAN
-      Space:
-        held: SUPER_L
-        alone: Space
+      # Space:
+        #   held: SUPER_L
+        # alone: Space
