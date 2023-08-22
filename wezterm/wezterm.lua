@@ -21,7 +21,7 @@ config.color_scheme = "Catppuccin Frappe"
 
 config.window_background_opacity = 0.85
 config.adjust_window_size_when_changing_font_size = false
--- config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "pwsh.exe" } or { "zsh" }
+config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "pwsh.exe" } or { "zsh" }
 
 -- config.default_cwd = wezterm.home_dir
 config.disable_default_key_bindings = true
