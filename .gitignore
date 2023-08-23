@@ -3,9 +3,6 @@
 /.**
 
 ### not ignore ###
-!/base16_sonokai
-!/colors/
-!/colors/**
 !/bin/
 !/bin/**
 !/zshrc
