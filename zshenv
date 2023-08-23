@@ -9,10 +9,7 @@ export GOPATH=~/.go
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-export NEOVIM_HOME="$HOME/.local/nvim"
-if [ -d "${NEOVIM_HOME}" ]; then
-  export PATH="${NEOVIM_HOME}/bin:$PATH"
-fi
+export DENO_INSTALL="/home/natai/.deno"
 
 path=(
   ~/.bin
@@ -20,11 +17,9 @@ path=(
   ~/.local/bin
   ~/.local/zig
   $GOPATH/bin
+  $DENO_INSTALL/bin
   $path
 )
 
-# . "$HOME/.cargo/env"
 
-export DENO_INSTALL="/home/natai/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 export BAT_THEME="Catppuccin-frappe"

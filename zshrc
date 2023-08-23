@@ -29,8 +29,8 @@ source $ZINITHOME/bin/zinit.zsh
 zinit ice wait lucid atload'_zsh_autosuggest_start'; zinit light zsh-users/zsh-autosuggestions
 zinit ice wait'0' blockf atpull'zinit creinstall -q .'; zinit light zsh-users/zsh-completions
 zinit ice wait'0'; zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light ryutok/rust-zsh-completions
-zinit ice pick'cli.zsh'; zinit light sudosubin/zsh-github-cli
+# zinit light ryutok/rust-zsh-completions
+# zinit ice pick'cli.zsh'; zinit light sudosubin/zsh-github-cli
 zinit light chrissicool/zsh-256color
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # zinit light chriskempson/base16-shell
@@ -72,5 +72,4 @@ fi
 eval "$(starship init zsh)"
 eval "$(gh completion -s zsh)"
 eval "$(keychain --eval --quiet id_ed25519)"
-
 
