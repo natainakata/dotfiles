@@ -1,63 +1,46 @@
 local M = {}
 local wezterm = require("wezterm")
 local act = wezterm.action
-local utils = require("utils")
 
-M.default_keybinds = {
+-- Show which key table is active in the status area
+
+M.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
+
+M.keys = {
   {
     key = "Space",
-    mods = "META|SHIFT",
-    action = act.ShowLauncherArgs({ flags = "FUZZY|COMMANDS|DOMAINS", title = "Commands Palette" }),
+    mods = "LEADER|SHIFT",
+    action = act.ShowLauncherArgs({ flags = "FUZZY|COMMANDS", title = "Commands Palette" }),
   },
   {
     key = "Space",
-    mods = "META|",
-    action = act.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS|DOMAINS", title = "Commands Palette" }),
+    mods = "LEADER",
+    action = act.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS|DOMAINS", title = "Launcher" }),
   },
-  -- { key = "Space", mods = "META", action = act.ActivateCommandPalette },
-  { key = "f", mods = "META", action = act.ToggleFullScreen },
+  -- { key = "f", mods = "META", action = act.ToggleFullScreen },
   { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
   { key = "C", mods = "CTRL", action = act.CopyTo("ClipboardAndPrimarySelection") },
-}
 
-M.tmux_keybinds = {
   -- tab
-  { key = "Enter", mods = "META", action = act.SpawnTab("DefaultDomain") },
-  { key = "c", mods = "META", action = act.SpawnTab("CurrentPaneDomain") },
-  { key = "x", mods = "META", action = act.CloseCurrentTab({ confirm = true }) },
-  { key = "t", mods = "META", action = act.ShowTabNavigator },
-  { key = "[", mods = "META", action = act.ActivateTabRelative(-1) },
-  { key = "]", mods = "META", action = act.ActivateTabRelative(1) },
+  { key = "Enter", mods = "LEADER", action = act.SpawnTab("DefaultDomain") },
+  { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+  { key = "x", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+  { key = "t", mods = "LEADER", action = act.ShowTabNavigator },
+  { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+  { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
   -- pane
-  { key = "v", mods = "META", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-  { key = "s", mods = "META", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-  { key = "q", mods = "META", action = act.CloseCurrentPane({ confirm = true }) },
-  { key = "p", mods = "META", action = act.PaneSelect },
-  { key = "h", mods = "META", action = act.ActivatePaneDirection("Left") },
-  { key = "l", mods = "META", action = act.ActivatePaneDirection("Right") },
-  { key = "k", mods = "META", action = act.ActivatePaneDirection("Up") },
-  { key = "j", mods = "META", action = act.ActivatePaneDirection("Down") },
-  { key = "h", mods = "SHIFT|META", action = act.AdjustPaneSize({ "Left", 5 }) },
-  { key = "l", mods = "SHIFT|META", action = act.AdjustPaneSize({ "Right", 5 }) },
-  { key = "k", mods = "SHIFT|META", action = act.AdjustPaneSize({ "Up", 5 }) },
-  { key = "j", mods = "SHIFT|META", action = act.AdjustPaneSize({ "Down", 5 }) },
+  { key = "v", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { key = "s", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+  { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+  { key = "p", mods = "LEADER", action = act.PaneSelect },
+  { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+  { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+  { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+  { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+  { key = "H", mods = "LEADER", action = act.AdjustPaneSize({ "Left", 5 }) },
+  { key = "L", mods = "LEADER", action = act.AdjustPaneSize({ "Right", 5 }) },
+  { key = "K", mods = "LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
+  { key = "J", mods = "LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
 }
-
--- tab select
-for i = 1, 8 do
-  table.insert(M.tmux_keybinds, {
-    key = tostring(1),
-    mods = "META",
-    action = act.ActivateTab(i - 1),
-  })
-  table.insert(M.tmux_keybinds, {
-    key = "F" .. tostring(i),
-    action = act.ActivateTab(i - 1),
-  })
-end
-
-function M.create_keybinds()
-  return utils.merge_lists(M.default_keybinds, M.tmux_keybinds)
-end
 
 return M

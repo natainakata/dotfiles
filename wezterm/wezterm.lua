@@ -25,8 +25,9 @@ config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "p
 
 -- config.default_cwd = wezterm.home_dir
 config.disable_default_key_bindings = true
-config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
-config.keys = keybind.create_keybinds()
+config.leader = keybind.leader
+config.keys = keybind.keys
+config.key_tables = keybind.key_tables
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 config.launch_menu = {}
@@ -80,6 +81,10 @@ wezterm.on("update-status", function(window, pane)
   local fg = "#303446"
   local title_bg = "#a6d189"
   local date_bg = "#85c1dc"
+  local name = window:active_key_table()
+  if name then
+    name = "TABLE: " .. name
+  end
   window:set_right_status(wezterm.format({
     -- { Background = { Color = title_bg } },
     -- { Foreground = { Color = fg } },
@@ -87,6 +92,7 @@ wezterm.on("update-status", function(window, pane)
     { Background = { Color = date_bg } },
     { Foreground = { Color = fg } },
     { Text = date },
+    { Text = name },
   }))
 end)
 
