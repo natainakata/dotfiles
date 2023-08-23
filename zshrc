@@ -36,14 +36,9 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # zinit light chriskempson/base16-shell
 # rust cil
 zinit light Aloxaf/fzf-tab
-zinit light b4b4r07/enhancd
+# zinit light b4b4r07/enhancd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# . $HOME/.asdf/asdf.sh
-# fpath=(~/.asdf/completions $fpath)
-#
-
 
 # load rc
 ZSHHOME="${HOME}/.zsh"
