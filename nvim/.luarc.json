@@ -1,4 +1,6 @@
 {
+  
+    "runtime.version": "LuaJIT",
     "workspace.checkThirdParty": false,
     "workspace.library": [
         "/home/natai/.local/share/nvim/lazy/neodev.nvim/types/stable",
@@ -63,5 +65,5 @@
     ],
   "diagnostics": {
     "globals": ["vim"]
-  }
+    }
 }

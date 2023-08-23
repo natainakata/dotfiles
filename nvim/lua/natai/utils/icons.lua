@@ -1,8 +1,8 @@
 local M = {}
 M.diagnostics = {
-  Error = "",
-  Warn = "",
-  Hint = "",
+  Error = " ",
+  Warn = " ",
+  Hint = " ",
   Info = " ",
 }
 M.dap = {

@@ -1,6 +1,7 @@
 local spec = {
   {
     "navarasu/onedark.nvim",
+    enabled = true,
     opts = {
       transparent = true,
     },
@@ -12,6 +13,7 @@ local spec = {
   },
   {
     "catppuccin/nvim",
+    lazy = false,
     name = "catppuccin",
     opts = {
       flavour = "frappe",
@@ -36,6 +38,7 @@ local spec = {
   },
   {
     "sainnhe/sonokai",
+    enabled = true,
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
@@ -45,6 +48,7 @@ local spec = {
   },
   {
     "EdenEast/nightfox.nvim",
+    enabled = true,
     opts = {
       options = {
         transprent = true,
@@ -61,6 +65,7 @@ local spec = {
   },
   {
     "rebelot/kanagawa.nvim",
+    enabled = true,
     opts = {
       transparent = true,
     },

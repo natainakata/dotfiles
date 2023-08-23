@@ -87,9 +87,11 @@ local spec = {
   },
   {
     "vim-skk/skkeleton",
-    lazy = false,
+    lazy = true,
+    enabled = true,
+    event = "InsertEnter",
     dependencies = "vim-denops/denops.vim",
-    init = function()
+    config = function()
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
       utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
 
@@ -170,7 +172,7 @@ local spec = {
 
   {
     "kylechui/nvim-surround",
-    event = { "BufEnter" },
+    event = { "BufReadPre", "BufNewFile" },
     config = true,
   },
   {
@@ -201,7 +203,7 @@ local spec = {
   {
     "numToStr/Comment.nvim",
     lazy = true,
-    event = "BufEnter",
+    event = { "BufReadPre", "BufNewFile" },
     config = true,
   },
   {

@@ -2,7 +2,7 @@ local spec = {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = true,
-    event = "BufEnter",
+    event = { "BufReadPre", "BufNewFile" },
     build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
     end,

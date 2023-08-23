@@ -2,9 +2,10 @@
 local spec = {
   {
     "rebelot/heirline.nvim",
+    lazy = true,
     event = "VeryLazy",
     enabled = true,
-    dependencies = { "nvim-tree/nvim-web-devicons", "navarasu/onedark.nvim" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       vim.opt.showmode = false
       vim.opt.laststatus = 3

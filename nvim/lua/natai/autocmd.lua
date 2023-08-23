@@ -79,6 +79,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.lang",
   command = "set filetype=mclang",
 })
+
 autocmd("CursorMoved", {
   group = utils.augroup("redraw_line"),
   command = "redrawtabline",

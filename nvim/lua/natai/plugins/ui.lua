@@ -3,6 +3,8 @@ local utils = require("natai.utils")
 local spec = {
   {
     "rcarriga/nvim-notify",
+    lazy = true,
+    event = "VeryLazy",
     opts = {
       background_colour = require("catppuccin.palettes").get_palette("frappe").mantle,
     },
@@ -18,7 +20,8 @@ local spec = {
   },
   {
     "folke/noice.nvim",
-    lazy = false,
+    lazy = true,
+    event = "VeryLazy",
     dependencies = "rcarriga/nvim-notify",
     opts = {
       lsp = {
@@ -95,6 +98,7 @@ local spec = {
   {
     "stevearc/dressing.nvim",
     lazy = true,
+    event = "VeryLazy",
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
@@ -151,7 +155,7 @@ local spec = {
   },
   {
     "nvim-lualine/lualine.nvim",
-    event = "UIEnter",
+    event = "VeryLazy",
     enabled = false,
     opts = {
       options = {
@@ -191,7 +195,7 @@ local spec = {
           "encoding",
         },
         lualine_y = {
-          { "filetype", color = { fg = require("onedark.palette").dark.fg } },
+          -- { "filetype", color = { fg = require("onedark.palette").dark.fg } },
         },
         lualine_z = {
           { "fileformat", icons_enabled = true, separator = { left = "", right = "" } },
@@ -279,7 +283,6 @@ local spec = {
   },
   {
     "echasnovski/mini.indentscope",
-    version = false, -- wait till new 0.7.0 release to put it back on semver
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- symbol = "▏",

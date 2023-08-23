@@ -3,13 +3,13 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
-    lazy = false,
+    lazy = true,
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     keys = {
       { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
     },
     opts = {
-      disable_netrw = true,
+      disable_netrw = false,
       hijack_netrw = true,
       filters = {
         dotfiles = true,

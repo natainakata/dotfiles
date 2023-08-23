@@ -14,7 +14,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 local opts = {
   defaults = {
-    lazy = false,
+    lazy = true,
     version = false,
   },
   dev = {
