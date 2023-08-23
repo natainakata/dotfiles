@@ -14,6 +14,7 @@ local spec = {
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       {
         "rinx/cmp-skkeleton",
+        enabled = false,
         dependencies = { "vim-skk/skkeleton" },
       },
       "PaterJason/cmp-conjure",
@@ -88,7 +89,7 @@ local spec = {
   {
     "vim-skk/skkeleton",
     lazy = true,
-    enabled = true,
+    enabled = false,
     event = "InsertEnter",
     dependencies = "vim-denops/denops.vim",
     config = function()

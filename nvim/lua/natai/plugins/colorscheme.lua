@@ -1,7 +1,7 @@
 local spec = {
   {
     "navarasu/onedark.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
       transparent = true,
     },
@@ -38,7 +38,7 @@ local spec = {
   },
   {
     "sainnhe/sonokai",
-    enabled = true,
+    enabled = false,
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
@@ -48,7 +48,7 @@ local spec = {
   },
   {
     "EdenEast/nightfox.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
       options = {
         transprent = true,
@@ -65,7 +65,7 @@ local spec = {
   },
   {
     "rebelot/kanagawa.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
       transparent = true,
     },
