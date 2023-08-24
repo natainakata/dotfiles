@@ -89,7 +89,7 @@ local spec = {
     "vim-skk/skkeleton",
     enabled = true,
     lazy = false,
-    dependencies = { "vim-denops/denops.vim",},
+    dependencies = { "vim-denops/denops.vim" },
     config = function()
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
       utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
@@ -99,19 +99,14 @@ local spec = {
         vim.fn["skkeleton#register_keymap"]("input", "<c-q>", "katakana")
         vim.fn["skkeleton#register_keymap"]("input", "<c-l>", "zenkaku")
         vim.fn["skkeleton#register_keymap"]("input", "'", "henkanPoint")
-        local dictionaries = {}
-        local handle = io.popen("ls $HOME/.skk/SKK-JISYO.L")
-        if handle then
-          for file in handle:lines() do
-            table.insert(dictionaries, file)
-          end
-          handle:close()
-        end
+        local dictionaries = {
+          "~/.skk/SKK-JISYO.L",
+        }
         vim.fn["skkeleton#config"]({
           eggLikeNewline = true,
           registerConvertResult = true,
           globalDictionaries = dictionaries,
-          userJisyo = "~/.skk/SKK_JISYO.user",
+          userJisyo = "~/.skk/SKK-JISYO.user",
         })
         vim.fn["skkeleton#initialize"]()
       end)
