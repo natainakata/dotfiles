@@ -1,6 +1,6 @@
 local utils = require("heirline.utils")
-local icons = require("natai.utils.icons")
-local components = require("natai.plugins.heirline.components")
+local icons = require("rc.utils.icons")
+local components = require("rc.plugins.heirline.components")
 local M = {}
 M.tab_line_picker = {
   condition = function(self)

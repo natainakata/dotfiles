@@ -1,4 +1,4 @@
-local utils = require("natai.utils")
+local utils = require("rc.utils")
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("TermOpen", {

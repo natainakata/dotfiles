@@ -1,5 +1,5 @@
-local icons = require("natai.utils.icons")
-local utils = require("natai.utils")
+local icons = require("rc.utils.icons")
+local utils = require("rc.utils")
 local spec = {
   {
     "rcarriga/nvim-notify",

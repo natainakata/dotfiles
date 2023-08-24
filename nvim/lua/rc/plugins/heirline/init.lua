@@ -9,11 +9,11 @@ local spec = {
       vim.opt.showmode = false
       vim.opt.laststatus = 3
       local heirline = require("heirline")
-      -- require("natai.plugins.heirline.palette").init()
+      -- require("rc.plugins.heirline.palette").init()
       heirline.setup({
-        statusline = require("natai.plugins.heirline.status").statusline,
-        winbar = require("natai.plugins.heirline.winbar").winbar,
-        tabline = require("natai.plugins.heirline.tabbar").tabline,
+        statusline = require("rc.plugins.heirline.status").statusline,
+        winbar = require("rc.plugins.heirline.winbar").winbar,
+        tabline = require("rc.plugins.heirline.tabbar").tabline,
         opts = {
           colors = heirline.load_colors(require("catppuccin.palettes").get_palette("frappe")),
           disable_winbar_cb = function(args)
@@ -24,7 +24,7 @@ local spec = {
           end,
         },
       })
-      require("natai.utils").nmap("<Leader>b", function()
+      require("rc.utils").nmap("<Leader>b", function()
         local tabline = require("heirline").tabline
         local buflist = tabline._buflist[1]
         buflist._picker_labels = {}

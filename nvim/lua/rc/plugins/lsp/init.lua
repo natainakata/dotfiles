@@ -1,4 +1,4 @@
-local utils = require("natai.utils")
+local utils = require("rc.utils")
 
 local spec = {
   {
@@ -19,15 +19,15 @@ local spec = {
     init = function()
       -- vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
       utils.lsp.on_attach(function(client, bufnr)
-        require("natai.plugins.lsp.keymaps").on_attach(client, bufnr)
-        require("natai.plugins.lsp.format").on_attach(client, bufnr)
+        require("rc.plugins.lsp.keymaps").on_attach(client, bufnr)
+        require("rc.plugins.lsp.format").on_attach(client, bufnr)
       end)
     end,
-    opts = require("natai.plugins.lsp.opts"),
+    opts = require("rc.plugins.lsp.opts"),
     config = function(_, opts)
       local lspconfig = require("lspconfig")
-      -- lspconfig.configs.racketls = require("natai.plugins.lsp.custom.racketls")
-      -- lspconfig.configs.goshls = require("natai.plugins.lsp.custom.goshls")
+      -- lspconfig.configs.racketls = require("rc.plugins.lsp.custom.racketls")
+      -- lspconfig.configs.goshls = require("rc.plugins.lsp.custom.goshls")
       local function setup(client, server_opts)
         local default_opts = client.document_config.default_config
         local local_opts = utils.extend_tbl(opts, server_opts)
@@ -38,7 +38,7 @@ local spec = {
         client.setup(local_opts)
       end
 
-      local servers = require("natai.plugins.lsp.settings.init")
+      local servers = require("rc.plugins.lsp.settings.init")
 
       for k, v in pairs(servers) do
         setup(lspconfig[k], v)

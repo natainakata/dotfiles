@@ -1,4 +1,4 @@
-local utils = require("natai.utils")
+local utils = require("rc.utils")
 return {
   mason = false,
   settings = {

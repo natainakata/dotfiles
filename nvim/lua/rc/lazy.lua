@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-local utils = require("natai.utils")
+local utils = require("rc.utils")
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -46,6 +46,6 @@ local opts = {
 
 utils.ensure("lazy", function(m)
   m.setup({
-    { import = "natai.plugins" },
+    { import = "rc.plugins" },
   }, opts)
 end)

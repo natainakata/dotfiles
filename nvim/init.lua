@@ -1,4 +1,4 @@
-require("natai.options")
-require("natai.keymaps")
-require("natai.autocmd")
-require("natai.lazy")
+require("rc.options")
+require("rc.keymaps")
+require("rc.autocmd")
+require("rc.lazy")

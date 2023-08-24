@@ -1,4 +1,4 @@
-local icon = require("natai.utils.icons").mode
+local icon = require("rc.utils.icons").mode
 local indicator = { -- see :help mode(1)
   n = string.format("%s  ", icon.n), --[[                   x : ノーマル ]]
   no = string.format("%s%s ", icon.n, icon.o), --[[        󰇘 x : オペレータ待機 ]]

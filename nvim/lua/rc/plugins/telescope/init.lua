@@ -1,5 +1,5 @@
-local keymap = require("natai.plugins.telescope.keymaps")
-local icons = require("natai.utils.icons")
+local keymap = require("rc.plugins.telescope.keymaps")
+local icons = require("rc.utils.icons")
 local function telescope_setup(core, actions, sorters, viewers)
   core.setup({
     defaults = {

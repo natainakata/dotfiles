@@ -1,6 +1,6 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-local icons = require("natai.utils.icons")
+local icons = require("rc.utils.icons")
 
 local M = {}
 

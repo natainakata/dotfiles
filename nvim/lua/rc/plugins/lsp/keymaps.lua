@@ -2,7 +2,7 @@ local M = {}
 M._keys = nil
 
 function M.get()
-  local format = require("natai.plugins.lsp.format").format
+  local format = require("rc.plugins.lsp.format").format
   local telescope = require("telescope.builtin")
   if not M._keys then
     M._keys = {

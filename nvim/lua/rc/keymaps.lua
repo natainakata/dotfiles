@@ -1,4 +1,4 @@
-local utils = require("natai.utils")
+local utils = require("rc.utils")
 local nmap = utils.nmap
 local imap = utils.imap
 local xmap = utils.xmap

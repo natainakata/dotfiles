@@ -101,6 +101,6 @@ M.is_nvim = function()
   end
 end
 
-M.lsp = require("natai.utils.lsp")
+M.lsp = require("rc.utils.lsp")
 
 return M

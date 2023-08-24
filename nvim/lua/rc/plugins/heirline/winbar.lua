@@ -1,8 +1,8 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-local icons = require("natai.utils.icons")
+local icons = require("rc.utils.icons")
 
-local components = require("natai.plugins.heirline.components")
+local components = require("rc.plugins.heirline.components")
 
 local separator = { icons.separator.right, icons.separator.left }
 local M = {}

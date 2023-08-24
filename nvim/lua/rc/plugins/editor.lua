@@ -1,4 +1,4 @@
-local icons = require("natai.utils.icons")
+local icons = require("rc.utils.icons")
 return {
   {
     "nvim-tree/nvim-tree.lua",

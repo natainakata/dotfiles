@@ -1,4 +1,4 @@
-local utils = require("natai.utils")
+local utils = require("rc.utils")
 local spec = {
 
   {
@@ -60,7 +60,7 @@ local spec = {
         },
         formatting = {
           format = function(_, item)
-            local icons = require("natai.utils.icons").kinds
+            local icons = require("rc.utils.icons").kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end

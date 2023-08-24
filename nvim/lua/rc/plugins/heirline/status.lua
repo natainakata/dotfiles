@@ -1,7 +1,7 @@
 local conditions = require("heirline.conditions")
 
-local mode = require("natai.plugins.heirline.mode")
-local components = require("natai.plugins.heirline.components")
+local mode = require("rc.plugins.heirline.mode")
+local components = require("rc.plugins.heirline.components")
 
 local M = {}
 
