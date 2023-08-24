@@ -160,7 +160,7 @@ local spec = {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    enabled = false,
+    enabled = true,
     opts = {
       options = {
         theme = "auto",

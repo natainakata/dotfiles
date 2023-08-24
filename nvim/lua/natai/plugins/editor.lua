@@ -115,4 +115,9 @@ return {
        { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
      },
   },
+  {
+    "lambdalisue/gin.vim",
+    dependencies = "vim-denops/denops.vim",
+    lazy = false,
+  },
 }

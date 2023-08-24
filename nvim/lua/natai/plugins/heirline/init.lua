@@ -3,7 +3,7 @@ local spec = {
   {
     "rebelot/heirline.nvim",
     event = "VeryLazy",
-    enabled = true,
+    enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       vim.opt.showmode = false
