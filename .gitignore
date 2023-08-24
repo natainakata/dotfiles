@@ -15,9 +15,6 @@
 !/powershell/**
 !/nvim/
 !/nvim/**
-!/skk/
-!/skk/**
-!/skkeleton
 !/sway/
 !/sway/**
 !/swaylock/

@@ -2,7 +2,6 @@
 local spec = {
   {
     "rebelot/heirline.nvim",
-    lazy = true,
     event = "VeryLazy",
     enabled = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },

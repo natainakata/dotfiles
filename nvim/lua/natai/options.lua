@@ -75,3 +75,5 @@ for name, icon in pairs(require("natai.utils.icons").diagnostics) do
   name = "DiagnosticSign" .. name
   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
 end
+
+-- vim.g["denops#debug"] = 1

@@ -95,6 +95,7 @@ local spec = {
         keys = keymap.frecency,
       },
       { "nvim-telescope/telescope-symbols.nvim", keys = keymap.symbols },
+      "nvim-lua/plenary.nvim",
     },
     keys = keymap.core,
     config = function()

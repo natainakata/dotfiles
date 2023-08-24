@@ -3,18 +3,17 @@ local spec = {
 
   {
     "hrsh7th/nvim-cmp",
-    lazy = true,
-    version = false,
     event = { "InsertEnter", "CmdLineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       {
         "rinx/cmp-skkeleton",
-        enabled = false,
+        enabled = true,
         dependencies = { "vim-skk/skkeleton" },
       },
       "PaterJason/cmp-conjure",
@@ -88,39 +87,38 @@ local spec = {
   },
   {
     "vim-skk/skkeleton",
-    lazy = true,
-    enabled = false,
-    event = "InsertEnter",
-    dependencies = "vim-denops/denops.vim",
+    enabled = true,
+    lazy = false,
+    dependencies = { "vim-denops/denops.vim",},
     config = function()
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
       utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
 
-      local dictionaries = {}
-      local handle = io.popen("ls $HOME/.skk/*")
-      if handle then
-        for file in handle:lines() do
-          table.insert(dictionaries, file)
+      vim.fn["denops#plugin#wait_async"]("skkeleton", function()
+        vim.g["skkeleton#mapped_keys"] = { "<c-l>" }
+        vim.fn["skkeleton#register_keymap"]("input", "<c-q>", "katakana")
+        vim.fn["skkeleton#register_keymap"]("input", "<c-l>", "zenkaku")
+        vim.fn["skkeleton#register_keymap"]("input", "'", "henkanPoint")
+        local dictionaries = {}
+        local handle = io.popen("ls $HOME/.skk/SKK-JISYO.L")
+        if handle then
+          for file in handle:lines() do
+            table.insert(dictionaries, file)
+          end
+          handle:close()
         end
-        handle:close()
-      end
-
-      vim.api.nvim_create_autocmd("User", {
-        group = utils.augroup("skkeleton"),
-        pattern = "skkeleton-initialize-pre",
-        callback = function()
-          vim.fn["skkeleton#config"]({
-            eggLikeNewline = true,
-            registerConvertResult = true,
-            globalDictionaries = dictionaries,
-          })
-        end,
-      })
+        vim.fn["skkeleton#config"]({
+          eggLikeNewline = true,
+          registerConvertResult = true,
+          globalDictionaries = dictionaries,
+          userJisyo = "~/.skk/SKK_JISYO.user",
+        })
+        vim.fn["skkeleton#initialize"]()
+      end)
     end,
   },
   {
     "L3MON4D3/LuaSnip",
-    lazy = true,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -144,14 +142,9 @@ local spec = {
       { "<s-tab>", function() require("luasnip").jump( -1) end, mode = { "i", "s" } },
     },
   },
-  {
-    "hrsh7th/cmp-cmdline",
-    lazy = true,
-  },
 
   {
     "monaqa/dial.nvim",
-    lazy = true,
     keys = {
       { "+", "<Plug>(dial-increment)", desc = "Increment" },
       { "-", "<Plug>(dial-decrement)", desc = "Decrement" },
@@ -174,11 +167,9 @@ local spec = {
   {
     "kylechui/nvim-surround",
     event = { "BufReadPre", "BufNewFile" },
-    config = true,
   },
   {
     "cohama/lexima.vim",
-    lazy = true,
     event = "InsertEnter",
     config = function()
       vim.fn["lexima#add_rule"]({
@@ -203,18 +194,14 @@ local spec = {
   },
   {
     "numToStr/Comment.nvim",
-    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
-    config = true,
   },
   {
     "DaeZak/crafttweaker-vim-highlighting",
-    lazy = true,
     ft = "crafttweaker",
   },
   {
     "iamcco/markdown-preview.nvim",
-    lazy = true,
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
@@ -223,11 +210,9 @@ local spec = {
   {
     "wlangstroth/vim-racket",
     ft = "racket",
-    lazy = true,
   },
   {
     "Olical/conjure",
-    lazy = true,
     dependencies = {
       "clojure-vim/vim-jack-in",
       dependencies = {
@@ -258,7 +243,6 @@ local spec = {
       "tpope/vim-sexp-mappings-for-regular-people",
       "tpope/vim-repeat",
     },
-    lazy = true,
     ft = { "clojure", "scheme", "lisp" },
     config = function()
       vim.g.sexp_enable_insert_mode_mappings = 1

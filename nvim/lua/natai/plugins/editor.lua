@@ -3,7 +3,6 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
-    lazy = true,
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     keys = {
       { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
@@ -50,7 +49,6 @@ return {
   },
   {
     "simrat39/symbols-outline.nvim",
-    lazy = true,
     cmd = "SymbolsOutline",
     keys = {
       { "<Leader>o", "<cmd>SymbolsOutline<CR>", desc = "Outline List" },
@@ -90,7 +88,6 @@ return {
   },
   {
     "phaazon/hop.nvim",
-    config = true,
     keys = {
       { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word" },
       { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
@@ -100,9 +97,6 @@ return {
   {
     "echasnovski/mini.jump",
     event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("mini.jump").setup()
-    end,
   },
   {
     "kevinhwang91/nvim-bqf",

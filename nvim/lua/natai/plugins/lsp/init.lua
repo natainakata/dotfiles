@@ -7,7 +7,7 @@ local spec = {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "folke/trouble.nvim",
+      { "folke/trouble.nvim", dependencies = "nvim-web-devicons" },
       -- {
       --   "j-hui/fidget.nvim",
       --   tag = "legacy",

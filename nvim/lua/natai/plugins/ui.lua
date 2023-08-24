@@ -22,7 +22,10 @@ local spec = {
     "folke/noice.nvim",
     lazy = true,
     event = "VeryLazy",
-    dependencies = "rcarriga/nvim-notify",
+    dependencies = {
+      "rcarriga/nvim-notify",
+      "MunifTanjim/nui.nvim",
+    },
     opts = {
       lsp = {
         override = {
@@ -115,6 +118,7 @@ local spec = {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local dashboard = require("alpha.themes.dashboard")
       dashboard.section.buttons.val = {
