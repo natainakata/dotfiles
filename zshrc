@@ -69,6 +69,6 @@ fi
 #   fi
 # fi
 
-eval "$(starship init zsh)"
-eval "$(gh completion -s zsh)"
-eval "$(pyenv init -)"
+command -v starship > /dev/null && eval "$(starship init zsh)"
+command -v gh > /dev/null && eval "$(gh completion -s zsh)"
+command -v pyenv > /dev/null && eval "$(pyenv init -)"

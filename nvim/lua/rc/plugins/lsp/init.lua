@@ -52,7 +52,7 @@ local spec = {
     keys = { { "<leader>lm", "<cmd>Mason<CR>", desc = "Mason" } },
     opts = {
       ensure_installed = {
-        "stylua",
+        "luacheck",
         "shellcheck",
         "shfmt",
         "flake8",
@@ -73,21 +73,21 @@ local spec = {
     end,
   },
 
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "LspAttach" },
-    dependencies = { "mason.nvim" },
-    opts = function()
-      local nls = require("null-ls")
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   event = { "LspAttach" },
+  --   dependencies = { "mason.nvim" },
+  --   opts = function()
+  --     local nls = require("null-ls")
 
-      return {
-        sources = {
-          nls.builtins.formatting.stylua,
-          nls.builtins.diagnostics.flake8,
-        },
-      }
-    end,
-  },
+  --     return {
+  --       sources = {
+  --         nls.builtins.formatting.stylua,
+  --         nls.builtins.diagnostics.flake8,
+  --       },
+  --     }
+  --   end,
+  -- },
 }
 
 return spec
