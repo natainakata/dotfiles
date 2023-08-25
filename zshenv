@@ -8,8 +8,6 @@ export KEYTIMEOUT=1
 
 export GOPATH=~/.go
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-
 export DENO_INSTALL="/home/natai/.deno"
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -24,4 +22,4 @@ path=(
   $path
 )
 
-
+source "$HOME/.keychain/nataiarch-sh"

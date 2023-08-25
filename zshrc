@@ -71,5 +71,4 @@ fi
 
 eval "$(starship init zsh)"
 eval "$(gh completion -s zsh)"
-eval "$(keychain --eval --quiet id_ed25519)"
 eval "$(pyenv init -)"

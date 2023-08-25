@@ -29,8 +29,10 @@
 !/wleave/**
 !/xremap/
 !/xremap/**
+!/systemd/
+!/systemd/**
+/systemd/user/default.target.wants/
 /nvim/plugin/
-/nvim/lazy-lock.json
 !/tmux.conf
 !/wezterm/
 !/wezterm/**
