@@ -8,6 +8,7 @@
 !/installer.sh
 !/.gitignore
 !.keep
+!.luacheckrc
 
 !/gitconfig
 !/bin/
@@ -22,6 +23,7 @@
 !/powershell/**
 !/nvim/
 !/nvim/**
+!/stylua.toml
 !/xremap/
 !/xremap/**
 !/systemd/
