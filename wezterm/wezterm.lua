@@ -17,11 +17,12 @@ config.command_palette_font_size = 13.0
 
 config.initial_cols = 120
 config.initial_rows = 30
-config.color_scheme = "Catppuccin Frappe"
+config.color_scheme = "Sonokai (Gogh)"
 
 config.window_background_opacity = 0.85
 config.adjust_window_size_when_changing_font_size = false
 config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "pwsh.exe" } or { "zsh" }
+config.warn_about_missing_glyphs = false
 
 -- config.default_cwd = wezterm.home_dir
 config.disable_default_key_bindings = true
@@ -78,9 +79,6 @@ wezterm.on("update-status", function(window, pane)
   -- local title = string.format(" %s %s ", pane:get_title(), utils.basename(pane:get_current_working_dir()))
   -- local title = string.format(" %s ", pane.title)
   local date = wezterm.strftime(" 󰃮  %Y-%m-%d " .. wday_ja .. " 󰥔  %H:%M:%S")
-  local fg = "#303446"
-  local title_bg = "#a6d189"
-  local date_bg = "#85c1dc"
   local name = window:active_key_table()
   if name then
     name = "TABLE: " .. name
@@ -89,25 +87,15 @@ wezterm.on("update-status", function(window, pane)
     -- { Background = { Color = title_bg } },
     -- { Foreground = { Color = fg } },
     -- { Text = title },
-    { Background = { Color = date_bg } },
-    { Foreground = { Color = fg } },
     { Text = date },
-    { Text = name },
+  --   { Text = name },
   }))
 end)
 
 wezterm.on("format-tab-title", function(tab, _, _, _, _, _)
   local tab_index = tab.tab_index + 1
   local title = string.format(" %d ", tab_index)
-  local bg = "#292c3c"
-  local fg = "#c6d0f5"
-  if tab.is_active then
-    bg = "#ef9f76"
-    fg = "#303446"
-  end
   return {
-    { Background = { Color = bg } },
-    { Foreground = { Color = fg } },
     { Text = title },
   }
 end)

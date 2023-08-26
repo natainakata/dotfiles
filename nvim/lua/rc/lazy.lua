@@ -22,7 +22,7 @@ local opts = {
     patterns = {},
   },
   checker = { enabled = true, frequency = 1600 }, -- automatically check for plugin updates
-  install = { colorscheme = { "onedark", "habamax" } },
+  install = { colorscheme = { "sonokai", "onedark", "habamax" } },
   performance = {
     cache = { enabled = true },
     rtp = {
@@ -48,4 +48,6 @@ utils.ensure("lazy", function(m)
   m.setup({
     { import = "rc.plugins" },
   }, opts)
+  m.load({ plugins = "sonokai" })
 end)
+

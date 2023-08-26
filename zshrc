@@ -72,3 +72,4 @@ fi
 command -v starship > /dev/null && eval "$(starship init zsh)"
 command -v gh > /dev/null && eval "$(gh completion -s zsh)"
 command -v pyenv > /dev/null && eval "$(pyenv init -)"
+command -v keychain > /dev/null && eval $(keychain --eval --quiet id_ed25519)

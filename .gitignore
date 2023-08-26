@@ -3,6 +3,13 @@
 /.**
 
 ### not ignore ###
+!/README.md
+!/LICENSE
+!/installer.sh
+!/.gitignore
+!.keep
+
+!/gitconfig
 !/bin/
 !/bin/**
 !/zshrc
@@ -15,31 +22,15 @@
 !/powershell/**
 !/nvim/
 !/nvim/**
-!/sway/
-!/sway/**
-!/swaylock/
-!/swaylock/**/
-!/swaync/
-!/swaync/**
-!/waybar/
-!/waybar/**
-!/wofi/
-!/wofi/**
-!/wleave/
-!/wleave/**
 !/xremap/
 !/xremap/**
 !/systemd/
 !/systemd/**
 /systemd/user/default.target.wants/
-/nvim/plugin/
 !/tmux.conf
+!/rofi/
+!/rofi/**
 !/wezterm/
 !/wezterm/**
 
-!/README.md
-!/LICENSE
-!/.gitignore
-!/gitconfig
-!.keep
 
