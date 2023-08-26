@@ -15,6 +15,8 @@ local spec = {
       -- },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      "mhartington/formatter.nvim",
+      "mfussenegger/nvim-lint",
     },
     init = function()
       -- vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
@@ -72,22 +74,19 @@ local spec = {
       end
     end,
   },
-
-  -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   event = { "LspAttach" },
-  --   dependencies = { "mason.nvim" },
-  --   opts = function()
-  --     local nls = require("null-ls")
-
-  --     return {
-  --       sources = {
-  --         nls.builtins.formatting.stylua,
-  --         nls.builtins.diagnostics.flake8,
-  --       },
-  --     }
-  --   end,
-  -- },
+  {
+    "mhartington/formatter.nvim",
+    keys = { "<Leader>F", "<Cmd>Format<CR>" },
+    config = function()
+      require("formatter").setup({
+        filetype = {
+          lua = {
+            require("formatter.filetypes.lua").stylua,
+          },
+        },
+      })
+    end,
+  },
 }
 
 return spec

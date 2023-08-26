@@ -22,6 +22,7 @@
 !/powershell/**
 !/nvim/
 !/nvim/**
+!/stylua.toml
 !/xremap/
 !/xremap/**
 !/systemd/
