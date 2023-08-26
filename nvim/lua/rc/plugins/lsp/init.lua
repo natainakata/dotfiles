@@ -89,7 +89,25 @@ local spec = {
   },
   {
     "mfussenegger/nvim-lint",
-    config = function()
+    opts = {
+      by_ft = {
+        lua = {
+          "luacheck",
+        },
+      },
+    },
+    config = function(_, opts)
+      require("lint").linters_by_ft = opts.by_ft
+      local luacheck = require("lint").linters.luacheck
+      luacheck.args = {
+        "--formatter",
+        "plain",
+        "--codes",
+        "--ranges",
+        "--config",
+        "~/.dotfiles/.luacheckrc",
+        "-",
+      }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
           require("lint").try_lint()

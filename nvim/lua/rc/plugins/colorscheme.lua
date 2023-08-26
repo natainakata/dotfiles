@@ -5,12 +5,11 @@ local spec = {
     opts = {
       style = "storm",
       transparent = true,
-
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)
       vim.cmd.colorscheme("tokyonight")
-    end
+    end,
   },
   {
     "gbprod/nord.nvim",
@@ -21,7 +20,7 @@ local spec = {
     config = function(_, opts)
       require("nord").setup(opts)
       vim.cmd.colorscheme("nord")
-    end
+    end,
   },
   {
     "navarasu/onedark.nvim",
@@ -69,7 +68,6 @@ local spec = {
       vim.g.sonokai_transparent_background = 1
 
       vim.cmd.colorscheme("sonokai")
-
     end,
   },
   {
