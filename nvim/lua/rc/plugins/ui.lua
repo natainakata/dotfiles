@@ -3,7 +3,6 @@ local utils = require("rc.utils")
 local spec = {
   {
     "rcarriga/nvim-notify",
-    lazy = true,
     event = "VeryLazy",
     opts = {
       background_colour = require("catppuccin.palettes").get_palette("frappe").mantle,
@@ -20,7 +19,6 @@ local spec = {
   },
   {
     "folke/noice.nvim",
-    lazy = true,
     event = "VeryLazy",
     dependencies = {
       "rcarriga/nvim-notify",
@@ -110,7 +108,6 @@ local spec = {
   },
   {
     "stevearc/dressing.nvim",
-    lazy = true,
     event = "VeryLazy",
     -- opts = {
     --   input = {
