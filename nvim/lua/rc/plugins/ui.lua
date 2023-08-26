@@ -41,6 +41,16 @@ local spec = {
       cmdline = {
         view = "cmdline",
       },
+      views = {
+        mini = {
+          win_options = {
+            winblend = 10,
+            winhighlight = {
+              Normal = "StatusLine",
+            }
+          }
+        }
+      }
     },
     keys = {
       {
@@ -102,6 +112,18 @@ local spec = {
     "stevearc/dressing.nvim",
     lazy = true,
     event = "VeryLazy",
+    -- opts = {
+    --   input = {
+    --     enabled = true,
+    --     win_options = {
+    --       winhighlight = "NormalFloat"
+    --     }
+    --   },
+    --   select = {
+    --     enabled = true,
+    --     backend = { "telescope" },
+    --   }
+    -- },
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
@@ -274,7 +296,7 @@ local spec = {
       "petertriho/nvim-scrollbar",
     },
     config = function()
-      require("gitsigns").setup()
+      require("gitsigns").setup({})
       require("scrollbar.handlers.gitsigns").setup()
     end,
   },

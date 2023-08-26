@@ -1,6 +1,23 @@
 local spec = {
   {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    enabled = false,
+    priority = 1000,
+    opts = {
+      style = "storm",
+      transparent = true,
+
+    },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme("tokyonight")
+    end
+  },
+  {
     "navarasu/onedark.nvim",
+    lazy = false,
+    priority = 1000,
     enabled = false,
     opts = {
       transparent = true,
@@ -14,6 +31,8 @@ local spec = {
   {
     "catppuccin/nvim",
     lazy = false,
+    priority = 1000,
+    enabled = false,
     name = "catppuccin",
     opts = {
       flavour = "frappe",
@@ -38,16 +57,22 @@ local spec = {
   },
   {
     "sainnhe/sonokai",
-    enabled = false,
+    lazy = false,
+    priority = 1000,
+    enabled = true,
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
       vim.g.sonokai_transparent_background = 1
-      -- vim.cmd.colorscheme("sonokai")
+
+      vim.cmd.colorscheme("sonokai")
+
     end,
   },
   {
     "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
     enabled = false,
     opts = {
       options = {
@@ -65,6 +90,8 @@ local spec = {
   },
   {
     "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
     enabled = false,
     opts = {
       transparent = true,
