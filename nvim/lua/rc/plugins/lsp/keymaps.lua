@@ -52,7 +52,7 @@ function M.get()
         mode = { "n", "v" },
         has = "codeAction",
       },
-      { "R", vim.lsp.buf.hover, desc = "Rename", has = "rename" },
+      { "R", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
       { "K", vim.lsp.buf.hover, desc = "Hover" },
       { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
       {

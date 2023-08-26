@@ -2,7 +2,7 @@ configuration {
   modes: "combi,window,drun,run,";
   font: "Noto Sans CJK JP 12";
   show-icons: true;
-  combi-modes: "window,run,drun";
+  combi-modes: "window,drun,run";
 }
 
 @theme "Monokai"
