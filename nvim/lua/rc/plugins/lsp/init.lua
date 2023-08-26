@@ -82,9 +82,9 @@ local spec = {
           lua = {
             require("formatter.filetypes.lua").stylua,
           },
-          -- ["*"] = {
-          --   require("formatter.filetypes.any").remove_trailing_whitespace,
-          -- },
+          ["*"] = {
+            require("formatter.filetypes.any").remove_trailing_whitespace,
+          },
         },
       })
       vim.api.nvim_create_autocmd("BufWritePost", {
