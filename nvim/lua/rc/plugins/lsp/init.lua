@@ -22,7 +22,6 @@ local spec = {
       -- vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
       utils.lsp.on_attach(function(client, bufnr)
         require("rc.plugins.lsp.keymaps").on_attach(client, bufnr)
-        require("rc.plugins.lsp.format").on_attach(client, bufnr)
       end)
     end,
     opts = require("rc.plugins.lsp.opts"),
@@ -83,12 +82,20 @@ local spec = {
           lua = {
             require("formatter.filetypes.lua").stylua,
           },
+          -- ["*"] = {
+          --   require("formatter.filetypes.any").remove_trailing_whitespace,
+          -- },
         },
+      })
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        group = utils.augroup("FormatAutogroup"),
+        command = "FormatWrite",
       })
     end,
   },
   {
     "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       by_ft = {
         lua = {
@@ -108,7 +115,7 @@ local spec = {
         "~/.dotfiles/.luacheckrc",
         "-",
       }
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+      vim.api.nvim_create_autocmd({ "TextChanged", "BufWritePost" }, {
         callback = function()
           require("lint").try_lint()
         end,
