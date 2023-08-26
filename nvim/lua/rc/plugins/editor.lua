@@ -88,6 +88,7 @@ return {
   },
   {
     "phaazon/hop.nvim",
+    config = true,
     keys = {
       { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word" },
       { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
@@ -96,10 +97,12 @@ return {
   },
   {
     "echasnovski/mini.jump",
+    config = true,
     event = { "BufReadPre", "BufNewFile" },
   },
   {
     "kevinhwang91/nvim-bqf",
+    config = true,
     ft = "qf",
   },
   {

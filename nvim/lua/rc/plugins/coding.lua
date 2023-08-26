@@ -162,6 +162,7 @@ local spec = {
   {
     "kylechui/nvim-surround",
     event = { "BufReadPre", "BufNewFile" },
+    config = true,
   },
   {
     "cohama/lexima.vim",
@@ -190,6 +191,7 @@ local spec = {
   {
     "numToStr/Comment.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    config = true,
   },
   {
     "DaeZak/crafttweaker-vim-highlighting",

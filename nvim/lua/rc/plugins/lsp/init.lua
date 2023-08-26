@@ -8,11 +8,6 @@ local spec = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       { "folke/trouble.nvim", dependencies = "nvim-web-devicons" },
-      -- {
-      --   "j-hui/fidget.nvim",
-      --   tag = "legacy",
-      --   config = true,
-      -- },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mhartington/formatter.nvim",
@@ -95,7 +90,6 @@ local spec = {
   },
   {
     "mfussenegger/nvim-lint",
-    event = { "BufReadPre", "BufNewFile" },
     opts = {
       by_ft = {
         lua = {
