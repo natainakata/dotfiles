@@ -72,3 +72,5 @@ fi
 command -v starship > /dev/null && eval "$(starship init zsh)"
 command -v gh > /dev/null && eval "$(gh completion -s zsh)"
 command -v pyenv > /dev/null && eval "$(pyenv init -)"
+command -v keychain > /dev/null && keychain "~/.ssh/id_ed25519" > /dev/null 2> /dev/null
+source "$HOME/.keychain/nataiarch-sh"
