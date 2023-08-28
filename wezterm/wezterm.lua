@@ -17,7 +17,7 @@ config.command_palette_font_size = 13.0
 
 config.initial_cols = 120
 config.initial_rows = 30
-config.color_scheme = "Sonokai (Gogh)"
+config.color_scheme = "nordfox"
 
 config.window_background_opacity = 0.85
 config.adjust_window_size_when_changing_font_size = false
@@ -88,7 +88,7 @@ wezterm.on("update-status", function(window, pane)
     -- { Foreground = { Color = fg } },
     -- { Text = title },
     { Text = date },
-  --   { Text = name },
+    --   { Text = name },
   }))
 end)
 

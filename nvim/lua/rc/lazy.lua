@@ -22,8 +22,7 @@ local opts = {
     patterns = {},
   },
   checker = { enabled = true, frequency = 1600 }, -- automatically check for plugin updates
-  install = { colorscheme = { "sonokai", "onedark", "habamax" } },
-  performance = {
+  install = { colorscheme = { "nightfox", "sonokai", "onedark", "habamax" } }, performance = {
     cache = { enabled = true },
     rtp = {
       disabled_plugins = {
@@ -48,6 +47,5 @@ utils.ensure("lazy", function(m)
   m.setup({
     { import = "rc.plugins" },
   }, opts)
-  m.load({ plugins = "sonokai" })
+  m.load({ plugins = "nightfox.nvim" })
 end)
-

@@ -35,6 +35,18 @@ local spec = {
     end,
   },
   {
+    "rmehri01/onenord.nvim",
+    opts = {
+      disable = {
+        background = true,
+      },
+    },
+    config = function(_, opts)
+      require("onenord").setup(opts)
+      vim.cmd.colorscheme("onenord")
+    end,
+  },
+  {
     "catppuccin/nvim",
     priority = 1000,
     name = "catppuccin",
@@ -75,7 +87,7 @@ local spec = {
     priority = 1000,
     opts = {
       options = {
-        transprent = true,
+        transparent = true,
       },
       styles = {
         comments = "italic",
@@ -85,6 +97,7 @@ local spec = {
     },
     config = function(_, opts)
       require("nightfox").setup(opts)
+      vim.cmd.colorscheme("nordfox")
     end,
   },
   {
