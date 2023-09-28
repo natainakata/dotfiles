@@ -69,7 +69,7 @@ autocmd("QuickFixCmdPost", {
     vim.cmd([[
       cw
       set modifiable
-      vertical resize 30
+      vertical resize 70
     ]])
   end,
 })
