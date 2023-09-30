@@ -38,6 +38,14 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 zinit light Aloxaf/fzf-tab
 # zinit light b4b4r07/enhancd
 
+
+command -v starship > /dev/null && eval "$(starship init zsh)"
+command -v gh > /dev/null && eval "$(gh completion -s zsh)"
+command -v pyenv > /dev/null && eval "$(pyenv init -)"
+command -v gnome-keyring-daemon > /dev/null && eval $(gnome-keyring-daemon --start)
+
+source /etc/profile.d/wezterm.sh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # load rc
@@ -49,7 +57,6 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
       [ \( -f $i -o -h $i \) -a -r $i ] && . $i
   done
 fi
-
 
 # if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then
 #   # get the IDs
@@ -69,7 +76,3 @@ fi
 #   fi
 # fi
 
-command -v starship > /dev/null && eval "$(starship init zsh)"
-command -v gh > /dev/null && eval "$(gh completion -s zsh)"
-command -v pyenv > /dev/null && eval "$(pyenv init -)"
-command -v keychain > /dev/null && eval $(keychain --eval --quiet id_ed25519)

@@ -26,6 +26,7 @@ config.warn_about_missing_glyphs = false
 
 -- config.default_cwd = wezterm.home_dir
 config.disable_default_key_bindings = true
+-- config.default_domain = "localhost"
 config.leader = keybind.leader
 config.keys = keybind.keys
 config.key_tables = keybind.key_tables
@@ -61,11 +62,11 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 else
   table.insert(config.launch_menu, {
     label = "Bash",
-    args = { "bash", "-l" },
+    args = { "bash", },
   })
   table.insert(config.launch_menu, {
     label = "Zsh",
-    args = { "zsh", "-l" },
+    args = { "zsh", },
   })
   table.insert(config.launch_menu, {
     label = "NeoVim",
