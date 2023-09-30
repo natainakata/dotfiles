@@ -90,6 +90,7 @@ local spec = {
   },
   {
     "mfussenegger/nvim-lint",
+    enabled = false,
     opts = {
       by_ft = {
         lua = {
