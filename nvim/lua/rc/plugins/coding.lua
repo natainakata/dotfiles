@@ -1,7 +1,6 @@
 local utils = require("rc.utils")
 local spec = {
 
-  
   {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdLineEnter" },
@@ -23,7 +22,7 @@ local spec = {
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
     },
-    
+
     config = function()
       local cmp = require("cmp")
       cmp.setup({
@@ -94,15 +93,15 @@ local spec = {
     dependencies = {
       "vim-denops/denops.vim",
       { "delphinus/skkeleton_indicator.nvim", config = true },
-      "kei-s16/skkeleton-azik-kanatable"
+      "kei-s16/skkeleton-azik-kanatable",
     },
     config = function()
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
       utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
 
       vim.fn["denops#plugin#wait_async"]("skkeleton", function()
-        vim.fn["skkeleton#register_keymap"]("input", ";", "henkanPoint")
-        vim.fn['skkeleton#azik#add_table']('us')
+        -- vim.fn["skkeleton#register_keymap"]("input", "", "henkanPoint")
+        vim.fn["skkeleton#azik#add_table"]("us")
         local dictionaries = {
           "~/.skk/SKK-JISYO.L",
         }
@@ -112,6 +111,17 @@ local spec = {
           kanaTable = "azik",
           globalDictionaries = dictionaries,
           userJisyo = "~/.skk/SKK-JISYO.user",
+        })
+        vim.fn["skkeleton#register_kanatable"]("azik", {
+          kf = { "き", "" },
+          jf = { "じゅ", "" },
+          hf = { "ふ", "" },
+          yf = { "ゆ", "" },
+          mf = { "む", "" },
+          nf = { "ぬ", "" },
+          df = { "で", "" },
+          cf = { "ちぇ", "" },
+          pf = { "ぽん", "" },
         })
         vim.fn["skkeleton#initialize"]()
       end)
