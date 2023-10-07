@@ -77,7 +77,7 @@ local function telescope_setup(core, actions, sorters, viewers)
     },
   })
   core.load_extension("file_browser")
-  core.load_extension("frecency")
+--   core.load_extension("frecency")
 end
 
 local spec = {
@@ -87,17 +87,17 @@ local spec = {
     dependencies = {
       {
         "nvim-telescope/telescope-file-browser.nvim",
-        keys = keymap.file_browser,
+       -- keys = keymap.file_browser,
       },
-      {
-        "nvim-telescope/telescope-frecency.nvim",
-        dependencies = "tami5/sqlite.lua",
-        keys = keymap.frecency,
-      },
+      -- {
+      --   "nvim-telescope/telescope-frecency.nvim",
+      --   dependencies = "tami5/sqlite.lua",
+      --  --  keys = keymap.frecency,
+      -- },
       { "nvim-telescope/telescope-symbols.nvim", keys = keymap.symbols },
       "nvim-lua/plenary.nvim",
     },
-    keys = keymap.core,
+    -- keys = keymap.core,
     config = function()
       local telescope = require("telescope")
       local viewers = require("telescope.previewers")

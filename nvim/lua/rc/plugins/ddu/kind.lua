@@ -5,13 +5,6 @@ local spec = {
     "Shougo/ddu-kind-file",
     lazy = false,
     dependencies = "ddu.vim",
-    opts = {
-      kindOptions = {
-        file = {
-          defaultAction = "open",
-        },
-      },
-    },
     init = function()
       helper.ff_map("file", function(map)
         -- Open file
@@ -29,23 +22,28 @@ local spec = {
         -- map("i", "<C-t>", helper.item_action("openProject", nil, true))
       end)
     end,
-    config = function(_, opts)
-      helper.patch_global(opts)
+    config = function()
+      helper.patch_global({
+      kindOptions = {
+        file = {
+          defaultAction = "open",
+        },
+      },
+    })
     end,
   },
   {
     "Shougo/ddu-kind-word",
     lazy = false,
     dependencies = "ddu.vim",
-    opts = {
+    config = function()
+      helper.patch_global({
       kindOptions = {
         word = {
           defaultAction = "append",
         },
       },
-    },
-    config = function(_, opts)
-      helper.patch_global(opts)
+    })
     end,
   },
 }

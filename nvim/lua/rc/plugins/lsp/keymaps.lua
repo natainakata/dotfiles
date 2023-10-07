@@ -2,66 +2,20 @@ local M = {}
 M._keys = nil
 
 function M.get()
-  local telescope = require("telescope.builtin")
   if not M._keys then
     M._keys = {
       { "<Leader>F", "<Cmd>Format<CR>", desc = "Format Document", has = "documentFormatting" },
       { "<Leader>F", "<Cmd>Format<CR>", desc = "Format Selected", mode = "v", has = "documentFormatting" },
-      {
-        "gr",
-        function()
-          telescope.lsp_references()
-        end,
-        desc = "References",
-      },
-      {
-        "gd",
-        function()
-          telescope.lsp_definitions()
-        end,
-        desc = "Definition",
-      },
-      { "gD", vim.lsp.buf.declaration, desc = "Declaration" },
-      {
-        "gi",
-        function()
-          telescope.lsp_implementations()
-        end,
-        desc = "Implementation",
-      },
-      {
-        "gt",
-        function()
-          telescope.lsp_type_definitions()
-        end,
-        desc = "Type Definition",
-      },
-      {
-        "ge",
-        function()
-          require("telescope.builtin").diagnostics()
-        end,
-        desc = "Open Diagnostic",
-      },
+      { "gr", "<Cmd>Ddu lsp:references<CR>", desc = "References" },
+      { "gd", "<Cmd>Ddu lsp:definition<CR>", desc = "Definition" },
+      { "gt", "<Cmd>Ddu lsp:type_definition<CR>", desc = "Type definition" },
+      { "<Leader>a", "<Cmd>Ddu lsp:code_action<CR>", mode = { "n", "x" }, desc = "Code Action", has = "codeAction" },
       { "g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
       { "g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev Diagnostic" },
-      {
-        "ga",
-        vim.lsp.buf.code_action,
-        desc = "Action",
-        mode = { "n", "v" },
-        has = "codeAction",
-      },
       { "R", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
       { "K", vim.lsp.buf.hover, desc = "Hover" },
       { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
-      {
-        "<C-k>",
-        vim.lsp.buf.signature_help,
-        mode = "i",
-        desc = "Signature Help",
-        has = "signatureHelp",
-      },
+      { "<C-k>", vim.lsp.buf.signature_help, mode = { "i" }, desc = "Signature Help", has = "signatureHelp" },
     }
   end
   return M._keys

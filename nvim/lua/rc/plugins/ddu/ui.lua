@@ -5,7 +5,8 @@ local spec = {
   "Shougo/ddu-ui-ff",
   lazy = false,
   dependencies = "ddu.vim",
-  opts = {
+  config = function(_, opts)
+    helper.patch_global({
       ui = "ff",
       uiParams = {
         ff = {
@@ -18,9 +19,7 @@ local spec = {
           previewSplit = "vertical",
         },
       },
-  },
-  config = function(_, opts)
-    helper.patch_global(opts)
+    })
     helper.ff_map(nil, function(map)
       -- Enter filter
       map("i", helper.action("openFilterWindow"))
@@ -72,7 +71,7 @@ local spec = {
     end
     resize()
 
-    utils.autocmd("resize_ddu_ff","VimResized", nil, resize)
+    utils.autocmd("resize_ddu_ff", "VimResized", nil, resize)
   end,
 }
 

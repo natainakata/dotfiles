@@ -4,7 +4,8 @@ local spec = {
     "Shougo/ddu-filter-matcher_substring",
     lazy = false,
     dependencies = "ddu.vim",
-    opts = {
+    config = function()
+      helper.patch_global({
       sourceOptions = {
         ["_"] = {
           matchers = {
@@ -17,9 +18,7 @@ local spec = {
           highlightMatched = "Title",
         },
       },
-    },
-    config = function(_, opts)
-      helper.patch_global(opts)
+    })
     end,
   },
   {

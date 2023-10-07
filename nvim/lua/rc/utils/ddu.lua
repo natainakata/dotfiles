@@ -1,4 +1,5 @@
 local M = {}
+local utils = require("rc.utils")
 
 local function safe_call(fn, ...)
   fn = type(fn) == "string" and vim.fn[fn] or fn

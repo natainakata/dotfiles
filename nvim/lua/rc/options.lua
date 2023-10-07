@@ -47,7 +47,7 @@ opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 vim.opt.guifont = { "UDEV Gothic 35NFLG:h14:n" }
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
-  vim.g.sqlite_clib_path = "C:/lib/sqlite3.dll"
+  vim.g.sqlite_clib_path = "C:\\lib\\sqlite3.dll"
   vim.o.shell = "pwsh.exe"
   vim.o.shellcmdflag = "-NoLogo -c"
   vim.o.shellquote = '"'
