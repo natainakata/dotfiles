@@ -1,4 +1,3 @@
-require("rc.options")
-require("rc.keymaps")
-require("rc.autocmd")
-require('rc.lazy')
+require("rc.preinit")
+require("rc.init")
+require("rc.postinit")

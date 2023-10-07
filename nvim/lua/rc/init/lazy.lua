@@ -45,7 +45,7 @@ local opts = {
 
 utils.ensure("lazy", function(m)
   m.setup({
-    { import = "rc.plugins" },
+    { import = "rc.init.plugins" },
   }, opts)
   m.load({ plugins = "sonokai" })
 end)

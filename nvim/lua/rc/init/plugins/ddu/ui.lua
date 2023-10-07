@@ -5,7 +5,7 @@ local spec = {
   "Shougo/ddu-ui-ff",
   lazy = false,
   dependencies = "ddu.vim",
-  config = function(_, opts)
+  config = function()
     helper.patch_global({
       ui = "ff",
       uiParams = {

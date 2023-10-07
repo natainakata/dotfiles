@@ -16,7 +16,6 @@ local spec = {
         enabled = true,
         dependencies = { "vim-skk/skkeleton" },
       },
-      "PaterJason/cmp-conjure",
       "hrsh7th/cmp-emoji",
       "ray-x/cmp-treesitter",
       "hrsh7th/cmp-cmdline",
@@ -47,7 +46,6 @@ local spec = {
           { name = "luasnip" },
           { name = "emoji" },
           { name = "skkeleton" },
-          { name = "conjure" },
         }),
         mapping = cmp.mapping.preset.insert({
           ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -218,47 +216,6 @@ local spec = {
       vim.fn["mkdp#util#install"]()
     end,
     ft = "markdown",
-  },
-  {
-    "wlangstroth/vim-racket",
-    ft = "racket",
-  },
-  {
-    "Olical/conjure",
-    dependencies = {
-      "clojure-vim/vim-jack-in",
-      dependencies = {
-        "tpope/vim-dispatch",
-        "radenling/vim-dispatch-neovim",
-      },
-    },
-    ft = { "clojure", "scheme", "racket", "lisp" },
-    config = function()
-      vim.g["conjure#client#scheme#stdio#command"] = "gosh -i"
-      vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "gosh[>$] "
-      vim.g["conjure#client#scheme#stdio#value_prefix_pattern"] = false
-      vim.g["conjure#mapping#prefix"] = "<Leader>C"
-      vim.g["conjure#mapping#eval_root_form"] = "r"
-      vim.g["conjure#mapping#eval_comment_root_form"] = "cr"
-      vim.g["conjure#mapping#eval_current_form"] = "x"
-      vim.g["conjure#mapping#eval_comment_current_form"] = "cx"
-      vim.g["conjure#mapping#eval_word"] = "w"
-      vim.g["conjure#mapping#eval_comment_word"] = "cw"
-      vim.g["conjure#mapping#eval_visual"] = "v"
-      vim.g["conjure#mapping#eval_file"] = "f"
-      vim.g["conjure#mapping#eval_buf"] = "b"
-    end,
-  },
-  {
-    "guns/vim-sexp",
-    dependencies = {
-      "tpope/vim-sexp-mappings-for-regular-people",
-      "tpope/vim-repeat",
-    },
-    ft = { "clojure", "scheme", "lisp" },
-    config = function()
-      vim.g.sexp_enable_insert_mode_mappings = 1
-    end,
   },
 }
 

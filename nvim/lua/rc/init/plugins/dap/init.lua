@@ -4,8 +4,8 @@ local spec = {
     dependencies = {
       {
         "rcarriga/nvim-dap-ui",
-        opts = require("rc.plugins.dap.ui").opts,
-        config = require("rc.plugins.dap.ui").setup,
+        opts = require("rc.init.plugins.dap.ui").opts,
+        config = require("rc.init.plugins.dap.ui").setup,
       },
       {
         "jay-babu/mason-nvim-dap.nvim",
@@ -32,7 +32,7 @@ local spec = {
         end,
       },
     },
-    keys = require("rc.plugins.dap.keymaps").keys,
+    keys = require("rc.init.plugins.dap.keymaps").keys,
     config = function()
       for name, icon in pairs(require("rc.utils.icons").dap) do
         name = name

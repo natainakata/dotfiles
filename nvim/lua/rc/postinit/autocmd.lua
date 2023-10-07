@@ -34,3 +34,5 @@ autocmd("vimgrep_autoopen", "QuickFixCmdPost", "vimgrep", function()
   vim.bo.modifiable = true
   vim.cmd("vertical resize 70")
 end)
+
+autocmd("mclang", {"BufRead", "BufNewFile"},  "*.lang", "set filetype=mclang")

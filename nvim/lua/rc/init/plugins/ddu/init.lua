@@ -7,7 +7,7 @@ local spec = {
   dependencies = {
     "vim-denops/denops.vim"
   },
-  import = "rc.plugins.ddu",
+  import = "rc.init.plugins.ddu",
   init = function ()
     helper.ff_map(nil, function(map)
         -- Highlight cursor line

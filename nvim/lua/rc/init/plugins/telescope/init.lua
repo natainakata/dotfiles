@@ -1,4 +1,4 @@
-local keymap = require("rc.plugins.telescope.keymaps")
+local keymap = require("rc.init.plugins.telescope.keymaps")
 local icons = require("rc.utils.icons")
 local function telescope_setup(core, actions, sorters, viewers)
   core.setup({

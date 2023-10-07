@@ -10,7 +10,6 @@ local spec = {
       "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-endwise",
-      -- "p00f/nvim-ts-rainbow",
       "andymass/vim-matchup",
     },
     opts = {
@@ -51,9 +50,6 @@ local spec = {
       autotag = {
         enable = true,
       },
-      -- rainbow = {
-      --   enable = true,
-      -- },
       endwise = {
         enable = true,
       },
