@@ -4,14 +4,15 @@ local helper = require("rc.utils.lsp")
 local spec = {
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "VeryLazy" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       { "folke/trouble.nvim", dependencies = "nvim-web-devicons" },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
-      "mhartington/formatter.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "nvimtools/none-ls.nvim",
     },
     init = function()
       -- vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
@@ -69,51 +70,18 @@ local spec = {
     end,
   },
   {
-    "mhartington/formatter.nvim",
-    keys = { "<Leader>F", "<Cmd>Format<CR>" },
-    config = function()
-      require("formatter").setup({
-        filetype = {
-          lua = {
-            require("formatter.filetypes.lua").stylua,
-          },
-          ["*"] = {
-            require("formatter.filetypes.any").remove_trailing_whitespace,
-          },
+    "nvimtools/none-ls.nvim",
+    config = function ()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.completion.spell,
         },
       })
-      utils.autocmd("format", "BufWritePre", nil, "FormatWrite")
-    end,
-  },
-  {
-    "mfussenegger/nvim-lint",
-    enabled = false,
-    opts = {
-      by_ft = {
-        lua = {
-          "luacheck",
-        },
-      },
-    },
-    config = function(_, opts)
-      require("lint").linters_by_ft = opts.by_ft
-      local luacheck = require("lint").linters.luacheck
-      luacheck.args = {
-        "--formatter",
-        "plain",
-        "--codes",
-        "--ranges",
-        "--config",
-        "~/.dotfiles/.luacheckrc",
-        "-",
-      }
-      vim.api.nvim_create_autocmd({ "TextChanged", "BufWritePost" }, {
-        callback = function()
-          require("lint").try_lint()
-        end,
-      })
-    end,
-  },
+    end
+  }
 }
 
 return spec

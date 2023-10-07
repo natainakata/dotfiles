@@ -4,8 +4,6 @@ M._keys = nil
 function M.get()
   if not M._keys then
     M._keys = {
-      { "<Leader>F", "<Cmd>Format<CR>", desc = "Format Document", has = "documentFormatting" },
-      { "<Leader>F", "<Cmd>Format<CR>", desc = "Format Selected", mode = "v", has = "documentFormatting" },
       { "gr", "<Cmd>Ddu lsp:references<CR>", desc = "References" },
       { "gd", "<Cmd>Ddu lsp:definition<CR>", desc = "Definition" },
       { "gt", "<Cmd>Ddu lsp:type_definition<CR>", desc = "Type definition" },

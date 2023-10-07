@@ -1,4 +1,5 @@
 local M = {}
+local utils = require("rc.utils")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -8,9 +9,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     "additionalTextEdits",
   },
 }
--- utils.ensure("cmp_nvim_lsp", function(m)
---   capabilities = m.default_capabilities(capabilities)
--- end)
+utils.ensure("cmp_nvim_lsp", function(m)
+  capabilities = m.default_capabilities(capabilities)
+end)
 M.capabilities = capabilities
 local function format_diagnostics(diag)
   if diag.code then
