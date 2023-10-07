@@ -80,6 +80,27 @@ function M.augroup(name)
   return vim.api.nvim_create_augroup("natai_" .. name, { clear = true })
 end
 
+function M.autocmd(name, event, pattern, callback, opts, clear)
+  opts = opts or {}
+  if clear == nil then
+    clear = true
+  end
+  if type(callback) == "string" then
+    opts = M.extend_tbl(opts, {
+      group = vim.api.nvim_create_augroup("natai_" .. name, { clear = clear }),
+      pattern = pattern,
+      command = callback,
+    })
+  elseif type(callback) == "function" then
+    opts = M.extend_tbl(opts, {
+      group = vim.api.nvim_create_augroup("natai_" .. name, { clear = clear }),
+      pattern = pattern,
+      callback = callback,
+    })
+  end
+  vim.api.nvim_create_autocmd(event, opts)
+end
+
 function M.diff_source()
   M.ensure("gitsigns", function(m)
     local gitsigns = vim.b.gitsigns_status_dict
@@ -100,7 +121,5 @@ M.is_nvim = function()
     return true
   end
 end
-
-M.lsp = require("rc.utils.lsp")
 
 return M

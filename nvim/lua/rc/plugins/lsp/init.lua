@@ -1,4 +1,5 @@
 local utils = require("rc.utils")
+local helper = require("rc.utils.lsp")
 
 local spec = {
   {
@@ -11,11 +12,10 @@ local spec = {
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mhartington/formatter.nvim",
-      "mfussenegger/nvim-lint",
     },
     init = function()
       -- vim.lsp.set_log_level(vim.lsp.log_levels.DEBUG)
-      utils.lsp.on_attach(function(client, bufnr)
+      helper.on_attach(function(client, bufnr)
         require("rc.plugins.lsp.keymaps").on_attach(client, bufnr)
       end)
     end,
@@ -82,10 +82,7 @@ local spec = {
           },
         },
       })
-      vim.api.nvim_create_autocmd("BufWritePost", {
-        group = utils.augroup("FormatAutogroup"),
-        command = "FormatWrite",
-      })
+      utils.autocmd("format", "BufWritePre", nil, "FormatWrite")
     end,
   },
   {

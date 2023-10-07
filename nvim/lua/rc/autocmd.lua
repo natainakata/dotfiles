@@ -1,86 +1,36 @@
 local utils = require("rc.utils")
-local autocmd = vim.api.nvim_create_autocmd
+local autocmd = utils.autocmd
 
-autocmd("TermOpen", {
-  group = utils.augroup("term_insert_in"),
-  callback = function()
-    vim.opt_local.number = false
-    vim.cmd.startinsert()
-  end,
-})
+autocmd("term_insert_in", "TermOpen", nil, function()
+  vim.opt_local.number = false
+  vim.cmd.startinsert()
+end)
 
-autocmd("TextYankPost", {
-  group = utils.augroup("highlight_yank"),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+autocmd("highlight_yank", "TextYankPost", nil, function()
+  vim.highlight.on_yank()
+end)
 
-autocmd({ "BufNewFile", "BufRead" }, {
-  group = utils.augroup("ime"),
-  pattern = "*.ime",
-  command = "set filetype=ime",
-})
+autocmd("close_with_q", "FileType", {
+  "quickrun",
+  "qf",
+  "help",
+  "man",
+  "notify",
+  "lspinfo",
+}, function(event)
+  vim.bo[event.buf].buflisted = false
+  vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
+end)
 
-autocmd("FileType", {
-  group = utils.augroup("close_with_q"),
-  pattern = {
-    "quickrun",
-    "qf",
-    "help",
-    "man",
-    "notify",
-    "lspinfo",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
-  end,
-})
-autocmd("FileType", {
-  group = utils.augroup("ime_settings"),
-  pattern = {
-    "ime",
-  },
-  callback = function()
-    require("notify").dismiss({ silent = true, pending = true })
-    utils.nmap("q", "<Cmd>wq!<CR>")
-  end,
-})
+autocmd("cmdwin_close", "CmdwinEnter", nil, function(event)
+  vim.bo[event.buf].buflisted = false
+  vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
+end)
 
-autocmd("CmdwinEnter", {
-  group = utils.augroup("cmdwinclose"),
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<Cmd>close<CR>", { buffer = event.buf, silent = true })
-  end,
-})
+autocmd("qf_position", "FileType", "qf", "wincmd H")
 
-autocmd("FileType", {
-  group = utils.augroup("qf_position"),
-  pattern = "qf",
-  command = "wincmd H",
-})
-
-autocmd("QuickFixCmdPost", {
-  group = utils.augroup("vimgrep_autoopen"),
-  pattern = "vimgrep",
-  callback = function()
-    vim.cmd([[
-      cw
-      set modifiable
-      vertical resize 70
-    ]])
-  end,
-})
-
-autocmd({ "BufRead", "BufNewFile" }, {
-  group = utils.augroup("mclang"),
-  pattern = "*.lang",
-  command = "set filetype=mclang",
-})
-
-autocmd("CursorMoved", {
-  group = utils.augroup("redraw_line"),
-  command = "redrawtabline",
-})
+autocmd("vimgrep_autoopen", "QuickFixCmdPost", "vimgrep", function()
+  vim.cmd.cwindow()
+  vim.bo.modifiable = true
+  vim.cmd("vertical resize 70")
+end)

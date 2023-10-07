@@ -1,4 +1,4 @@
-local utils = require("rc.utils")
+local helper = require("rc.utils.lsp")
 return {
   mason = false,
   settings = {
@@ -10,7 +10,7 @@ return {
       },
     },
   },
-  on_attach = utils.lsp.on_attach(function(client, bufnr)
+  on_attach = helper.on_attach(function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
   end),
 }
