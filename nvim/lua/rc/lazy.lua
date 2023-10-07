@@ -47,5 +47,5 @@ utils.ensure("lazy", function(m)
   m.setup({
     { import = "rc.plugins" },
   }, opts)
-  m.load({ plugins = "nightfox.nvim" })
+  m.load({ plugins = "sonokai" })
 end)
