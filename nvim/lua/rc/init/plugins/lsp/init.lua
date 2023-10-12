@@ -15,13 +15,13 @@ end
 local spec = {
   {
     "neovim/nvim-lspconfig",
-    event = { "VeryLazy" },
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      { "folke/trouble.nvim",  dependencies = "nvim-web-devicons" },
+      { "folke/trouble.nvim", dependencies = "nvim-web-devicons" },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
-      { "folke/neodev.nvim",   opts = { experimental = { pathStrict = true } } },
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "hrsh7th/cmp-nvim-lsp",
       "nvimtools/none-ls.nvim",
     },
@@ -38,7 +38,7 @@ local spec = {
         local local_opts = utils.extend_tbl(opts, server_opts)
 
         local_opts.filetypes =
-            utils.extend_tbl(local_opts.filetypes or default_opts.filetypes or {}, local_opts.extra_filetypes)
+          utils.extend_tbl(local_opts.filetypes or default_opts.filetypes or {}, local_opts.extra_filetypes)
         local_opts.extra_filetypes = nil
         client.setup(local_opts)
       end

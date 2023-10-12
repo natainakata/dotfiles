@@ -24,12 +24,12 @@ local spec = {
     end,
     config = function()
       helper.patch_global({
-      kindOptions = {
-        file = {
-          defaultAction = "open",
+        kindOptions = {
+          file = {
+            defaultAction = "open",
+          },
         },
-      },
-    })
+      })
     end,
   },
   {
@@ -38,12 +38,12 @@ local spec = {
     dependencies = "ddu.vim",
     config = function()
       helper.patch_global({
-      kindOptions = {
-        word = {
-          defaultAction = "append",
+        kindOptions = {
+          word = {
+            defaultAction = "append",
+          },
         },
-      },
-    })
+      })
     end,
   },
 }

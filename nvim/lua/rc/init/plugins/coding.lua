@@ -86,11 +86,9 @@ local spec = {
   },
   {
     "vim-skk/skkeleton",
-    enabled = true,
     lazy = false,
     dependencies = {
       "vim-denops/denops.vim",
-      { "delphinus/skkeleton_indicator.nvim", config = true },
       "kei-s16/skkeleton-azik-kanatable",
     },
     config = function()
@@ -98,7 +96,6 @@ local spec = {
       utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
 
       vim.fn["denops#plugin#wait_async"]("skkeleton", function()
-        -- vim.fn["skkeleton#register_keymap"]("input", "", "henkanPoint")
         vim.fn["skkeleton#azik#add_table"]("us")
         local dictionaries = {
           "~/.skk/SKK-JISYO.L",
@@ -144,10 +141,12 @@ local spec = {
         function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
         end,
-        expr = true, silent = true, mode = "i",
+        expr = true,
+        silent = true,
+        mode = "i",
       },
-      { "<tab>",   function() require("luasnip").jump(1) end,   mode = "s" },
-      { "<s-tab>", function() require("luasnip").jump( -1) end, mode = { "i", "s" } },
+      { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
+      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
 
