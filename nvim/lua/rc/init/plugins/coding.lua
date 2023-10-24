@@ -97,6 +97,7 @@ local spec = {
 
       vim.fn["denops#plugin#wait_async"]("skkeleton", function()
         vim.fn["skkeleton#azik#add_table"]("us")
+        vim.fn["skkeleton#register_keymap"]("input", ";", "henkanPoint")
         local dictionaries = {
           "~/.skk/SKK-JISYO.L",
         }
@@ -108,6 +109,7 @@ local spec = {
           userJisyo = "~/.skk/SKK-JISYO.user",
         })
         vim.fn["skkeleton#register_kanatable"]("azik", {
+          ["'"] = { "っ", "" },
           kf = { "き", "" },
           jf = { "じゅ", "" },
           hf = { "ふ", "" },

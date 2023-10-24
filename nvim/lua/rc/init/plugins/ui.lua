@@ -4,7 +4,7 @@ local spec = {
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
-    opts = function() 
+    opts = function()
       local sonokai_conf = vim.fn["sonokai#get_configuration"]()
       local palette = vim.fn["sonokai#get_palette"](sonokai_conf.style, sonokai_conf.colors_override)
       local bg = palette.bg0[1]
@@ -49,10 +49,10 @@ local spec = {
             winblend = 10,
             winhighlight = {
               Normal = "StatusLine",
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     },
     keys = {
       {
@@ -141,17 +141,14 @@ local spec = {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
+    enabled = true,
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local dashboard = require("alpha.themes.dashboard")
       dashboard.section.buttons.val = {
-        dashboard.button("n", icons.kinds.File .. " New File", "<cmd>ene<CR>"),
-        dashboard.button("e", icons.kinds.Folder .. " Browze Directory", "<cmd>NvimTreeOpen<CR>"),
-        dashboard.button(
-          "f",
-          icons.other.search .. " Find File",
-          "<cmd>lua require('telescope.builtin').find_files({no_ignore = true, hidden = false})<CR>"
-        ),
+        dashboard.button("n", icons.kinds.File .. " New File", "<Cmd>ene<CR>"),
+        dashboard.button("e", icons.kinds.Folder .. " Browze Directory", "<Cmd>NvimTreeOpen<CR>"),
+        dashboard.button("f", icons.other.search .. " Find File", "<Cmd>Ddu file:rec<CR>"),
         dashboard.button("q", icons.other.exit .. " Quit NVIM", "<cmd>qa<CR>"),
       }
       require("alpha").setup(dashboard.config)
