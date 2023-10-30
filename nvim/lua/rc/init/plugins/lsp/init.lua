@@ -8,6 +8,7 @@ local function servers()
     powershell_es = require("rc.init.plugins.lsp.settings.powershell"),
     pyright = {},
     tsserver = {},
+    groovyls = {},
     kotlin_language_server = require("rc.init.plugins.lsp.settings.kotlin"),
   }
 end

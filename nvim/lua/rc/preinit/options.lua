@@ -46,14 +46,6 @@ opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 
 vim.opt.guifont = { "UDEV Gothic 35NFLG:h14:n" }
 
-if vim.loop.os_uname().sysname == "Windows_NT" then
-  vim.g.sqlite_clib_path = "C:\\lib\\sqlite3.dll"
-  vim.o.shell = "pwsh.exe"
-  vim.o.shellcmdflag = "-NoLogo -c"
-  vim.o.shellquote = '"'
-  vim.o.shellxquote = ""
-end
-
 if vim.loop.os_uname().sysname == "Linux" then
   if vim.fn.has("wsl") == 1 then
     vim.g.clipboard = {
@@ -69,6 +61,12 @@ if vim.loop.os_uname().sysname == "Linux" then
       cache_enabled = 1,
     }
   end
+else
+  vim.g.sqlite_clib_path = "C:/lib/sqlite3.dll"
+  vim.o.shell = "pwsh.exe"
+  vim.o.shellcmdflag = "-NoLogo -c"
+  vim.o.shellquote = '"'
+  vim.o.shellxquote = ""
 end
 
 for name, icon in pairs(require("rc.utils.icons").diagnostics) do

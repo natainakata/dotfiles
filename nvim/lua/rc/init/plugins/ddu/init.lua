@@ -3,33 +3,34 @@ local helper = require("rc.utils.ddu")
 local spec = {
   "Shougo/ddu.vim",
   name = "ddu.vim",
+  enabled = false,
   lazy = false,
   dependencies = {
-    "vim-denops/denops.vim"
+    "vim-denops/denops.vim",
   },
-  import = "rc.init.plugins.ddu",
-  init = function ()
+  -- import = "rc.init.plugins.ddu",
+  init = function()
     helper.ff_map(nil, function(map)
-        -- Highlight cursor line
-        vim.opt_local.cursorline = true
-        -- Default itemAction
-        map("<CR>", helper.item_action("default"))
-      end)
-      helper.ff_filter_map(nil, function(map)
-        -- Default itemAction
-        map("i", "<CR>", helper.item_action("default", nil, true))
-        map("n", "<CR>", helper.item_action("default"))
-      end)
-      vim.api.nvim_create_user_command("Ddu", function(args)
-        local ddu_name = args.args
-        vim.fn["ddu#start"]({ name = ddu_name })
-        end, {
-          nargs = 1,
-          complete = function()
-            return vim.tbl_keys(vim.fn["ddu#custom#get_local"]())
-        end,
-      })
-  end
+      -- Highlight cursor line
+      vim.opt_local.cursorline = true
+      -- Default itemAction
+      map("<CR>", helper.item_action("default"))
+    end)
+    helper.ff_filter_map(nil, function(map)
+      -- Default itemAction
+      map("i", "<CR>", helper.item_action("default", nil, true))
+      map("n", "<CR>", helper.item_action("default"))
+    end)
+    vim.api.nvim_create_user_command("Ddu", function(args)
+      local ddu_name = args.args
+      vim.fn["ddu#start"]({ name = ddu_name })
+    end, {
+      nargs = 1,
+      complete = function()
+        return vim.tbl_keys(vim.fn["ddu#custom#get_local"]())
+      end,
+    })
+  end,
 }
 
 return spec

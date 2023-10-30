@@ -12,6 +12,7 @@ return {
       hijack_netrw = true,
       filters = {
         dotfiles = true,
+        git_ignored = false,
       },
       renderer = {
         icons = {
@@ -37,9 +38,9 @@ return {
         callback = function()
           local layout = vim.api.nvim_call_function("winlayout", {})
           if
-            layout[1] == "leaf"
-            and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
-            and layout[3] == nil
+              layout[1] == "leaf"
+              and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(layout[2]), "filetype") == "NvimTree"
+              and layout[3] == nil
           then
             vim.cmd("confirm quit")
           end
@@ -90,8 +91,8 @@ return {
     "phaazon/hop.nvim",
     config = true,
     keys = {
-      { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word" },
-      { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
+      { "<Leader>h", ":<C-u>HopWord<CR>",      silent = true, desc = "Hop Word" },
+      { "<Leader>H", ":<C-u>HopPattern<CR>",   silent = true, desc = "Hop Pattern" },
       { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line" },
     },
   },
@@ -113,10 +114,10 @@ return {
       require("illuminate").configure(opts)
     end,
     -- stylua: ignore
-     keys = {
-       { "]]", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
-       { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
-     },
+    keys = {
+      { "]]", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
+      { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
+    },
   },
   {
     "lambdalisue/gin.vim",

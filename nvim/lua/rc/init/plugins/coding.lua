@@ -95,33 +95,31 @@ local spec = {
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
       utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
 
-      vim.fn["denops#plugin#wait_async"]("skkeleton", function()
-        vim.fn["skkeleton#azik#add_table"]("us")
-        vim.fn["skkeleton#register_keymap"]("input", ";", "henkanPoint")
-        local dictionaries = {
-          "~/.skk/SKK-JISYO.L",
-        }
-        vim.fn["skkeleton#config"]({
-          eggLikeNewline = true,
-          registerConvertResult = true,
-          kanaTable = "azik",
-          globalDictionaries = dictionaries,
-          userJisyo = "~/.skk/SKK-JISYO.user",
-        })
-        vim.fn["skkeleton#register_kanatable"]("azik", {
-          ["'"] = { "っ", "" },
-          kf = { "き", "" },
-          jf = { "じゅ", "" },
-          hf = { "ふ", "" },
-          yf = { "ゆ", "" },
-          mf = { "む", "" },
-          nf = { "ぬ", "" },
-          df = { "で", "" },
-          cf = { "ちぇ", "" },
-          pf = { "ぽん", "" },
-        })
-        vim.fn["skkeleton#initialize"]()
-      end)
+      vim.fn["skkeleton#azik#add_table"]("us")
+      vim.fn["skkeleton#register_keymap"]("input", ";", "henkanPoint")
+      local dictionaries = {
+        "~/.skk/SKK-JISYO.L",
+      }
+      vim.fn["skkeleton#config"]({
+        eggLikeNewline = true,
+        registerConvertResult = true,
+        kanaTable = "azik",
+        globalDictionaries = dictionaries,
+        userJisyo = "~/.skk/SKK-JISYO.user",
+      })
+      vim.fn["skkeleton#register_kanatable"]("azik", {
+        ["'"] = { "っ", "" },
+        kf = { "き", "" },
+        jf = { "じゅ", "" },
+        hf = { "ふ", "" },
+        yf = { "ゆ", "" },
+        mf = { "む", "" },
+        nf = { "ぬ", "" },
+        df = { "で", "" },
+        cf = { "ちぇ", "" },
+        pf = { "ぽん", "" },
+      })
+      vim.fn["skkeleton#initialize"]()
     end,
   },
   {

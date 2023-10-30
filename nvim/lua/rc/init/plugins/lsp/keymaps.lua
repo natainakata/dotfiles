@@ -25,10 +25,10 @@ function M.on_attach(client, buffer)
   opts.has = nil
   opts.silent = true
   opts.buffer = buffer
-  utils.nmap("gr", "<Cmd>Ddu lsp:references<CR>", opts)
-  utils.nmap("gd", "<Cmd>Ddu lsp:definition<CR>", opts)
-  utils.nmap("gt", "<Cmd>Ddu lsp:type_definition<CR>", opts)
-  vim.keymap.set({ "n", "x" }, "<Leader>a", "<Cmd>Ddu lsp:code_action<CR>", opts)
+  utils.nmap("gr", "<Cmd>Telescope lsp_references<CR>", opts)
+  utils.nmap("gd", "<Cmd>Telescope lsp_definition<CR>", opts)
+  utils.nmap("gt", "<Cmd>Telescope lsp_type_definition<CR>", opts)
+  vim.keymap.set({ "n", "x" }, "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   utils.nmap("g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   utils.nmap("g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   utils.nmap("R", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)

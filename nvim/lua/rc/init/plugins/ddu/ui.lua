@@ -42,9 +42,9 @@ local spec = {
     helper.ff_filter_map(nil, function(map)
       -- Close UI
       map("i", "<C-c>", helper.action("quit", nil, true))
-      map("i", "<CR>", helper.action("leaveFilterWindow", nil, true))
+      map({ "n", "i" }, "<CR>", helper.item_action("default"))
       -- Close filter window
-      map("n", "<Esc>", helper.action("closeFilterWindow", nil, true))
+      map({ "n", "i" }, "<Esc>", helper.action("closeFilterWindow", nil, true))
       map("n", "j", helper.action("closeFilterWindow", nil, true))
     end)
     local function resize()

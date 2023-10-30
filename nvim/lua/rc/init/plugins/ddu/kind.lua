@@ -12,7 +12,7 @@ local spec = {
         map("<C-v>", helper.item_action("open", { command = "vsplit" }))
         -- map("<C-t>", helper.item_action("openProject"))
         -- Send quickfix
-        map("q", helper.item_action("quickfix"))
+        map("Q", helper.item_action("quickfix"))
       end)
 
       helper.ff_filter_map("file", function(map)
