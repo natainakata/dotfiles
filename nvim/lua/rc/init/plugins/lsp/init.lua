@@ -1,5 +1,15 @@
 local utils = require("rc.utils")
 local helper = require("rc.utils.lsp")
+local packages = {
+  "luacheck",
+  "shellcheck",
+  "shfmt",
+  "flake8",
+  "prettier",
+  "lua-language-server",
+  "vim-language-server",
+  "groovy-language-server",
+}
 
 local spec = {
   {
@@ -11,16 +21,6 @@ local spec = {
         dependencies = "williamboman/mason-lspconfig.nvim",
         keys = { { "<leader>lm", "<cmd>Mason<CR>", desc = "Mason" } },
         opts = {
-          ensure_installed = {
-            "luacheck",
-            "shellcheck",
-            "shfmt",
-            "flake8",
-            "prettier",
-            "lua-language-server",
-            "vim-language-server",
-            "groovy-language-server",
-          },
           ui = {
             check_outdated_packages_on_open = false,
             border = "single",
@@ -29,6 +29,15 @@ local spec = {
         config = function(_, opts)
           require("mason").setup(opts)
           require("mason-lspconfig").setup()
+          local registry = require("mason-registry")
+          registry.refresh(function()
+            for _, name in ipairs(packages) do
+              local pkg = registry.get_package(name)
+              if not pkg:is_installed() then
+                pkg:install()
+              end
+            end
+          end)
         end,
       },
       { "folke/trouble.nvim",  dependencies = "nvim-web-devicons" },

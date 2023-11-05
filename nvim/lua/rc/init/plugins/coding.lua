@@ -42,6 +42,7 @@ local spec = {
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
           { name = "buffer" },
+          { name = "treesitter" },
           { name = "path" },
           { name = "luasnip" },
           { name = "emoji" },
@@ -90,6 +91,7 @@ local spec = {
     dependencies = {
       "vim-denops/denops.vim",
       "kei-s16/skkeleton-azik-kanatable",
+      "skk-dev/dict"
     },
     config = function()
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
@@ -98,7 +100,7 @@ local spec = {
       vim.fn["skkeleton#azik#add_table"]("us")
       vim.fn["skkeleton#register_keymap"]("input", ";", "henkanPoint")
       local dictionaries = {
-        "~/.skk/SKK-JISYO.L",
+        vim.fn.stdpath("data") .. "/lazy/dict/SKK-JISYO.L",
       }
       vim.fn["skkeleton#config"]({
         eggLikeNewline = true,

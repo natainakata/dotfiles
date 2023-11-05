@@ -11,6 +11,7 @@ export GOPATH=~/.go
 export DENO_INSTALL="/home/natai/.deno"
 export PYENV_ROOT="$HOME/.pyenv"
 export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
+export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
 path=(
   ~/.bin

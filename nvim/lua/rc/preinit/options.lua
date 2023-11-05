@@ -22,7 +22,6 @@ opt.termguicolors = true
 opt.cursorline = true
 opt.visualbell = true
 opt.wildmode = { "list", "longest" }
-opt.completeslash = "slash"
 
 opt.splitbelow = true
 opt.splitright = true
@@ -67,6 +66,7 @@ else
   vim.o.shellcmdflag = "-NoLogo -c"
   vim.o.shellquote = '"'
   vim.o.shellxquote = ""
+  opt.completeslash = "slash"
 end
 
 for name, icon in pairs(require("rc.utils.icons").diagnostics) do
