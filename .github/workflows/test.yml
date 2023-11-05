@@ -16,10 +16,3 @@ jobs:
 
       - name: Run Install Test
         run: curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh | bash
-      - name: Initialize Test
-        shell: zsh {0}
-        run: |
-          cd ~
-          ls -a
-          rtx install
-

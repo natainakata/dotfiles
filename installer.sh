@@ -32,7 +32,7 @@ if [ ! -d ${DOT_DIR} ]; then
   ln -snfv "$DOT_DIR/zsh" "$HOME/.zsh"
   ln -snfv "$DOT_DIR/zshrc" "$HOME/.zshrc"
   ln -snfv "$DOT_DIR/zshenv" "$HOME/.zshenv"
-  ln -snfv "$DOT_DIR/tool-versions" "$HOME/.tool-versions"
+  ln -snfv "$DOT_DIR/rtx.toml" "$HOME/.rtx.toml"
 
   if  has "aqua"; then
     export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"

@@ -7,7 +7,7 @@
 !/LICENSE
 !/installer.sh
 !/.gitignore
-!/tool-versions
+!/rtx.toml
 !.keep
 
 !/.github/
@@ -21,6 +21,8 @@
 !/starship.toml
 !/zsh/
 !/zsh/**
+!/sheldon/
+!/sheldon/**
 !/nvim/
 !/nvim/**
 !/stylua.toml
