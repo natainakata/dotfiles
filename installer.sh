@@ -33,7 +33,7 @@ if [ ! -d ${DOT_DIR} ]; then
   ln -snfv "$DOT_DIR/zshrc" "$HOME/.zshrc"
   ln -snfv "$DOT_DIR/zshenv" "$HOME/.zshenv"
 
-  if [ ! has "aqua" ]; then
+  if ! [[ has "aqua" ]]; then
     curl -fsSL "https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.1.2/aqua-installer" | bash
   fi
 
