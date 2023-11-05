@@ -27,6 +27,7 @@ if [ ! -d ${DOT_DIR} ]; then
   ln -snfv "$DOT_DIR/xremap" "$HOME/.config/"
   ln -snfv "$DOT_DIR/lazygit" "$HOME/.config/"
   ln -snfv "$DOT_DIR/aqua" "$HOME/.config/"
+  ln -snfv "$DOT_DIR/sheldon" "$HOME/.config/"
   ln -snfv "$DOT_DIR/tmux.conf" "$HOME/.tmux.conf"
   ln -snfv "$DOT_DIR/bin" "$HOME/.bin"
   ln -snfv "$DOT_DIR/zsh" "$HOME/.zsh"

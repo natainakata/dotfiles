@@ -2,6 +2,7 @@
 # tput cup $LINES
 
 aqua i -l -a
+sheldon lock --update
 
 eval "$(sheldon source)"
 eval "$(starship init zsh)"
