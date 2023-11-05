@@ -33,8 +33,14 @@ if [ ! -d ${DOT_DIR} ]; then
   ln -snfv "$DOT_DIR/zshrc" "$HOME/.zshrc"
   ln -snfv "$DOT_DIR/zshenv" "$HOME/.zshenv"
 
-  if ! [[ has "aqua" ]]; then
+  if  has "aqua"; then
+    export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
+    aqua i -l -a
+  else 
+    export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
     curl -fsSL "https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.1.2/aqua-installer" | bash
+    export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
+    aqua i -l -a
   fi
 
 else
