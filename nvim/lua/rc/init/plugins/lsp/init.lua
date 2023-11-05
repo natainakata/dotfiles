@@ -1,11 +1,11 @@
 local utils = require("rc.utils")
 local helper = require("rc.utils.lsp")
 local packages = {
-  "luacheck",
   "shellcheck",
   "shfmt",
   "flake8",
   "prettier",
+  "stylua",
   "lua-language-server",
   "vim-language-server",
   "groovy-language-server",
@@ -14,11 +14,12 @@ local packages = {
 local spec = {
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     dependencies = {
       {
         "williamboman/mason.nvim",
         dependencies = "williamboman/mason-lspconfig.nvim",
+        lazy = false,
         keys = { { "<leader>lm", "<cmd>Mason<CR>", desc = "Mason" } },
         opts = {
           ui = {
@@ -91,9 +92,9 @@ local spec = {
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.diagnostics.eslint,
-          null_ls.builtins.completion.spell,
+          null_ls.builtins.formatting.stylua.with({
+            filetypes = { "lua" },
+          }),
         },
         on_attach = function(client, bufnr)
           if client.supports_method("textDocument/formatting") then

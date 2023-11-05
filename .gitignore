@@ -8,11 +8,12 @@
 !/installer.sh
 !/.gitignore
 !.keep
-!.luacheckrc
 
 !/.github/
 !/.github/**
 
+!/luacheck/
+!/luacheck/**
 !/gitconfig
 !/bin/
 !/bin/**

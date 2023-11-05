@@ -1,5 +1,6 @@
+eval "$(gh completion -s zsh)"
+eval "$(rtx completion zsh)"
 autoload -Uz compinit && compinit
-fpath=(${ASDF_DIR}/completions $fpath)
 
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 

@@ -1,10 +1,14 @@
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
 [user]
-	name = natai nakata
+  name = natai nakata
   email = satzin0521@gmail.com
 [ghq]
-root = ~/src
+  root = ~/src
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process

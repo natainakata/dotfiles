@@ -24,7 +24,7 @@ local spec = {
 
     config = function()
       local cmp = require("cmp")
-      cmp.setup({
+      local options = {
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
@@ -67,22 +67,25 @@ local spec = {
             return item
           end,
         },
-      })
-      cmp.setup.cmdline({ "/", "?" }, {
+      }
+      cmp.setup(options)
+      local search_options = {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = "buffer" },
           { name = "nvim_lsp_document_symbol" },
         }),
-      })
-      cmp.setup.cmdline(":", {
+      }
+      cmp.setup.cmdline({ "/", "?" }, search_options)
+      local cmdline_options = {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = "path" },
         }, {
           { name = "cmdline", keyword_length = 2 },
         }),
-      })
+      }
+      cmp.setup.cmdline(":", cmdline_options)
     end,
   },
   {
@@ -91,7 +94,7 @@ local spec = {
     dependencies = {
       "vim-denops/denops.vim",
       "kei-s16/skkeleton-azik-kanatable",
-      "skk-dev/dict"
+      { "skk-dev/dict", name = "skk-dict" },
     },
     config = function()
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
@@ -100,7 +103,7 @@ local spec = {
       vim.fn["skkeleton#azik#add_table"]("us")
       vim.fn["skkeleton#register_keymap"]("input", ";", "henkanPoint")
       local dictionaries = {
-        vim.fn.stdpath("data") .. "/lazy/dict/SKK-JISYO.L",
+        vim.fn.stdpath("data") .. "/lazy/skk-dict/SKK-JISYO.L",
       }
       vim.fn["skkeleton#config"]({
         eggLikeNewline = true,
