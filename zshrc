@@ -42,10 +42,9 @@ zinit light Aloxaf/fzf-tab
 command -v aqua > /dev/null aqua i -l -a
 command -v starship > /dev/null && eval "$(starship init zsh)"
 command -v gh > /dev/null && eval "$(gh completion -s zsh)"
-command -v pyenv > /dev/null && eval "$(pyenv init -)"
+# command -v pyenv > /dev/null && eval "$(pyenv init -)"
 command -v gnome-keyring-daemon > /dev/null && eval $(gnome-keyring-daemon --start)
-
-source /etc/profile.d/wezterm.sh
+. "$HOME/.asdf/asdf.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

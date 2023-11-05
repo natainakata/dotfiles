@@ -23,4 +23,4 @@ path=(
   $path
 )
 
-source "$HOME/.keychain/nataiarch-sh"
+# source "$HOME/.keychain/nataiarch-sh"
