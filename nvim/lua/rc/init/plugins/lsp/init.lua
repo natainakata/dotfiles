@@ -23,7 +23,6 @@ local spec = {
         "denols",
         "pyright",
         "tsserver",
-        "groovyls",
         "kotlin_language_server",
       },
       automatic_installation = true,

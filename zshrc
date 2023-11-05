@@ -42,6 +42,7 @@ aqua i -l -a
 
 eval "$(starship init zsh)"
 eval "$(rtx activate zsh)"
+eval "$(zoxide init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
