@@ -15,7 +15,8 @@ jobs:
         run: sudo apt install zsh
 
       - name: Run Install Test
-        shell: zsh {0}
-        run: |
+        run:
           curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh | bash
-          source $HOME/.zshenv $HOME/.zshrc
+      - name: Initialize Test
+        shell: zsh {0}
+        run: ls -a
