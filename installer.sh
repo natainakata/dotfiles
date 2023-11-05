@@ -26,11 +26,16 @@ if [ ! -d ${DOT_DIR} ]; then
   ln -snfv "$DOT_DIR/systemd" "$HOME/.config/"
   ln -snfv "$DOT_DIR/xremap" "$HOME/.config/"
   ln -snfv "$DOT_DIR/lazygit" "$HOME/.config/"
+  ln -snfv "$DOT_DIR/aqua" "$HOME/.config/"
   ln -snfv "$DOT_DIR/tmux.conf" "$HOME/.tmux.conf"
   ln -snfv "$DOT_DIR/bin" "$HOME/.bin"
   ln -snfv "$DOT_DIR/zsh" "$HOME/.zsh"
   ln -snfv "$DOT_DIR/zshrc" "$HOME/.zshrc"
   ln -snfv "$DOT_DIR/zshenv" "$HOME/.zshenv"
+
+  if [ ! has "aqua" ]; then
+    curl -fsSL "https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.1.2/aqua-installer" | bash
+  fi
 
 else
   echo "dotfiles already exists"

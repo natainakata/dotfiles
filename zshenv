@@ -10,6 +10,7 @@ export GOPATH=~/.go
 
 export DENO_INSTALL="/home/natai/.deno"
 export PYENV_ROOT="$HOME/.pyenv"
+export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
 
 path=(
   ~/.bin

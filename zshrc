@@ -39,6 +39,7 @@ zinit light Aloxaf/fzf-tab
 # zinit light b4b4r07/enhancd
 
 
+command -v aqua > /dev/null aqua i -l -a
 command -v starship > /dev/null && eval "$(starship init zsh)"
 command -v gh > /dev/null && eval "$(gh completion -s zsh)"
 command -v pyenv > /dev/null && eval "$(pyenv init -)"

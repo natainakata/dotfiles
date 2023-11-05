@@ -10,6 +10,9 @@
 !.keep
 !.luacheckrc
 
+!/.github/
+!/.github/**
+
 !/gitconfig
 !/bin/
 !/bin/**
@@ -35,4 +38,5 @@
 !/rofi/**
 !/wezterm/
 !/wezterm/**
-
+!/aqua/
+!/aqua/**

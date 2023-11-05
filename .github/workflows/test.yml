@@ -1,0 +1,19 @@
+name: Install Tests
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      # Runs a set of commands using the runners shell
+      - name: 
+        shell: zsh {0}
+        run: |
+          bash -c "$(curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh)"
+          exec $SHELL -l
