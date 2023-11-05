@@ -46,6 +46,7 @@ local spec = {
         -- java
         "java",
         "kotlin",
+        "groovy",
       },
       autotag = {
         enable = true,
@@ -67,7 +68,7 @@ local spec = {
 
           selection_modes = {
             ["@parameter.outer"] = "v", -- charwise
-            ["@function.outer"] = "V", -- linewise
+            ["@function.outer"] = "V",  -- linewise
             ["@class.outer"] = "<c-v>", -- blockwise
           },
           include_surrounding_whitespace = true,
