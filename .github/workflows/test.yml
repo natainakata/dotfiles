@@ -17,4 +17,4 @@ jobs:
         shell: zsh {0}
         run: |
           bash -c "$(curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh)"
-          exec $SHELL -l
+          exec zsh -l
