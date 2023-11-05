@@ -14,18 +14,8 @@ jobs:
       - name: Install zsh
         run: sudo apt install zsh
 
-      - name: Install asdf
-        run: git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
-
       - name: Run Install Test
         shell: zsh {0}
         run: |
-          bash -c "$(curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh)"
-          exec zsh -l
-          sudo apt install dirmngr gpg curl gawk
-          asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-          asdf install nodejs latest
-          asdf global nodejs latest
-          asdf plugin add deno https://github.com/asdf-community/asdf-deno.git
-          asdf install deno latest
-          asdf global deno latest
+          curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh | bash
+          source $HOME/.zshenv $HOME/.zshrc

@@ -7,13 +7,12 @@
 !/LICENSE
 !/installer.sh
 !/.gitignore
+!/tool-versions
 !.keep
 
 !/.github/
 !/.github/**
 
-!/luacheck/
-!/luacheck/**
 !/gitconfig
 !/bin/
 !/bin/**
