@@ -6,14 +6,15 @@
 !/README.md
 !/LICENSE
 !/installer.sh
-!/.gitignore
-!/rtx.toml
-!.keep
-
-!/.github/
-!/.github/**
 
 !/gitconfig
+!/.gitignore
+!/.github/
+!/.github/**
+!.keep
+
+!/rtx/
+!/rtx/**
 !/bin/
 !/bin/**
 !/zshrc
