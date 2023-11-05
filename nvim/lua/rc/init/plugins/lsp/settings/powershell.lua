@@ -1,6 +1,9 @@
 local helper = require("rc.utils.lsp")
 return {
-  mason = false,
+  init_options = {
+    enableProfileLoading = false,
+  },
+
   settings = {
     powershell = {
       codeFormatting = {

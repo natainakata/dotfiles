@@ -22,9 +22,6 @@
 !/starship.toml
 !/zsh/
 !/zsh/**
-!/Microsoft.Powershell_profile.ps1
-!/powershell/
-!/powershell/**
 !/nvim/
 !/nvim/**
 !/stylua.toml

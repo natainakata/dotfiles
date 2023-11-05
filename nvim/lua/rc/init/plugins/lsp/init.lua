@@ -1,46 +1,39 @@
 local utils = require("rc.utils")
 local helper = require("rc.utils.lsp")
-local packages = {
-  "shellcheck",
-  "shfmt",
-  "flake8",
-  "prettier",
-  "stylua",
-  "lua-language-server",
-  "vim-language-server",
-  "groovy-language-server",
-}
 
 local spec = {
   {
-    "neovim/nvim-lspconfig",
-    event = "VeryLazy",
+    "williamboman/mason-lspconfig.nvim",
     dependencies = {
-      {
-        "williamboman/mason.nvim",
-        dependencies = "williamboman/mason-lspconfig.nvim",
-        lazy = false,
-        keys = { { "<leader>lm", "<cmd>Mason<CR>", desc = "Mason" } },
-        opts = {
-          ui = {
-            check_outdated_packages_on_open = false,
-            border = "single",
-          },
+      "williamboman/mason.nvim",
+      cmd = { "Mason", "MasonInstall", "MasonUnInstall", "MasonUnInstallAll" },
+      opts = {
+        ui = {
+          check_outdated_packages_on_open = false,
+          border = "single",
         },
-        config = function(_, opts)
-          require("mason").setup(opts)
-          require("mason-lspconfig").setup()
-          local registry = require("mason-registry")
-          registry.refresh(function()
-            for _, name in ipairs(packages) do
-              local pkg = registry.get_package(name)
-              if not pkg:is_installed() then
-                pkg:install()
-              end
-            end
-          end)
-        end,
       },
+    },
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "vimls",
+        "powershell_es",
+        "bashls",
+        "denols",
+        "pyright",
+        "tsserver",
+        "groovyls",
+        "kotlin_language_server",
+      },
+      automatic_installation = true,
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
       { "folke/trouble.nvim",  dependencies = "nvim-web-devicons" },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim",   opts = { experimental = { pathStrict = true } } },
@@ -54,6 +47,7 @@ local spec = {
     end,
     opts = require("rc.init.plugins.lsp.opts"),
     config = function(_, opts)
+      vim.lsp.set_log_level("debug")
       local lspconfig = require("lspconfig")
       local settings = require("rc.init.plugins.lsp.settings")
       local function setup(client, server_opts)
@@ -78,7 +72,7 @@ local spec = {
           setup(lspconfig["groovyls"], settings.groovyls)
         end,
         ["powershell_es"] = function()
-          setup(lspconfig["powershell_es"], settings.groovyls)
+          setup(lspconfig["powershell_es"], settings.powershell_es)
         end,
         ["kotlin_language_server"] = function()
           setup(lspconfig["kotlin_language_server"], settings.kotlin_language_server)

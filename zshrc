@@ -37,6 +37,8 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 # rust cil
 zinit light Aloxaf/fzf-tab
 # zinit light b4b4r07/enhancd
+#
+aqua i -l -a
 
 eval "$(starship init zsh)"
 eval "$(rtx activate zsh)"
