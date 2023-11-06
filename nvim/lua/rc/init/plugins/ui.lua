@@ -114,18 +114,6 @@ local spec = {
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
-    -- opts = {
-    --   input = {
-    --     enabled = true,
-    --     win_options = {
-    --       winhighlight = "NormalFloat"
-    --     }
-    --   },
-    --   select = {
-    --     enabled = true,
-    --     backend = { "telescope" },
-    --   }
-    -- },
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
@@ -173,6 +161,7 @@ local spec = {
         ["<leader>l"] = { name = "+lsp" },
         ["<leader>n"] = { name = "+noice" },
         ["<C-g>"] = { name = "+git" },
+        ["s"] = { name = "+substitute" },
         ["<leader><tab>"] = { name = "+tab" },
       }
       wk.register(keymaps)

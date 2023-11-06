@@ -21,20 +21,39 @@ M._keys = nil
 -- end
 
 function M.on_attach(client, buffer)
-  local opts = {}
-  opts.has = nil
-  opts.silent = true
-  opts.buffer = buffer
-  utils.nmap("gr", "<Cmd>Telescope lsp_references<CR>", opts)
-  utils.nmap("gd", "<Cmd>Telescope lsp_definition<CR>", opts)
-  utils.nmap("gt", "<Cmd>Telescope lsp_type_definition<CR>", opts)
-  vim.keymap.set({ "n", "x" }, "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  utils.nmap("g]", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  utils.nmap("g[", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-  utils.nmap("R", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  utils.nmap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  utils.nmap("gK", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  utils.imap("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  utils.nmap("gr", function()
+    require("telescope.builtin").lsp_references()
+  end, { silent = true, buffer = buffer, desc = "References" })
+  utils.nmap("gd", function()
+    require("telescope.builtin").lsp_definitions()
+  end, { silent = true, buffer = buffer, desc = "Definitions" })
+  utils.nmap("gt", function()
+    require("telescope.builtin").lsp_type_definitions()
+  end, { silent = true, buffer = buffer, desc = "Type Definitions" })
+  vim.keymap.set({ "n", "x" }, "<Leader>a", function()
+    vim.lsp.buf.code_action()
+  end, { silent = true, buffer = buffer, desc = "Code Action" })
+  utils.nmap("g]", function()
+    vim.diagnostic.goto_next()
+  end, { silent = true, buffer = buffer, desc = "Next Diagnositc" })
+  utils.nmap("g[", function()
+    vim.diagnostic.goto_next()
+  end, { silent = true, buffer = buffer, desc = "Prev Diagnositc" })
+  utils.nmap("R", function()
+    vim.lsp.buf.rename()
+  end, { silent = true, buffer = buffer, desc = "Rename" })
+  utils.nmap("K", function()
+    vim.lsp.buf.hover()
+  end, { silent = true, buffer = buffer, desc = "Hover Document" })
+  utils.nmap("gK", function()
+    vim.lsp.buf.signature_help()
+  end, { silent = true, buffer = buffer, desc = "Signature Help" })
+  utils.imap("<C-k>", function()
+    vim.lsp.buf.signature_help()
+  end, { silent = true, buffer = buffer, desc = "Signature Help" })
+  utils.nmap("<Leader>F", function()
+    vim.lsp.buf.format()
+  end, { silent = true, buffer = buffer, desc = "Format" })
 end
 
 return M

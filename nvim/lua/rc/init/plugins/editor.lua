@@ -9,7 +9,7 @@ return {
     },
     opts = {
       disable_netrw = false,
-      hijack_netrw = true,
+      hijack_netrw = false,
       filters = {
         dotfiles = true,
         git_ignored = false,
@@ -47,6 +47,14 @@ return {
         end,
       })
     end,
+  },
+  {
+    "stevearc/oil.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
+    cmd = { "Oil" },
+    keys = { { "<Leader>E", "<Cmd>Oil<CR>", desc = "Open Oil" } },
+    config = true,
   },
   {
     "simrat39/symbols-outline.nvim",

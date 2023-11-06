@@ -1,6 +1,5 @@
 local utils = require("rc.utils")
 local spec = {
-
   {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdLineEnter" },
@@ -208,6 +207,40 @@ local spec = {
   {
     "numToStr/Comment.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    config = true,
+  },
+  {
+    "gbprod/substitute.nvim",
+    keys = {
+      {
+        "s",
+        function()
+          require("substitute").operator()
+        end,
+      },
+      {
+        "ss",
+        function()
+          require("substitute").line()
+        end,
+        desc = "Lines",
+      },
+      {
+        "S",
+        function()
+          require("substitute").eol()
+        end,
+        desc = "Substitute File",
+      },
+      {
+        "s",
+        function()
+          require("substitute").visual()
+        end,
+        mode = "x",
+        desc = "Substitute Visual",
+      },
+    },
     config = true,
   },
   {
