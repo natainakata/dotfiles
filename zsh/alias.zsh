@@ -13,6 +13,7 @@ alias glo='git log --oneline --pretty=format:"%Cred%h%Creset %C(yellow)%d%Creset
 alias gcb='git checkout -b'
 alias ghw='gh repo view -w $(ghq list | fzf)'
 alias gp='git push'
+alias gd='git diff'
 
 # dotfiles
 alias dtfl="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"

@@ -3,7 +3,7 @@ export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
 
 export EDITOR=nvim
-export BAT_THEME="Catppuccin-frappe"
+export BAT_THEME="OneHalfDark"
 export KEYTIMEOUT=1
 
 export GOPATH=~/.go
