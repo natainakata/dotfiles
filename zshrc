@@ -1,11 +1,24 @@
 #!/usr/bin/env zsh
 # tput cup $LINES
 
-aqua i -l -a
-sheldon lock --update
+# aqua i -l -a
+# sheldon lock --update
 
-eval "$(sheldon source)"
-eval "$(starship init zsh)"
+# eval "$(sheldon source)"
+#
+
+cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}
+sheldon_cache="$cache_dir/sheldon.zsh"
+config_dir=${XDG_CONFIG_HOME:-$HOME/.config}
+sheldon_toml="$config_dir/sheldon/plugins.toml"
+# キャッシュがない、またはキャッシュが古い場合にキャッシュを作成
+if [[ ! -r "$sheldon_cache" || "$sheldon_toml" -nt "$sheldon_cache" ]]; then
+  mkdir -p $cache_dir
+  sheldon source > $sheldon_cache
+fi
+source "$sheldon_cache"
+unset cache_dir sheldon_cache config_dir sheldon_toml
+# eval "$(starship init zsh)"
 eval "$(rtx activate zsh)"
 eval "$(zoxide init zsh)"
 
@@ -13,13 +26,25 @@ eval "$(zoxide init zsh)"
 
 # load rc
 ZSHHOME="${HOME}/.zsh"
-if [ -d $ZSHHOME -a -r $ZSHHOME -a \
-  -x $ZSHHOME ]; then
-  for i in $ZSHHOME/*; do
-    [[ ${i##*/} = *.zsh ]] &&
-      [ \( -f $i -o -h $i \) -a -r $i ] && . $i
-  done
-fi
+ZSHCONFS=(
+  "alias.zsh" \
+  "completion.zsh" \
+  "fzf.zsh" \
+  "keybind.zsh" \
+  "option.zsh" \
+)
+for zsh_conf in ${ZSHCONFS}; do
+  zsh-defer source "${ZSHHOME}/${zsh_conf}"
+done
+
+#if [ -d $ZSHHOME -a -r $ZSHHOME -a \
+#  -x $ZSHHOME ]; then
+#  for i in $ZSHHOME/*; do
+#    [[ ${i##*/} = *.zsh ]] &&
+#      [ \( -f $i -o -h $i \) -a -r $i ] && . $i
+#  done
+#fi
+
 
 if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ -n "${__ENABLE_TMUX}" ]; then
   # get the IDs

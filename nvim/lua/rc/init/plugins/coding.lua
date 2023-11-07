@@ -58,11 +58,22 @@ local spec = {
           ghost_text = true,
         },
         formatting = {
-          format = function(_, item)
+          format = function(entry, item)
             local icons = require("rc.utils.icons").kinds
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
+            item.menu = ({
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              nvim_lua = "[Lua]",
+              luasnip = "[Snip]",
+              path = "[Path]",
+              treesitter = "[Treesitter]",
+              emoji = "[🤔]",
+              skkeleton = "[SKK]",
+              cmdline = "[CMD]",
+            })[entry.source.name]
             return item
           end,
         },

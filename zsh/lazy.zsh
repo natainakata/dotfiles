@@ -1,3 +1,38 @@
+export LANG=ja_JP.UTF-8
+export LESSCHARSET=utf-8
+
+export EDITOR=nvim
+export BAT_THEME="OneHalfDark"
+export KEYTIMEOUT=1
+
+# export __ENABLE_TMUX=
+
+path=(
+  ~/.bin
+  ~/bin
+  ~/.local/bin
+  $GOPATH/bin
+  $path
+)
+
+eval "$(zoxide init zsh)"
+eval "$(rtx activate zsh)"
+
+eval "$(gh completion -s zsh)"
+eval "$(rtx completion zsh)"
+
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+
+zstyle ':completion:*' format '%B%F{blue}%d%f%b'
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*:default' menu select=1
+
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+
+# alias settings
 # global
 alias -g L='| less'
 alias -g H='| head'

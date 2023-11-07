@@ -18,5 +18,5 @@ jobs:
         run: curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh | bash
       - name: Check Install
         run: |
-          cd ~
-          ls -la
+          zsh -i -c exit
+          hyperfine -w 5 -r 50 'zsh -i -c exit'
