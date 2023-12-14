@@ -4,6 +4,7 @@ local helper = require("rc.utils.lsp")
 local spec = {
   {
     "williamboman/mason-lspconfig.nvim",
+    enabled = not vim.g.vscode,
     dependencies = {
       "williamboman/mason.nvim",
       cmd = { "Mason", "MasonInstall", "MasonUnInstall", "MasonUnInstallAll" },
@@ -30,6 +31,7 @@ local spec = {
   },
   {
     "neovim/nvim-lspconfig",
+    enabled = not vim.g.vscode,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
@@ -81,6 +83,7 @@ local spec = {
   },
   {
     "nvimtools/none-ls.nvim",
+    enabled = not vim.g.vscode,
     config = function()
       local null_ls = require("null-ls")
       null_ls.setup({

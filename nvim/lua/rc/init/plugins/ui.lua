@@ -3,6 +3,7 @@ local utils = require("rc.utils")
 local spec = {
   {
     "rcarriga/nvim-notify",
+    enabled = not vim.g.vscode,
     event = "VeryLazy",
     opts = function()
       -- local sonokai_conf = vim.fn["sonokai#get_configuration"]()
@@ -24,6 +25,7 @@ local spec = {
   },
   {
     "folke/noice.nvim",
+    enabled = not vim.g.vscode,
     event = "VeryLazy",
     dependencies = {
       "rcarriga/nvim-notify",
@@ -113,6 +115,7 @@ local spec = {
   },
   {
     "stevearc/dressing.nvim",
+    enabled = not vim.g.vscode,
     event = "VeryLazy",
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
@@ -130,7 +133,7 @@ local spec = {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
-    enabled = true,
+    enabled = not vim.g.vscode,
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local dashboard = require("alpha.themes.dashboard")
@@ -146,6 +149,7 @@ local spec = {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    enabled = not vim.g.vscode,
     opts = {
       window = {
         border = "none",
@@ -170,7 +174,7 @@ local spec = {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    enabled = true,
+    enabled = not vim.g.vscode,
     opts = {
       options = {
         theme = "auto",
@@ -265,11 +269,13 @@ local spec = {
   {
     "petertriho/nvim-scrollbar",
     event = "VeryLazy",
+    enabled = not vim.g.vscode,
     config = true,
   },
   {
     "kevinhwang91/nvim-hlslens",
     event = { "BufReadPre", "BufNewFile" },
+    enabled = not vim.g.vscode,
     dependencies = {
       "petertriho/nvim-scrollbar",
     },
@@ -280,6 +286,7 @@ local spec = {
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    enabled = not vim.g.vscode,
     dependencies = {
       "petertriho/nvim-scrollbar",
     },
@@ -297,6 +304,7 @@ local spec = {
   },
   {
     "echasnovski/mini.indentscope",
+    enabled = not vim.g.vscode,
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- symbol = "▏",

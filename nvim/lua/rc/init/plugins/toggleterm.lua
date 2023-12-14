@@ -2,6 +2,7 @@ local utils = require("rc.utils")
 local spec = {
   {
     "akinsho/toggleterm.nvim",
+    enabled = not vim.g.vscode,
     keys = {
       { "<Leader>G", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
       { "<C-t>", [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], mode = "n", desc = "Terminal" },

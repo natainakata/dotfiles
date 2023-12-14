@@ -21,7 +21,7 @@ local opts = {
     path = "~/src/github.com/natainakata",
     patterns = {},
   },
-  checker = { enabled = true, frequency = 1600 }, -- automatically check for plugin updates
+  checker = { enabled = not vim.g.vscode, frequency = 1600 }, -- automatically check for plugin updates
   install = { colorscheme = { "nightfox", "sonokai", "onedark", "habamax" } },
   performance = {
     cache = { enabled = true },
