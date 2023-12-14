@@ -47,6 +47,9 @@ local spec = {
         "java",
         "kotlin",
         "groovy",
+        -- c
+        "c",
+        "cpp",
       },
       autotag = {
         enable = true,
