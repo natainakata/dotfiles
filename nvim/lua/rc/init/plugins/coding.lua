@@ -105,35 +105,35 @@ local spec = {
     enabled = not vim.g.vscode,
     dependencies = {
       "vim-denops/denops.vim",
-      "kei-s16/skkeleton-azik-kanatable",
+      -- "kei-s16/skkeleton-azik-kanatable",
       { "skk-dev/dict", name = "skk-dict" },
     },
     config = function()
       utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
       utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
 
-      vim.fn["skkeleton#azik#add_table"]("us")
+      -- vim.fn["skkeleton#azik#add_table"]("us")
       local dictionaries = {
         vim.fn.stdpath("data") .. "/lazy/skk-dict/SKK-JISYO.L",
       }
       vim.fn["skkeleton#config"]({
         eggLikeNewline = true,
         registerConvertResult = true,
-        kanaTable = "azik",
+        -- kanaTable = "azik",
         globalDictionaries = dictionaries,
         userJisyo = "~/.skk/SKK-JISYO.user",
       })
-      vim.fn["skkeleton#register_kanatable"]("azik", {
-        kf = { "き", "" },
-        jf = { "じゅ", "" },
-        hf = { "ふ", "" },
-        yf = { "ゆ", "" },
-        mf = { "む", "" },
-        nf = { "ぬ", "" },
-        df = { "で", "" },
-        cf = { "ちぇ", "" },
-        pf = { "ぽん", "" },
-      })
+      -- vim.fn["skkeleton#register_kanatable"]("azik", {
+      --   kf = { "き", "" },
+      --   jf = { "じゅ", "" },
+      --   hf = { "ふ", "" },
+      --   yf = { "ゆ", "" },
+      --   mf = { "む", "" },
+      --   nf = { "ぬ", "" },
+      --   df = { "で", "" },
+      --   cf = { "ちぇ", "" },
+      --   pf = { "ぽん", "" },
+      -- })
       vim.fn["skkeleton#initialize"]()
     end,
   },
@@ -165,7 +165,20 @@ local spec = {
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
-
+  {
+    "github/copilot.vim",
+    enabled = not vim.g.vscode,
+    lazy = false,
+    build = function()
+      vim.cmd([[Copilot setup]])
+    end,
+    config = function()
+      vim.g.copilot_filetypes = { markdown = true, gitcommit = true, yaml = true }
+      vim.g.copilot_no_tab_map = true
+      utils.imap("<C-l>", [[copilot#Accept("<CR>")]], { silent = true, expr = true })
+      vim.cmd([[Copilot enable]])
+    end,
+  },
   {
     "monaqa/dial.nvim",
     keys = {
