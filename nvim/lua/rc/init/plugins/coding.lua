@@ -176,7 +176,10 @@ local spec = {
       vim.g.copilot_filetypes = { markdown = true, gitcommit = true, yaml = true }
       vim.g.copilot_no_tab_map = true
       utils.imap("<C-l>", [[copilot#Accept("<CR>")]], { silent = true, expr = true })
-      vim.cmd([[Copilot enable]])
+      utils.autocmd("enable_copilot", { "BufReadPre", "BufNewFile" }, "*",
+        function()
+          vim.cmd([[Copilot enable]])
+        end, nil, true)
     end,
   },
   {
@@ -284,3 +287,4 @@ local spec = {
 }
 
 return spec
+

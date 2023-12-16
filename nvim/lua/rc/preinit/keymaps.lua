@@ -69,6 +69,7 @@ else
   nmap("<Leader>f", "<Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
   nmap("<S-h>", "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
   nmap("<S-l>", "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
-  nmap("<Leader>l", "<Cmd>call VSCodeNotify('aichat.newchataction')<CR>")
-  nmap("<Leader>k", "<Cmd>call VSCodeNotify('aipopup.action.modal.generate')<CR>")
+  -- use cursor only
+  -- nmap("<Leader>l", "<Cmd>call VSCodeNotify('aichat.newchataction')<CR>")
+  -- nmap("<Leader>k", "<Cmd>call VSCodeNotify('aipopup.action.modal.generate')<CR>")
 end
