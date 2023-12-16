@@ -12,8 +12,7 @@ local spec = {
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       {
-        "rinx/cmp-skkeleton",
-        enabled = true,
+        "uga-rosa/cmp-skkeleton",
         dependencies = { "vim-skk/skkeleton" },
       },
       "hrsh7th/cmp-emoji",
@@ -21,7 +20,6 @@ local spec = {
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
     },
-
     config = function()
       local cmp = require("cmp")
       local options = {
@@ -97,6 +95,12 @@ local spec = {
         }),
       }
       cmp.setup.cmdline(":", cmdline_options)
+      cmp.event:on("menu_opened", function()
+        vim.b.copilot_suggestion_hidden = true
+      end)
+      cmp.event:on("menu_closed", function()
+        vim.b.copilot_suggestion_hidden = false
+      end)
     end,
   },
   {
@@ -166,21 +170,20 @@ local spec = {
     },
   },
   {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
     enabled = not vim.g.vscode,
-    lazy = false,
-    build = function()
-      vim.cmd([[Copilot setup]])
-    end,
-    config = function()
-      vim.g.copilot_filetypes = { markdown = true, gitcommit = true, yaml = true }
-      vim.g.copilot_no_tab_map = true
-      utils.imap("<C-l>", [[copilot#Accept("<CR>")]], { silent = true, expr = true })
-      utils.autocmd("enable_copilot", { "BufReadPre", "BufNewFile" }, "*",
-        function()
-          vim.cmd([[Copilot enable]])
-        end, nil, true)
-    end,
+    event = "InsertEnter",
+    cmd = "Copilot",
+    opts = {
+      filetypes = {
+        markdown = true,
+        gitcommit = true,
+        yaml = true,
+      },
+      suggestion = {
+        auto_trigger = true,
+      },
+    },
   },
   {
     "monaqa/dial.nvim",
@@ -287,4 +290,3 @@ local spec = {
 }
 
 return spec
-
