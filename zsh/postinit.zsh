@@ -1,36 +1,28 @@
-export LANG=ja_JP.UTF-8
-export LESSCHARSET=utf-8
+zoxide_cache="/tmp/zoxide_cache.zsh"
+if [[ ! -r "$zoxide_cache" ]]; then
+  zoxide init zsh > $zoxide_cache
+fi
+source $zoxide_cache
+unset zoxide_cache
 
-export EDITOR=nvim
-export BAT_THEME="OneHalfDark"
-export KEYTIMEOUT=1
+rtx_config="$XDG_CONFIG_HOME/rtx/config.toml"
+rtx_cache="/tmp/rtx_cache.zsh"
+if [[ ! -r "$rtx_cache" ]]; then
+  rtx activate zsh > $rtx_cache
+fi
+source $rtx_cache
+unset rtx_cache rtx_config
 
-# export __ENABLE_TMUX=
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
 
-path=(
-  ~/.bin
-  ~/bin
-  ~/.local/bin
-  $GOPATH/bin
-  $path
-)
+if [[ ! -r $ZSHRC_DIR/functions/_gh ]]; then
+  gh completion -s zsh > $ZSHRC_DIR/functions/_gh
+fi
 
-eval "$(zoxide init zsh)"
-eval "$(rtx activate zsh)"
-
-eval "$(gh completion -s zsh)"
-eval "$(rtx completion zsh)"
-
-autoload -Uz compinit && compinit
-
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
-
-zstyle ':completion:*' format '%B%F{blue}%d%f%b'
-zstyle ':completion:*' group-name ''
-
-zstyle ':completion:*:default' menu select=1
-
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+if [[ ! -r $ZSHRC_DIR/functions/_rtx ]] then
+  rtx completion zsh > $ZSHRC_DIR/functions/_rtx
+fi
 
 # alias settings
 # global
@@ -79,3 +71,4 @@ alias nvchad="NVIM_APPNAME=nvchad nvim"
 #rlwrap
 alias python="rlwrap python"
 alias gosh="rlwrap gosh"
+

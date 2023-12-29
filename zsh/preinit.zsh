@@ -19,10 +19,29 @@ setopt mark_dirs
 setopt no_clobber
 setopt noautoremoveslash
 
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
+export LANG=ja_JP.UTF-8
+export LESSCHARSET=utf-8
 
-bindkey -e
+export EDITOR=nvim
+export BAT_THEME="OneHalfDark"
+export KEYTIMEOUT=1
+
+path=(
+  ~/.bin
+  ~/bin
+  ~/.local/bin
+  $GOPATH/bin
+  $path
+)
+
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+
+zstyle ':completion:*' format '%B%F{blue}%d%f%b'
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*:default' menu select=1
+
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 bindkey '^F' autosuggest-accept
 
 export IGNOREEOF=2
@@ -33,10 +52,27 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
+function bash-ctrl-d() {
+  if [[ $CURSOR == 0 && -z $BUFFER ]]
+  then
+    [[ -z $IGNOREEOF || $IGNOREEOF == 0 ]] && exit
+    if [[ "$LASTWIDGET" == "bash-ctrl-d" ]]
+    then
+      (( --__BASH_IGNORE_EOF <= 0 )) && exit
+    else
+      (( __BASH_IGNORE_EOF = IGNOREEOF ))
+    fi
+  fi
+}
+zle -N bash-ctrl-d
+bindkey "^d" bash-ctrl-d
+
 # FZF Settings
 # Sources：https://zenn.dev/yushin_hirano/articles/28e7ea8cd11bc1
 # DEFAULT_OPTS
+
 export FZF_COMPLETION_TRIGGER='@@'
+
 # HOMEDIR ESCAPE INSERT
 __HOME=$(echo -e $HOME | sed -e "s%/%\\/%g")
 if [[ -n ${TMUX-} ]]; then
@@ -130,7 +166,7 @@ export FZF_CTRL_T_OPTS="--prompt='files → ' --preview '${__FZF_FILE_PREVIEW_CM
 export FZF_CTRL_T_COMMAND="${__FZF_FD_FILES_CMD[*]}"
 
 # FZF FUNCTIONS
-__fzf-cdr() {
+function __fzf-cdr() {
   # ~ ESCAPE
   local selected_dir=$(cdr -l | awk '{ print $2 }' | sed -e "s%~%${__HOME}%g" | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e {} | ${__FZF_DIR_PREVIEW_CMD[*]}" --prompt="cdr → " --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
@@ -139,8 +175,9 @@ __fzf-cdr() {
   fi
 }
 zle -N __fzf-cdr
+bindkey '^O' __fzf-cdr
 
-__fzf-git-switch() {
+function __fzf-git-switch() {
   local target_br=$(
     git branch |
       ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --exit-0 --layout=reverse --info=hidden --no-multi \
@@ -161,7 +198,7 @@ __fzf-git-switch() {
 }
 zle -N __fzf-git-switch
 
-__fzf-git-add() {
+function __fzf-git-add() {
   local target_add=$(
     unbuffer git status -s  |
       ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} -m --preview="echo {} | awk '{ print \$2 }' | xargs git diff --color | bat --style=numbers " --prompt="git add → " | awk '{ print $2 }'
@@ -174,13 +211,14 @@ __fzf-git-add() {
 }
 zle -N __fzf-git-add
 
-__fzf-history() {
+function __fzf-history() {
   local BUFFER=$(history -n -r 1 | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="cmd history → " --no-sort --query "$LBUFFER")
   local CURSOR=$#BUFFER
+  zle accept-line
 }
 zle -N __fzf-history
 
-__fzf-src() {
+function __fzf-src() {
   local src=$(ghq list --full-path | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo {} | ${__FZF_DIR_PREVIEW_CMD[*]}" --prompt="src → " --query "$LBUFFER")
   if [ -n "$src" ]; then
     BUFFER="cd $src"
@@ -190,7 +228,7 @@ __fzf-src() {
 }
 zle -N __fzf-src
 
-__fzf-edit() {
+function __fzf-edit() {
 files=$(lsd --almost-all | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e {} | awk '{ print substr(\$1, 2) }' | fzf-preview-check {}" --prompt="edit → " -m --query "$LBUFFER")
   if [ -n "$files" ]; then
     BUFFER="${EDITOR} ${files[@]}"
@@ -199,7 +237,7 @@ files=$(lsd --almost-all | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e 
 }
 zle -N __fzf-edit
 
-__fzf-tmux() {
+function __fzf-tmux() {
   if [ -n "$TMUX" ]; then
     local sessions=$(tmux list-sessions | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="sessions → " -m --query "$LBUFFER" | cut -d : -f 1)
     if [ -n "$sessions" ]; then
@@ -209,42 +247,23 @@ __fzf-tmux() {
 }
 zle -N __fzf-tmux
 
-local -A __FZF_COMMANDS
-__FZF_COMMANDS=(
-  [c]=fzf-cdr
-  [b]=fzf-git-switch
-  [h]=fzf-history
-  [s]=fzf-src
-  [e]=fzf-edit
-  [t]=fzf-tmux
-  [a]=fzf-git-add
+local __FZF_COMMANDS_LIST=(
+fzf-cdr
+fzf-git-switch
+fzf-history
+fzf-src
+fzf-edit
+fzf-tmux
+fzf-git-add
 )
 
-__fzf-aweken() {
-  local prefix=${LBUFFER[-1]}
-  zle backward-delete-word
-  if [[ -n "$prefix" && -n "${__FZF_COMMANDS[(i)${prefix}]}" ]]; then 
-    zle "__${__FZF_COMMANDS[${prefix}]}"
-  fi
-  zle redisplay
+function __fzf-commands() {
+  local COMMAND=$(echo ${__FZF_COMMANDS_LIST} | awk -v 'OFS=\n' '{$1=$1; print $0 }' | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]}  --prompt="Commands → ")
+  zle "__${COMMAND}"
+  zle reset-prompt
 }
-zle -N __fzf-aweken
+zle -N __fzf-commands
 
 bindkey '^R' __fzf-history
-bindkey '^ ' __fzf-aweken
-
-function bash-ctrl-d() {
-  if [[ $CURSOR == 0 && -z $BUFFER ]]
-  then
-    [[ -z $IGNOREEOF || $IGNOREEOF == 0 ]] && exit
-    if [[ "$LASTWIDGET" == "bash-ctrl-d" ]]
-    then
-      (( --__BASH_IGNORE_EOF <= 0 )) && exit
-    else
-      (( __BASH_IGNORE_EOF = IGNOREEOF ))
-    fi
-  fi
-}
-zle -N bash-ctrl-d
-bindkey "^d" bash-ctrl-d
+bindkey '^H' __fzf-commands
 
