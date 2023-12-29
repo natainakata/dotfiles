@@ -40,3 +40,10 @@
 !/wezterm/**
 !/aqua/
 !/aqua/**
+!/fish/
+!/fish/**
+/fish/conf.d/
+/fish/completions/
+/fish/functions/
+/fish/themes/
+/fish/fish_variables
