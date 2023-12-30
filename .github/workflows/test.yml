@@ -11,14 +11,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install zsh
-        run: sudo apt install zsh
+      - name: Install fish
+        run: |
+          sudo apt-add-repository ppa:fish-shell/release-3 -y
+          sudo apt update -y
+          sudo apt install fish -y
 
       - name: Run Install Test
         run: curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh | bash
       - name: Check Install
         run: |
-          zsh -i -c exit
+          fish -i -c exit
           export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
           export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-          hyperfine -w 5 -r 50 'zsh -i -c exit'
+          hyperfine -w 5 -r 50 'fish -i -c exit'
