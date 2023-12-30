@@ -25,4 +25,5 @@ jobs:
           export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
           export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
           lsd --tree $HOME/.local/share/fisher
+          lsd --tree "${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}"
           hyperfine -w 5 -r 50 'fish -i -c exit'
