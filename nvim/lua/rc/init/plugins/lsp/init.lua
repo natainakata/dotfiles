@@ -35,11 +35,11 @@ local spec = {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      "jay-babu/mason-null-ls.nvim",
       { "folke/trouble.nvim",  dependencies = "nvim-web-devicons" },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
       { "folke/neodev.nvim",   opts = { experimental = { pathStrict = true } } },
       "hrsh7th/cmp-nvim-lsp",
-      "nvimtools/none-ls.nvim",
     },
     init = function()
       helper.on_attach(function(client, bufnr)
@@ -82,30 +82,51 @@ local spec = {
     end,
   },
   {
-    "nvimtools/none-ls.nvim",
+    "jay-babu/mason-null-ls.nvim",
     enabled = not vim.g.vscode,
-    config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua.with({
-            filetypes = { "lua" },
-          }),
-          null_ls.builtins.formatting.clang_format.with({
-            filetypes = { "c", "cpp" },
-          }),
-          null_ls.builtins.formatting.black.with({
-            filetypes = { "python" },
-          }),
-        },
-        on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
-            utils.autocmd("lsp_formatting", "BufWritePre", nil, function()
-              vim.lsp.buf.format()
-            end, { buffer = bufnr })
-          end
-        end,
-      })
+    dependencies = {
+      {
+        "nvimtools/none-ls.nvim",
+        "williamboman/mason.nvim",
+      },
+    },
+    opts = {
+      ensure_installed = {
+        "prettierd",
+        "stylua",
+        "clang_format",
+        "black",
+      },
+      handlers = {},
+      automatic_installation = true
+    },
+    config = function(_, opts)
+      require("mason-null-ls").setup(opts)
+      utils.ensure("null-ls", function(m)
+        m.setup({
+          sources = {
+            m.builtins.formatting.stylua.with({
+              filetypes = { "lua" },
+            }),
+            m.builtins.formatting.clang_format.with({
+              filetypes = { "c", "cpp" },
+            }),
+            m.builtins.formatting.black.with({
+              filetypes = { "python" },
+            }),
+            m.builtins.formatting.prettierd.with({
+              filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "css", "html", "yaml" },
+            }),
+          },
+          on_attach = function(client, bufnr)
+            if client.supports_method("textDocument/formatting") then
+              utils.autocmd("lsp_formatting", "BufWritePre", nil, function()
+                vim.lsp.buf.format()
+              end, { buffer = bufnr })
+            end
+          end,
+        })
+      end)
     end,
   },
 }

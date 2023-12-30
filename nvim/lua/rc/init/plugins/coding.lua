@@ -174,14 +174,21 @@ local spec = {
     enabled = not vim.g.vscode,
     event = "InsertEnter",
     cmd = "Copilot",
+    keys = {
+      {
+        "<M-j>",
+        function()
+          require("copilot.suggestion").toggle_auto_trigger()
+        end,
+        silent = true,
+        mode = "i",
+      },
+    },
     opts = {
       filetypes = {
         markdown = true,
         gitcommit = true,
         yaml = true,
-      },
-      suggestion = {
-        auto_trigger = true,
       },
     },
   },
@@ -263,6 +270,7 @@ local spec = {
         end,
         desc = "Substitute File",
       },
+
       {
         "s",
         function()

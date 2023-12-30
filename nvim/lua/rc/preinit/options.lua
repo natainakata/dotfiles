@@ -18,7 +18,6 @@ opt.incsearch = true
 opt.smartcase = true
 opt.wrapscan = true
 
-
 opt.virtualedit = "onemore"
 opt.clipboard:append({ "unnamed", "unnamedplus" })
 
@@ -36,15 +35,15 @@ opt.showtabline = 2
 opt.cmdwinheight = 10
 opt.cmdheight = 0
 
-
 opt.listchars:append("eol:↴")
 opt.showmatch = true
 opt.cursorcolumn = true
 opt.guifont = { "UDEV Gothic 35NFLG:h14:n" }
 opt.mouse = "a"
 opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
+
 if vim.loop.os_uname().sysname == "Linux" then
-if vim.fn.has("wsl") == 1 then
+  if vim.fn.has("wsl") == 1 then
     vim.g.clipboard = {
       name = "WslClipboard",
       copy = {
