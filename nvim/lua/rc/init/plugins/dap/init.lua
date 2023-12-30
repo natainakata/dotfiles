@@ -18,7 +18,7 @@ local spec = {
               local dap = require("dap")
               dap.adapters.python = {
                 type = "executable",
-                command = "/usr/bin/python",
+                command = "/usr/bin/env python",
                 args = {
                   "-m",
                   "debugpy.adapter",
