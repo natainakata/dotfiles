@@ -10,7 +10,7 @@ fish_add_path $AQUA_ROOT_DIR/bin
 rtx activate fish | source
 starship init fish | source
 
-set -U fisher_path "$HOME/.local/share/fisher"
+set fisher_path "$HOME/.local/share/fisher"
 if test ! -d "$HOME/.local/share/fisher"
   mkdir -p "$HOME/.local/share/fisher"
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
@@ -29,8 +29,6 @@ abbr -a l 'lsd -l'
 abbr -a la 'lsd -a'
 abbr -a lla 'lsd -la'
 abbr -a lt 'lsd --tree'
-abbr -a cp 'cp -i'
-abbr -a rm 'rm -i'
 abbr -a mkdir 'mkdir -p'
 abbr -a diff 'diff -U1'
 
