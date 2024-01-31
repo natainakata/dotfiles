@@ -19,7 +19,7 @@ local opts = {
   },
   dev = {
     path = "~/src/github.com/natainakata",
-    patterns = {},
+    patterns = { "*.nvim" },
   },
   checker = { enabled = not vim.g.vscode, frequency = 1600 }, -- automatically check for plugin updates
   install = { colorscheme = { "nightfox", "sonokai", "onedark", "habamax" } },
