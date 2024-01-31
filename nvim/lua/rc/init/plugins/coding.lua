@@ -125,7 +125,7 @@ local spec = {
         registerConvertResult = true,
         -- kanaTable = "azik",
         globalDictionaries = dictionaries,
-        userJisyo = "~/.skk/SKK-JISYO.user",
+        userDictionary = "~/.skk/SKK-JISYO.user",
       })
       -- vim.fn["skkeleton#register_kanatable"]("azik", {
       --   kf = { "き", "" },
