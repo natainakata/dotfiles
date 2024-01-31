@@ -8,6 +8,14 @@ M.keys = {
     desc = "DAP Continue",
   },
   {
+    mode = { "n", "x", "i" },
+    "<C-x>",
+    function()
+      require("dap").step_over()
+    end,
+    desc = "DAP Step Over",
+  },
+  {
     "<F5>",
     function()
       require("dap").continue()
