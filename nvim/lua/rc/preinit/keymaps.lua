@@ -16,7 +16,8 @@ nmap("U", "<C-r>")
 imap("jj", "<Esc>")
 nmap("<Esc><Esc>", ":nohlsearch<CR>")
 nmap("<Leader>q", "<Cmd>qa<cr>")
-nmap("x", [["_x]])
+vim.keymap.set({ "n", "x" }, "x", [["_x]], { desc = "x with blackhole register" })
+vim.keymap.set({ "n", "x" }, "X", [["_X]], { desc = "X with blackhole register" })
 
 -- window and buffer
 nmap("<S-Tab>", "<Cmd>bprevious<CR>")
