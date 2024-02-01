@@ -152,6 +152,7 @@ local spec = {
     opts = {
       window = {
         border = "none",
+        winblend = 40,
       },
       plugins = {
         presets = {

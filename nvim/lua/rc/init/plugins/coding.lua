@@ -296,13 +296,30 @@ local spec = {
     ft = "markdown",
   },
   {
-    "guns/vim-sexp",
+    "Grazfather/sexp.nvim",
     dependencies = {
-      "tpope/vim-sexp-mappings-for-regular-people",
-      "tpope/vim-repeat"
+      "tpope/vim-repeat",
     },
-    ft = { "clojure", "scheme", "fennel" },
-  }
+    ft = { "lisp", "clojure", "scheme", "fennel" },
+    opts = {
+      mappings = {
+        sexp_move_to_prev_element_head = "B",
+        sexp_move_to_next_element_head = "W",
+        sexp_move_to_prev_element_tail = "gE",
+        sexp_move_to_next_element_tail = "E",
+        sexp_insert_at_list_head = "<I",
+        sexp_insert_at_list_tail = ">I",
+        sexp_swap_list_backward = "<f",
+        sexp_swap_list_forward = ">f",
+        sexp_swap_element_backward = "<e",
+        sexp_swap_element_forward = ">e",
+        sexp_emit_head_element = ">(",
+        sexp_emit_tail_element = "<)",
+        sexp_capture_prev_element = "<(",
+        sexp_capture_next_element = ">)",
+      }
+    }
+  },
 }
 
 return spec

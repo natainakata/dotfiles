@@ -6,7 +6,7 @@ return {
     enabled = not vim.g.vscode,
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     keys = {
-      { "<C-E>", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
+      { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
     },
     opts = {
       disable_netrw = false,

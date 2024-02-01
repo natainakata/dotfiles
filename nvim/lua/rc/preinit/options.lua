@@ -2,7 +2,7 @@ local indent = 2
 local opt = vim.opt
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 opt.fenc = "utf-8"
 opt.backup = false
