@@ -76,6 +76,14 @@ function M.tmap(lhs, rhs, opts)
   vim.keymap.set("t", lhs, rhs, opts)
 end
 
+---@param opfunc string use operator function
+function M.operator(opfunc)
+  vim.o.operatorfunc = opfunc
+  return function(motion)
+    vim.api.nvim_feedkeys("g@" .. (motion or ""), "mi", false)
+  end
+end
+
 function M.augroup(name)
   return vim.api.nvim_create_augroup("natai_" .. name, { clear = true })
 end

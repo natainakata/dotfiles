@@ -137,4 +137,27 @@ return {
     dependencies = "vim-denops/denops.vim",
     lazy = false,
   },
+  {
+    "thinca/vim-quickrun",
+    dependencies = "lambdalisue/vim-quickrun-neovim-job",
+    cmd = "QuickRun",
+    keys = {
+      { mode = { "n" }, "gx", require("rc.utils").operator("quickrun#operator"), { expr = true, silent = true } },
+      { mode = { "v" }, "gx", ":QuickRun -mode v<CR>",                           { silent = true } },
+    },
+    opts = {
+      ["_"] = {
+        outputter = "error",
+        ["outputter/error/success"] = "buffer",
+        ["outputter/error/error"] = "quickfix",
+        ["outputter/buffer/opener"] = "new",
+        ["outputter/buffer/into"] = 1,
+        ["outputter/buffer/close_on_empty"] = 1,
+        ["runner"] = "neovim_job",
+      },
+    },
+    config = function(_, opts)
+      vim.g.quickrun_config = opts
+    end,
+  },
 }
