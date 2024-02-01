@@ -19,7 +19,7 @@ local opts = {
   },
   dev = {
     path = "~/src/github.com/natainakata",
-    patterns = { "*.nvim" },
+    patterns = {},
   },
   checker = { enabled = not vim.g.vscode, frequency = 1600 }, -- automatically check for plugin updates
   install = { colorscheme = { "nightfox", "sonokai", "onedark", "habamax" } },
@@ -51,3 +51,5 @@ utils.ensure("lazy", function(m)
   m.load({ plugins = "onedark.nvim" })
   vim.keymap.set("n", "<Plug>(lazy-menu)", "<Cmd>Lazy<CR>")
 end)
+
+

@@ -78,6 +78,9 @@ local spec = {
         ["kotlin_language_server"] = function()
           setup(lspconfig["kotlin_language_server"], settings.kotlin_language_server)
         end,
+        ["fennel_language_server"] = function()
+          setup(lspconfig["fennel_language_server"], settings.fennel_language_server)
+        end
       })
     end,
   },

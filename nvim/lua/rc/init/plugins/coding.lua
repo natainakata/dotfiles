@@ -295,6 +295,14 @@ local spec = {
     end,
     ft = "markdown",
   },
+  {
+    "guns/vim-sexp",
+    dependencies = {
+      "tpope/vim-sexp-mappings-for-regular-people",
+      "tpope/vim-repeat"
+    },
+    ft = { "clojure", "scheme", "fennel" },
+  }
 }
 
 return spec

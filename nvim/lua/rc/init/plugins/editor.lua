@@ -6,7 +6,7 @@ return {
     enabled = not vim.g.vscode,
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     keys = {
-      { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
+      { "<C-E>", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
     },
     opts = {
       disable_netrw = false,
@@ -55,7 +55,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
     cmd = { "Oil" },
-    keys = { { "<Leader>E", "<Cmd>Oil<CR>", desc = "Open Oil" } },
+    keys = { { "<Leader>O", "<Cmd>Oil<CR>", desc = "Open Oil" } },
     config = true,
   },
   {
