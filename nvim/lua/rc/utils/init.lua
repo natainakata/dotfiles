@@ -106,7 +106,7 @@ end
 ---define autocmd
 ---@param name string autocmd name
 ---@param event string|string[] trigger event
----@param pattern string|string[] trigger pattern
+---@param pattern string|string[]|nil trigger pattern
 ---@param callback string|fun(...) callback command or function
 ---@param opts? table autocmd option
 ---@param clear? boolean augroup clear option
