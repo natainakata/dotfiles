@@ -1,7 +1,7 @@
 local spec = {
   {
     "mfussenegger/nvim-dap",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = {
       {
         "rcarriga/nvim-dap-ui",

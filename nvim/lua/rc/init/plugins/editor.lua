@@ -3,7 +3,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     keys = {
       { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
@@ -51,7 +51,7 @@ return {
   },
   {
     "stevearc/oil.nvim",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
     cmd = { "Oil" },
@@ -61,7 +61,7 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     keys = {
       { "<Leader>o", "<cmd>SymbolsOutline<CR>", desc = "Outline List" },
     },
@@ -119,7 +119,7 @@ return {
   },
   {
     "RRethy/vim-illuminate",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     event = { "BufReadPost", "BufNewFile" },
     opts = { delay = 200 },
     config = function(_, opts)
@@ -133,7 +133,7 @@ return {
   },
   {
     "lambdalisue/gin.vim",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = "vim-denops/denops.vim",
     lazy = false,
   },

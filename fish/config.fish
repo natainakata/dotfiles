@@ -16,9 +16,12 @@ if test ! -d "$HOME/.local/share/fisher"
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
 end
 
+set -gx EDITOR 'nvim'
+
 abbr -a gs 'git status'
-abbr -a ga 'git add'
-abbr -a gc 'git commit -am'
+abbr -a gaa 'git add --all'
+abbr -a gcm 'git commit -m'
+abbr -a gcn 'git commit -n'
 abbr -a glg 'git log --graph --abbrev-commit --date=format:"%Y-%m-%d %H:%M:%S(%a)" --pretty=format:"%C(yellow)commit %h%Creset %Cred%d%Creset%nCommitter: %Cblue%cn%Creset <%ce>%nDate:      %Cgreen%cd%Creset%n%n    %w(80)%s%Creset%n'
 abbr -a glo 'git log --oneline --pretty=format:"%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen[%cd]%Creset %Cblue<%cn>%Creset" --date=format:"%Y-%m-%d %H:%M:%S"'
 abbr -a gcb 'git checkout -b'

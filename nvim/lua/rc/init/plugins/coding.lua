@@ -2,7 +2,7 @@ local utils = require("rc.utils")
 local spec = {
   {
     "hrsh7th/nvim-cmp",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     event = { "InsertEnter", "CmdLineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",
@@ -106,7 +106,7 @@ local spec = {
   {
     "vim-skk/skkeleton",
     lazy = false,
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = {
       "vim-denops/denops.vim",
       -- "kei-s16/skkeleton-azik-kanatable",
@@ -143,7 +143,7 @@ local spec = {
   },
   {
     "L3MON4D3/LuaSnip",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -171,7 +171,7 @@ local spec = {
   },
   {
     "zbirenbaum/copilot.lua",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     event = "InsertEnter",
     cmd = "Copilot",
     keys = {
@@ -284,12 +284,12 @@ local spec = {
   },
   {
     "DaeZak/crafttweaker-vim-highlighting",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     ft = "crafttweaker",
   },
   {
     "iamcco/markdown-preview.nvim",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     build = function()
       vim.fn["mkdp#util#install"]()
     end,

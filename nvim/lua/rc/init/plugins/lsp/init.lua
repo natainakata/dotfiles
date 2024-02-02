@@ -4,7 +4,7 @@ local helper = require("rc.utils.lsp")
 local spec = {
   {
     "williamboman/mason-lspconfig.nvim",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = {
       "williamboman/mason.nvim",
       cmd = { "Mason", "MasonInstall", "MasonUnInstall", "MasonUnInstallAll" },
@@ -31,7 +31,7 @@ local spec = {
   },
   {
     "neovim/nvim-lspconfig",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
@@ -80,13 +80,13 @@ local spec = {
         end,
         ["fennel_language_server"] = function()
           setup(lspconfig["fennel_language_server"], settings.fennel_language_server)
-        end
+        end,
       })
     end,
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = {
       {
         "nvimtools/none-ls.nvim",
@@ -101,7 +101,7 @@ local spec = {
         "black",
       },
       handlers = {},
-      automatic_installation = true
+      automatic_installation = true,
     },
     config = function(_, opts)
       require("mason-null-ls").setup(opts)

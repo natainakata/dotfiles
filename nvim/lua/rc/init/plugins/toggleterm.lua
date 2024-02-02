@@ -2,11 +2,11 @@ local utils = require("rc.utils")
 local spec = {
   {
     "akinsho/toggleterm.nvim",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     keys = {
       { "<Leader>G", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
-      { "<C-t>", [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], mode = "n", desc = "Terminal" },
-      { "<C-t>", [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], mode = "i", desc = "Terminal" },
+      { "<C-t>",     [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]],            mode = "n",      desc = "Terminal" },
+      { "<C-t>",     [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]],       mode = "i",      desc = "Terminal" },
     },
     config = function()
       local toggleterm = require("toggleterm")
@@ -33,14 +33,14 @@ local spec = {
         end,
         open_mapping = [[<c-\><c-\>]],
         shade_terminals = true,
-        shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+        shading_factor = 1,       -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
         start_in_insert = true,
-        insert_mappings = true, -- whether or not the open mapping applies in insert mode
+        insert_mappings = true,   -- whether or not the open mapping applies in insert mode
         terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
         persist_size = true,
         direction = "horizontal",
         close_on_exit = true, -- close the terminal window when the process exits
-        shell = vim.o.shell, -- change the default shell
+        shell = vim.o.shell,  -- change the default shell
         -- This field is only relevant if direction is set to 'float'
         float_opts = {
           -- The border key is *almost* the same as 'nvim_open_win'

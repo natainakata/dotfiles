@@ -84,7 +84,7 @@ local spec = {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    enabled = not vim.g.vscode,
+    enabled = is_nvim(),
     dependencies = {
       {
         "nvim-telescope/telescope-file-browser.nvim",
