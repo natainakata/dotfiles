@@ -9,11 +9,11 @@ if wezterm.config_builder then
 end
 
 config.font = wezterm.font_with_fallback({
-  { family = "UDEV Gothic 35NFLG", weight = "Regular", stretch = "Normal", style = "Normal" },
+  { family = "0xProto", weight = "Regular", stretch = "Normal", style = "Normal" },
 })
 config.use_ime = true
-config.font_size = 13.0
-config.command_palette_font_size = 13.0
+config.font_size = 12.0
+config.command_palette_font_size = 12.0
 
 config.initial_cols = 120
 config.initial_rows = 30
