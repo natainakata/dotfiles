@@ -9,7 +9,7 @@ if wezterm.config_builder then
 end
 
 config.font = wezterm.font_with_fallback({
-  { family = "0xProto", weight = "Regular", stretch = "Normal", style = "Normal" },
+  { family = "0xProto Nerd Font", weight = "Regular", stretch = "Normal", style = "Normal" },
 })
 config.use_ime = true
 config.font_size = 12.0
