@@ -8,15 +8,15 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("0xProto")
+config.font = wezterm.font("Moralerspace Krypton")
 
 config.use_ime = true
-config.font_size = 13.0
+config.font_size = 12.0
 config.command_palette_font_size = 13.0
 
 config.initial_cols = 120
 config.initial_rows = 30
-config.color_scheme = "Sonokai (Gogh)"
+config.color_scheme = "One Dark"
 
 config.front_end = "OpenGL"
 config.window_background_opacity = 0.85
