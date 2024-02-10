@@ -12,7 +12,7 @@ config.font = wezterm.font("Moralerspace Krypton")
 
 config.use_ime = true
 config.font_size = 12.0
-config.command_palette_font_size = 13.0
+config.command_palette_font_size = 12.0
 
 config.initial_cols = 120
 config.initial_rows = 30
@@ -21,7 +21,7 @@ config.color_scheme = "OneDark (base16)"
 config.front_end = "OpenGL"
 config.window_background_opacity = 0.85
 config.adjust_window_size_when_changing_font_size = false
-config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "pwsh.exe" } or { "zsh" }
+config.default_prog = wezterm.target_triple == "x86_64-pc-windows-msvc" and { "pwsh.exe" } or { "fish" }
 config.warn_about_missing_glyphs = false
 
 -- config.default_cwd = wezterm.home_dir
