@@ -1,14 +1,20 @@
 local wezterm = require("wezterm")
 
+local color_scheme = "OneDark (base16)"
+local colors = wezterm.color.get_builtin_schemes()[color_scheme]
+
 return {
   animation_fps = 60,
   max_fps = 60,
   initial_cols = 120,
   initial_rows = 30,
   front_end = "OpenGL",
-  colors = "OneDark (base16)",
+  color_scheme = color_scheme,
   background = {
     {
+      source = { Color = colors.background },
+      height = "100%",
+      width = "100%",
       opacity = 0.85,
     },
   },

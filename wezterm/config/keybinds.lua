@@ -33,31 +33,31 @@ local keys = {
   {
     key = "F4",
     mods = "CTRL",
-    action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES", titles = "WorkSpaces" }),
+    action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES", title = "WorkSpaces" }),
   },
 
   -- window
-  { key = "n", mods = mod.SUPER,     action = act.SpawnWindow },
+  { key = "n",   mods = mod.SUPER,     action = act.SpawnWindow },
 
   -- clipboard
-  { key = "v", mods = "CTRL|SHIFT",  action = act.PasteFrom("Clipboard") },
-  { key = "c", mods = "CTRL|SHIFT",  action = act.CopyTo("ClipboardAndPrimarySelection") },
+  { key = "v",   mods = "CTRL|SHIFT",  action = act.PasteFrom("Clipboard") },
+  { key = "c",   mods = "CTRL|SHIFT",  action = act.CopyTo("ClipboardAndPrimarySelection") },
 
   -- tab
-  { key = "t", mods = mod.SUPER,     action = act.SpawnTab("DefaultDomain") },
-  { key = "t", mods = mod.SUPER_REV, action = act.SpawnTab("CurrentPaneDomain") },
-  { key = "w", mods = mod.SUPER,     action = act.CloseCurrentTab({ confirm = false }) },
+  { key = "t",   mods = mod.SUPER,     action = act.SpawnTab("DefaultDomain") },
+  { key = "t",   mods = mod.SUPER_REV, action = act.SpawnTab("CurrentPaneDomain") },
+  { key = "w",   mods = mod.SUPER,     action = act.CloseCurrentTab({ confirm = false }) },
   -- { key = "t",     mods = "LEADER", action = act.ShowTabNavigator },
-  { key = "[", mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
-  { key = "]", mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
+  { key = "[",   mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
+  { key = "]",   mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
   -- pane
-  { key = "|", mods = mod.SUPER,     action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-  { key = "-", mods = mod.SUPER,     action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-  { key = "x", mods = mod.SUPER,     action = act.CloseCurrentPane({ confirm = false }) },
+  { key = [[\]], mods = mod.SUPER,     action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { key = "-",   mods = mod.SUPER,     action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+  { key = "x",   mods = mod.SUPER,     action = act.CloseCurrentPane({ confirm = false }) },
   {
-    key = "p",
+    key = "b",
     mods = mod.SUPER,
-    action = act.PaneSelect({ alphabett = "asdfghjkl", mode = "SwapWithActiveKeepFocus" }),
+    action = act.PaneSelect({ alphabet = "asdfghjkl", mode = "SwapWithActiveKeepFocus" }),
   },
   { key = "h", mods = mod.SUPER, action = act.ActivatePaneDirection("Left") },
   { key = "l", mods = mod.SUPER, action = act.ActivatePaneDirection("Right") },
@@ -116,7 +116,7 @@ local mouse_bindings = {
 
 return {
   disable_default_key_bindings = true,
-  leader = { key = "Space", mods = mod.SUPER_REV, timeout_milliseconds = 1000 },
+  leader = { key = "Space", mods = mod.SUPER_REV, timeout_milliseconds = 2000 },
   keys = keys,
   key_tables = key_tables,
   mouse_bindings = mouse_bindings,

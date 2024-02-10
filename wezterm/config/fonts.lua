@@ -1,4 +1,4 @@
-local wezterm = reqruire("wezterm")
+local wezterm = require("wezterm")
 
 local font = "Moralerspace Krypton"
 local font_size = 12
