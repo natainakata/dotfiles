@@ -16,7 +16,7 @@ config.command_palette_font_size = 13.0
 
 config.initial_cols = 120
 config.initial_rows = 30
-config.color_scheme = "One Dark"
+config.color_scheme = "OneDark (base16)"
 
 config.front_end = "OpenGL"
 config.window_background_opacity = 0.85
