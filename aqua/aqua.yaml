@@ -8,24 +8,24 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.111.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.135.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: cli/cli@v2.40.1
+- name: cli/cli@v2.44.0
 - name: lsd-rs/lsd@v1.0.0
 - name: dbrgn/tealdeer@v1.6.1
 - name: sharkdp/bat@v0.24.0
-- name: x-motemen/ghq@v1.4.2
+- name: x-motemen/ghq@v1.5.0
 - name: jesseduffield/lazygit@v0.40.2
-- name: BurntSushi/ripgrep@14.0.3
+- name: BurntSushi/ripgrep@14.1.0
 - name: sharkdp/fd@v9.0.0
-- name: starship/starship@v1.16.0
-- name: ajeetdsouza/zoxide@v0.9.2
+- name: starship/starship@v1.17.1
+- name: ajeetdsouza/zoxide@v0.9.3
 - name: dandavison/delta@0.16.5
 - name: dylanaraps/neofetch@7.1.0
 - name: jdxcode/rtx@v2023.12.39
-- name: JohnnyMorganz/StyLua@v0.19.1
+- name: JohnnyMorganz/StyLua@v0.20.0
 - name: rossmacarthur/sheldon@0.7.4
 - name: k0kubun/xremap/x11@v0.8.12
 - name: sharkdp/hyperfine@v1.18.0
-- name: junegunn/fzf@0.44.1
-- name: junegunn/fzf/fzf-tmux@0.44.1
+- name: junegunn/fzf@0.46.1
+- name: junegunn/fzf/fzf-tmux@0.46.1
