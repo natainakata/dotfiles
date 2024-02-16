@@ -10,11 +10,11 @@ if platform.is_win then
   options.launch_menu = {
     {
       label = "PowerShell",
-      args = { "pwsh.exe", "-NoLogo" },
+      args = { "pwsh.exe" },
     },
     {
       label = "Builtin PowerShell",
-      args = { "powershell.exe", "-NoLogo" },
+      args = { "powershell.exe" },
     },
   }
   -- for _, domain in ipairs(wezterm.default_wsl_domains()) do
