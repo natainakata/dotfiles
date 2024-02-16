@@ -24,7 +24,7 @@ local spec = {
   },
   {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    event = "VimEnter",
     dependencies = {
       "rcarriga/nvim-notify",
       "MunifTanjim/nui.nvim",

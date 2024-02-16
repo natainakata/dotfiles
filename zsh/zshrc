@@ -1,6 +1,20 @@
 #!/usr/bin/env zsh
 export ZSHRC_DIR=${${(%):-%N}:A:h}
 
+# function source {
+#   ensure_zcompiled $1
+#   builtin source $1
+# }
+#
+# function ensure_zcompiled {
+#   local compiled="$1.zwc"
+#   if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
+#     echo "Compiling $1"
+#     zcompile $1
+#   fi
+# }
+# ensure_zcompiled ~/.zshrc
+
 export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
 export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
@@ -8,8 +22,6 @@ fpath=(
   $ZSHRC_DIR/functions
   $fpath
 )
-
-autoload -Uz compinit && compinit
 
 export SHELDON_CONFIG_DIR="$ZSHRC_DIR/sheldon"
 sheldon_cache="$SHELDON_CONFIG_DIR/sheldon.zsh"
@@ -20,35 +32,5 @@ fi
 source "$sheldon_cache"
 unset sheldon_cache sheldon_toml
 
-starship_config_dir="$ZSHRC_DIR/starship"
-starship_cache="$starship_config_dir/starship.zsh"
-export STARSHIP_CONFIG="$starship_config_dir/starship.toml"
-if [[ ! -r "$starship_cache" || "$STARSHIP_CONFIG" -nt "$starship_cache" ]]; then
-  starship init zsh --print-full-init > $starship_cache
-fi
-# source $starship_cache
-unset starship_cache starship_config_dir
-
 source $ZSHRC_DIR/preinit.zsh
 zsh-defer source $ZSHRC_DIR/postinit.zsh
-
-export __ENABLE_TMUX=
-
-if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ -n "${__ENABLE_TMUX}" ]; then
-  # get the IDs
-  ID="`tmux list-sessions`"
-  if [[ -z "$ID" ]]; then
-    tmux new-session
-  fi
-  create_new_session="Create New Session"
-  ID="$ID\n${create_new_session}:"
-  ID="`echo $ID | fzf | cut -d: -f1`"
-  if [[ "$ID" = "${create_new_session}" ]]; then
-    tmux new-session
-  elif [[ -n "$ID" ]]; then
-    tmux attach-session -t "$ID"
-  else
-    :  # Start terminal normally
-  fi
-fi
-

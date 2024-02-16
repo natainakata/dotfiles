@@ -1,3 +1,12 @@
+starship_config_dir="$ZSHRC_DIR/starship"
+starship_cache="$starship_config_dir/starship.zsh"
+export STARSHIP_CONFIG="$starship_config_dir/starship.toml"
+if [[ ! -r "$starship_cache" || "$STARSHIP_CONFIG" -nt "$starship_cache" ]]; then
+  starship init zsh --print-full-init > $starship_cache
+fi
+source $starship_cache
+unset starship_cache starship_config_dir
+
 # option settings
 HISTSIZE=100000
 SAVEHIST=1000000
@@ -34,24 +43,6 @@ path=(
   $path
 )
 
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
-
-zstyle ':completion:*' format '%B%F{blue}%d%f%b'
-zstyle ':completion:*' group-name ''
-
-zstyle ':completion:*:default' menu select=1
-
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-bindkey '^F' autosuggest-accept
-
-export IGNOREEOF=2
-setopt ignore_eof
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
-
 function bash-ctrl-d() {
   if [[ $CURSOR == 0 && -z $BUFFER ]]
   then
@@ -76,7 +67,7 @@ export FZF_COMPLETION_TRIGGER='@@'
 # HOMEDIR ESCAPE INSERT
 __HOME=$(echo -e $HOME | sed -e "s%/%\\/%g")
 if [[ -n ${TMUX-} ]]; then
-  typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " " 
+  typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " "
   fzf_default_opts=(
     '--height=40%'
     '--reverse'
@@ -96,7 +87,7 @@ if [[ -n ${TMUX-} ]]; then
 else
   __FZF_CMD="fzf"
   __FZF_CMD_OPTS=()
-  typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " " 
+  typeset -Tgx FZF_DEFAULT_OPTS fzf_default_opts " "
   fzf_default_opts=(
     '--height=70%'
     '--reverse'
@@ -190,7 +181,7 @@ function __fzf-git-switch() {
       head -n 1 | \
       perl -pe "s/\s//g; s/\*//g; s/remotes\/origin\///g"
   )
-  
+
   if [ -n "$target_br" ]; then
     local BUFFER="git switch $target_br"
   fi
@@ -247,23 +238,65 @@ function __fzf-tmux() {
 }
 zle -N __fzf-tmux
 
-local __FZF_COMMANDS_LIST=(
-fzf-cdr
-fzf-git-switch
-fzf-history
-fzf-src
-fzf-edit
-fzf-tmux
-fzf-git-add
+#local __FZF_COMMANDS_LIST=(
+#fzf-cdr
+#fzf-git-switch
+#fzf-history
+#fzf-src
+#fzf-edit
+#fzf-tmux
+#fzf-git-add
+#)
+
+local -A __FZF_COMMANDS
+__FZF_COMMANDS=(
+  [c]=fzf-cdr
+  [b]=fzf-git_switch
+  [h]=fzf-history
+  [s]=fzf-src
+  [e]=fzf-edit
+  [t]=fzf-tmux
+  [a]=fzf-git_add
 )
 
-function __fzf-commands() {
-  local COMMAND=$(echo ${__FZF_COMMANDS_LIST} | awk -v 'OFS=\n' '{$1=$1; print $0 }' | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]}  --prompt="Commands → ")
-  zle "__${COMMAND}"
-  zle reset-prompt
+function __fzf-awaken() {
+  local prefix=${LBUFFER[-1]}
+  zle backward-delete-word
+  if [[ -n "$prefix" && -n "${__FZF_COMMANDS[(i)${prefix}]}" ]]; then
+    zle "__${__FZF_COMMANDS[${prefix}]}"
+  fi
+  zle redisplay
 }
-zle -N __fzf-commands
+
+zle -N __fzf-awaken
+
+#function __fzf-commands() {
+#  local COMMAND=$(echo ${__FZF_COMMANDS_LIST} | awk -v 'OFS=\n' '{$1=$1; print $0 }' | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]}  --prompt="Commands → ")
+#  zle "__${COMMAND}"
+#  zle reset-prompt
+#}
+#zle -N __fzf-commands
 
 bindkey '^R' __fzf-history
-bindkey '^H' __fzf-commands
+bindkey '^ ' __fzf-awaken
+bindkey '^O' __fzf-cdr
 
+export __ENABLE_TMUX=
+
+if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ -n "${__ENABLE_TMUX}" ]; then
+  # get the IDs
+  ID="`tmux list-sessions`"
+  if [[ -z "$ID" ]]; then
+    tmux new-session
+  fi
+  create_new_session="Create New Session"
+  ID="$ID\n${create_new_session}:"
+  ID="`echo $ID | fzf | cut -d: -f1`"
+  if [[ "$ID" = "${create_new_session}" ]]; then
+    tmux new-session
+  elif [[ -n "$ID" ]]; then
+    tmux attach-session -t "$ID"
+  else
+    :  # Start terminal normally
+  fi
+fi
