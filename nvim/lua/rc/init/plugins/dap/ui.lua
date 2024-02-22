@@ -38,8 +38,8 @@ M.opts = {
       element = "repl",
     },
     floating = {
-      max_height = nil, -- These can be integers or a float between 0 and 1.
-      max_width = nil, -- Floats will be treated as percentage of your screen.
+      max_height = nil,  -- These can be integers or a float between 0 and 1.
+      max_width = nil,   -- Floats will be treated as percentage of your screen.
       border = "single", -- Border style. Can be "single", "double" or "rounded"
       mappings = {
         close = { "q", "<Esc>" },
@@ -53,17 +53,27 @@ M.opts = {
   },
 }
 
+M.keys = {
+  {
+    "<leader>dd",
+    function()
+      require("dapui").toggle()
+    end,
+    desc = "Toggle UI",
+  },
+}
+
 function M.setup(_, opts)
   local dap, dapui = require("dap"), require("dapui")
   dap.listeners.before.event_initialized["dapui_config"] = function()
     dapui.open()
   end
-  -- dap.listeners.before.event_terminated["dapui_config"] = function()
-  --   dapui.close()
-  -- end
-  -- dap.listeners.before.event_exited["dapui_config"] = function()
-  --   dapui.close()
-  -- end
+  dap.listeners.before.event_terminated["dapui_config"] = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited["dapui_config"] = function()
+    dapui.close()
+  end
   dapui.setup(opts)
 end
 

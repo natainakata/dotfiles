@@ -6,6 +6,7 @@ local spec = {
       {
         "rcarriga/nvim-dap-ui",
         opts = require("rc.init.plugins.dap.ui").opts,
+        keys = require("rc.init.plugins.dap.ui").keys,
         config = require("rc.init.plugins.dap.ui").setup,
       },
       {
@@ -31,6 +32,13 @@ local spec = {
         config = function(_, opts)
           require("mason-nvim-dap").setup(opts)
         end,
+      },
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        opts = {
+          commented = true,
+        },
       },
     },
     keys = require("rc.init.plugins.dap.keymaps").keys,

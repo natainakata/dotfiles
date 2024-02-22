@@ -101,13 +101,7 @@ M.keys = {
     end,
     desc = "Scopes Centerd",
   },
-  {
-    "<leader>dd",
-    function()
-      require("dapui").toggle()
-    end,
-    desc = "Toggle UI",
-  },
+  
 }
 
 return M

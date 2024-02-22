@@ -1,5 +1,5 @@
 local icons = require("rc.utils.icons")
-local utils = require("rc.utils")
+-- local utils = require("rc.utils")
 local spec = {
   {
     "rcarriga/nvim-notify",
@@ -56,14 +56,14 @@ local spec = {
       },
     },
     keys = {
-      {
-        "<C-Enter>",
-        function()
-          require("noice").redirect(vim.fn.getcmdline())
-        end,
-        mode = "c",
-        desc = "Redirect Cmdline",
-      },
+      -- {
+      --   "<C-Enter>",
+      --   function()
+      --     require("noice").redirect(vim.fn.getcmdline())
+      --   end,
+      --   mode = "c",
+      --   desc = "Redirect Cmdline",
+      -- },
       {
         "<leader>nl",
         function()
@@ -314,6 +314,49 @@ local spec = {
           }
         end
       end
+    end,
+  },
+  {
+    "luukvbaal/statuscol.nvim",
+    dependencies = { "lewis6991/gitsigns.nvim" },
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local builtin = require("statuscol.builtin")
+      require("statuscol").setup({
+        bt_ignore = { "terminal", "nofile" },
+        relculright = true,
+        segments = {
+          {
+            sign = {
+              namespace = { "diagnostic" },
+              auto = false,
+              maxwidth = 1,
+            },
+          },
+          {
+            sign = {
+              namespace = { "dap_breakpoints" },
+              auto = true,
+              maxwidth = 1,
+            },
+          },
+          {
+            sign = {
+              namespace = { "gitsigns" },
+              maxwidth = 1,
+              colwidth = 1,
+              auto = false,
+              wrap = true,
+            },
+          },
+          {
+            text = { builtin.lnumfunc },
+          },
+          {
+            text = { "|" },
+          },
+        },
+      })
     end,
   },
   {

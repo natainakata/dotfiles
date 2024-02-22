@@ -38,6 +38,7 @@ opt.cmdheight = 0
 opt.listchars:append("eol:↴")
 opt.showmatch = true
 opt.cursorcolumn = true
+opt.signcolumn = "yes"
 opt.guifont = { "UDEV Gothic 35NFLG:h14:n" }
 opt.mouse = "a"
 opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
