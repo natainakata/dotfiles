@@ -9,7 +9,7 @@ return {
       distribution = "Ubuntu",
       username = "natai",
       default_cwd = "/home/natai",
-      default_prog = { "fish" },
+      default_prog = { "zsh" },
     },
   },
 }

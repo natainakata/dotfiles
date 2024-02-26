@@ -6,7 +6,7 @@ local options = {
 }
 
 if platform.is_win then
-  options.default_prog = { "wsl" }
+  options.default_prog = { "pwsh" }
   options.launch_menu = {
     {
       label = "PowerShell",
@@ -29,7 +29,7 @@ if platform.is_win then
   --   })
   -- end
 elseif platform.is_linux then
-  options.default_prog = { "fish" }
+  options.default_prog = { "zsh" }
   options.launch_menu = {
     { label = "Bash", args = { "bash" } },
     { label = "Fish", args = { "fish" } },
