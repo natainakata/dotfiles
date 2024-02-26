@@ -1,11 +1,11 @@
-starship_config_dir="$ZSHRC_DIR/starship"
-starship_cache="$starship_config_dir/starship.zsh"
-export STARSHIP_CONFIG="$starship_config_dir/starship.toml"
-if [[ ! -r "$starship_cache" || "$STARSHIP_CONFIG" -nt "$starship_cache" ]]; then
-  starship init zsh --print-full-init > $starship_cache
-fi
-source $starship_cache
-unset starship_cache starship_config_dir
+# starship_config_dir="$ZSHRC_DIR/starship"
+# starship_cache="$starship_config_dir/starship.zsh"
+# export STARSHIP_CONFIG="$starship_config_dir/starship.toml"
+# if [[ ! -r "$starship_cache" || "$STARSHIP_CONFIG" -nt "$starship_cache" ]]; then
+#   starship init zsh --print-full-init > $starship_cache
+# fi
+# source $starship_cache
+# unset starship_cache starship_config_dir
 
 # option settings
 HISTSIZE=100000
@@ -269,13 +269,6 @@ function __fzf-awaken() {
 }
 
 zle -N __fzf-awaken
-
-#function __fzf-commands() {
-#  local COMMAND=$(echo ${__FZF_COMMANDS_LIST} | awk -v 'OFS=\n' '{$1=$1; print $0 }' | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]}  --prompt="Commands → ")
-#  zle "__${COMMAND}"
-#  zle reset-prompt
-#}
-#zle -N __fzf-commands
 
 bindkey '^R' __fzf-history
 bindkey '^ ' __fzf-awaken

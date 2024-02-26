@@ -1,19 +1,19 @@
 #!/usr/bin/env zsh
 export ZSHRC_DIR=${${(%):-%N}:A:h}
 
-# function source {
-#   ensure_zcompiled $1
-#   builtin source $1
-# }
-#
-# function ensure_zcompiled {
-#   local compiled="$1.zwc"
-#   if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
-#     echo "Compiling $1"
-#     zcompile $1
-#   fi
-# }
-# ensure_zcompiled ~/.zshrc
+function source {
+  ensure_zcompiled $1
+  builtin source $1
+}
+
+function ensure_zcompiled {
+  local compiled="$1.zwc"
+  if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
+    echo "Compiling $1"
+    zcompile $1
+  fi
+}
+ensure_zcompiled ~/.zshrc
 
 export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
 export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
@@ -34,3 +34,5 @@ unset sheldon_cache sheldon_toml
 
 source $ZSHRC_DIR/preinit.zsh
 zsh-defer source $ZSHRC_DIR/postinit.zsh
+
+zsh-defer unfunction source
