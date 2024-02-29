@@ -48,12 +48,12 @@ if vim.loop.os_uname().sysname == "Linux" then
     vim.g.clipboard = {
       name = "WslClipboard",
       copy = {
-        ["+"] = "win32yank.exe -i",
-        ["*"] = "win32yank.exe -i",
+        ["+"] = "/mnt/c/bin/win32yank.exe -i",
+        ["*"] = "/mnt/c/bin/win32yank.exe -i",
       },
       paste = {
-        ["+"] = "win32yank.exe -o",
-        ["*"] = "win32yank.exe -o",
+        ["+"] = "/mnt/c/bin/win32yank.exe -o",
+        ["*"] = "/mnt/c/bin/win32yank.exe -o",
       },
       cache_enabled = 1,
     }

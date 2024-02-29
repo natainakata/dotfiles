@@ -17,6 +17,8 @@
 !/flake.nix
 !/flake.lock
 !/home.nix
+!/home-manager/
+!/home-manager/**
 
 !/rtx/
 !/rtx/**

@@ -7,11 +7,20 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = inputs: {
     homeConfigurations = {
-      nataiHome = inputs.home-manager.lib.homeManagerConfiguration {
+      "natai" = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import inputs.nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = [ inputs.neovim-nightly-overlay.overlay ];
+        };
+        extraSpecialArgs = {
+         inherit inputs;
+        };
         modules = [
           ./home.nix
         ];

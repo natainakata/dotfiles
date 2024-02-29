@@ -11,7 +11,7 @@
 rtx_config="$XDG_CONFIG_HOME/rtx/config.toml"
 rtx_cache="/tmp/rtx_cache.zsh"
 if [[ ! -r "$rtx_cache" ]]; then
-  rtx activate zsh > $rtx_cache
+  mise activate zsh > $rtx_cache
 fi
 source $rtx_cache
 unset rtx_cache rtx_config
