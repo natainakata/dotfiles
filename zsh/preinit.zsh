@@ -7,6 +7,15 @@
 # source $starship_cache
 # unset starship_cache starship_config_dir
 
+
+rtx_config="$XDG_CONFIG_HOME/rtx/config.toml"
+rtx_cache="/tmp/rtx_cache.zsh"
+if [[ ! -r "$rtx_cache" ]]; then
+  rtx activate zsh > $rtx_cache
+fi
+source $rtx_cache
+unset rtx_cache rtx_config
+
 # option settings
 HISTSIZE=100000
 SAVEHIST=1000000
