@@ -14,6 +14,8 @@
 !.keep
 !/.editorconfig
 
+!/nix/
+!/nix/**
 !/flake.nix
 !/flake.lock
 !/home.nix

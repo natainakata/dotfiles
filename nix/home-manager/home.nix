@@ -2,7 +2,7 @@
   home = rec {
     username = "natai";
     homeDirectory = "/home/${username}";
-    stateVersion = "22.11";
+    stateVersion = "23.11";
   };
 
   programs.home-manager.enable = true;
@@ -22,6 +22,7 @@
     hyperfine
   ];
   imports = [
-    ./home-manager/nvim.nix
+    ./nvim.nix
+    ./git.nix
   ];
 }
