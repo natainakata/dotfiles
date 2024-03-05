@@ -50,6 +50,7 @@ in {
     git
     vivaldi
 #    vivaldi-ffmpeg-codecs
+    wezterm
     libraspberrypi
     raspberrypi-eeprom
   ];
@@ -87,10 +88,11 @@ in {
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
       noto-fonts-emoji
+      udev-gothic-nf
       nerdfonts
     ];
     fontDir.enable = true;

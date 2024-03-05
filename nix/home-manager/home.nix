@@ -24,5 +24,6 @@
   imports = [
     ./nvim.nix
     ./git.nix
+    ./dev.nix
   ];
 }
