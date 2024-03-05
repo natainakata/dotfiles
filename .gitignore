@@ -16,11 +16,6 @@
 
 !/nix/
 !/nix/**
-!/flake.nix
-!/flake.lock
-!/home.nix
-!/home-manager/
-!/home-manager/**
 
 !/rtx/
 !/rtx/**
@@ -31,8 +26,6 @@
 !/starship.toml
 !/zsh/
 !/zsh/**
-!/sheldon/
-!/sheldon/**
 !/nvim/
 !/nvim/**
 !/stylua.toml
