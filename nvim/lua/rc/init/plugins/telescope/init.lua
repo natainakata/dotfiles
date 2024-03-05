@@ -76,8 +76,6 @@ local function telescope_setup(core, actions, sorters, viewers)
       },
     },
   })
-  core.load_extension("file_browser")
-  --   core.load_extension("frecency")
 end
 
 local spec = {
@@ -88,11 +86,16 @@ local spec = {
     dependencies = {
       {
         "nvim-telescope/telescope-file-browser.nvim",
+        config = function()
+          require("telescope").load_extension("file_browser")
+        end,
         keys = keymap.file_browser,
       },
       {
         "nvim-telescope/telescope-frecency.nvim",
-        dependencies = "tami5/sqlite.lua",
+        config = function()
+          require("telescope").load_extension("frecency")
+        end,
         keys = keymap.frecency,
       },
       { "nvim-telescope/telescope-symbols.nvim", keys = keymap.symbols },

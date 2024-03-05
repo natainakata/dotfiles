@@ -91,6 +91,7 @@ local spec = {
       {
         "nvimtools/none-ls.nvim",
         "williamboman/mason.nvim",
+        "nvim-lua/plenary.nvim",
       },
     },
     opts = {
