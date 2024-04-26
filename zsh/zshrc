@@ -35,5 +35,7 @@ unset sheldon_cache sheldon_toml
 
 source $ZSHRC_DIR/preinit.zsh
 zsh-defer source $ZSHRC_DIR/postinit.zsh
+zsh-defer source $ZSHRC_DIR/config/fzf.zsh
+zsh-defer source $ZSHRC_DIR/config/alias.zsh
 
 zsh-defer unfunction source
