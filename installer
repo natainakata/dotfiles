@@ -2,11 +2,47 @@
 
 DOT_DIR="$HOME/.dotfiles"
 
-has() {
+function has() {
   type "$1" > /dev/null 2>&1
 }
 
-shim() {
+# errorレベルのエラーメッセージを出力しつつスクリプトを異常終了させる関数
+function error {
+  echo "[error] $1" >&2
+  exit 1
+}
+
+# infoレベルのエラーメッセージを出力する関数
+function info {
+  echo "[info] $1"
+}
+
+# コマンドを表示しつつ実行する関数
+function invoke {
+  info $@
+  $@ || error "コマンドの実行に失敗しました"
+}
+
+all () {
+  [ $NODOWNLOAD != 1 ] && download
+  shim
+  toolchain
+  exit 0
+}
+
+download() {
+  if [ ! -d ${DOT_DIR} ]; then
+    if has "git"; then
+      git clone https://github.com/natainakata/dotfiles.git ${DOT_DIR}
+    else
+      error "git required"
+    fi
+  else
+    error "dotfiles already exists"
+  fi
+}
+
+function shim() {
   echo "Home Dir shim"
   home_files=(`ls -1 $DOT_DIR/home/`)
   for home_file in "${home_files[@]}"; do
@@ -29,80 +65,41 @@ shim() {
   echo "Done."
 }
 
-toolchain_install() {
+toolchain() {
   echo 'Toolchain install'
   if ! has "nix" ; then
-    echo "Nix install"
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
     echo "Home Manager build"
     cd $DOT_DIR/nix
-    bash -i -c ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix run nixpkgs#home-manager -- switch --flake \".#natai\""
-    echo "Done."
+    curl -fsSL https://raw.https://github.com/natainakata/dotfiles/raw/main/misc/nix-installer | bash -- $DOT_DIR
+    echo "done"
   else
-    cd $DOT_DIR/nix
     echo "Home Manager build"
+    cd $DOT_DIR/nix
     nix run nixpkgs#home-manager -- switch --flake ".#natai"
     echo "Done."
   fi
 }
 
-reinstall_wizerd() {
-  echo "-----------------"
-  echo "Reinstall? (Y/A/n)"
-  read input
-  if [ -z $input ] || [ $input = 'no' ] || [ $input = 'NO' ] || [ $input = 'n' ] ; then
-    echo "quit."
-    exit 1
-  elif [ $input = 'all' ] || [ $input = 'ALL' ] || [ $input = 'a' ] ; then
-    echo "All reinstall process start"
-    cd $DOT_DIR
-    git pull
-    shim
-    toolchain_install
-    echo "Done."
-    exit 0
-  elif [ $input = 'yes' ] || [ $input = 'YES' ] || [ $input = 'y' ] ; then
-    echo "Reinstall wizerd start"
-    cd $DOT_DIR
-    echo "Upstream pull? (Y/n)"
-    read input
-    if [ $input = 'yes' ] || [ $input = 'YES' ] || [ $input = 'y' ]; then
-      git pull
-      echo "Done."
-    fi
-    echo "Reshim? (Y/n)"
-    read input
-    if [ $input = 'yes' ] || [ $input = 'YES' ] || [ $input = 'y' ]; then
-      shim
-      echo "Done."
-    fi
-    echo "toolchain Reinstall? (Y/n)"
-    read input
-    if [ $input = 'yes' ] || [ $input = 'YES' ] || [ $input = 'y' ]; then
-      toolchain_install
-      echo "Done."
-    fi
-    echo "Done reinstall wizerd."
-    exit 0
-  fi
+ARGS=()
+
+while (("$#" > 0 )); do
+  case $1 in
+    -n | --nodownload) NODOWNLOAD=1;;
+    * ) ARGS=("${ARGS[@]}" "$1");;
+  esac
+  shift
+done
+
+[ -z "${ARGS}" ] && all
+
+get_nth () {
+  local n=$1
+  shift
+  eval echo \$${n}
 }
 
-if [ ! -d ${DOT_DIR} ]; then
-  echo "-----------------"
-  echo "Dotfiles Installer"
-  echo "-----------------"
-  echo "Clone dotfiles repo"
-  if has "git"; then
-    git clone https://github.com/natainakata/dotfiles.git ${DOT_DIR}
-  else
-    echo "git required"
-    exit 1
-  fi
-  shim
-  toolchain_install
-  echo "Installed!"
-  exit 0
-else
-  echo "dotfiles already exists"
-  reinstall_wizerd
-fi
+ARG1=$(get_nth 1 "${ARGS[@]}")
+
+invoke $ARG1
+exit 0

@@ -6,6 +6,8 @@
 !/README.md
 !/LICENSE
 !/installer
+!/misc/
+!/misc/**
 !/config/
 !/config/**
 !/home/

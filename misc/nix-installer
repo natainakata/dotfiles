@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $1
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh
+nix run nixpkgs#home-manager -- switch --flake ".#natai"
