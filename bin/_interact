@@ -1,9 +1,0 @@
-#!/bin/bash
-
-cmd=$*
-while true ; do
-  echo -ne "\033[34m[ $cmd ] >> \033[00m"
-  read args
-  line=$cmd" "$args
-  $line
-done

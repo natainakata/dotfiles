@@ -1,7 +1,0 @@
-[tools]
-rust   = "1.73.0"
-nodejs = "21.1.0"
-deno   = "1.38.0"
-python = "3.12.0"
-lua    = "5.4.6"
-java   = "temurin-21.0.1+12.0.LTS"

@@ -1,1 +1,0 @@
-require("rc.init.lazy")

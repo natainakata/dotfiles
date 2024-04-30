@@ -10,7 +10,7 @@ shim() {
   echo "Home Dir shim"
   home_files=(`ls -1 $DOT_DIR/home/`)
   for home_file in "${home_files[@]}"; do
-    ln -snfv "$DOT_DIR/${home_file}" "$HOME/.${home_file}"
+    ln -snfv "$DOT_DIR/home/${home_file}" "$HOME/.${home_file}"
   done
   ln -snfv "$DOT_DIR/home/zsh/zshrc" "$HOME/.zshrc"
   echo "Done."
