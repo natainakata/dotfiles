@@ -23,7 +23,6 @@
 !/bin/**
 !/zshrc
 !/zshenv
-!/starship.toml
 !/zsh/
 !/zsh/**
 !/nvim/
