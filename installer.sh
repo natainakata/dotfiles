@@ -12,6 +12,7 @@ shim() {
   for home_file in "${home_files[@]}"; do
     ln -snfv "$DOT_DIR/${home_file}" "$HOME/.${home_file}"
   done
+  ln -snfv "$DOT_DIR/home/zsh/zshrc" "$HOME/.zshrc"
   echo "Done."
 
   echo "Config dir shim"
@@ -88,7 +89,7 @@ if [ ! -d ${DOT_DIR} ]; then
   echo "-----------------"
   echo "Clone dotfiles repo"
   if has "git"; then
-    git clone --branch test-installer https://github.com/natainakata/dotfiles.git ${DOT_DIR}
+    git clone https://github.com/natainakata/dotfiles.git ${DOT_DIR}
   else
     echo "git required"
     exit 1
