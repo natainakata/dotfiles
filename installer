@@ -71,7 +71,7 @@ toolchain() {
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
     echo "Home Manager build"
     cd $DOT_DIR/nix
-    curl -fsSL https://raw.https://github.com/natainakata/dotfiles/raw/main/misc/nix-installer | bash -- $DOT_DIR
+    curl -fsSL https://raw.https://github.com/natainakata/dotfiles/raw/main/misc/nix-installer | bash -- "$DOT_DIR"
     echo "done"
   else
     echo "Home Manager build"
