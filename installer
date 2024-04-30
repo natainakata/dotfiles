@@ -34,13 +34,16 @@ toolchain_install() {
   if ! has "nix" ; then
     echo "Nix install"
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+    echo "Home Manager build"
+    cd $DOT_DIR/nix
+    bash -i -c ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix run nixpkgs#home-manager -- switch --flake \".#natai\""
+    echo "Done."
+  else
+    cd $DOT_DIR/nix
+    echo "Home Manager build"
+    nix run nixpkgs#home-manager -- switch --flake ".#natai"
     echo "Done."
   fi
-  cd $DOT_DIR/nix
-  echo "Home Manager build"
-  nix run nixpkgs#home-manager -- switch --flake ".#natai"
-  echo "Done."
 }
 
 reinstall_wizerd() {
