@@ -17,6 +17,7 @@
     mise
     neofetch
     sheldon
+    zsh
     fzf
     tmux
     hyperfine

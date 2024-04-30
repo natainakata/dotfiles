@@ -5,7 +5,7 @@
 ### not ignore ###
 !/README.md
 !/LICENSE
-!/installer.sh
+!/installer
 !/config/
 !/config/**
 !/home/
