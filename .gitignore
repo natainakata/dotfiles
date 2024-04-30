@@ -6,6 +6,10 @@
 !/README.md
 !/LICENSE
 !/installer.sh
+!/config/
+!/config/**
+!/home/
+!/home/**
 
 !/gitconfig
 !/.gitignore
@@ -17,8 +21,8 @@
 !/nix/
 !/nix/**
 
-!/rtx/
-!/rtx/**
+!/mise/
+!/mise/**
 !/bin/
 !/bin/**
 !/zshrc
