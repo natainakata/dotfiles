@@ -3,7 +3,5 @@
 ## Install
 
 ```bash
-wget https://github.com/natainakata/dotfiles/raw/main/installer
-chmod +x installer
-./installer
+curl -fsSL https://raw.githubusercontent.com/natainakata/dotfiles/main/installer | sh
 ```
