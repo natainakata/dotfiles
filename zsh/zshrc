@@ -33,6 +33,8 @@ fi
 source "$sheldon_cache"
 unset sheldon_cache sheldon_toml
 
+autoload -Uz compinit && compinit
+
 source $ZSHRC_DIR/preinit.zsh
 zsh-defer source $ZSHRC_DIR/postinit.zsh
 zsh-defer source $ZSHRC_DIR/config/fzf.zsh

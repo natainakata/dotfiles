@@ -16,6 +16,13 @@ fi
 source $rtx_cache
 unset rtx_cache rtx_config
 
+zoxide_cache="/tmp/zoxide_cache.zsh"
+if [[ ! -r "$zoxide_cache" ]]; then
+  zoxide init zsh --hook prompt > $zoxide_cache
+fi
+source $zoxide_cache
+unset zoxide_cache
+
 # option settings
 HISTSIZE=100000
 SAVEHIST=1000000

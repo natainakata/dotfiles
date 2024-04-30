@@ -1,11 +1,3 @@
-zoxide_cache="/tmp/zoxide_cache.zsh"
-if [[ ! -r "$zoxide_cache" ]]; then
-  zoxide init zsh > $zoxide_cache
-fi
-source $zoxide_cache
-unset zoxide_cache
-
-
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 
