@@ -34,6 +34,7 @@ toolchain_install() {
   if ! has "nix" ; then
     echo "Nix install"
     curl -L https://nixos.org/nix/install | sh
+    . ~/.nix-profile/etc/profile.d/nix.sh
     echo "Done."
   fi
   cd $DOT_DIR/nix
