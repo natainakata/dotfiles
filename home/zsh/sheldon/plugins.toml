@@ -21,16 +21,14 @@ fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
-# apply = ['source']
 
 [plugins]
 
-# [plugins.compinit]
-# inline = "autoload -Uz compinit && compinit"
+[plugins.compinit]
+inline = "autoload -Uz compinit && compinit"
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
-use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
 [plugins.zsh-completions]
@@ -53,9 +51,9 @@ apply = ["defer"]
 github = "Aloxaf/fzf-tab"
 apply = ["defer"]
 
-# [plugins.git-prompt]
-# github = "woefe/git-prompt.zsh"
-# apply = ["source"]
+[plugins.git-prompt]
+github = "woefe/git-prompt.zsh"
+apply = ["source"]
 
 [plugins.fzf]
 github = "junegunn/fzf"

@@ -22,8 +22,6 @@ fi
 source $zoxide_cache
 unset zoxide_cache
 
-export __ENABLE_TMUX=
-
 if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ -n "${__ENABLE_TMUX}" ]; then
   # get the IDs
   ID="`tmux list-sessions`"

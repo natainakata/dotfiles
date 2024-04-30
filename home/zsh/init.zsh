@@ -19,22 +19,9 @@ setopt mark_dirs
 setopt no_clobber
 setopt noautoremoveslash
 
-export LANG=ja_JP.UTF-8
-export LESSCHARSET=utf-8
+bindkey -e
 
-export EDITOR=nvim
-export BAT_THEME="OneHalfDark"
-export KEYTIMEOUT=1
-
-path=(
-  ~/.bin
-  ~/bin
-  ~/.local/bin
-  $GOPATH/bin
-  $path
-)
-
-function bash-ctrl-d() {
+function __bash-ctrl-d() {
   if [[ $CURSOR == 0 && -z $BUFFER ]]
   then
     [[ -z $IGNOREEOF || $IGNOREEOF == 0 ]] && exit
@@ -46,7 +33,7 @@ function bash-ctrl-d() {
     fi
   fi
 }
-zle -N bash-ctrl-d
-bindkey "^d" bash-ctrl-d
+zle -N bash-ctrl-d __bash-ctrl-d
+bindkey -M emacs "^d" bash-ctrl-d
 
 

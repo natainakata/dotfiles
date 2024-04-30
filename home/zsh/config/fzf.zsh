@@ -97,7 +97,7 @@ export FZF_CTRL_T_OPTS="--prompt='files → ' --preview '${__FZF_FILE_PREVIEW_CM
 export FZF_CTRL_T_COMMAND="${__FZF_FD_FILES_CMD[*]}"
 
 # FZF FUNCTIONS
-function __fzf-cdr() {
+function __fzf-cdrr() {
   # ~ ESCAPE
   local selected_dir=$(cdr -l | awk '{ print $2 }' | sed -e "s%~%${__HOME}%g" | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e {} | ${__FZF_DIR_PREVIEW_CMD[*]}" --prompt="cdr → " --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
@@ -105,8 +105,7 @@ function __fzf-cdr() {
   fi
   zle reset-prompt
 }
-zle -N __fzf-cdr
-bindkey '^O' __fzf-cdr
+zle -N fzf-cdrr __fzf-cdrr
 
 function __fzf-git_switch() {
   local target_br=$(
@@ -127,7 +126,7 @@ function __fzf-git_switch() {
   fi
   zle reset-prompt
 }
-zle -N __fzf-git_switch
+zle -N fzf-git_switch __fzf-git_switch
 
 function __fzf-git_add() {
   local target_add=$(
@@ -145,13 +144,13 @@ function __fzf-git_add() {
   fi
   zle reset-prompt
 }
-zle -N __fzf-git_add
+zle -N fzf-git_add __fzf-git_add
 
 function __fzf-history() {
   local BUFFER=$(history -n -r 1 | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --prompt="cmd history → " --no-sort --query "$LBUFFER")
   zle reset-prompt
 }
-zle -N __fzf-history
+zle -N fzf-history __fzf-history
 
 function __fzf-src() {
   local src=$(ghq list --full-path | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo {} | ${__FZF_DIR_PREVIEW_CMD[*]}" --prompt="src → " --query "$LBUFFER")
@@ -160,7 +159,7 @@ function __fzf-src() {
   fi
   zle reset-prompt
 }
-zle -N __fzf-src
+zle -N fzf-src __fzf-src
 
 function __fzf-edit() {
 files=$(lsd --almost-all | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e {} | awk '{ print substr(\$1, 2) }' | fzf-preview-check {}" --prompt="edit → " -m --query "$LBUFFER")
@@ -169,7 +168,7 @@ files=$(lsd --almost-all | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} --preview="echo -e 
   fi
   zle reset-prompt
 }
-zle -N __fzf-edit
+zle -N fzf-edit __fzf-edit
 
 function __fzf-tmux() {
   if [ -n "$TMUX" ]; then
@@ -179,12 +178,13 @@ function __fzf-tmux() {
     fi
   fi
 }
-zle -N __fzf-tmux
+zle -N fzf-tmux __fzf-tmux
 
-bindkey '^R' __fzf-history
-bindkey '^ ^S' __fzf-src
-bindkey '^ ^B' __fzf-git_switch
-bindkey '^ ^E' __fzf-edit
-bindkey '^ ^T' __fzf-tmux
-bindkey '^ ^A' __fzf-git_add
-bindkey '^O' __fzf-cdr
+bindkey -r "^ "
+bindkey  "^r" fzf-history
+bindkey  "^ ^s" fzf-src
+bindkey  "^ ^b" fzf-git_switch
+# bindkey -M emacs "" fzf-edit
+bindkey  "^ ^t" fzf-tmux
+bindkey  "^ ^a" fzf-git_add
+bindkey  "^o" fzf-cdrr

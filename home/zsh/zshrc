@@ -29,13 +29,12 @@ for profile in ${(z)NIX_PROFILES}; do
   fpath+=($profile/share/zsh/site-functions $profile/share/zsh/$ZSH_VERSION/functions $profile/share/zsh/vendor-completions)
 done
 
-autoload -Uz compinit && compinit
-
 source $ZSHRC_DIR/preinit.zsh
 source $ZSHRC_DIR/init.zsh
-zsh-defer source $ZSHRC_DIR/postinit.zsh
-zsh-defer source $ZSHRC_DIR/config/fzf.zsh
-zsh-defer source $ZSHRC_DIR/config/alias.zsh
+source $ZSHRC_DIR/config/fzf.zsh
+source $ZSHRC_DIR/config/alias.zsh
+source $ZSHRC_DIR/postinit.zsh
 
+# zsh-defer source $ZSHRC_DIR/postinit.zsh
 
-zsh-defer unfunction source
+unfunction source
