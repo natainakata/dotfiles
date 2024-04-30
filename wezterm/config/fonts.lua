@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 
-local font = "UDEV Gothic 35NFLG"
+local font = "Moralerspace Neon NF"
 local font_size = 14
 
 return {
