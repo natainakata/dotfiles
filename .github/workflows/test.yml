@@ -17,4 +17,4 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Run Install Test
-        run: curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh | bash
+        run: curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer | bash
