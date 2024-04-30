@@ -40,5 +40,9 @@ alias fzc='fzf --preview "bat --style=numbers --color=always --line-range :500 {
 # vim
 alias vidot="vi $HOME/.dotfiles"
 # alias nvde='(){/mnt/c/Users/natai/scoop/shims/neovide.exe --multigrid --wsl $@ &}'
+# vim profile
 alias asvim="NVIM_APPNAME=astronvim nvim"
 alias nvchad="NVIM_APPNAME=nvchad nvim"
+
+# benchmark
+alias zbench="hyperfine -w 5 -r 50 'zsh -i -c exit'"

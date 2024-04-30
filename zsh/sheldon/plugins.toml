@@ -53,9 +53,9 @@ apply = ["defer"]
 github = "Aloxaf/fzf-tab"
 apply = ["defer"]
 
-[plugins.git-prompt]
-github = "woefe/git-prompt.zsh"
-apply = ["source"]
+# [plugins.git-prompt]
+# github = "woefe/git-prompt.zsh"
+# apply = ["source"]
 
 [plugins.fzf]
 github = "junegunn/fzf"

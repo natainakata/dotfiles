@@ -1,14 +1,8 @@
+
+
+
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
-
-# if [[ ! -r $ZSHRC_DIR/functions/_gh ]]; then
-#   gh completion -s zsh > $ZSHRC_DIR/functions/_gh
-# fi
-#
-# if [[ ! -r $ZSHRC_DIR/functions/_mise ]] then
-#   mise completion zsh > $ZSHRC_DIR/functions/_mise
-# fi
-
 
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
