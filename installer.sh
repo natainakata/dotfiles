@@ -100,7 +100,7 @@ if [ ! -d ${DOT_DIR} ]; then
   echo "-----------------"
   echo "Clone dotfiles repo"
   if has "git"; then
-    git clone https://github.com/natainakata/dotfiles.git ${DOT_DIR}
+    git clone --branch test-installer https://github.com/natainakata/dotfiles.git ${DOT_DIR}
   else
     echo "git required"
     exit 1
