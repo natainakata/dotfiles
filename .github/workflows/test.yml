@@ -26,7 +26,7 @@ jobs:
       #     sudo apt install fish -y
 
       - name: Run Install Test
-        run: curl -fsSL https://github.com/natainakata/dotfiles/raw/main/installer.sh | bash
+        run: curl -fsSL https://github.com/natainakata/dotfiles/raw/test-installer/installer.sh | bash
       # - name: Check Install Fish
       #   run: |
       #     fish -i -c exit
