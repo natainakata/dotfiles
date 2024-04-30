@@ -20,6 +20,7 @@
     fzf
     tmux
     hyperfine
+    starship
   ];
   imports = [
     ./nvim.nix
