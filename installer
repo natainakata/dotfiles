@@ -24,7 +24,7 @@ function invoke {
 }
 
 all () {
-  [ $NODOWNLOAD != 1 ] && download
+  [ -z $NODOWNLOAD ] && download
   shim
   toolchain
   exit 0
