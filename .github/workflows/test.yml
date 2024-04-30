@@ -11,34 +11,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v26
-        with:
-          nix_path: nixpkgs=channel:nixos-unstable
-
-      - name: Install zsh
-        run: sudo apt install zsh
-
-      # - name: Install fish
-      #   run: |
-      #     sudo apt-add-repository ppa:fish-shell/release-3 -y
-      #     sudo apt update -y
-      #     sudo apt install fish -y
+      # - name: Install Nix
+      #   uses: cachix/install-nix-action@v26
+      #   with:
+      #     nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Run Install Test
         run: curl -fsSL https://github.com/natainakata/dotfiles/raw/test-installer/installer.sh | bash
-      # - name: Check Install Fish
-      #   run: |
-      #     fish -i -c exit
-      #     export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
-      #     export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-      #     lsd --tree $HOME/.local/share/fisher
-      #     lsd --tree "${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}"
-      #     hyperfine -w 5 -r 50 'fish -i -c exit'
-      - name: Check Install zsh
-        run: |
-          # export AQUA_GLOBAL_CONFIG="$HOME/.config/aqua/aqua.yaml"
-          # export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-
-          zsh -i -c exit
-          hyperfine -w 5 -r 50 'zsh -i -c exit'
