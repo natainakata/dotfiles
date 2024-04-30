@@ -23,12 +23,10 @@ fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 github = "romkatv/zsh-defer"
 # apply = ['source']
 
-
-
 [plugins]
 
-[plugins.compinit]
-inline = "autoload -Uz compinit && zsh-defer compinit"
+# [plugins.compinit]
+# inline = "autoload -Uz compinit && compinit"
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
@@ -62,7 +60,6 @@ apply = ["source"]
 [plugins.fzf]
 github = "junegunn/fzf"
 apply = ['fzf-install', 'fzf-source', 'source']
-
 
 # For example:
 #
