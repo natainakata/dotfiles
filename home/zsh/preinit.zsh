@@ -7,13 +7,13 @@ fi
 source $starship_cache
 unset starship_cache starship_config_dir
 
-rtx_config="$XDG_CONFIG_HOME/rtx/config.toml"
-rtx_cache="/tmp/rtx_cache.zsh"
-if [[ ! -r "$rtx_cache" ]]; then
-  mise activate zsh > $rtx_cache
+mise_config="$XDG_CONFIG_HOME/mise/config.toml"
+mise_cache="/tmp/mise_cache.zsh"
+if [[ ! -r "$mise_cache" || "$mise_config" -nt "$mise_cache" ]]; then
+  mise activate zsh > $mise_cache
 fi
-source $rtx_cache
-unset rtx_cache rtx_config
+source $mise_cache
+unset mise_cache mise_config
 
 zoxide_cache="/tmp/zoxide_cache.zsh"
 if [[ ! -r "$zoxide_cache" ]]; then

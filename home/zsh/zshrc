@@ -33,8 +33,7 @@ source $ZSHRC_DIR/preinit.zsh
 source $ZSHRC_DIR/init.zsh
 source $ZSHRC_DIR/config/fzf.zsh
 source $ZSHRC_DIR/config/alias.zsh
-source $ZSHRC_DIR/postinit.zsh
 
-# zsh-defer source $ZSHRC_DIR/postinit.zsh
+zsh-defer source $ZSHRC_DIR/postinit.zsh
 
-unfunction source
+zsh-defer unfunction source
