@@ -6,9 +6,9 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     enabled = is_nvim(),
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
-    -- keys = {
-    --   { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
-    -- },
+    keys = {
+      { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
+    },
     opts = {
       disable_netrw = false,
       hijack_netrw = false,
@@ -34,21 +34,9 @@ return {
     },
     config = function(_, opts)
       require("nvim-tree").setup(opts)
-      vim.api.nvim_create_autocmd("BufEnter", {
-        group = vim.api.nvim_create_augroup("NvimTreeClose", { clear = true }),
-        pattern = "NvimTree_*",
+      vim.api.nvim_create_autocmd({ "QuitPre" }, {
         callback = function()
-          local layout = vim.api.nvim_call_function("winlayout", {})
-          if
-              layout[1] == "leaf"
-              and vim.api.nvim_get_option_value(
-                "filetype",
-                { "local", vim.api.nvim_get_current_win(), vim.api.nvim_win_get_buf(layout[2]) }
-              ) == "NvimTree"
-              and layout[3] == nil
-          then
-            vim.cmd("confirm quit")
-          end
+          vim.cmd("NvimTreeClose")
         end,
       })
     end,
@@ -59,7 +47,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
     cmd = { "Oil" },
-    keys = { { "<Leader>e", "<Cmd>Oil<CR>", desc = "Open Oil" } },
+    keys = { { "<Leader>O", "<Cmd>Oil<CR>", desc = "Open Oil" } },
     config = true,
   },
   {
@@ -163,17 +151,5 @@ return {
     config = function(_, opts)
       vim.g.quickrun_config = opts
     end,
-  },
-
-  {
-    "pocco81/auto-save.nvim",
-    enabled = is_nvim(),
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      enabled = true,
-      trigger_events = {
-        "BufLeave",
-      },
-    },
   },
 }
