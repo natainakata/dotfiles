@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-export ZSHRC_DIR=${${(%):-%N}:A:h}
 
 function source {
   ensure_zcompiled $1
@@ -24,10 +23,6 @@ if [[ ! -r "$sheldon_cache" || "$sheldon_toml" -nt "$sheldon_cache" ]]; then
 fi
 source "$sheldon_cache"
 unset sheldon_cache sheldon_toml
-
-for profile in ${(z)NIX_PROFILES}; do
-  fpath+=($profile/share/zsh/site-functions $profile/share/zsh/$ZSH_VERSION/functions $profile/share/zsh/vendor-completions)
-done
 
 source $ZSHRC_DIR/preinit.zsh
 source $ZSHRC_DIR/init.zsh
