@@ -135,7 +135,7 @@ local spec = {
       local dashboard = require("alpha.themes.dashboard")
       dashboard.section.buttons.val = {
         dashboard.button("n", icons.kinds.File .. " New File", "<Cmd>ene<CR>"),
-        dashboard.button("e", icons.kinds.Folder .. " Browze Directory", "<Cmd>NvimTreeOpen<CR>"),
+        dashboard.button("e", icons.kinds.Folder .. " Browze Directory", "<Cmd>Oil<CR>"),
         dashboard.button("f", icons.other.search .. " Find File", "<Cmd>Telescope find_files<CR>"),
         dashboard.button("q", icons.other.exit .. " Quit NVIM", "<cmd>qa<CR>"),
       }
