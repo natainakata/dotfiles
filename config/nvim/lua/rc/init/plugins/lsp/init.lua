@@ -96,7 +96,7 @@ local spec = {
     },
     opts = {
       ensure_installed = {
-        "prettierd",
+        "prettier",
         "stylua",
         "clang_format",
         "black",
@@ -118,7 +118,7 @@ local spec = {
             m.builtins.formatting.black.with({
               filetypes = { "python" },
             }),
-            m.builtins.formatting.prettierd.with({
+            m.builtins.formatting.prettier.with({
               filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "css", "html", "yaml" },
             }),
           },

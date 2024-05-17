@@ -18,7 +18,7 @@ local spec = {
         disable = {},
       },
       indent = {
-        enable = true,
+        enable = false,
         disable = { "scheme", "clojure", "python" },
       },
       ensure_installed = {
