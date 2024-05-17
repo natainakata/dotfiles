@@ -15,7 +15,7 @@
     tealdeer
     zoxide
     mise
-    neofetch
+    fastfetch
     sheldon
     zsh
     fzf
