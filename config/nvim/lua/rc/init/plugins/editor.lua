@@ -138,4 +138,10 @@ return {
       vim.g.quickrun_config = opts
     end,
   },
+  {
+    'Allianaab2m/vimskey',
+    dependencies = "vim-denops/denops.vim",
+    lazy = false,
+  }
+
 }

@@ -14,11 +14,6 @@ path+=(
   $GOPATH/bin
 )
 
-fpath+=($ZSHRC_DIR/functions)
-
-for profile in ${(z)NIX_PROFILES}; do
-  fpath+=($profile/share/zsh/site-functions $profile/share/zsh/$ZSH_VERSION/functions $profile/share/zsh/vendor-completions)
-done
-
+fpath=($ZSHRC_DIR/functions $fpath)
 
 export __ENABLE_TMUX=
