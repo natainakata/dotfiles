@@ -39,7 +39,19 @@ local spec = {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
-          { name = "buffer" },
+          {
+            name = "buffer",
+            keyword_length = 3,
+            max_item_count = 3,
+
+            -- ここから
+            -- 開いているすべてのバッファーを対象とする
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+            },
+          },
           { name = "treesitter" },
           { name = "path" },
           { name = "luasnip" },
@@ -317,8 +329,8 @@ local spec = {
         sexp_emit_tail_element = "<)",
         sexp_capture_prev_element = "<(",
         sexp_capture_next_element = ">)",
-      }
-    }
+      },
+    },
   },
 }
 
