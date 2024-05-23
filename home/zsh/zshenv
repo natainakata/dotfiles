@@ -14,6 +14,5 @@ path+=(
   $GOPATH/bin
 )
 
-fpath=($ZSHRC_DIR/functions $fpath)
 
 export __ENABLE_TMUX=
