@@ -38,29 +38,30 @@ local spec = {
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "nvim_lua" },
-          {
-            name = "buffer",
-            keyword_length = 3,
-            max_item_count = 3,
-
-            -- ここから
-            -- 開いているすべてのバッファーを対象とする
-            option = {
-              get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
-              end,
-            },
-          },
+          { name = "buffer" },
           { name = "treesitter" },
           { name = "path" },
           { name = "luasnip" },
-          { name = "emoji" },
           { name = "skkeleton" },
+          { name = "emoji" },
         }),
         mapping = cmp.mapping.preset.insert({
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+            if cmp.visible() then
+              local entry = cmp.get_selected_entry()
+              if not entry then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+              end
+              cmp.confirm()
+            else
+              fallback()
+            end
+          end, { "i", "s", "c" }),
+          -- ["<C-p>"] = cmp.mapping.select_prev_item(),
+          -- ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-Space>"] = cmp.mapping.complete({}),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -77,10 +78,10 @@ local spec = {
             item.menu = ({
               buffer = "[Buffer]",
               nvim_lsp = "[LSP]",
-              nvim_lua = "[Lua]",
+              nvim_lua = "[NVIM]",
               luasnip = "[Snip]",
               path = "[Path]",
-              treesitter = "[Treesitter]",
+              treesitter = "[TS]",
               emoji = "[🤔]",
               skkeleton = "[SKK]",
               cmdline = "[CMD]",
@@ -103,10 +104,46 @@ local spec = {
         sources = cmp.config.sources({
           { name = "path" },
         }, {
-          { name = "cmdline", keyword_length = 2 },
+          { name = "cmdline",  keyword_length = 2 },
+          { name = "skkeleton" },
         }),
       }
       cmp.setup.cmdline(":", cmdline_options)
+      cmp.setup.filetype("lua", {
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "nvim_lua" },
+          { name = "luasnip" },
+          { name = "treesiter" },
+          { name = "buffer" },
+          { name = "path" },
+          { name = "skkeleton" },
+          { name = "emoji" },
+        }),
+      })
+      cmp.setup.filetype({ "html", "css" }, {
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          {
+            name = "buffer",
+            keyword_length = 3,
+            max_item_count = 3,
+
+            -- ここから
+            -- 開いているすべてのバッファーを対象とする
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+            },
+          },
+          { name = "luasnip" },
+          { name = "treesitter" },
+          { name = "path" },
+          { name = "skkeleton" },
+          { name = "emoji" },
+        }),
+      })
       cmp.event:on("menu_opened", function()
         vim.b.copilot_suggestion_hidden = true
       end)
