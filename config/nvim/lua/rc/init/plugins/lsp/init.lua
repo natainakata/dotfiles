@@ -69,6 +69,9 @@ local spec = {
         ["denols"] = function()
           setup(lspconfig["denols"], settings.denols)
         end,
+        ["tsserver"] = function()
+          setup(lspconfig["tsserver"], settings.tsserver)
+        end,
         ["groovyls"] = function()
           setup(lspconfig["groovyls"], settings.groovyls)
         end,

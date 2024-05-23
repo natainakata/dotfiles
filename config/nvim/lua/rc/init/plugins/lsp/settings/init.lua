@@ -5,4 +5,5 @@ return {
   groovyls = require("rc.init.plugins.lsp.settings.groovy"),
   kotlin_language_server = require("rc.init.plugins.lsp.settings.kotlin"),
   fennel_language_server = require("rc.init.plugins.lsp.settings.fennel"),
+  tsserver = require("rc.init.plugins.lsp.settings.typescript"),
 }
