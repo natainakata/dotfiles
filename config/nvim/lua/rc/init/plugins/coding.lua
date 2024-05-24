@@ -220,7 +220,7 @@ local spec = {
   },
   {
     "zbirenbaum/copilot.lua",
-    enabled = is_nvim(),
+    enabled = false,
     event = "InsertEnter",
     cmd = "Copilot",
     keys = {

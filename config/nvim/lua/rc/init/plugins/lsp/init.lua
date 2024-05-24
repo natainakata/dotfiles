@@ -24,6 +24,8 @@ local spec = {
         "denols",
         "pyright",
         "tsserver",
+        "cssls",
+        "css_variables",
         "kotlin_language_server",
       },
       automatic_installation = true,
@@ -112,25 +114,15 @@ local spec = {
       utils.ensure("null-ls", function(m)
         m.setup({
           sources = {
-            m.builtins.formatting.stylua.with({
-              filetypes = { "lua" },
-            }),
-            m.builtins.formatting.clang_format.with({
-              filetypes = { "c", "cpp" },
-            }),
-            m.builtins.formatting.black.with({
-              filetypes = { "python" },
-            }),
-            m.builtins.formatting.prettier.with({
-              filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "css", "html", "yaml" },
-            }),
+            m.builtins.formatting.stylua,
+            m.builtins.formatting.clang_format,
+            m.builtins.formatting.black,
+            m.builtins.formatting.prettier,
           },
           on_attach = function(client, bufnr)
-            if client.supports_method("textDocument/formatting") then
-              utils.autocmd("lsp_formatting", "BufWritePre", nil, function()
-                vim.lsp.buf.format()
-              end, { buffer = bufnr })
-            end
+            utils.autocmd("lsp_formatting", { "BufWritePre" }, nil, function()
+              vim.lsp.buf.format()
+            end, { buffer = bufnr })
           end,
         })
       end)
