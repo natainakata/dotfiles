@@ -50,7 +50,6 @@ local spec = {
     end,
     opts = require("rc.init.plugins.lsp.opts"),
     config = function(_, opts)
-      vim.lsp.set_log_level("debug")
       local lspconfig = require("lspconfig")
       local settings = require("rc.init.plugins.lsp.settings")
       local function setup(client, server_opts)

@@ -2,6 +2,7 @@
 
   home.packages = with pkgs; [
     ghq
+    lazygit
   ];
   programs.git = {
     enable = true;
