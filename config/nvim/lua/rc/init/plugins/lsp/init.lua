@@ -5,6 +5,7 @@ local spec = {
   {
     "williamboman/mason-lspconfig.nvim",
     enabled = is_nvim(),
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
       cmd = { "Mason", "MasonInstall", "MasonUnInstall", "MasonUnInstallAll" },
@@ -91,6 +92,7 @@ local spec = {
   {
     "jay-babu/mason-null-ls.nvim",
     enabled = is_nvim(),
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       {
         "nvimtools/none-ls.nvim",
