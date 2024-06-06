@@ -121,7 +121,7 @@ local spec = {
           { name = "emoji" },
         }),
       })
-      cmp.setup.filetype({ "html", "css" }, {
+      cmp.setup.filetype({ "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" }, {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           {
