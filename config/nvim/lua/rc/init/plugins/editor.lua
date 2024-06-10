@@ -139,9 +139,8 @@ return {
     end,
   },
   {
-    'Allianaab2m/vimskey',
+    "Allianaab2m/vimskey",
     dependencies = "vim-denops/denops.vim",
     lazy = false,
-  }
-
+  },
 }
