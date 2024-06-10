@@ -34,7 +34,7 @@
   "mini.indentscope": { "branch": "main", "commit": "f0d7faa064c892b96997810afcddfadc3f2a15b3" },
   "mini.jump": { "branch": "main", "commit": "5c656080cc0be1d60c4b7b6e0d4b1ab7ed2d902b" },
   "neodev.nvim": { "branch": "main", "commit": "02893eeb9d6e8503817bd52385e111cba9a90500" },
-  "nfnl": { "branch": "main", "commit": "7614d666eaea1674dc96184e0e3c1a8bc2c4a3b2" },
+  "neovimdoc-ja": { "branch": "main", "commit": "fb25ba13dc7f9752ed1da4d07727da9da85f448f" },
   "nightfox.nvim": { "branch": "main", "commit": "df75a6a94910ae47854341d6b5a6fd483192c0eb" },
   "noice.nvim": { "branch": "main", "commit": "e5cb20c6e14305d24025ecb77d7d4dd9d61f1a64" },
   "none-ls.nvim": { "branch": "main", "commit": "8691504118b252d64fc5023a104aedd100ab754a" },
