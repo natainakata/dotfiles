@@ -1,6 +1,5 @@
 return {
   { "folke/lazy.nvim",            version = "*" },
-  { "willelz/neovimdoc-ja" },
   { "nvim-neotest/nvim-nio" },
   { "vim-denops/denops.vim" },
   { "nvim-lua/plenary.nvim" },
