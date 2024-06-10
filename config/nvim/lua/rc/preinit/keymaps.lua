@@ -3,8 +3,9 @@ local nmap = utils.nmap
 local imap = utils.imap
 local xmap = utils.xmap
 local tmap = utils.tmap
+local keymap = vim.keymap
 
-vim.keymap.set("", "<Space>", "<Nop>")
+keymap.set("", "<Space>", "<Nop>")
 local opts = { silent = true }
 
 -- general keymap
@@ -16,8 +17,16 @@ nmap("U", "<C-r>")
 imap("jj", "<Esc>")
 nmap("<Esc><Esc>", ":nohlsearch<CR>")
 nmap("<Leader>q", "<Cmd>qa<cr>")
-vim.keymap.set({ "n", "x" }, "x", [["_x]], { desc = "x with blackhole register" })
-vim.keymap.set({ "n", "x" }, "X", [["_X]], { desc = "X with blackhole register" })
+for _, key in ipairs({"x", "X"}) do
+  keymap.set({"n", "x"}, key, [["_]] .. key, { desc = key .. " with blackhole register" })
+end
+-- keymap.set({ "n", "x" }, "x", [["_x]], { desc = "x with blackhole register" })
+-- keymap.set({ "n", "x" }, "X", [["_X]], { desc = "X with blackhole register" })
+
+-- text objects
+for _, quote in ipairs({ '"', "'", "`" }) do
+  keymap.set({ "x", "o" }, "a" .. quote, "2i" .. quote)
+end
 
 -- window and buffer
 nmap("<S-Tab>", "<Cmd>bprevious<CR>")
@@ -32,10 +41,14 @@ nmap("<Leader><Tab>h", "<Cmd>tabprevious<CR>", opts)
 nmap("<Leader><Tab>l", "<Cmd>tabnext<CR>", opts)
 nmap("<Leader><Tab>q", "<Cmd>tabclose<CR>", opts)
 
-nmap("<C-h>", "<Cmd>wincmd h<CR>", { remap = true })
-nmap("<C-j>", "<Cmd>wincmd j<CR>", { remap = true })
-nmap("<C-k>", "<Cmd>wincmd k<CR>", { remap = true })
-nmap("<C-l>", "<Cmd>wincmd l<CR>", { remap = true })
+for _, direction in ipairs({ "h", "j", "k", "l" }) do
+  nmap("<C-" .. direction .. ">", "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
+end
+
+-- nmap("<C-h>", "<Cmd>wincmd h<CR>", { remap = true })
+-- nmap("<C-j>", "<Cmd>wincmd j<CR>", { remap = true })
+-- nmap("<C-k>", "<Cmd>wincmd k<CR>", { remap = true })
+-- nmap("<C-l>", "<Cmd>wincmd l<CR>", { remap = true })
 nmap("<C-Up>", "<Cmd>resize +2<CR>", { remap = true })
 nmap("<C-Down>", "<Cmd>resize -2<CR>", { remap = true })
 nmap("<C-Left>", "<Cmd>vertical resize -2<CR>", { remap = true })
@@ -65,4 +78,3 @@ tmap("<Esc><Esc>", "<C-\\><C-n>")
 
 -- lazy
 nmap("<Leader>lz", "<Cmd>Lazy<CR>")
-
