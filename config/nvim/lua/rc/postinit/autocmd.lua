@@ -46,3 +46,9 @@ autocmd("luasnip_history", "ModeChanged", "*", function()
     require("luasnip").unlink_current()
   end
 end)
+
+autocmd("use_easy_regname", "TextYankPost", nil, function()
+  if vim.v.event.regname == "" then
+    vim.fn.setreg(vim.v.event.oparator, vim.fn.getreg())
+  end
+end)
