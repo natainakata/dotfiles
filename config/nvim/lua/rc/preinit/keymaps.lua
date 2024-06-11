@@ -16,9 +16,11 @@ nmap("gk", "k")
 nmap("U", "<C-r>")
 imap("jj", "<Esc>")
 nmap("<Esc><Esc>", ":nohlsearch<CR>")
-nmap("<Leader>q", "<Cmd>qa<cr>")
-for _, key in ipairs({"x", "X"}) do
-  keymap.set({"n", "x"}, key, [["_]] .. key, { desc = key .. " with blackhole register" })
+nmap("<Leader>q", "<Cmd>qa<CR>")
+
+-- register
+for _, key in ipairs({ "x", "X" }) do
+  keymap.set({ "n", "x" }, key, [["_]] .. key, { desc = key .. " with blackhole register" })
 end
 -- keymap.set({ "n", "x" }, "x", [["_x]], { desc = "x with blackhole register" })
 -- keymap.set({ "n", "x" }, "X", [["_X]], { desc = "X with blackhole register" })
@@ -33,26 +35,32 @@ nmap("<S-Tab>", "<Cmd>bprevious<CR>")
 nmap("<Tab>", "<Cmd>bnext<CR>")
 nmap("<S-h>", "<Cmd>bprevious<CR>")
 nmap("<S-l>", "<Cmd>bnext<CR>")
-nmap("gs", "<Cmd>split<CR><C-w>w", opts)
-nmap("gv", "<Cmd>vsplit<CR><C-w>w", opts)
 
-nmap("<Leader><Tab><Tab>", "<Cmd>tabnew<CR>", opts)
-nmap("<Leader><Tab>h", "<Cmd>tabprevious<CR>", opts)
-nmap("<Leader><Tab>l", "<Cmd>tabnext<CR>", opts)
-nmap("<Leader><Tab>q", "<Cmd>tabclose<CR>", opts)
+-- prefix s
+nmap("s", "<Nop>", { remap = true })
 
+-- quit
+nmap("sq", "<Cmd>q<CR>")
+
+-- window
+nmap("ss", "<Cmd>split<CR><C-w>w", opts)
+nmap("sv", "<Cmd>vsplit<CR><C-w>w", opts)
 for _, direction in ipairs({ "h", "j", "k", "l" }) do
   nmap("<C-" .. direction .. ">", "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
+  nmap("s" .. direction, "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
 end
-
--- nmap("<C-h>", "<Cmd>wincmd h<CR>", { remap = true })
--- nmap("<C-j>", "<Cmd>wincmd j<CR>", { remap = true })
--- nmap("<C-k>", "<Cmd>wincmd k<CR>", { remap = true })
--- nmap("<C-l>", "<Cmd>wincmd l<CR>", { remap = true })
 nmap("<C-Up>", "<Cmd>resize +2<CR>", { remap = true })
 nmap("<C-Down>", "<Cmd>resize -2<CR>", { remap = true })
 nmap("<C-Left>", "<Cmd>vertical resize -2<CR>", { remap = true })
 nmap("<C-Right>", "<Cmd>vertical resize +2<CR>", { remap = true })
+
+-- buffer and tab
+nmap("st", "<Cmd>tabnew<CR>")
+nmap("sw", "<Cmd>tabclose<CR>")
+nmap("sp", "<Cmd>bprevious<CR>")
+nmap("sn", "<Cmd>bnext<CR>")
+nmap("sP", "<Cmd>tabprevious<CR>")
+nmap("sN", "<Cmd>tabnext<CR>")
 
 -- kill buffer
 vim.api.nvim_create_user_command("BufferDeleteSafety", function()
