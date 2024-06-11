@@ -74,6 +74,7 @@
   "telescope.nvim": { "branch": "master", "commit": "f12b15e1b3a33524eb06a1ae7bc852fb1fd92197" },
   "toggleterm.nvim": { "branch": "main", "commit": "fee58a0473fd92b28c34f8f724e4918b15ba30a3" },
   "tokyonight.nvim": { "branch": "main", "commit": "719713b0515c56fcb66ed2c1acd385d3e1de7895" },
+  "tree-sitter-unifieddiff": { "branch": "master", "commit": "d4556131c279d73961943a2ebf878198ab7976a6" },
   "trouble.nvim": { "branch": "main", "commit": "57b50a6dc129f3a82c3bdd9f81b9f2d4e770ac09" },
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vim-matchup": { "branch": "master", "commit": "1535a769d5dca851fe7d41b0be95f7c7203a4bef" },

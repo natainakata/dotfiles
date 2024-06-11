@@ -86,3 +86,4 @@ tmap("<Esc><Esc>", "<C-\\><C-n>")
 
 -- lazy
 nmap("<Leader>lz", "<Cmd>Lazy<CR>")
+

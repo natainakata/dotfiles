@@ -13,7 +13,7 @@ return {
       on_attach = function(bufnr)
         local api = require("nvim-tree.api")
         local function opts(desc)
-          return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
         api.config.mappings.default_on_attach(bufnr)
         vim.keymap.del("n", "s", { buffer = bufnr })
@@ -123,6 +123,33 @@ return {
     enabled = is_nvim(),
     dependencies = "vim-denops/denops.vim",
     lazy = false,
+    keys = {
+      -- git prefix <Leader>g
+      {
+        "<Leader>gd",
+        function()
+          vim.cmd([[GinDiff ++processor=delta\ --no-gitconfig\ --color-only]])
+        end,
+        desc = "Git Diff",
+        silent = true,
+      },
+      {
+        "<Leader>gc",
+        function()
+          vim.cmd([[Gin commit]])
+        end,
+        desc = "Git Commit",
+        silent = true,
+      },
+      {
+        "<Leader>gl",
+        function()
+          vim.cmd([[GinLog]])
+        end,
+        desc = "Git Commit Log",
+        silent = true,
+      },
+    },
   },
   {
     "thinca/vim-quickrun",

@@ -63,25 +63,18 @@ M.core = {
     desc = "Recent Files",
   },
   {
-    "<C-g>s",
+    "<Leader>gs",
     function()
       require("telescope.builtin").git_status()
     end,
     desc = "Git Status",
   },
   {
-    "<C-g>b",
+    "<Leader>gb",
     function()
       require("telescope.builtin").git_branches()
     end,
     desc = "Git Branches",
-  },
-  {
-    "<C-g>C",
-    function()
-      require("telescope.builtin").git_commits()
-    end,
-    desc = "Git Commits",
   },
 }
 M.file_browser = {
