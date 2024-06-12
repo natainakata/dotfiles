@@ -74,6 +74,24 @@ local spec = {
         ["tsserver"] = function()
           setup(lspconfig["tsserver"], settings.tsserver)
         end,
+        ["emmet_ls"] = function()
+          setup(lspconfig["emmet_ls"], {
+            filetypes = {
+              "css",
+              "eruby",
+              "html",
+              "javascript",
+              "javascriptreact",
+              "less",
+              "sass",
+              "scss",
+              "svelte",
+              "pug",
+              "typescriptreact",
+              "vue",
+            },
+          })
+        end,
         ["groovyls"] = function()
           setup(lspconfig["groovyls"], settings.groovyls)
         end,

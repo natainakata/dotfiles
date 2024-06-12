@@ -369,6 +369,10 @@ local spec = {
       },
     },
   },
+  {
+    "Shougo/context_filetype.vim",
+    event = { "BufReadPre", "BufNewFile" },
+  },
 }
 
 return spec
