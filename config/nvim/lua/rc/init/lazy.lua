@@ -48,6 +48,6 @@ utils.ensure("lazy", function(m)
   m.setup({
     { import = "rc.init.plugins" },
   }, opts)
-  m.load({ plugins = "kanagawa.nvim" })
+  m.load({ plugins = "sonokai" })
   vim.keymap.set("n", "<Plug>(lazy-menu)", "<Cmd>Lazy<CR>")
 end)

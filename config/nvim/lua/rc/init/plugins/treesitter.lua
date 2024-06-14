@@ -12,6 +12,7 @@ local spec = {
       "RRethy/nvim-treesitter-endwise",
       "andymass/vim-matchup",
       "monaqa/tree-sitter-unifieddiff",
+      "nvim-treesitter/playground",
     },
     opts = {
       highlight = {
