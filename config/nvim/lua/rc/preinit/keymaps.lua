@@ -79,11 +79,10 @@ nmap("<Leader>D", ":BufferDeleteSafety<CR>")
 nmap("Z", ":set foldmethod=indent<CR>")
 
 -- terminal
-nmap("<Leader>t", "<Cmd>terminal<CR>")
-nmap("<Leader>T", "<Cmd>belowright new<CR><Cmd>terminal<CR>")
+-- nmap("<Leader>t", "<Cmd>terminal<CR>")
+-- nmap("<Leader>T", "<Cmd>belowright new<CR><Cmd>terminal<CR>")
 tmap("JJ", "<C-\\><C-n>")
 tmap("<Esc><Esc>", "<C-\\><C-n>")
 
 -- lazy
 nmap("<Leader>lz", "<Cmd>Lazy<CR>")
-

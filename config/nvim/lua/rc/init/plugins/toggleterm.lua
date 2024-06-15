@@ -5,8 +5,7 @@ local spec = {
     enabled = is_nvim(),
     keys = {
       { "<Leader>G", "<Cmd>exe v:count1 . 'lua _G.lazygit_toggle()'<CR>", desc = "lazygit" },
-      { "<C-t>",     [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]],            mode = "n",      desc = "Terminal" },
-      { "<C-t>",     [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]],       mode = "i",      desc = "Terminal" },
+      { "<Leader>t", [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]],            mode = "n",      desc = "Terminal" },
     },
     config = function()
       local toggleterm = require("toggleterm")
