@@ -300,20 +300,20 @@ local spec = {
     "gbprod/substitute.nvim",
     keys = {
       {
-        "s",
+        "m",
         function()
           require("substitute").operator()
         end,
       },
       {
-        "ss",
+        "mm",
         function()
           require("substitute").line()
         end,
         desc = "Lines",
       },
       {
-        "S",
+        "M",
         function()
           require("substitute").eol()
         end,
@@ -321,7 +321,7 @@ local spec = {
       },
 
       {
-        "s",
+        "m",
         function()
           require("substitute").visual()
         end,

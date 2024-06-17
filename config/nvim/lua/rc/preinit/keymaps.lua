@@ -5,7 +5,6 @@ local xmap = utils.xmap
 local tmap = utils.tmap
 local keymap = vim.keymap
 
-
 -- general keymap
 nmap("j", "gj")
 nmap("gj", "j")
@@ -28,38 +27,38 @@ end
 
 -- window control
 -- prefix
-nmap("m", "<Nop>")
+nmap("s", "<Nop>")
 
 -- quit
-nmap("mq", "<Cmd>q<CR>")
+nmap("sq", "<Cmd>q<CR>")
 
 -- buffer
 nmap("<S-Tab>", "<Cmd>bprevious<CR>")
 nmap("<Tab>", "<Cmd>bnext<CR>")
 nmap("<S-h>", "<Cmd>bprevious<CR>")
 nmap("<S-l>", "<Cmd>bnext<CR>")
-nmap("m[", "<Cmd>bprevious<CR>")
--- nmap("mp", "<Cmd>bprevious<CR>")
-nmap("m]", "<Cmd>bnext<CR>")
--- nmap("mn", "<Cmd>bnext<CR>")
+nmap("s[", "<Cmd>bprevious<CR>")
+nmap("s]", "<Cmd>bnext<CR>")
 
 -- window
-nmap("ms", "<Cmd>split<CR><C-w>w")
-nmap("mv", "<Cmd>vsplit<CR><C-w>w")
-for _, direction in ipairs({ "h", "j", "k", "l" }) do
-  nmap("<C-" .. direction .. ">", "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
-  nmap("m" .. direction, "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
+nmap("ss", "<Cmd>split<CR><C-w>w")
+nmap("sv", "<Cmd>vsplit<CR><C-w>w")
+for key, direction in pairs({ ["h"] = ">", ["j"] = "+", ["k"] = "+", ["l"] = ">" }) do
+  -- nmap("<C-" .. direction .. ">", "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
+  nmap("s" .. key, "<Cmd>wincmd " .. key .. "<CR>", { remap = true })
+  nmap("<C-" .. key .. ">", "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
 end
-nmap("<C-Up>", "<Cmd>resize +2<CR>", { remap = true })
-nmap("<C-Down>", "<Cmd>resize -2<CR>", { remap = true })
-nmap("<C-Left>", "<Cmd>vertical resize -2<CR>", { remap = true })
-nmap("<C-Right>", "<Cmd>vertical resize +2<CR>", { remap = true })
+
+-- nmap("<C-Up>", "<Cmd>resize +2<CR>", { remap = true })
+-- nmap("<C-Down>", "<Cmd>resize -2<CR>", { remap = true })
+-- nmap("<C-Left>", "<Cmd>vertical resize -2<CR>", { remap = true })
+-- nmap("<C-Right>", "<Cmd>vertical resize +2<CR>", { remap = true })
 
 -- tab
-nmap("mt", "<Cmd>tabnew<CR>")
-nmap("mw", "<Cmd>tabclose<CR>")
-nmap("mp", "<Cmd>tabprevious<CR>")
-nmap("mn", "<Cmd>tabnext<CR>")
+nmap("st", "<Cmd>tabnew<CR>")
+nmap("sw", "<Cmd>tabclose<CR>")
+nmap("sp", "<Cmd>tabprevious<CR>")
+nmap("sn", "<Cmd>tabnext<CR>")
 
 -- kill buffer
 vim.api.nvim_create_user_command("BufferDeleteSafety", function()
