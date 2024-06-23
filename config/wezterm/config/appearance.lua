@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 
-local color_scheme = "Sonokai (Gogh)"
+local color_scheme = "One Dark (Gogh)"
 local colors = wezterm.color.get_builtin_schemes()[color_scheme]
 
 return {

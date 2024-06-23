@@ -32,7 +32,7 @@ local spec = {
     config = function(_, opts)
       local onedark = require("onedark")
       onedark.setup(opts)
-      -- onedark.load()
+      onedark.load()
     end,
   },
   {
