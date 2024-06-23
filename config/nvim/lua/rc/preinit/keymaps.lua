@@ -43,10 +43,10 @@ nmap("s]", "<Cmd>bnext<CR>")
 -- window
 nmap("ss", "<Cmd>split<CR><C-w>w")
 nmap("sv", "<Cmd>vsplit<CR><C-w>w")
-for key, direction in pairs({ ["h"] = ">", ["j"] = "+", ["k"] = "+", ["l"] = ">" }) do
+for key, direction in pairs({ ["h"] = ">", ["j"] = "+", ["k"] = "-", ["l"] = "<" }) do
   -- nmap("<C-" .. direction .. ">", "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
-  nmap("s" .. key, "<Cmd>wincmd " .. key .. "<CR>", { remap = true })
-  nmap("<C-" .. key .. ">", "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
+  nmap("<C-" .. key .. ">", "<Cmd>wincmd " .. key .. "<CR>", { remap = true })
+  nmap("s" .. key, "<Cmd>wincmd " .. direction .. "<CR>", { remap = true })
 end
 
 -- nmap("<C-Up>", "<Cmd>resize +2<CR>", { remap = true })
