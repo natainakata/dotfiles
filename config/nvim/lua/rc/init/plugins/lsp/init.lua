@@ -130,21 +130,20 @@ local spec = {
     },
     config = function(_, opts)
       require("mason-null-ls").setup(opts)
-      utils.ensure("null-ls", function(m)
-        m.setup({
-          sources = {
-            m.builtins.formatting.stylua,
-            m.builtins.formatting.clang_format,
-            m.builtins.formatting.black,
-            m.builtins.formatting.prettier,
-          },
-          on_attach = function(client, bufnr)
-            utils.autocmd("lsp_formatting", { "BufWritePre" }, nil, function()
-              vim.lsp.buf.format()
-            end, { buffer = bufnr })
-          end,
-        })
-      end)
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.clang_format,
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.prettier,
+        },
+        on_attach = function(client, bufnr)
+          utils.autocmd("lsp_formatting", { "BufWritePre" }, nil, function()
+            vim.lsp.buf.format()
+          end, { buffer = bufnr })
+        end,
+      })
     end,
   },
 }
