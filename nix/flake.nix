@@ -11,26 +11,31 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = inputs: {
+  outputs = { nixpkgs, home-manager,  ... }@inputs:
+  let
+    overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+  in {
     homeConfigurations = {
       "natai" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = import inputs.nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
-          overlays = [ inputs.neovim-nightly-overlay.overlay ];
         };
         extraSpecialArgs = {
          inherit inputs;
         };
         modules = [
           ./home-manager/home.nix
+          {
+            nixpkgs.overlays = overlays;
+          }
         ];
       };
       "natai-rpi" = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = import inputs.nixpkgs {
           system = "aarch64-linux";
           config.allowUnfree = true;
-          overlays = [ inputs.neovim-nightly-overlay.overlay ];
+          overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
         extraSpecialArgs = {
          inherit inputs;
