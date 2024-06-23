@@ -123,6 +123,7 @@ return {
     enabled = is_nvim(),
     dependencies = "vim-denops/denops.vim",
     lazy = false,
+    version = false,
     keys = {
       -- git prefix <Leader>g
       {

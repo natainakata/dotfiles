@@ -4,6 +4,7 @@ local spec = {
     "hrsh7th/nvim-cmp",
     enabled = is_nvim(),
     event = { "InsertEnter", "CmdLineEnter" },
+    version = false,
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -48,7 +49,7 @@ local spec = {
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          --[[ ["<Tab>"] = cmp.mapping(function(fallback)
+          ["<Tab>"] = cmp.mapping(function(fallback)
             -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
             if cmp.visible() then
               local entry = cmp.get_selected_entry()
@@ -59,7 +60,7 @@ local spec = {
             else
               fallback()
             end
-          end, { "i", "s", "c" }), ]]
+          end, { "i", "s", "c" }),
           -- ["<C-p>"] = cmp.mapping.select_prev_item(),
           -- ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-Space>"] = cmp.mapping.complete({}),
