@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 
-local color_scheme = "One Dark (base16)"
+local color_scheme = "OneDark (base16)"
 local colors = wezterm.color.get_builtin_schemes()[color_scheme]
 
 return {
