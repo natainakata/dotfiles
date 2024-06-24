@@ -38,8 +38,27 @@ local spec = {
           }),
         },
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "buffer" },
+          {
+            name = "nvim_lsp",
+            entry_filter = function(entry)
+              if
+                entry:get_kind() == require("cmp.types").lsp.CompletionItemKind.Snippet
+                and entry.source:get_debug_name() == "nvim_lsp:emmet_ls"
+              then
+                return false
+              end
+              return true
+            end,
+          },
+          {
+            name = "buffer",
+            keyword_length = 3,
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+            },
+          },
           { name = "treesitter" },
           { name = "path" },
           { name = "luasnip" },
@@ -105,46 +124,12 @@ local spec = {
         sources = cmp.config.sources({
           { name = "path" },
         }, {
-          { name = "cmdline",  keyword_length = 2 },
+          { name = "cmdline", keyword_length = 2 },
           { name = "skkeleton" },
         }),
       }
       cmp.setup.cmdline(":", cmdline_options)
-      cmp.setup.filetype("lua", {
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "nvim_lua" },
-          { name = "luasnip" },
-          { name = "treesiter" },
-          { name = "buffer" },
-          { name = "path" },
-          { name = "skkeleton" },
-          { name = "emoji" },
-        }),
-      })
-      cmp.setup.filetype({ "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" }, {
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          {
-            name = "buffer",
-            keyword_length = 3,
-            max_item_count = 3,
 
-            -- ここから
-            -- 開いているすべてのバッファーを対象とする
-            option = {
-              get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
-              end,
-            },
-          },
-          { name = "luasnip" },
-          { name = "treesitter" },
-          { name = "path" },
-          { name = "skkeleton" },
-          { name = "emoji" },
-        }),
-      })
       cmp.event:on("menu_opened", function()
         vim.b.copilot_suggestion_hidden = true
       end)
