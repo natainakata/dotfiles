@@ -15,7 +15,7 @@ vim.opt.runtimepath:prepend(lazypath)
 local opts = {
   defaults = {
     lazy = true,
-    version = "*",
+    version = false,
   },
   dev = {
     path = "~/src/github.com/natainakata",
