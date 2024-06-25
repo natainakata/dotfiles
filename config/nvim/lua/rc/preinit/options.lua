@@ -1,5 +1,6 @@
 local indent = 2
 local opt = vim.opt
+local icons = require("rc.utils.icons")
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
@@ -66,10 +67,17 @@ else
   vim.o.shellxquote = ""
   opt.completeslash = "slash"
 end
-for name, icon in pairs(require("rc.utils.icons").diagnostics) do
-  name = "DiagnosticSign" .. name
-  vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-end
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+    },
+  },
+})
 
 -- Prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
