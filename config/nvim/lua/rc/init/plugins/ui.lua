@@ -174,16 +174,18 @@ local spec = {
       local wk = require("which-key")
       wk.setup(opts)
       local keymaps = {
-        mode = { "n", "v" },
-        ["<leader>d"] = { name = "+dap" },
-        ["<leader>I"] = { name = "+iron" },
-        ["<leader>l"] = { name = "+lsp" },
-        ["<leader>n"] = { name = "+noice" },
-        ["<C-g>"] = { name = "+git" },
-        ["s"] = { name = "+substitute" },
-        ["<leader><tab>"] = { name = "+tab" },
+        {
+          mode = { "n", "v" },
+          { "<C-g>", group = "git" },
+          { "<leader><tab>", group = "tab" },
+          { "<leader>I", group = "iron" },
+          { "<leader>d", group = "dap" },
+          { "<leader>l", group = "lsp" },
+          { "<leader>n", group = "noice" },
+          { "s", group = "window" },
+        },
       }
-      wk.register(keymaps)
+      wk.add(keymaps)
     end,
   },
   {
