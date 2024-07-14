@@ -5,7 +5,7 @@ local spec = {
   {
     "williamboman/mason-lspconfig.nvim",
     enabled = is_nvim(),
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     dependencies = {
       "williamboman/mason.nvim",
       cmd = { "Mason", "MasonInstall", "MasonUnInstall", "MasonUnInstallAll" },
@@ -35,13 +35,13 @@ local spec = {
   {
     "neovim/nvim-lspconfig",
     enabled = is_nvim(),
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "jay-babu/mason-null-ls.nvim",
-      { "folke/trouble.nvim",  dependencies = "nvim-web-devicons" },
+      { "folke/trouble.nvim", dependencies = "nvim-web-devicons" },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
-      { "folke/neodev.nvim",   opts = { experimental = { pathStrict = true } } },
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "hrsh7th/cmp-nvim-lsp",
     },
     init = function()
@@ -57,7 +57,7 @@ local spec = {
         local default_opts = client.document_config.default_config
         local local_opts = utils.extend_tbl(opts, server_opts)
         local_opts.filetypes =
-            utils.extend_tbl(local_opts.filetypes or default_opts.filetypes or {}, local_opts.extra_filetypes)
+          utils.extend_tbl(local_opts.filetypes or default_opts.filetypes or {}, local_opts.extra_filetypes)
         local_opts.extra_filetypes = nil
         client.setup(local_opts)
       end
@@ -95,17 +95,18 @@ local spec = {
   {
     "jay-babu/mason-null-ls.nvim",
     enabled = is_nvim(),
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     dependencies = {
       {
         "nvimtools/none-ls.nvim",
         "williamboman/mason.nvim",
+        "lukas-reineke/lsp-format.nvim",
         "nvim-lua/plenary.nvim",
       },
     },
     opts = {
       ensure_installed = {
-        "prettier",
+        "prettierd",
         "stylua",
         "clang_format",
         "black",
@@ -116,17 +117,17 @@ local spec = {
     config = function(_, opts)
       require("mason-null-ls").setup(opts)
       local null_ls = require("null-ls")
+      local lsp_format = require("lsp-format")
+      lsp_format.setup()
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.clang_format,
           null_ls.builtins.formatting.black,
-          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.prettierd,
         },
         on_attach = function(client, bufnr)
-          utils.autocmd("lsp_formatting", { "BufWritePre" }, nil, function()
-            vim.lsp.buf.format()
-          end, { buffer = bufnr })
+          lsp_format.on_attach(client, bufnr)
         end,
       })
     end,
