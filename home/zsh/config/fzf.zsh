@@ -180,6 +180,14 @@ function __fzf-tmux() {
 }
 zle -N fzf-tmux __fzf-tmux
 
+function __fzf-snippets() {
+  local snippets=$(cat $ZSHRC_DIR/config/zsh_snippet | ${__FZF_CMD} ${__FZF_CMD_OPTS[@]} | cut -d ':' -f2-)
+  LBUFFER="${LBUFFER}${snippets}"
+  zle reset-prompt;
+}
+
+zle -N fzf-snippets __fzf-snippets
+
 bindkey -r "^ "
 bindkey  "^r" fzf-history
 bindkey  "^ ^s" fzf-src
@@ -188,3 +196,5 @@ bindkey  "^ ^b" fzf-git_switch
 bindkey  "^ ^t" fzf-tmux
 bindkey  "^ ^a" fzf-git_add
 bindkey  "^o" fzf-cdrr
+bindkey  "^ ^l" fzf-snippets
+
