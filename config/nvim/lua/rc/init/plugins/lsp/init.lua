@@ -26,10 +26,10 @@ local spec = {
         "pyright",
         "tsserver",
         "cssls",
-        "css_variables",
+        -- "css_variables",
         "kotlin_language_server",
       },
-      automatic_installation = false,
+      automatic_installation = true,
     },
   },
   {
