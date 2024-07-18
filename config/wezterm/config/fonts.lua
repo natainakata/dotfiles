@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
-local font = { family = "Moralerspace Neon NF", harfbuzz_features = { "calt=1", "liga=1", "dlig=1" } }
-local font_size = 14
+local font = { family = "Moralerspace Krypton NF", harfbuzz_features = { "calt=1", "liga=1", "dlig=1" } }
+local font_size = 12
 
 return {
   font = wezterm.font(font),
