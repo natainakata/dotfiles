@@ -42,8 +42,8 @@ local spec = {
             name = "nvim_lsp",
             entry_filter = function(entry)
               if
-                  entry:get_kind() == require("cmp.types").lsp.CompletionItemKind.Snippet
-                  and entry.source:get_debug_name() == "nvim_lsp:emmet_ls"
+                entry:get_kind() == require("cmp.types").lsp.CompletionItemKind.Snippet
+                and entry.source:get_debug_name() == "nvim_lsp:emmet_ls"
               then
                 return false
               end
@@ -80,8 +80,8 @@ local spec = {
               fallback()
             end
           end, { "i", "s", "c" }),
-          -- ["<C-p>"] = cmp.mapping.select_prev_item(),
-          -- ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-Space>"] = cmp.mapping.complete({}),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -124,7 +124,7 @@ local spec = {
         sources = cmp.config.sources({
           { name = "path" },
         }, {
-          { name = "cmdline",  keyword_length = 2 },
+          { name = "cmdline", keyword_length = 2 },
           { name = "skkeleton" },
         }),
       }
