@@ -6,15 +6,17 @@ local options = {
 }
 
 if platform.is_win then
-  options.default_prog = { "wsl" }
+  options.default_prog = { "pwsh.exe" }
   options.launch_menu = {
     {
       label = "PowerShell",
       args = { "pwsh.exe" },
+      domain = { DomainName = "local" },
     },
     {
       label = "Builtin PowerShell",
       args = { "powershell.exe" },
+      domain = { DomainName = "local" },
     },
   }
   -- for _, domain in ipairs(wezterm.default_wsl_domains()) do
@@ -33,7 +35,7 @@ elseif platform.is_linux then
   options.launch_menu = {
     { label = "Bash", args = { "bash" } },
     { label = "Fish", args = { "fish" } },
-    { label = "Zsh",  args = { "zsh" } },
+    { label = "Zsh", args = { "zsh" } },
   }
 end
 
