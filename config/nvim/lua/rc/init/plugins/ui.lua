@@ -150,9 +150,8 @@ local spec = {
       vim.o.timeoutlen = 300
     end,
     opts = {
-      window = {
+      win = {
         border = "none",
-        -- winblend = 40,
       },
       plugins = {
         presets = {
@@ -160,13 +159,6 @@ local spec = {
           motions = true,
           text_objects = true,
         },
-      },
-      operators = {
-        gc = "Comments",
-        gx = "QuickRun",
-        ys = "Add Surround",
-        cs = "Change Surround",
-        ds = "Delete Surround",
       },
     },
 
@@ -182,7 +174,7 @@ local spec = {
           { "<leader>d", group = "dap" },
           { "<leader>l", group = "lsp" },
           { "<leader>n", group = "noice" },
-          { "s", group = "window" },
+          -- { "s", group = "window" },
         },
       }
       wk.add(keymaps)
