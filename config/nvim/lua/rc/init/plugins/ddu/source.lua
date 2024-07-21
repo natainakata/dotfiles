@@ -163,7 +163,7 @@ local spec = {
       })
     end,
     keys = {
-      { "<Leader>g", "<Cmd>Ddu file:rg<CR>", desc = "Ddu Rg List" },
+      { "<Leader>s", "<Cmd>Ddu file:rg<CR>", desc = "Ddu Rg List" },
     },
   },
   {
