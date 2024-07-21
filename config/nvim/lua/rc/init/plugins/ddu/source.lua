@@ -206,6 +206,7 @@ local spec = {
   {
     "Shougo/ddu-source-action",
     dependencies = "ddu.vim",
+    lazy = false,
     config = function()
       helper.patch_global({
         actionOptions = {

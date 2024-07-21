@@ -10,13 +10,19 @@ local spec = {
       ui = "ff",
       uiParams = {
         ff = {
-          startFilter = true,
+          startFilter = false,
           prompt = "> ",
           autoAction = {
             name = "preview",
           },
           startAutoAction = true,
           previewSplit = "vertical",
+          previewFloating = true,
+          split = "floating",
+          filterSplitDirection = "floating",
+          filterFloatingPosition = "top",
+          floatingBorder = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+          previewFloatingBorder = "single",
         },
       },
     })
@@ -25,6 +31,7 @@ local spec = {
       map("i", helper.action("openFilterWindow"))
       -- Close UI
       map("<Esc>", helper.action("quit"))
+      map("q", helper.action("quit"))
       -- Toggle selected state for all items
       map("a", helper.action("toggleAllItems"))
       -- Toggle selected state for cursor item
@@ -41,7 +48,7 @@ local spec = {
 
     helper.ff_filter_map(nil, function(map)
       -- Close UI
-      map("i", "<C-c>", helper.action("quit", nil, true))
+      map("i", "jj", helper.action("closeFilterWindow", nil, true))
       map({ "n", "i" }, "<CR>", helper.item_action("default"))
       -- Close filter window
       map({ "n", "i" }, "<Esc>", helper.action("closeFilterWindow", nil, true))
