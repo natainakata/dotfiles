@@ -22,6 +22,7 @@
     tmux
     hyperfine
     starship
+    vhs
   ];
   imports = [
     ./nvim.nix
