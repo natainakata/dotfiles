@@ -98,6 +98,9 @@ local spec = {
             function(filename)
               return not (filename:find("doc/.*%.txt$") or filename:find("doc/.*%.jax$"))
             end,
+            function(filename)
+              return not (filename:find("COMMIT_EDITMSG"))
+            end,
           }
         end,
       },
