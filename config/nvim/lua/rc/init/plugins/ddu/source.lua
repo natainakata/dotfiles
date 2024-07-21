@@ -102,6 +102,16 @@ local spec = {
               return not (filename:find("COMMIT_EDITMSG"))
             end,
           }
+          vim.g["mr#mrw#predicates"] = {
+            ---@param filename string
+            ---@return boolean
+            function(filename)
+              return not (filename:find("doc/.*%.txt$") or filename:find("doc/.*%.jax$"))
+            end,
+            function(filename)
+              return not (filename:find("COMMIT_EDITMSG"))
+            end,
+          }
         end,
       },
     },
