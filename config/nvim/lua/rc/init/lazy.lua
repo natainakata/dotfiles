@@ -22,7 +22,7 @@ local opts = {
     patterns = {},
   },
   checker = { enabled = is_nvim, frequency = 1600 }, -- automatically check for plugin updates
-  install = { colorscheme = { "nightfox", "sonokai", "onedark", "habamax", "kanagawa" } },
+  install = { colorscheme = { "catppuccin", "nightfox", "sonokai", "onedark", "habamax", "kanagawa" } },
   performance = {
     cache = { enabled = true },
     rtp = {
@@ -48,6 +48,6 @@ utils.ensure("lazy", function(m)
   m.setup({
     { import = "rc.init.plugins" },
   }, opts)
-  m.load({ plugins = "onedark.nvim" })
+  m.load({ plugins = "catppuccin" })
   vim.keymap.set("n", "<Plug>(lazy-menu)", "<Cmd>Lazy<CR>")
 end)

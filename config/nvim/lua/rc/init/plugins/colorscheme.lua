@@ -32,7 +32,7 @@ local spec = {
     config = function(_, opts)
       local onedark = require("onedark")
       onedark.setup(opts)
-      onedark.load()
+      -- onedark.load()
     end,
   },
   {
@@ -54,15 +54,6 @@ local spec = {
     opts = {
       flavour = "frappe",
       transparent_background = true,
-      highlight_overrides = {
-        all = function(colors)
-          return {
-            CursorColumn = {
-              bg = U.vary_color({ latte = U.lighten(C.mantle, 0.70, C.base) }, U.darken(C.surface0, 0.64, C.base)),
-            },
-          }
-        end,
-      },
       integrations = {
         noice = true,
       },
