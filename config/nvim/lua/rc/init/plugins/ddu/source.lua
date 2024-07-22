@@ -39,6 +39,7 @@ local spec = {
   {
     "uga-rosa/ddu-source-help",
     lazy = false,
+    enabled = false,
     dependencies = "ddu.vim",
     config = function()
       helper.patch_local("help_tags", {

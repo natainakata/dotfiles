@@ -11,21 +11,21 @@ M.core = {
     desc = "Find File",
   },
   {
-    "<C-p>",
+    "<Leader>p",
     function()
       require("telescope.builtin").keymaps()
     end,
     desc = "Find Keymaps",
   },
   {
-    "<Leader>p",
+    "<Leader>P",
     function()
       require("telescope.builtin").commands()
     end,
     desc = "Find Commands",
   },
   {
-    "<Leader><C-f>",
+    "<Leader>f",
     function()
       require("telescope.builtin").find_files({
         no_ignore = true,
@@ -79,7 +79,7 @@ M.core = {
 }
 M.file_browser = {
   {
-    "<Leader>f",
+    "<Leader>F",
     function()
       require("telescope").extensions.file_browser.file_browser({
         path = vim.fn.getcwd(),

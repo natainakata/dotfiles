@@ -3,12 +3,12 @@ local helper = require("rc.utils.ddu")
 local spec = {
   "Shougo/ddu.vim",
   name = "ddu.vim",
-  enabled = true,
+  enabled = false,
   lazy = false,
   dependencies = {
     "vim-denops/denops.vim",
   },
-  import = "rc.init.plugins.ddu",
+  -- import = "rc.init.plugins.ddu",
   init = function()
     helper.ff_map(nil, function(map)
       -- Highlight cursor line
