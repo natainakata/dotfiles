@@ -55,7 +55,14 @@ local spec = {
       flavour = "frappe",
       transparent_background = true,
       integrations = {
+        aerial = true,
         noice = true,
+        navic = {
+          enabled = true,
+        },
+        notify = true,
+        which_key = true,
+        mason = true,
       },
     },
     config = function(_, opts)
