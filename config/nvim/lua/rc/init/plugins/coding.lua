@@ -148,8 +148,9 @@ local spec = {
       { "skk-dev/dict", name = "skk-dict" },
     },
     config = function()
-      utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
-      utils.cmap("<C-j>", "<Plug>(skkeleton-toggle)")
+      utils.imap("<C-u>", "<Plug>(skkeleton-toggle)")
+      utils.cmap("<C-u>", "<Plug>(skkeleton-toggle)")
+      utils.tmap("<C-u>", "<Plug>(skkeleton-toggle)")
 
       -- vim.fn["skkeleton#azik#add_table"]("us")
       local dictionaries = {
