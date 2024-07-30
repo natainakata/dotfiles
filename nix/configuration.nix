@@ -49,7 +49,7 @@ in {
     vim
     git
     vivaldi
-#    vivaldi-ffmpeg-codecs
+    vivaldi-ffmpeg-codecs
     wezterm
     libraspberrypi
     raspberrypi-eeprom
