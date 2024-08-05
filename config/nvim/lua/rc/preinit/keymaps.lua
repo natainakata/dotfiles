@@ -74,7 +74,7 @@ end, { nargs = 0 })
 nmap("<Leader>D", ":BufferDeleteSafety<CR>")
 
 -- fold
-nmap("Z", ":set foldmethod=indent<CR>")
+-- nmap("Z", ":set foldmethod=indent<CR>")
 
 -- terminal
 -- nmap("<Leader>t", "<Cmd>terminal<CR>")
