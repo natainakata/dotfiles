@@ -141,16 +141,20 @@ local spec = {
   {
     "vim-skk/skkeleton",
     lazy = false,
-    enabled = is_nvim(),
+    -- enabled = is_nvim(),
     dependencies = {
       "vim-denops/denops.vim",
       -- "kei-s16/skkeleton-azik-kanatable",
       { "skk-dev/dict", name = "skk-dict" },
     },
     config = function()
-      utils.imap("<C-u>", "<Plug>(skkeleton-toggle)")
-      utils.cmap("<C-u>", "<Plug>(skkeleton-toggle)")
-      utils.tmap("<C-u>", "<Plug>(skkeleton-toggle)")
+      if is_nvim() then
+        utils.imap("<C-u>", "<Plug>(skkeleton-toggle)")
+        utils.cmap("<C-u>", "<Plug>(skkeleton-toggle)")
+        utils.tmap("<C-u>", "<Plug>(skkeleton-toggle)")
+      else
+        utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
+      end
 
       -- vim.fn["skkeleton#azik#add_table"]("us")
       local dictionaries = {
