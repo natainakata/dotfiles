@@ -37,15 +37,17 @@ end)
 
 autocmd("mclang", { "BufRead", "BufNewFile" }, "*.lang", "set filetype=mclang")
 
-autocmd("luasnip_history", "ModeChanged", "*", function()
-  if
+if is_nvim() then
+  autocmd("luasnip_history", "ModeChanged", "*", function()
+    if
       ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
       and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
       and not require("luasnip").session.jump_active
-  then
-    require("luasnip").unlink_current()
-  end
-end)
+    then
+      require("luasnip").unlink_current()
+    end
+  end)
+end
 
 autocmd("use_easy_regname", "TextYankPost", nil, function()
   if vim.v.event.regname == "" then

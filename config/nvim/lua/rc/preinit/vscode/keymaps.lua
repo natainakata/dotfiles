@@ -22,10 +22,10 @@ nmap("x", [["_x]])
 nmap("<S-h>", "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
 nmap("<S-l>", "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
 
-nmap("<C-j>", "<Cmd>call VSCodeNotify('workbench.action.navigateDown')<CR>", { remap = true })
-nmap("<C-k>", "<Cmd>call VSCodeNotify('workbench.action.navigateUp')<CR>", { remap = true })
-nmap("<C-h>", "<Cmd>call VSCodeNotify('workbench.action.navigateLeft')<CR>", { remap = true })
-nmap("<C-l>", "<Cmd>call VSCodeNotify('workbench.action.navigateRight')<CR>", { remap = true })
+nmap("sj", "<Cmd>call VSCodeNotify('workbench.action.navigateDown')<CR>", { remap = true })
+nmap("sk", "<Cmd>call VSCodeNotify('workbench.action.navigateUp')<CR>", { remap = true })
+nmap("sh", "<Cmd>call VSCodeNotify('workbench.action.navigateLeft')<CR>", { remap = true })
+nmap("sl", "<Cmd>call VSCodeNotify('workbench.action.navigateRight')<CR>", { remap = true })
 
 -- window split
 nmap("gs", "<Cmd>call VSCodeNotify('workbench.action.splitEditor')<CR><C-w>w")
@@ -39,7 +39,6 @@ nmap("<Leader>b", "<Cmd>call VSCodeNotify('workbench.action.quickOpenRecent')<CR
 -- sidebar
 nmap("<Leader>s", "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
 nmap("<Leader>e", "<Cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
-
 
 -- use cursor only
 -- nmap("<Leader>l", "<Cmd>call VSCodeNotify('aichat.newchataction')<CR>")

@@ -40,15 +40,15 @@ local spec = {
         sources = cmp.config.sources({
           {
             name = "nvim_lsp",
-            entry_filter = function(entry)
-              if
-                entry:get_kind() == require("cmp.types").lsp.CompletionItemKind.Snippet
-                and entry.source:get_debug_name() == "nvim_lsp:emmet_ls"
-              then
-                return false
-              end
-              return true
-            end,
+            -- entry_filter = function(entry)
+            --   if
+            --     entry:get_kind() == require("cmp.types").lsp.CompletionItemKind.Snippet
+            --     and entry.source:get_debug_name() == "nvim_lsp:emmet_ls"
+            --   then
+            --     return false
+            --   end
+            --   return true
+            -- end,
           },
           {
             name = "buffer",

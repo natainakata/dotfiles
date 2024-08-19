@@ -64,6 +64,12 @@ local spec = {
         which_key = true,
         mason = true,
       },
+      custom_highlights = function(colors)
+        return {
+          WinSeparator = { fg = colors.surface2 },
+          LineNr = { fg = colors.surface2 },
+        }
+      end,
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)

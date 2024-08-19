@@ -81,6 +81,3 @@ nmap("<Leader>D", ":BufferDeleteSafety<CR>")
 -- nmap("<Leader>T", "<Cmd>belowright new<CR><Cmd>terminal<CR>")
 tmap("JJ", "<C-\\><C-n>")
 tmap("<Esc><Esc>", "<C-\\><C-n>")
-
--- lazy
-nmap("<Leader>lz", "<Cmd>Lazy<CR>")
