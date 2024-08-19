@@ -19,7 +19,7 @@ return {
       opacity = 0.85,
     },
   },
-  enable_scroll_bar = true,
+  enable_scroll_bar = false,
   enable_tab_bar = true,
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
