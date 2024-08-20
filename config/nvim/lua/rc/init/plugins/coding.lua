@@ -167,6 +167,9 @@ local spec = {
         globalDictionaries = dictionaries,
         userDictionary = "~/.skk/SKK-JISYO.user",
       })
+      vim.fn["skkeleton#register_kanatable"]("rom", {
+        jk = "escape",
+      })
       -- vim.fn["skkeleton#register_kanatable"]("azik", {
       --   kf = { "き", "" },
       --   jf = { "じゅ", "" },
