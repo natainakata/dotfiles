@@ -1,4 +1,3 @@
-local utils = require("rc.utils")
 local icons = require("rc.utils.icons")
 local spec = {
   {
@@ -24,9 +23,20 @@ local spec = {
         dependencies = { "teramako/cmp-cmdline-prompt.nvim" },
       },
       "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind.nvim",
     },
     config = function()
       local cmp = require("cmp")
+      local lspkind = require("lspkind")
+      for kind, _ in pairs(icons.kinds) do
+        local inherit = ("CmpItemKind%s"):format(kind)
+        local group = ("%sIcon"):format(inherit)
+        vim.api.nvim_set_hl(
+          0,
+          group,
+          { bg = vim.api.nvim_get_hl(0, { name = inherit }).fg, fg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg }
+        )
+      end
       local options = {
         snippet = {
           expand = function(args)
@@ -34,12 +44,14 @@ local spec = {
           end,
         },
         window = {
-          completion = cmp.config.window.bordered({
-            border = "single",
-          }),
-          documentation = cmp.config.window.bordered({
-            border = "single",
-          }),
+          completion = {
+            col_offset = -3,
+            side_padding = 0,
+            winblend = 10,
+          },
+          documentation = {
+            winblend = 10,
+          },
         },
         sources = cmp.config.sources({
           {
@@ -94,21 +106,36 @@ local spec = {
           ghost_text = true,
         },
         formatting = {
+          fields = { "kind", "abbr", "menu" },
           format = function(entry, item)
-            if icons.kinds[item.kind] then
-              item.kind = icons.kinds[item.kind] .. item.kind
+            local kind = item.kind
+            local kind_hl_group = ("CmpItemKind%s"):format(kind)
+
+            item.kind_hl_group = ("%sIcon"):format(kind_hl_group)
+            item.kind = (" %s "):format(icons.kinds[kind])
+
+            local source = entry.source.name
+            if source == "nvim_lsp" or source == "path" then
+              item.menu_hl_group = kind_hl_group
+            else
+              item.menu_hl_group = "Comment"
             end
-            item.menu = ({
-              buffer = "[Buffer]",
-              nvim_lsp = "[LSP]",
-              nvim_lua = "[NVIM]",
-              luasnip = "[Snip]",
-              path = "[Path]",
-              treesitter = "[TS]",
-              emoji = "[🤔]",
-              skkeleton = "[SKK]",
-              cmdline = "[CMD]",
-            })[entry.source.name]
+            item.menu = ("(%s)"):format(kind)
+
+            if source == "buffer" then
+              item.menu_hl_group = nil
+              item.menu = nil
+            end
+
+            local half_win_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5)
+            if vim.api.nvim_strwidth(item.abbr) > half_win_width then
+              item.abbr = ("%s…"):format(item.abbr:sub(1, half_win_width))
+            end
+
+            if item.menu then -- Add exta space to visually differentiate `abbr` and `menu`
+              item.abbr = ("%s "):format(item.abbr)
+            end
+
             return item
           end,
         },
@@ -159,9 +186,13 @@ local spec = {
           format = function(entry, vim_item)
             local item = entry:get_completion_item()
             if entry.source.name == "cmdline-prompt" then
-              vim_item.kind = cmp.lsp.CompletionItemKind[item.kind]
-              vim_item.kind = icons.kinds[item.kind] .. vim_item.kind
-              return vim_item
+              local kind =
+                lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = icons.kinds })(entry, vim_item)
+              local strings = vim.split(kind.kind, "%s", { trimempty = true })
+              kind.kind = " " .. (strings[1] or "") .. " "
+              kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+              return kind
             elseif entry.source.name == "gin_action" then
               vim_item.kind = gin_action.get_symbol(item.label:match("^%w+"))
               return vim_item
@@ -169,6 +200,11 @@ local spec = {
               return vim_item
             end
           end,
+        },
+        window = {
+          completion = {
+            col_offset = 6,
+          },
         },
       })
 
