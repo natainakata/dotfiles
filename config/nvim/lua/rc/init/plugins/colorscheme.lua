@@ -27,11 +27,12 @@ local spec = {
     "navarasu/onedark.nvim",
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = false,
     },
     config = function(_, opts)
       local onedark = require("onedark")
       onedark.setup(opts)
+      vim.cmd.colorscheme("onedark")
       -- onedark.load()
     end,
   },

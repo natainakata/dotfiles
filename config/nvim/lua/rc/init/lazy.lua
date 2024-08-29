@@ -48,6 +48,6 @@ utils.ensure("lazy", function(m)
   m.setup({
     { import = "rc.init.plugins" },
   }, opts)
-  m.load({ plugins = "catppuccin" })
+  m.load({ plugins = "onedark.nvim" })
   vim.keymap.set("n", "<Plug>(lazy-menu)", "<Cmd>Lazy<CR>")
 end)
