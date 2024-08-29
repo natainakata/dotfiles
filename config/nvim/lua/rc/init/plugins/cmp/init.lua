@@ -28,15 +28,6 @@ local spec = {
     config = function()
       local cmp = require("cmp")
       local lspkind = require("lspkind")
-      for kind, _ in pairs(icons.kinds) do
-        local inherit = ("CmpItemKind%s"):format(kind)
-        local group = ("%sIcon"):format(inherit)
-        vim.api.nvim_set_hl(
-          0,
-          group,
-          { bg = vim.api.nvim_get_hl(0, { name = inherit }).fg, fg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg }
-        )
-      end
       local options = {
         snippet = {
           expand = function(args)
@@ -47,11 +38,8 @@ local spec = {
           completion = {
             col_offset = -3,
             side_padding = 0,
-            winblend = 10,
           },
-          documentation = {
-            winblend = 10,
-          },
+          documentation = {},
         },
         sources = cmp.config.sources({
           {
@@ -108,35 +96,13 @@ local spec = {
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = function(entry, item)
-            local kind = item.kind
-            local kind_hl_group = ("CmpItemKind%s"):format(kind)
+            local kind =
+              lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = icons.kinds })(entry, item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            kind.menu = "    (" .. (strings[2] or "") .. ")"
 
-            item.kind_hl_group = ("%sIcon"):format(kind_hl_group)
-            item.kind = (" %s "):format(icons.kinds[kind])
-
-            local source = entry.source.name
-            if source == "nvim_lsp" or source == "path" then
-              item.menu_hl_group = kind_hl_group
-            else
-              item.menu_hl_group = "Comment"
-            end
-            item.menu = ("(%s)"):format(kind)
-
-            if source == "buffer" then
-              item.menu_hl_group = nil
-              item.menu = nil
-            end
-
-            local half_win_width = math.floor(vim.api.nvim_win_get_width(0) * 0.5)
-            if vim.api.nvim_strwidth(item.abbr) > half_win_width then
-              item.abbr = ("%s…"):format(item.abbr:sub(1, half_win_width))
-            end
-
-            if item.menu then -- Add exta space to visually differentiate `abbr` and `menu`
-              item.abbr = ("%s "):format(item.abbr)
-            end
-
-            return item
+            return kind
           end,
         },
       }
