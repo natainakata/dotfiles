@@ -10,6 +10,7 @@ return {
   command_palette_font_size = font_size,
   warn_about_missing_glyphs = false,
   adjust_window_size_when_changing_font_size = false,
+  line_height = 1.2,
   freetype_load_target = "Normal",
   freetype_render_target = "Normal",
 }
