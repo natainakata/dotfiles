@@ -39,12 +39,20 @@ local spec = {
       },
       presets = {
         bottom_search = true,
-        command_palette = true,
+        command_palette = false,
         long_message_to_split = true,
       },
       cmdline = {
         view = "cmdline",
+        ---@type table<string, CmdlineFormat>
+        format = {
+          input = {
+            view = "cmdline",
+          },
+        },
       },
+
+      ---@class NoiceConfigViews
       views = {
         mini = {
           win_options = {
