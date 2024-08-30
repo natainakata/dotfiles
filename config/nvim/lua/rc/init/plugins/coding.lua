@@ -120,7 +120,7 @@ local spec = {
 
   {
     "kylechui/nvim-surround",
-    event = { "BufReadPre", "BufNewFile" },
+    event =  "VeryLazy",
     config = true,
   },
   {
