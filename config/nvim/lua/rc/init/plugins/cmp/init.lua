@@ -107,6 +107,26 @@ local spec = {
         },
       }
       cmp.setup(options)
+      cmp.setup.filetype("lua", {
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "nvim_lua" },
+          { name = "luasnip" },
+          { name = "treesiter" },
+          {
+            name = "buffer",
+            keyword_length = 3,
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+            },
+          },
+          { name = "path" },
+          { name = "skkeleton" },
+          { name = "emoji" },
+        }),
+      })
       local search_options = {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({

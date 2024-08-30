@@ -3,7 +3,7 @@ local spec = {
   {
     "vim-skk/skkeleton",
     lazy = false,
-    -- enabled = is_nvim(),
+    enabled = is_nvim(),
     dependencies = {
       "vim-denops/denops.vim",
       -- "kei-s16/skkeleton-azik-kanatable",

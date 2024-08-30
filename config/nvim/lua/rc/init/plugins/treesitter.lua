@@ -3,6 +3,7 @@ local spec = {
     "nvim-treesitter/nvim-treesitter",
     event = "VimEnter",
     version = false,
+    enabled = is_nvim(),
     build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
     end,

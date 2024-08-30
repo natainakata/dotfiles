@@ -42,4 +42,4 @@ nmap("<Leader>e", "<Cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
 
 -- use cursor only
 -- nmap("<Leader>l", "<Cmd>call VSCodeNotify('aichat.newchataction')<CR>")
--- nmap("<Leader>k", "<Cmd>call VSCodeNotify('aipopup.action.modal.generate')<CR ")
+-- nmap("<Leader>k", "<Cmd>call VSCodeNotify('aipopup.action.modal.generate')<CR >")
