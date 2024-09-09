@@ -2,31 +2,22 @@
   home = rec {
     username = "natai";
     homeDirectory = "/home/${username}";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
 
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    bat
-    lsd
-    fd
-    delta
-    ripgrep
-    tealdeer
-    zoxide
-    mise
-    fastfetch
-    sheldon
-    zsh
-    fzf
-    tmux
-    hyperfine
-    starship
-    vhs
+    vscode
+    wezterm
+    (callPackage ./packages/cursor.nix {})
   ];
+  home.enableNixpkgsReleaseCheck = false;
   imports = [
+    ./browser.nix
     ./nvim.nix
     ./git.nix
     ./dev.nix
+    ./cli.nix
+    ./apps.nix
   ];
 }

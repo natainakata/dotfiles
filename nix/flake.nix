@@ -2,8 +2,9 @@
   # description = "Natai Nakata Home Manager flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    xremap.url = "github:xremap/nix-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,12 +56,15 @@
           inherit inputs;
         };
       };
-      /* "natai-rog" = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux"
+      "natai-rog" = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
           ./configuration-rog.nix
-        ]
-      } */
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
     };
   };
 }
