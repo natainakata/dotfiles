@@ -49,12 +49,18 @@
       "natai-rpi" = inputs.nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
-          ./configuration.nix
+          ./configuration-rpi.nix
         ];
         specialArgs = {
           inherit inputs;
         };
       };
+      /* "natai-rog" = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux"
+        modules = [
+          ./configuration-rog.nix
+        ]
+      } */
     };
   };
 }
