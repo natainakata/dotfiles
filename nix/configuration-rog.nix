@@ -204,6 +204,9 @@ in {
     ntfs3g
     bitwarden-desktop
     protonplus
+    wine
+    wine64
+    winetricks
   ];
 
   programs = {
