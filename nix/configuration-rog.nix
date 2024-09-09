@@ -33,6 +33,7 @@ in {
       options = "--delete-older-than 7d";
     };
   };
+  nixpkgs.overlays = [ (import ./pkgs/default.nix)];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -67,7 +68,10 @@ in {
 
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = [pkgs.fcitx5-mozc];
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-cskk
+    ];
   };
 
   fonts = {
@@ -207,6 +211,8 @@ in {
     wine
     wine64
     winetricks
+    skk-dicts
+    skktools
   ];
 
   programs = {
