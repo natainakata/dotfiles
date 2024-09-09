@@ -67,6 +67,10 @@ keymap.set("n", "gv", function()
   vscode.call("workbench.action.splitEditorOrthogonal")
 end, opts)
 
+keymap.set("n", "<Leader>o", function()
+  vscode.call("editor.action.openLink")
+end, opts)
+
 keymap.set("n", "<Leader>f", function()
   vscode.call("workbench.action.quickOpen")
 end, opts)
@@ -93,7 +97,7 @@ keymap.set("n", "<Leader>k", function()
   vscode.call("aipopup.action.modal.generate")
 end, opts)
 keymap.set("n", "<Leader>l", function()
-  vscode.call("workbench.action.chat.newChat")
+  vscode.call("aichat.newchataction")
 end, opts)
 
 -- panel
