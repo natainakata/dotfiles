@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     discord
-    prismlauncher
     bitwarden-desktop
   ];
 }

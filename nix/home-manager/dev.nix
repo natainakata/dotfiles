@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     gcc
     go
@@ -9,5 +10,7 @@
     bun
     python312
     zig
+    nixfmt-rfc-style
+    nixd
   ];
 }

@@ -43,6 +43,10 @@
     device = "/dev/disk/by-uuid/a4ff10b3-2553-43a4-b0f4-14419398a805";
     fsType = "btrfs";
   };
+  
+  environment.systemPackages = with pkgs; [
+    ntfs3g
+  ];
 
   fileSystems."/mnt/games" = {
     device = "/dev/disk/by-label/Games";

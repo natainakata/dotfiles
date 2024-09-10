@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/system.nix
       ../../modules/cinnamon.nix
+      ../../modules/wine.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd

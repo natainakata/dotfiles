@@ -50,14 +50,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-cskk
-    ];
-  };
-
   fonts = {
     packages = with pkgs; [
       noto-fonts-cjk-serif
@@ -117,32 +109,19 @@
     #media-session.enable = true;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    git
     curl
-    ntfs3g
-    bitwarden-desktop
-    protonplus
-    wine
-    wine64
-    winetricks
-    skk-dicts
-    skktools
-    nixfmt-rfc-style
-    nixd
+    sysstat
   ];
 
   programs = {
+    vim.enable = true;
     git.enable = true;
     zsh.enable = true;
     nix-ld.enable = true;
@@ -151,17 +130,5 @@
   services.flatpak.enable = true;
   xdg.portal.enable = true;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
-  nixpkgs.config.packageOverrides = pkgs: {
-    steam = pkgs.steam.override {
-      extraPkgs =
-        pkgs: with pkgs; [
-          migu # ここではmiguをインストールしている
-        ];
-    };
-  };
+  
 }
