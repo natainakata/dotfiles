@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home = rec {
     username = "natai";
     homeDirectory = "/home/${username}";
@@ -9,7 +10,6 @@
   home.packages = with pkgs; [
     vscode
     wezterm
-    (callPackage ./packages/cursor.nix {})
   ];
   home.enableNixpkgsReleaseCheck = false;
   imports = [
