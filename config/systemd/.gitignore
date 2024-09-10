@@ -1,2 +1,4 @@
-/default.target.wants/
-/sockets.target.wants/
+/*
+/.**
+
+!/user/xremap.service
