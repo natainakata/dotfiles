@@ -7,7 +7,7 @@
       fcitx5-cskk
     ];
   };
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     skk-dicts
     skktools
   ];

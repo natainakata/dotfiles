@@ -1,6 +1,9 @@
 { inputs, ... }:
 {
-  imports = [ inputs.xremap.nixosModules.default ];
+  imports = [
+    inputs.xremap.nixosModules.default
+    ./games.nix
+  ];
   users.users.natai = {
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFWnIE5q4KWjMz5dI8YnZ7zg2zn3ZY0oie+1h2SAvZR satzin0521@gmail.com"

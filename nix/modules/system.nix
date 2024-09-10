@@ -115,13 +115,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    vim
     wget
     curl
     sysstat
   ];
 
   programs = {
-    vim.enable = true;
     git.enable = true;
     zsh.enable = true;
     nix-ld.enable = true;
@@ -129,6 +129,4 @@
 
   services.flatpak.enable = true;
   xdg.portal.enable = true;
-
-  
 }
