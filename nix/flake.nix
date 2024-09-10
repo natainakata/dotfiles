@@ -6,65 +6,71 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     xremap.url = "github:xremap/nix-flake";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, home-manager,  ... }@inputs:
-  let
-    overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
-  in {
-    homeConfigurations = {
-      "natai" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import inputs.nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    {
+      homeConfigurations = {
+        "natai" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = import inputs.nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./home-manager/home.nix
+            { nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ]; }
+          ];
         };
-        extraSpecialArgs = {
-         inherit inputs;
+        "natai-rpi" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = import inputs.nixpkgs {
+            system = "aarch64-linux";
+            config.allowUnfree = true;
+            overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+          };
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [ ./home-manager/home.nix ];
         };
-        modules = [
-          ./home-manager/home.nix
-          {
-            nixpkgs.overlays = overlays;
-          }
-        ];
       };
-      "natai-rpi" = inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = import inputs.nixpkgs {
+      nixosConfigurations = {
+        "natai-rpi" = inputs.nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
-          config.allowUnfree = true;
-          overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+          modules = [ ./hosts/rpi4 ];
+          specialArgs = {
+            inherit inputs;
+          };
         };
-        extraSpecialArgs = {
-         inherit inputs;
-        };
-        modules = [
-          ./home-manager/home.nix
-        ];
+        "natai-rog" =
+          let
+            username = "natai";
+            specialArgs = {
+              inherit username;
+              inherit inputs;
+            };
+          in
+          inputs.nixpkgs.lib.nixosSystem {
+            inherit specialArgs;
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/rog-strix-g10dk
+              ./users/${username}/nixos.nix
+              (_: { nixpkgs.overlays = [ (import ./pkgs) ]; })
+            ];
+          };
       };
     };
-    nixosConfigurations = {
-      "natai-rpi" = inputs.nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [
-          ./configuration-rpi.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
-      "natai-rog" = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration-rog.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
-    };
-  };
 }
