@@ -9,6 +9,7 @@
     [
       ./hardware-configuration.nix
       ../../modules/system.nix
+      ../../modules/fcitx5.nix
       ../../modules/cinnamon.nix
       ../../modules/wine.nix
     ]
