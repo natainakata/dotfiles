@@ -1,20 +1,26 @@
-{inputs,  config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   user = "natai";
   hostname = "natai-rpi";
-in {
+  authorizedKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFWnIE5q4KWjMz5dI8YnZ7zg2zn3ZY0oie+1h2SAvZR satzin0521@gmail.com";
+in
+{
 
   imports = [
 
-  ] ++ (with inputs.nixos-hardware.nixosModules; [
-    raspberry-pi-4
-  ]);
-  hardware= {
+  ] ++ (with inputs.nixos-hardware.nixosModules; [ raspberry-pi-4 ]);
+  hardware = {
     enableRedistributableFirmware = true;
     raspberry-pi."4" = {
       fkms-3d.enable = true;
-     #  apply-overlays-dtmerge.enable = true;
+      #  apply-overlays-dtmerge.enable = true;
     };
     # deviceTree = {
     #   enable = true;
@@ -22,10 +28,13 @@ in {
     # };
   };
 
-
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-    initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "usbhid"
+      "usb_storage"
+    ];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
@@ -60,7 +69,10 @@ in {
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
     gc = {
       automatic = true;
@@ -84,7 +96,7 @@ in {
   i18n.defaultLocale = "ja_JP.UTF-8";
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = [pkgs.fcitx5-mozc];
+    fcitx5.addons = [ pkgs.fcitx5-mozc ];
   };
 
   fonts = {
@@ -98,10 +110,19 @@ in {
     fontDir.enable = true;
     fontconfig = {
       defaultFonts = {
-        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
-        sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
-        monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
+        serif = [
+          "Noto Serif CJK JP"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "Noto Sans CJK JP"
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };
@@ -110,15 +131,18 @@ in {
     mutableUsers = false;
     users."${user}" = {
       isNormalUser = true;
-      hashedPassword = "$6$e2t7ro/C85PLIT.4$hGf.EcVbZYidId8GlOuAbg6Luu6T5D6SatVbeB1e0b0bYe9l9E1J5iKBpheu1.vgA8BBgrQU6g4CupOhTZaSU/";
-      extraGroups = [ "wheel" "networkmanager" ];
+      openssh.authorizedKeys.keys = [ authorizedKey ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+      ];
       shell = pkgs.zsh;
-   };
+    };
   };
 
   programs = {
-     git.enable = true;
-     zsh.enable = true;
+    git.enable = true;
+    zsh.enable = true;
   };
   services.xserver = {
     enable = true;
@@ -126,7 +150,5 @@ in {
     desktopManager.xfce.enable = true;
   };
 
-
   system.stateVersion = "23.11";
 }
-

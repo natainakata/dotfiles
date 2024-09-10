@@ -2,29 +2,37 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   user = "natai";
   description = "nakata itaru";
   hostname = "natai-rog";
-  password = "$6$XEOf7zPRuFCB8m85$14trWb4OqI4WQTxUwsf9rSfPPeulnyJTOhVFQuy34iV.5CjPXYGrxiByA.z9LQTR0NBDIcU9PdgJy0N8qSQtG/";
-in {
+  authorizedKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFFWnIE5q4KWjMz5dI8YnZ7zg2zn3ZY0oie+1h2SAvZR satzin0521@gmail.com";
+in
+{
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration-rog.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
       common-pc-ssd
     ])
-    ++ [
-      inputs.xremap.nixosModules.default
-    ];
+    ++ [ inputs.xremap.nixosModules.default ];
 
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
     gc = {
@@ -33,7 +41,7 @@ in {
       options = "--delete-older-than 7d";
     };
   };
-  nixpkgs.overlays = [ (import ./pkgs/default.nix)];
+  nixpkgs.overlays = [ (import ./pkgs/default.nix) ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -86,10 +94,19 @@ in {
     fontDir.enable = true;
     fontconfig = {
       defaultFonts = {
-        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
-        sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
-        monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
+        serif = [
+          "Noto Serif CJK JP"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "Noto Sans CJK JP"
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
   };
@@ -110,21 +127,21 @@ in {
 
   services.tailscale.enable = true;
   networking.firewall = {
-   enable = true;
-   trustedInterfaces = ["tailscale0"];
-   allowedUDPPorts = [config.services.tailscale.port];
- };
- virtualisation = {
-   docker = {
-     enable = true;
-     rootless = {
-       enable = true;
-       setSocketVariable = true; # $DOCKER_HOSTを設定
-     };
-   };
- };
+    enable = true;
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
+  virtualisation = {
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true; # $DOCKER_HOSTを設定
+      };
+    };
+  };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -173,7 +190,6 @@ in {
     #media-session.enable = true;
   };
 
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -182,12 +198,15 @@ in {
     mutableUsers = false;
     users."${user}" = {
       isNormalUser = true;
-      hashedPassword = password;
+      openssh.authorizedKeys.keys = [ authorizedKey ];
       description = description;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
       shell = pkgs.zsh;
       packages = with pkgs; [
-      #  thunderbird
+        #  thunderbird
       ];
     };
   };
@@ -213,12 +232,14 @@ in {
     winetricks
     skk-dicts
     skktools
+    nixfmt-rfc-style
+    nixd
   ];
 
   programs = {
-     git.enable = true;
-     zsh.enable = true;
-     nix-ld.enable = true;
+    git.enable = true;
+    zsh.enable = true;
+    nix-ld.enable = true;
   };
 
   services.flatpak.enable = true;
@@ -231,9 +252,9 @@ in {
   };
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
-      extraPkgs = pkgs:
-        with pkgs; [
-          migu #ここではmiguをインストールしている
+      extraPkgs =
+        pkgs: with pkgs; [
+          migu # ここではmiguをインストールしている
         ];
     };
   };
