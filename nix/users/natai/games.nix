@@ -1,14 +1,15 @@
 { inputs, pkgs, ... }:
 {
   users.users.natai = {
-    packages = with pkgs; [
-      prismlauncher
-      protonplus
-      razergenie
+    packages = [
+      pkgs.prismlauncher
+      pkgs.protonplus
+      # pkgs.polychromatic
+      # pkgs.linuxKernel.packages.linux_6_6.openrazer
     ];
   };
-  hardware.openrazer.enable = true;
-  hardware.openrazer.users = [ "natai" ];
+  # hardware.openrazer.enable = true;
+  # hardware.openrazer.users = [ "natai" ];
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

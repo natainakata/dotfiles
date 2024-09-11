@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 {
   imports = [
-    inputs.xremap.nixosModules.default
+    # inputs.xremap.nixosModules.default
     ./games.nix
   ];
   users.users.natai = {
@@ -10,19 +10,19 @@
     ];
     shell = pkgs.zsh;
   };
-  services.xremap = {
-    userName = "natai";
-    serviceMode = "system";
-    config = {
-      modmap = [
-        {
-          name = "CapsLock is disable";
-          remap = {
-            CapsLock = "Ctrl_L";
-          };
-        }
-      ];
-    };
-  };
-  
+  # services.xremap = {
+  #   userName = "natai";
+  #   serviceMode = "system";
+  #   config = {
+  #     modmap = [
+  #       {
+  #         name = "CapsLock is disable";
+  #         remap = {
+  #           CapsLock = "Ctrl_L";
+  #         };
+  #       }
+  #     ];
+  #   };
+  # };
+
 }

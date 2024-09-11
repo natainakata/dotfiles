@@ -119,6 +119,7 @@
     wget
     curl
     sysstat
+    xorg.xmodmap
   ];
 
   programs = {
@@ -129,4 +130,6 @@
 
   services.flatpak.enable = true;
   xdg.portal.enable = true;
+
+  services.input-remapper.enable = true;
 }
