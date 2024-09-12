@@ -119,6 +119,7 @@
     wget
     curl
     sysstat
+    gnumake
     xorg.xmodmap
   ];
 
