@@ -131,6 +131,4 @@
 
   services.flatpak.enable = true;
   xdg.portal.enable = true;
-
-  services.input-remapper.enable = true;
 }
