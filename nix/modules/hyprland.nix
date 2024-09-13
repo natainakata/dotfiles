@@ -8,9 +8,15 @@
     gnome2.GConf
   ];
 
-  services.xserver.displayManager.sddm = {
+  services.greetd = {
     enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks --remember-session";
+      };
+    };
   };
+
   programs = {
     hyprland.enable = true;
     waybar.enable = true;
@@ -33,6 +39,7 @@
     slurp
     mpv
     imv
+    greetd.tuigreet
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
