@@ -56,6 +56,7 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       udev-gothic-nf
+      moralerspace
       nerdfonts
       migu
     ];
