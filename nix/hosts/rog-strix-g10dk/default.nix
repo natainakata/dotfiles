@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/system.nix
       ../../modules/fcitx5.nix
-      ../../modules/cinnamon.nix
+      ../../modules/hyprland.nix
       ../../modules/wine.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
@@ -40,6 +40,5 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
-
   system.stateVersion = "24.05"; # Did you read the comment?
 }

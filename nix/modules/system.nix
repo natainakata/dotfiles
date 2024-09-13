@@ -91,6 +91,13 @@
     openFirewall = true;
   };
 
+  services.xserver.enable = true;
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -112,6 +119,14 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks --remember-session";
+      };
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -122,8 +137,12 @@
     sysstat
     gnumake
     xorg.xmodmap
+    greetd.tuigreet
   ];
 
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   programs = {
     git.enable = true;
     zsh.enable = true;
