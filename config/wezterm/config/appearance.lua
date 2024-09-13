@@ -9,7 +9,8 @@ return {
   max_fps = 60,
   initial_cols = 120,
   initial_rows = 30,
-  front_end = "OpenGL",
+  front_end = "Software",
+  enable_wayland = false,
   color_scheme = color_scheme,
   background = {
     {

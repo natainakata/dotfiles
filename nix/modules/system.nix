@@ -91,6 +91,13 @@
     openFirewall = true;
   };
 
+  services.xserver.enable = true;
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -124,6 +131,9 @@
     xorg.xmodmap
   ];
 
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   programs = {
     git.enable = true;
     zsh.enable = true;

@@ -1,8 +1,13 @@
-configuration {
-  modes: "combi,window,drun,run,";
-  font: "Noto Sans CJK JP 12";
-  show-icons: true;
-  combi-modes: "window,drun,run";
+configuration{
+    modi: "drun";
+    font: "JetBrains Mono Regular 13";
+    show-icons: true;
+    terminal: "wezterm";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    sidebar-mode: true;
+    border-radius: 10;
 }
-
-@theme "Monokai"
