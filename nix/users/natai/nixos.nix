@@ -25,9 +25,27 @@
     config = {
       modmap = [
         {
-          name = "CapsLock is disable";
+          name = "CapsLock disable";
           remap = {
             CapsLock = "Ctrl_L";
+          };
+        }
+        {
+          name = "Alt IME";
+          remap = {
+            Alt_L = {
+              held = "Alt_L";
+              alone = "KEY_MUHENKAN";
+              alone_timeout_millis = 300;
+            };
+            Alt_R = {
+              held = "Alt_R";
+              alone = "KEY_HIRAGANA";
+              alone_timeout_millis = 300;
+            };
+          };
+          device = {
+            only = "BY Tech Gaming Keyboard";
           };
         }
         {
