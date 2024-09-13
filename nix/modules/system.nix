@@ -119,6 +119,14 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks --remember-session";
+      };
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -129,6 +137,7 @@
     sysstat
     gnumake
     xorg.xmodmap
+    greetd.tuigreet
   ];
 
   services.blueman.enable = true;
