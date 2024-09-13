@@ -8,10 +8,8 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/system.nix
-      ../../modules/fcitx5.nix
-      ../../modules/hyprland.nix
-      ../../modules/wine.nix
+      ../../modules/system
+      ../../modules/wayland
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
