@@ -11,6 +11,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    protontricks = {
+      url = "github:Matoking/protontricks/appinfo_v29";
+      flake = false;
+    };
+    vdf-patch = {
+      url = "github:Matoking/vdf/support_new_bvdf";
+      flake = false;
+    };
     # hyprland = {
     #   type = "git";
     #   url = "https://github.com/hyprwm/Hyprland";

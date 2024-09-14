@@ -69,19 +69,13 @@
     gnumake
     xorg.xmodmap
     greetd.tuigreet
+    xdg-utils
   ];
 
   services.flatpak.enable = true;
   xdg.portal.enable = true;
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -t -r --asterisks --remember-session";
-      };
-    };
-  };
+  services.xserver.displayManager.lightdm.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {

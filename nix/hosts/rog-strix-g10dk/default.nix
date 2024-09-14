@@ -9,6 +9,7 @@
     [
       ./hardware-configuration.nix
       ../../modules/system
+      ../../modules/x11
       ../../modules/wayland
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
@@ -38,5 +39,12 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
+  boot.initrd.kernelModules = [
+    "nvidia"
+    # "i915"
+    "nvidia_modeset"
+    "nvidia_drm"
+  ];
+  # boot.kernelParams = [ "nvidia_drm.modeset=1" ];
   system.stateVersion = "24.05"; # Did you read the comment?
 }

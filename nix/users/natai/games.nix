@@ -1,9 +1,11 @@
 { inputs, pkgs, ... }:
 {
+  # imports = [ ../../overlays/protontricks.nix ];
   users.users.natai = {
     packages = [
       pkgs.prismlauncher
       pkgs.protonplus
+      # pkgs.protontricks-beta
       # pkgs.polychromatic
       # pkgs.linuxKernel.packages.linux_6_6.openrazer
     ];

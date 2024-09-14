@@ -626,6 +626,23 @@
         "type": "github"
       }
     },
+    "protontricks": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722530921,
+        "narHash": "sha256-t794WEMJx/JNX3gTMHfgquFWB7yXkleW07+QURm1NPM=",
+        "owner": "Matoking",
+        "repo": "protontricks",
+        "rev": "f7b1fa33b0438dbd72f7222703f8442e40edc510",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Matoking",
+        "ref": "appinfo_v29",
+        "repo": "protontricks",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
@@ -633,6 +650,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "protontricks": "protontricks",
+        "vdf-patch": "vdf-patch",
         "xremap": "xremap"
       }
     },
@@ -681,6 +700,23 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "vdf-patch": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719784100,
+        "narHash": "sha256-OPonFrYrEFYtx0T2hvSYXl/idsm0iDPwqlnm1KbTPIo=",
+        "owner": "Matoking",
+        "repo": "vdf",
+        "rev": "981cad270c2558aeb8eccaf42cfcf9fabbbed199",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Matoking",
+        "ref": "support_new_bvdf",
+        "repo": "vdf",
         "type": "github"
       }
     },

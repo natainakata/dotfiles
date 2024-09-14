@@ -7,7 +7,6 @@
     wl-clipboard
     wl-clip-persist
     rofi-wayland
-    xdg-utils
     grim
     slurp
     mpv
