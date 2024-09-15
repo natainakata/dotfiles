@@ -17,7 +17,7 @@ return {
       source = { Color = colors.background },
       height = "100%",
       width = "100%",
-      opacity = 1.0,
+      opacity = 0.85,
     },
   },
   enable_scroll_bar = false,
