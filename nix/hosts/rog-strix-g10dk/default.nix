@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/system
       ../../modules/x11
-      ../../modules/wayland
+      # ../../modules/wayland
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd

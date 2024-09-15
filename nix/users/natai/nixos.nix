@@ -64,9 +64,7 @@
             KEY_TAB = "KEY_ESC";
             KEY_F = "KEY_U";
           };
-          application = {
-            only = "/Minecraft*/";
-          };
+          application.only = [ "/Minecraft*/" ];
           device = {
             only = "Razer Razer Tartarus V2";
           };
