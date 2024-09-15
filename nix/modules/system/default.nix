@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  username,
-  ...
+{ pkgs
+, lib
+, username
+, ...
 }:
 {
 
@@ -68,8 +67,8 @@
     sysstat
     gnumake
     xorg.xmodmap
-    greetd.tuigreet
     xdg-utils
+    unzip
   ];
 
   services.flatpak.enable = true;

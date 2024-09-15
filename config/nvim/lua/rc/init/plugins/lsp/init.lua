@@ -24,8 +24,9 @@ local spec = {
         "bashls",
         "denols",
         "pyright",
-        "tsserver",
+        "ts_ls",
         "cssls",
+        "nil_ls",
         -- "css_variables",
         "kotlin_language_server",
       },
@@ -71,8 +72,8 @@ local spec = {
         ["denols"] = function()
           setup(lspconfig["denols"], settings.denols)
         end,
-        ["tsserver"] = function()
-          setup(lspconfig["tsserver"], settings.tsserver)
+        ["ts_ls"] = function()
+          setup(lspconfig["ts_ls"], settings.ts_ls)
         end,
         ["emmet_ls"] = function()
           setup(lspconfig["emmet_ls"], settings.emmet_ls)
@@ -110,6 +111,7 @@ local spec = {
         "stylua",
         "clang_format",
         "black",
+        "nixpkgs-fmt"
       },
       handlers = {},
       automatic_installation = true,
