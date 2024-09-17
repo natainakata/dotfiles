@@ -7,7 +7,7 @@ local domains = {
   unix_domains = {},
 }
 
-if platform.is_win then
+--[[ if platform.is_win then
   local wsl_domains = wezterm.default_wsl_domains()
 
   for idx, dom in ipairs(wsl_domains) do
@@ -17,6 +17,6 @@ if platform.is_win then
   end
   domains.wsl_domains = wsl_domains
   domains.default_domain = "WSL:Ubuntu"
-end
+end ]]
 
 return domains
