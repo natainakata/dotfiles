@@ -21,7 +21,8 @@
   services.xremap = {
     userName = "natai";
     serviceMode = "system";
-    withX11 = true;
+    # withX11 = true;
+    withWlroots = true;
     config = {
       modmap = [
         {

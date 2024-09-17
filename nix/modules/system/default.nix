@@ -74,7 +74,7 @@
   services.flatpak.enable = true;
   xdg.portal.enable = true;
 
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {

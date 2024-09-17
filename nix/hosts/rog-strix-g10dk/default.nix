@@ -1,8 +1,7 @@
-{
-  inputs,
-  config,
-  pkg,
-  ...
+{ inputs
+, config
+, pkg
+, ...
 }:
 {
   imports =
@@ -10,7 +9,7 @@
       ./hardware-configuration.nix
       ../../modules/system
       ../../modules/x11
-      # ../../modules/wayland
+      ../../modules/wayland
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [
       common-cpu-amd
@@ -36,7 +35,7 @@
       modesetting.enable = true;
       open = false;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
   };
   boot.initrd.kernelModules = [
