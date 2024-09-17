@@ -17,5 +17,6 @@
     starship
     vhs
     xclip
+    helix
   ];
 }
