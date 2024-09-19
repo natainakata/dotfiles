@@ -76,7 +76,7 @@ extra-nix-path = nixpkgs=flake:nixpkgs
 EOF
     fi
   if ! has "nix" ; then
-    curl -L https://nixos.org/nix/install | sh
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
     echo "Home Manager build"
     cd $DOT_DIR/nix
     . $HOME/.nix-profile/etc/profile.d/nix.sh
