@@ -68,7 +68,7 @@ function shim() {
 toolchain() {
   echo 'Toolchain install'
   if ! has "nix" ; then
-    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+    curl -L https://nixos.org/nix/install | sh
     echo "Home Manager build"
     cd $DOT_DIR/nix
     echo "Run `cd ~/.dotfiles/nix && nix run nixpkgs#home-manager -- switch --flake ".#natai"`"
