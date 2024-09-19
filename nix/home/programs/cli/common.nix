@@ -18,7 +18,7 @@
     fastfetch
     vhs
     xclip
-    hx
+    helix
 
     # zsh environment
     sheldon
