@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     xremap.url = "github:xremap/nix-flake";
     home-manager = {
@@ -30,6 +31,7 @@
     inputs@{ self
     , nixpkgs
     , nixpkgs-unstable
+    , nixos-wsl
     , home-manager
     , ...
     }:
@@ -85,6 +87,35 @@
               ./users/${username}/nixos.nix
               (_: { nixpkgs.overlays = [ (import ./pkgs) ]; })
               # hyprland.nixosModules.default
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = inputs // specialArgs;
+                home-manager.users.${username} = import ./users/${username}/home.nix;
+              }
+            ];
+          };
+        "natai-wsl" =
+          let
+            username = "natai";
+            specialArgs = {
+              inherit username;
+              inherit inputs;
+            };
+          in
+          nixpkgs.lib.nixosSystem {
+            inherit specialArgs;
+            system = "x86_64-linux";
+            modules = [
+              nixos-wsl.nixosModules.default
+              {
+                system.stateVersion = "24.05";
+                wsl.enable = true;
+                wsl.defaultUser = username;
+              }
+              ./hosts/wsl
+              (_: { nixpkgs.overlays = [ (import ./pkgs) ]; })
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;

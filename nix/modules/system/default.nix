@@ -8,7 +8,6 @@
   imports = [
     ./locale.nix
     ./fonts.nix
-    ./bluetooth.nix
     ./audio.nix
     ./fcitx5.nix
     ./wine.nix
@@ -74,7 +73,6 @@
   services.flatpak.enable = true;
   xdg.portal.enable = true;
 
-  services.xserver.displayManager.gdm.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -94,7 +92,6 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+
 
 }

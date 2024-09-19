@@ -23,6 +23,13 @@
   };
   networking.hostName = "natai-rog";
   networking.networkmanager.enable = true;
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  services.xserver.displayManager.gdm.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
@@ -45,5 +52,6 @@
     "nvidia_drm"
   ];
   # boot.kernelParams = [ "nvidia_drm.modeset=1" ];
-  system.stateVersion = "24.05"; # Did you read the comment?
+
+    system.stateVersion = "24.05"; # Did you read the comment?
 }
