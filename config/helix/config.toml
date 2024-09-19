@@ -1,4 +1,4 @@
-theme = "base16_transparent" # 任意のテーマ
+theme = "monokai_pro_octagon" # 任意のテーマ
 
 [editor]
 true-color = true # デフォルトがfalaseなのでこれをtrueにする、これのせいでテーマが上手く機能しない
