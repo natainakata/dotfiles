@@ -67,19 +67,11 @@ function shim() {
 
 toolchain() {
   echo 'Toolchain install'
-  if [ ! -d "$HOME/.nix" ]; then
-      mkdir ~/.nix
-      cat <<EOF > ~/.nix/nix.conf
-bash-prompt-prefix = (nix:$name)\040
-experimental-features = nix-command flakes auto-allocate-uids
-extra-nix-path = nixpkgs=flake:nixpkgs
-EOF
-    fi
   if ! has "nix" ; then
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
     echo "Home Manager build"
     cd $DOT_DIR/nix
-    . $HOME/.nix-profile/etc/profile.d/nix.sh
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
     echo "Run `cd ~/.dotfiles/nix && nix run nixpkgs#home-manager -- switch --flake ".#natai"`"
     echo "done"
   else
