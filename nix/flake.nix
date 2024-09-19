@@ -38,14 +38,20 @@
     {
       homeConfigurations = {
         # for wsl2
-        "natai" = inputs.home-manager.lib.homeManagerConfiguration {
+        "natai" = 
+          let
+            username = "natai";
+            specialArgs = {
+              inherit username;
+              inherit inputs;
+            };
+          in
+          home-manager.lib.homeManagerConfiguration {
           pkgs = import inputs.nixpkgs {
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
-          extraSpecialArgs = {
-            inherit inputs;
-          };
+          inherit specialArgs;
           modules = [
             ./home/core.nix
             ./home/programs/cli
