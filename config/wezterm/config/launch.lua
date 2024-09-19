@@ -19,17 +19,17 @@ if platform.is_win then
       domain = { DomainName = "local" },
     },
   }
-  -- for _, domain in ipairs(wezterm.default_wsl_domains()) do
-  --   table.insert(options.launch_menu, {
-  --     label = domain["name"],
-  --     args = {
-  --       "wsl.exe",
-  --       "--distribution",
-  --       domain["distribution"],
-  --     },
-  --     cwd = "/home/natai",
-  --   })
-  -- end
+  for _, domain in ipairs(wezterm.default_wsl_domains()) do
+    table.insert(options.launch_menu, {
+      label = domain["name"],
+      args = {
+        "wsl.exe",
+        "--distribution",
+        domain["distribution"],
+      },
+      cwd = "/home/natai",
+    })
+  end
 elseif platform.is_linux then
   options.default_prog = { "zsh" }
   options.launch_menu = {
