@@ -5,6 +5,7 @@
     waybar.enable = true;
   };
 
+
   environment.systemPackages = with pkgs; [
     hyprlock
     hyprpicker

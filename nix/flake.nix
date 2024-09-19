@@ -113,8 +113,10 @@
                 system.stateVersion = "24.05";
                 wsl.enable = true;
                 wsl.defaultUser = username;
+                wsl.useWindowsDriver = true;
               }
               ./hosts/wsl
+              ./users/natai/nixos.nix
               (_: { nixpkgs.overlays = [ (import ./pkgs) ]; })
               home-manager.nixosModules.home-manager
               {
