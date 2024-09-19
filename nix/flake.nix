@@ -47,8 +47,8 @@
             inherit inputs;
           };
           modules = [
-            ./home-manager/home.nix
-            { nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays.default ]; }
+            ./home/core.nix
+            ./home/programs/cli
           ];
         };
         "natai-rpi" = inputs.home-manager.lib.homeManagerConfiguration {
