@@ -71,6 +71,7 @@ toolchain() {
     curl -L https://nixos.org/nix/install | sh
     echo "Home Manager build"
     cd $DOT_DIR/nix
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
     echo "Run `cd ~/.dotfiles/nix && nix run nixpkgs#home-manager -- switch --flake ".#natai"`"
     echo "done"
   else
