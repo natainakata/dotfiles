@@ -67,17 +67,25 @@ function shim() {
 
 toolchain() {
   echo 'Toolchain install'
+  if [ ! -d "$HOME/.nix" ]; then
+      mkdir ~/.nix
+      cat <<EOF > ~/.nix/nix.conf
+bash-prompt-prefix = (nix:$name)\040
+experimental-features = nix-command flakes auto-allocate-uids
+extra-nix-path = nixpkgs=flake:nixpkgs
+EOF
+    fi
   if ! has "nix" ; then
     curl -L https://nixos.org/nix/install | sh
     echo "Home Manager build"
     cd $DOT_DIR/nix
     . $HOME/.nix-profile/etc/profile.d/nix.sh
-    echo "Run `cd ~/.dotfiles/nix && nix --extra-experimental-features nix-command --extra-experimental-features flakes run nixpkgs#home-manager --  switch --flake ".#natai"`"
+    echo "Run `cd ~/.dotfiles/nix && nix run nixpkgs#home-manager -- switch --flake ".#natai"`"
     echo "done"
   else
     echo "Home Manager build"
     cd $DOT_DIR/nix
-    nix --extra-experimental-features nix-command --extra-experimental-features flakes run nixpkgs#home-manager --  switch --flake ".#natai"
+    nix run nixpkgs#home-manager -- switch --flake ".#natai"
     echo "Done."
   fi
 }
