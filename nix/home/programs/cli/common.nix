@@ -32,9 +32,7 @@
     mise
     gcc
     go
-    nodejs-slim # npmのないNode.js単体
-    nodePackages.pnpm
-    nodePackages.wrangler
+    nodejs_20
     deno
     bun
     python312
