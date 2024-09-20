@@ -44,23 +44,7 @@ opt.guifont = { "UDEV Gothic 35NFLG:h14:n" }
 opt.mouse = "a"
 opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 
-if vim.loop.os_uname().sysname == "Linux" then
-  if vim.fn.has("wsl") == 1 then
-    vim.g.clipboard = {
-      name = "WslClipboard",
-      copy = {
-        ["+"] = "wl-copy",
-      },
-      paste = {
-        ["+"] = function()
-          return vim.fn.systemlist('wl-paste | tr -d "\r"')
-        end,
-        ["*"] = "wl-paste",
-      },
-      cache_enabled = 1,
-    }
-  end
-else
+if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.g.sqlite_clib_path = "C:/lib/sqlite3.dll"
   vim.o.shell = "pwsh.exe"
   vim.o.shellcmdflag = "-NoLogo -c"
