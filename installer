@@ -49,6 +49,7 @@ function shim() {
     ln -snfv "$DOT_DIR/home/${home_file}" "$HOME/.${home_file}"
   done
   ln -snfv "$DOT_DIR/home/zsh/zshrc" "$HOME/.zshrc"
+  ln -snfv "$DOT_DIR/home/zsh/zshenv" "$HOME/.zshenv"
   echo "Done."
 
   echo "Config dir shim"
