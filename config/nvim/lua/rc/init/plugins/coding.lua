@@ -120,7 +120,7 @@ local spec = {
 
   {
     "kylechui/nvim-surround",
-    event =  "VeryLazy",
+    event = "VeryLazy",
     config = true,
   },
   {
@@ -191,14 +191,6 @@ local spec = {
     "DaeZak/crafttweaker-vim-highlighting",
     enabled = is_nvim(),
     ft = "crafttweaker",
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    enabled = is_nvim(),
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-    ft = "markdown",
   },
   {
     "Grazfather/sexp.nvim",
