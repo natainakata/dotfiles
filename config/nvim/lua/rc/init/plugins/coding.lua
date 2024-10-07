@@ -1,6 +1,15 @@
 local utils = require("rc.utils")
 local spec = {
   {
+    "monkoose/neocodeium",
+    event = "VeryLazy",
+    config = function()
+      local neocodeium = require("neocodeium")
+      neocodeium.setup()
+      vim.keymap.set("i", "<A-f>", neocodeium.accept)
+    end,
+  },
+  {
     "vim-skk/skkeleton",
     lazy = false,
     enabled = is_nvim(),
