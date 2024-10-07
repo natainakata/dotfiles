@@ -1,3 +1,11 @@
+local transparent = function()
+  if vim.g.neovide == nil then
+    return { nvim = true, vim = 1 }
+  else
+    return { nvim = false, vim = 0 }
+  end
+end
+
 local spec = {
 
   {
@@ -5,7 +13,7 @@ local spec = {
     priority = 1000,
     opts = {
       style = "storm",
-      transparent = true,
+      transparent = transparent().nvim,
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)
@@ -16,7 +24,7 @@ local spec = {
     "gbprod/nord.nvim",
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = transparent().nvim,
     },
     config = function(_, opts)
       require("nord").setup(opts)
@@ -27,7 +35,7 @@ local spec = {
     "navarasu/onedark.nvim",
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = transparent().nvim,
     },
     config = function(_, opts)
       local onedark = require("onedark")
@@ -40,7 +48,7 @@ local spec = {
     "rmehri01/onenord.nvim",
     opts = {
       disable = {
-        background = true,
+        background = transparent().nvim,
       },
     },
     config = function(_, opts)
@@ -54,7 +62,7 @@ local spec = {
     name = "catppuccin",
     opts = {
       flavour = "frappe",
-      transparent_background = false,
+      transparent_background = transparent().nvim,
       integrations = {
         aerial = true,
         noice = true,
@@ -83,7 +91,7 @@ local spec = {
     config = function()
       vim.g.sonokai_style = "default"
       vim.g.sonokai_better_performanec = 1
-      vim.g.sonokai_transparent_background = 1
+      vim.g.sonokai_transparent_background = transparent().vim
 
       vim.cmd.colorscheme("sonokai")
     end,
@@ -93,7 +101,7 @@ local spec = {
     priority = 1000,
     opts = {
       options = {
-        transparent = true,
+        transparent = transparent().nvim,
       },
       styles = {
         comments = "italic",
@@ -110,7 +118,7 @@ local spec = {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = transparent().nvim,
     },
     config = function(_, opts)
       require("kanagawa").setup(opts)
