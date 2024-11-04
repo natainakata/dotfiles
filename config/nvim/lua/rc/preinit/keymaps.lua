@@ -5,6 +5,9 @@ local xmap = utils.xmap
 local tmap = utils.tmap
 local keymap = vim.keymap
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 -- general keymap
 nmap("j", "gj")
 nmap("gj", "j")
