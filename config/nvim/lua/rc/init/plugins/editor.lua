@@ -89,8 +89,8 @@ return {
     "phaazon/hop.nvim",
     config = true,
     keys = {
-      { "<Leader>h", ":<C-u>HopWord<CR>",      silent = true, desc = "Hop Word" },
-      { "<Leader>H", ":<C-u>HopPattern<CR>",   silent = true, desc = "Hop Pattern" },
+      { "<Leader>h", ":<C-u>HopWord<CR>", silent = true, desc = "Hop Word" },
+      { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
       { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line" },
     },
   },
@@ -117,6 +117,38 @@ return {
       { "]]", function() require("illuminate").goto_next_reference(false) end, desc = "Next Reference", },
       { "[[", function() require("illuminate").goto_prev_reference(false) end, desc = "Prev Reference" },
     },
+  },
+  {
+    "tkmpypy/chowcho.nvim",
+    event = "VeryLazy",
+    config = function()
+      local chowcho = require("chowcho")
+      chowcho.setup({})
+      local win_keymap_set = function(key, callback)
+        vim.keymap.set({ "n", "t" }, "<C-w>" .. key, callback)
+        vim.keymap.set({ "n", "t" }, "<C-w><C-" .. key .. ">", callback)
+      end
+
+      win_keymap_set("w", function()
+        local wins = 0
+
+        for i = 1, vim.fn.winnr("$") do
+          local win_id = vim.fn.win_getid(i)
+          local conf = vim.api.nvim_win_get_config(win_id)
+
+          if conf.focusable then
+            wins = wins + 1
+
+            if wins > 2 then
+              chowcho.run()
+              return
+            end
+          end
+        end
+
+        vim.api.nvim_command("wincmd w")
+      end)
+    end,
   },
   {
     "lambdalisue/gin.vim",
@@ -158,7 +190,7 @@ return {
     cmd = "QuickRun",
     keys = {
       { mode = { "n" }, "gx", require("rc.utils").operator("quickrun#operator"), { expr = true, silent = true } },
-      { mode = { "v" }, "gx", ":QuickRun -mode v<CR>",                           { silent = true } },
+      { mode = { "v" }, "gx", ":QuickRun -mode v<CR>", { silent = true } },
     },
     opts = {
       ["_"] = {
