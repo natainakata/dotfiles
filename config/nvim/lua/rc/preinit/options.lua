@@ -59,7 +59,6 @@ vim.diagnostic.config({
 -- GUI settings
 opt.guifont = { "Explex35 Console NF:h13:n" }
 opt.mouse = "a"
-opt.guicursor = "n-i:ver25"
 
 -- os specific
 if vim.loop.os_uname().sysname == "Windows_NT" then
