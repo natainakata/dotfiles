@@ -43,8 +43,8 @@ local keys = {
   { key = "n", mods = mod.SUPER, action = act.SpawnWindow },
 
   -- clipboard
-  { key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
-  { key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("ClipboardAndPrimarySelection") },
+  { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+  { key = "C", mods = "CTRL", action = act.CopyTo("ClipboardAndPrimarySelection") },
 
   -- tab
   { key = "t", mods = mod.SUPER, action = act.SpawnTab("DefaultDomain") },

@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 
-local font = { family = "Explex35 Console NF", harfbuzz_features = { "calt=1", "liga=1", "dlig=1" } }
+local font = { family = "Moralerspace Argon NF", harfbuzz_features = { "calt=1", "liga=1", "dlig=1" } }
 -- local font = { family = "UDEV Gothic 35NFLG", harfbuzz_features = { "calt=1", "liga=1", "dlig=1" } }
 local font_size = 13
 
