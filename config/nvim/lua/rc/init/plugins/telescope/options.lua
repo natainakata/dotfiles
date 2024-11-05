@@ -23,19 +23,19 @@ function M.telescope_setup(core, actions, sorters, viewers)
       entry_prefix = "  ",
       selection_strategy = "reset",
       sorting_strategy = "ascending",
-      layout_storategy = "horizontal",
+      layout_strategy = "vertical",
       layout_config = {
         horizontal = {
-          prompt_position = "top",
           preview_width = 0.5,
           results_width = 0.6,
         },
         vertical = {
           mirror = false,
         },
+        prompt_position = "bottom",
         width = 0.7,
         height = 0.8,
-        preview_cutoff = 120,
+        preview_cutoff = 0,
       },
       file_sorter = sorters.get_fuzzy_file,
       file_ignore_patterns = { "node_modules" },
