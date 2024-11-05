@@ -27,12 +27,9 @@ M.core = {
   {
     "<Leader>f",
     function()
-      require("telescope.builtin").find_files({
-        no_ignore = true,
-        hidden = true,
-      })
+      require("telescope.builtin").git_files()
     end,
-    desc = "Find File (ALL)",
+    desc = "Find File (Git)",
   },
   {
     "<Leader>/",
