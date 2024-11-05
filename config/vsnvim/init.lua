@@ -28,7 +28,6 @@ option.list = true
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 keymap.set("", "<Space>", "<Nop>", opts)
 keymap.set("n", "j", "gj", opts)
@@ -71,20 +70,31 @@ keymap.set("n", "<Leader>o", function()
   vscode.call("editor.action.openLink")
 end, opts)
 
+keymap.set("n", "<Leader>z", function()
+  vscode.call("workbench.action.toggleZenMode")
+end, opts)
+
+keymap.set("n", "<Leader>c", function()
+  vscode.call("workbench.action.quickOpenWithModes")
+end, opts)
 keymap.set("n", "<Leader>f", function()
   vscode.call("workbench.action.quickOpen")
 end, opts)
 keymap.set("n", "<Leader>p", function()
   vscode.call("workbench.action.showCommands")
 end, opts)
-keymap.set("n", "<Leader>b", function()
+keymap.set("n", "<Leader>r", function()
   vscode.call("workbench.action.quickOpenRecent")
 end, opts)
 
 -- sidebar
-keymap.set("n", "<Leader>s", function()
+keymap.set("n", "<Leader>b", function()
   vscode.call("workbench.action.toggleSidebarVisibility")
 end, opts)
+keymap.set("n", "<Leader>s", function()
+  vscode.call("workbench.action.toggleAuxiliaryBar")
+end, opts)
+
 keymap.set("n", "<Leader>e", function()
   vscode.call("workbench.view.explorer")
 end, opts)
@@ -92,12 +102,12 @@ keymap.set("n", "<Leader>g", function()
   vscode.call("workbench.view.scm")
 end, opts)
 
--- cursor AI
+-- AI
 keymap.set("n", "<Leader>k", function()
-  vscode.call("aipopup.action.modal.generate")
+  vscode.call("codeium.openCodeiumCommand")
 end, opts)
 keymap.set("n", "<Leader>l", function()
-  vscode.call("aichat.newchataction")
+  vscode.call("codeium.openChatView")
 end, opts)
 
 -- panel
