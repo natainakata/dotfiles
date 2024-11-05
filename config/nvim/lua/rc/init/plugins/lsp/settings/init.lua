@@ -7,4 +7,5 @@ return {
   fennel_language_server = require("rc.init.plugins.lsp.settings.fennel"),
   tsserver = require("rc.init.plugins.lsp.settings.typescript"),
   emmet_ls = require("rc.init.plugins.lsp.settings.emmet"),
+  rust_analyzer = require("rc.init.plugins.lsp.settings.rust"),
 }

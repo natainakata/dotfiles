@@ -42,6 +42,7 @@ local spec = {
     init = function()
       helper.on_attach(function(client, bufnr)
         require("rc.init.plugins.lsp.keymaps").on_attach(client, bufnr)
+        require("rc.init.plugins.lsp.format").on_attach(client, bufnr)
       end)
     end,
     opts = require("rc.init.plugins.lsp.opts"),
@@ -83,6 +84,9 @@ local spec = {
         end,
         ["fennel_language_server"] = function()
           setup(lspconfig["fennel_language_server"], settings.fennel_language_server)
+        end,
+        ["rust_analyzer"] = function()
+          setup(lspconfig["rust_analyzer"], settings.rust_analyzer)
         end,
       })
     end,
