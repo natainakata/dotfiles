@@ -10,7 +10,7 @@ local spec = {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "RRethy/nvim-treesitter-endwise",
+      -- "RRethy/nvim-treesitter-endwise",
       "andymass/vim-matchup",
       "monaqa/tree-sitter-unifieddiff",
       "nvim-treesitter/playground",
@@ -61,9 +61,9 @@ local spec = {
       autotag = {
         enable = true,
       },
-      endwise = {
+      --[[ endwise = {
         enable = true,
-      },
+      }, ]]
       textobjects = {
         select = {
           enable = true,

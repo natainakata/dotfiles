@@ -4,14 +4,7 @@ local spec = {
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
-    opts = function()
-      -- local sonokai_conf = vim.fn["sonokai#get_configuration"]()
-      -- local palette = vim.fn["sonokai#get_palette"](sonokai_conf.style, sonokai_conf.colors_override)
-      -- local bg = palette.bg0[1]
-      local bg = require("onedark.palette").dark.bg0
-      -- local bg = require("catppuccin.palettes").get_palette("frappe").mantle,
-      return { background_colour = bg }
-    end,
+
     config = true,
     keys = {
       {
@@ -137,6 +130,12 @@ local spec = {
     end,
   },
   {
+    "mvllow/modes.nvim",
+    event = "VeryLazy",
+    version = "v0.2.0",
+    config = true,
+  },
+  {
     "goolord/alpha-nvim",
     event = "VimEnter",
     dependencies = "nvim-tree/nvim-web-devicons",
@@ -160,7 +159,7 @@ local spec = {
     end,
     opts = {
       win = {
-        border = "none",
+        border = "single",
       },
       plugins = {
         presets = {
