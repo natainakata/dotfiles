@@ -14,6 +14,10 @@ local spec = {
     opts = {
       style = "storm",
       transparent = transparent().nvim,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)
