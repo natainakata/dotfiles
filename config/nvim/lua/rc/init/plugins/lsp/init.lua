@@ -36,8 +36,18 @@ local spec = {
       "jay-babu/mason-null-ls.nvim",
       { "folke/trouble.nvim", dependencies = "nvim-web-devicons" },
       { "SmiteshP/nvim-navic", opts = { lsp = { auto_attach = true }, highlight = true } },
-      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "hrsh7th/cmp-nvim-lsp",
+      {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+          library = {
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            { path = "luvit-meta/library", words = { "vim%.uv" } },
+          },
+        },
+      },
     },
     init = function()
       helper.on_attach(function(client, bufnr)
