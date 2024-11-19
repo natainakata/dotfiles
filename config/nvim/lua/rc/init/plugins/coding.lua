@@ -12,21 +12,15 @@ local spec = {
   {
     "vim-skk/skkeleton",
     lazy = false,
-    enabled = is_nvim(),
     dependencies = {
       "vim-denops/denops.vim",
       -- "kei-s16/skkeleton-azik-kanatable",
       { "skk-dev/dict", name = "skk-dict" },
     },
     config = function()
-      if is_nvim() then
-        utils.imap("<C-u>", "<Plug>(skkeleton-toggle)")
-        utils.cmap("<C-u>", "<Plug>(skkeleton-toggle)")
-        utils.tmap("<C-u>", "<Plug>(skkeleton-toggle)")
-      else
-        utils.imap("<C-j>", "<Plug>(skkeleton-toggle)")
-      end
-
+      utils.imap("<C-u>", "<Plug>(skkeleton-toggle)")
+      utils.cmap("<C-u>", "<Plug>(skkeleton-toggle)")
+      utils.tmap("<C-u>", "<Plug>(skkeleton-toggle)")
       -- vim.fn["skkeleton#azik#add_table"]("us")
       local dictionaries = {
         vim.fn.stdpath("data") .. "/lazy/skk-dict/SKK-JISYO.L",
@@ -57,7 +51,6 @@ local spec = {
   },
   {
     "L3MON4D3/LuaSnip",
-    enabled = is_nvim(),
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -198,7 +191,6 @@ local spec = {
   },
   {
     "DaeZak/crafttweaker-vim-highlighting",
-    enabled = is_nvim(),
     ft = "crafttweaker",
   },
   {

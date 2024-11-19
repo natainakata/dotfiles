@@ -4,7 +4,6 @@ local helper = require("rc.utils.lsp")
 local spec = {
   {
     "williamboman/mason-lspconfig.nvim",
-    enabled = is_nvim(),
     event = "VeryLazy",
     dependencies = {
       "williamboman/mason.nvim",
@@ -29,7 +28,6 @@ local spec = {
   },
   {
     "neovim/nvim-lspconfig",
-    enabled = is_nvim(),
     event = "VeryLazy",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
@@ -103,7 +101,6 @@ local spec = {
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    enabled = is_nvim(),
     event = "VeryLazy",
     dependencies = {
       {

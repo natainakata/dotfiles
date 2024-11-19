@@ -1,5 +1,4 @@
 local icons = require("rc.utils.icons")
--- local utils = require("rc.utils")
 local spec = {
   {
     "rcarriga/nvim-notify",
@@ -281,41 +280,16 @@ local spec = {
       },
     },
   },
-  {
-    "petertriho/nvim-scrollbar",
-    event = "VeryLazy",
-    config = true,
-  },
+
   {
     "kevinhwang91/nvim-hlslens",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "petertriho/nvim-scrollbar",
-    },
-    config = function()
-      require("scrollbar.handlers.search").setup()
-    end,
+    config = true,
   },
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "petertriho/nvim-scrollbar",
-    },
-    config = function()
-      require("gitsigns").setup({})
-      require("scrollbar.handlers.gitsigns").setup()
-      function _G.diff_source()
-        local gitsigns = vim.b.gitsigns_status_dict
-        if gitsigns then
-          return {
-            added = gitsigns.added,
-            modified = gitsigns.changed,
-            removed = gitsigns.removed,
-          }
-        end
-      end
-    end,
+    config = true,
   },
   {
     "luukvbaal/statuscol.nvim",
@@ -387,8 +361,4 @@ local spec = {
   },
 }
 
-if is_nvim() then
-  return spec
-else
-  return {}
-end
+return spec

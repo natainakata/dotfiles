@@ -4,7 +4,6 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
-    enabled = is_nvim(),
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeCollapse", "NvimTreeOpen" },
     keys = {
       { "<Leader>e", "<Cmd>NvimTreeToggle<CR>", desc = "NvimTree" },
@@ -52,39 +51,13 @@ return {
   },
   {
     "stevearc/oil.nvim",
-    enabled = is_nvim(),
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
     cmd = { "Oil" },
     keys = { { "<Leader>O", "<Cmd>Oil<CR>", desc = "Open Oil" } },
     config = true,
   },
-  {
-    "stevearc/aerial.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    enabled = is_nvim(),
-    cmd = { "AerialToggle", "AerialOpen" },
-    keys = {
-      { "<Leader>o", "<cmd>AerialToggle<CR>", desc = "Outline List" },
-    },
-    opts = {
-      layout = {
-        width = 30,
-      },
-    },
-  },
-  {
-    "hedyhli/outline.nvim",
-    cmd = { "Outline", "OutlineOpen" },
-    enabled = false,
-    keys = {
-      { "<Leader>o", "<cmd>Outline<CR>", desc = "Outline List" },
-    },
-    config = true,
-  },
+
   {
     "phaazon/hop.nvim",
     config = true,
@@ -106,7 +79,6 @@ return {
   },
   {
     "RRethy/vim-illuminate",
-    enabled = is_nvim(),
     event = { "BufReadPost", "BufNewFile" },
     opts = { delay = 200 },
     config = function(_, opts)
@@ -152,7 +124,6 @@ return {
   },
   {
     "lambdalisue/gin.vim",
-    enabled = is_nvim(),
     dependencies = "vim-denops/denops.vim",
     lazy = false,
     version = false,
@@ -203,7 +174,7 @@ return {
         ["runner"] = "neovim_job",
       },
     },
-    config = function(_, opts)
+    init = function(_, opts)
       vim.g.quickrun_config = opts
     end,
   },

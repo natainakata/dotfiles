@@ -2,7 +2,6 @@ local icons = require("rc.utils.icons")
 local spec = {
   {
     "hrsh7th/nvim-cmp",
-    enabled = is_nvim(),
     event = { "InsertEnter", "CmdLineEnter" },
     version = false,
     dependencies = {
