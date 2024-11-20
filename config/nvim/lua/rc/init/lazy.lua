@@ -22,7 +22,7 @@ local opts = {
     patterns = {},
   },
   checker = { enabled = is_nvim, frequency = 1600 }, -- automatically check for plugin updates
-  install = { colorscheme = { "monokai-pro", "catppuccin", "nightfox", "sonokai", "onedark", "habamax", "kanagawa" } },
+  install = { colorscheme = { "tokyonight", "habamax" } },
   performance = {
     cache = { enabled = true },
     rtp = {
