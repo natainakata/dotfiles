@@ -57,7 +57,35 @@ return {
     keys = { { "<Leader>O", "<Cmd>Oil<CR>", desc = "Open Oil" } },
     config = true,
   },
-
+  {
+    "monkoose/neocodeium",
+    event = "VeryLazy",
+    config = function()
+      local neocodeium = require("neocodeium")
+      neocodeium.setup()
+      vim.keymap.set("i", "<A-f>", neocodeium.accept)
+    end,
+  },
+  {
+    "monaqa/dial.nvim",
+    keys = {
+      { "+", "<Plug>(dial-increment)", desc = "Increment" },
+      { "-", "<Plug>(dial-decrement)", desc = "Decrement" },
+    },
+    config = function()
+      local dial = require("dial.config")
+      local augend = require("dial.augend")
+      dial.augends:register_group({
+        -- augends used when group with name `mygroup` is specified
+        default = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.constant.alias.bool,
+          augend.date.alias["%Y/%m/%d"],
+        },
+      })
+    end,
+  },
   {
     "phaazon/hop.nvim",
     config = true,
@@ -66,11 +94,6 @@ return {
       { "<Leader>H", ":<C-u>HopPattern<CR>", silent = true, desc = "Hop Pattern" },
       { "<Leader>L", ":<C-u>HopLineStart<CR>", silent = true, desc = "Hop Line" },
     },
-  },
-  {
-    "echasnovski/mini.jump",
-    config = true,
-    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "kevinhwang91/nvim-bqf",
@@ -178,6 +201,7 @@ return {
       vim.g.quickrun_config = opts
     end,
   },
+
   {
     "Allianaab2m/vimskey",
     dependencies = "vim-denops/denops.vim",
