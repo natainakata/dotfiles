@@ -16,8 +16,8 @@ elseif platform.is_mac then
 end
 
 local keys = {
-  { key = "F1", mods = "NONE", action = "ActivateCopyMode" },
-  { key = "F2", mods = "NONE", action = act.ActivateCommandPalette },
+  -- { key = "F1", mods = "NONE", action = "ActivateCopyMode" },
+  -- { key = "F2", mods = "NONE", action = act.ActivateCommandPalette },
   {
     key = "p",
     mods = mod.SUPER,
@@ -28,7 +28,7 @@ local keys = {
     mods = mod.SUPER_REV,
     action = act.ShowLauncherArgs({ flags = "FUZZY|COMMANDS", title = "Commands Palette" }),
   },
-  {
+  --[[ {
     key = "F3",
     mods = "NONE",
     action = act.ShowLauncherArgs({ flags = "FUZZY|TABS", title = "Tabs" }),
@@ -37,7 +37,7 @@ local keys = {
     key = "F3",
     mods = "CTRL",
     action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES", title = "WorkSpaces" }),
-  },
+  }, ]]
 
   -- window
   { key = "n", mods = mod.SUPER, action = act.SpawnWindow },
