@@ -1,4 +1,5 @@
 local utils = require("rc.utils")
+---@type vim.lsp.Config
 return {
   filetypes = {
     "css",
